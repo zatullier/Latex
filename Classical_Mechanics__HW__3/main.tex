@@ -1,0 +1,199 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{classicalHW3.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Mechanics HW 3}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{October 6, 2024}
+
+\maketitle
+
+\section{Question 1}
+    For a circular and parabolic orbits in an attractive $\frac{1}{r}$ potential having the same angular momentum, show that the perihelion distance of the parabola is one half the radius of the circle.
+
+    \underline{Answer 1, part a}
+    The effective potential is given by
+    \[
+        V_{eff}(r) \equiv -\frac{k}{r} + \frac{L^2}{2 m r^2}
+    \]
+    For a circular orbit: $r = Constant$ and $v = constant$ so $\frac{V_{eff}(r)}{dr} = 0$
+    \[
+        \frac{V_{eff}(r)}{dr} = - \frac{k}{r_c^2} + \frac{L^2}{m r_c^3} = 0
+    \]
+    Isolate $r_c$
+    \[
+        r_c = \frac{L^2}{m k}
+    \]
+    For a parabolic orbit: $E_{tot} = 0$
+    \[
+        E_{tot} = \frac{1}{2} m v_p^2 - \frac{k}{r_{p}} = 0
+    \]
+    Angular momentum is conserved so the speed can be represented using $L$
+    \[
+        L = m v_p r_p
+    \]
+    Isolate $v_p$
+    \[
+        v_p = \frac{L}{m r_p}
+    \]
+    Plug back into energy equation
+    \[
+        E_{tot} = \frac{1}{2} m \left(\frac{L}{m r_p} \right)^2 - \frac{k}{r_{p}} = 0
+    \]
+    Isolate $r_p$
+    \[
+        r_p = \frac{L^2}{2 m k}
+    \]
+    As you can see, this is half the circular radius
+    \[
+        r_p = \frac{L^2}{2 m k} = \frac{1}{2} \frac{L^2}{m k} = \frac{1}{2} r_c
+    \]
+
+    \underline{Answer 1, part b}
+    Similar to part a, the effective potential is given by
+    \[
+        V_{eff}(r) \equiv -\frac{k}{r} + \frac{L^2}{2 m r^2}
+    \]
+    For a circular orbit: $r = Constant$ and $v = constant$ so $\frac{V_{eff}(r)}{dr} = 0$
+    \[
+        \frac{V_{eff}(r)}{dr} = - \frac{k}{r^2} + \frac{L^2}{m r^3} = 0
+    \]
+    Angular momentum is conserved so it can be represented using speed
+    \[
+        L = m v_c r
+    \]
+    Plug back into equation for effective potential
+    \[
+        \frac{V_{eff}(r)}{dr} = - \frac{k}{r^2} + \frac{\left(m v_c r \right)^2}{m r^3} = 0
+    \]
+    Isolate $v_c$
+    \[
+        v_c = \sqrt{\frac{k}{m r}}
+    \]
+    Similar to part a, the total energy is zero
+    \[
+        E_{tot} = \frac{1}{2} m v_p^2 - \frac{k}{r} = 0
+    \]
+    Isolate $v_p$
+    \[
+        v_p = \sqrt{2}  \sqrt{\frac{k}{m r}} = \sqrt{2} v_c
+    \]
+    
+\section{Question 2}
+    Assume that Kepler's first law describes the planetary orbits as circles with the sun in the center. Which consequences result for Kepler's second and third laws? Using Kepler's modified laws determine the force underlying the motion of the planets.
+
+    \underline{Answer 2, part a}
+    If we assume that Kepler's first law describes circular orbits, then the second and third laws need additional assumptions. For Kepler's second law we assume that the radius and velocity are constant because the area swept per unit time is proportional to the radius an the velocity. For Kepler's third law we assume that the semi-major axis $a$ is equal to the radius, $r$, of the circle. 
+
+    \underline{Answer 2, part b}
+    Centripetal force is required to keep the planet in circular orbit
+    \[
+        F_{cent} = \frac{m v^2}{r}
+    \]
+    Using Kepler's third law we know:
+    \[
+        v = \frac{2 \pi r}{T}
+    \]
+    Plug back into equation
+    \[
+        F_{cent} = \frac{m \left(\frac{2 \pi r}{T} \right)}{r} = \frac{4 \pi^2 m r}{T^2}
+    \]
+    We can equate the force of gravity to the centripal force
+    \[
+        \frac{G M m}{r^2} = \frac{4 \pi^2 m r}{T^2}
+    \]
+    Isolate the period ($T$)
+    \[
+        T^2 = \frac{4 \pi^2 r^3}{G M}
+    \]
+    This gives Kepler's third law with r in place of a because we assumed the planets were orbiting circularly
+
+\section{Question 3}
+    starting from the total energy of the Kepler problem derive the differential equation for $\phi(r)$ with $V(r) = - \frac{\lambda}{r}$
+    \[
+        \frac{d\phi}{dr} = \pm \frac{l}{m r^2} \frac{1}{\sqrt{\frac{2}{m} \left(E + \frac{\lambda}{r} - \frac{l^2}{2 m r^2} \right)}}
+    \]
+
+    \underline{Answer 3, part a}
+    We start with the energy equation
+    \[
+        E = T + V(r)
+    \]
+    The kinetic energy has radial and angular components
+    \[
+        T = \frac{1}{2} m \left(\dot{r}^2 + r^2 \dot{\phi}^2 \right)
+    \]
+    The potential energy is given so the energy equation becomes
+    \[
+        E = \frac{1}{2} m \left(\dot{r}^2 + r^2 \dot{\phi}^2 \right) - \frac{\lambda}{r}
+    \]
+    Angular momentum is conserved so
+    \[
+        \ell = m r^2 \dot{\phi}
+    \]
+    Isolate $\dot{\phi}$
+    \[
+        \dot{\phi} = \frac{\ell}{m r^2}
+    \]
+    Substitute back into energy equation
+    \[
+        E = \frac{1}{2} m \left(\dot{r}^2 + r^2 \left(\frac{\ell}{m r^2} \right)^2 \right) - \frac{\lambda}{r}
+    \]
+    Isolate $\dot{r}^2$
+    \[
+        \dot{r}^2 = \frac{2}{m} \left(E + \frac{\lambda}{r} - \frac{\ell^2}{2 m r^2} \right)
+    \]
+    Relate $\dot{\phi}$ to $\dot{r}$
+    \[
+        \frac{d\phi}{d r} = \frac{\frac{d\phi}{dt}}{\frac{d r}{dt}} = \pm \frac{\ell}{m r^2 \sqrt{\frac{2}{m} \left(E + \frac{\lambda}{r} - \frac{\ell^2}{2 m r^2} \right)}}
+    \]
+
+    \underline{Answer 3, part b}
+    To find the aphelion and perihelion, we have to find where $\dot{r} = 0$
+    \newline Using our equation from the last section
+    \[
+        \dot{r} ^2 = \frac{2}{m} \left(E + \frac{\lambda}{r} - \frac{\ell^2}{2 m r^2} \right) = 0
+    \]
+    Rearrange into quadratic form
+    \[
+        E r^2 + \lambda r - \frac{\ell^2}{2 m} = 0
+    \]
+    Solve quadratic equation using standard quadratic formula 
+    \[
+        r = \frac{- \lambda \pm \sqrt{\lambda^2 + 2 E \frac{\ell^2}{m}}}{2 E}
+    \]
+    The Perihelion is closer to the sun than the aphelion so from $\pm$ the perihelion will use $-$
+    
+    
+\newpage
+%\printbibliography
+\end{document}

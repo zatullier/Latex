@@ -1,0 +1,260 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{classicalHW4.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Mechanics HW 4}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+
+\maketitle
+
+\section{Question 1}
+    Find the principal moments of inertia about the center of mass of a flat rigid body in the shape of a $45\deg$ right triangle with uniform mass density. What are the principal axes? Find the spin kinetic energy and the angular momentum.
+
+    \underline{Answer 1, part a}
+    The moment of inertia is given by
+    \[
+        I_{ij} = \int_V \rho \left( \delta_{ij} r^2 - x_i x_j \right) dV
+    \]
+    Where $r^2 = x^2 + y^2$. I am assuming the inertia is in the body reference frame, so $I_{xy} = I_{xz} = I_{yz} = 0$
+    \newline For the x-axis
+    \[
+        I_{xx} = \int_A y^2 \sigma dA =
+    \]
+    Expand the area integral into an x and a y integral
+    \[
+        I_{xx} = \sigma \int_0^a \int_0^{a-x} y^2 dy dx
+    \]
+    Integrate
+    \[
+        I_{xx} = \frac{\sigma a^4}{3} (1 - \frac{3}{2} + 1 - \frac{1}{4}) = \frac{\sigma a^4}{12}
+    \]
+    Apply the definition of density: $\sigma \equiv \frac{2 M}{a^2}$
+    \[
+        I_{xx} = \frac{\left(\frac{2 M}{a^2} \right) a^4}{12}
+    \]
+    Simplify
+    \[
+        I_{xx} = \frac{M a^2}{18}
+    \]
+    Similarly, for the y-axis
+    \[
+        I_{yy} = \int_A x^2 \sigma dA =
+    \]
+    Expand the area integral into an x and a y integral
+    \[
+        I_{yy} = \sigma \int_0^a \int_0^{a-y} x^2 dy dx
+    \]
+    Integrate
+    \[
+        I_{yy} = \frac{\sigma a^4}{3} (1 - \frac{3}{2} + 1 - \frac{1}{4}) = \frac{\sigma a^4}{12}
+    \]
+    Apply the definition of density: $\sigma \equiv \frac{2 M}{a^2}$
+    \[
+        I_{yy} = \frac{\left(\frac{2 M}{a^2} \right) a^4}{12}
+    \]
+    Simplify
+    \[
+        I_{yy} = \frac{M a^2}{18}
+    \]
+    Similarly for the z-axis
+    \[
+        I_{zz} = \int_A z^2 \sigma dA =
+    \]
+    Expand the area integral into an x and a y integral
+    \[
+        I_{zz} = \sigma \left( \int_0^a \int_0^{a-y} x^2 dy dx + \int_0^a \int_0^{a-y} y^2 dy dx \right)
+    \]
+    Integrate
+    \[
+        I_{zz} = \sigma \left(\frac{a^4}{12} + \frac{3 a^4}{2} \right)
+    \]
+    Apply the definition of density: $\sigma \equiv \frac{2 M}{a^2}$
+    \[
+        I_{zz} = \left(\frac{2 M}{a^2} \right) \left(\frac{a^4}{12} + \frac{3 a^4}{2} \right)
+    \]
+    Simplify
+    \[
+        I_{zz} = \frac{M a^2}{9}
+    \]
+
+    \underline{Answer 1, part b}
+    The principal axis run along the base, the height, and perpendicular 
+
+    \underline{Answer 1, part c}
+    In the body frame the spin kinetic energy is defined as 
+    \[
+        T_3 = \frac{1}{2} \omega^{a'} I_{a'b'} \omega^{b'}
+    \]
+    We can calculate the spin kinetic energy for all three axis (x, y, z).
+    \newline The x and y axis are nearly identical
+    \[
+        T_{3x} = \frac{1}{2} \omega_{x'}^2 I_{xx} = \frac{1}{2} \omega_{x'}^2 \left(\frac{M a^2}{18} \right) = \frac{\omega_{x'}^2 M a^2}{36}
+    \]
+    \[
+        T_{3y} = \frac{1}{2} \omega_{y'}^2 I_{yy} = \frac{1}{2} \omega_{y'}^2 \left(\frac{M a^2}{18} \right) = \frac{\omega_{y'}^2 M a^2}{36}
+    \]
+    \[
+        T_{3z} = \frac{1}{2} \omega_{z'}^2 I_{zz} = \frac{1}{2} \omega_{z'}^2 \left(\frac{M a^2}{9} \right) = \frac{\omega_{z'}^2 M a^2}{18}
+    \]
+    
+    \underline{Answer 1, part d}
+    Angular momentum is defined as
+    \[
+        L = I \omega
+    \]
+    We can calculate the angular momentum for all three axis (x, y, z)
+    \newline The x and y axis are nearly identical
+    \[
+        L = I_{xx} \omega_x = \frac{M a^2}{18} \omega_x
+    \]
+    \[
+        L = I_{yy} \omega_y = \frac{M a^2}{18} \omega_y
+    \]
+    \[
+        L = I_{zz} \omega_z = \frac{M a^2}{9} \omega_z     
+    \]
+
+\section{Question 2}
+    The total angular velocity vector in the body frame of a rigid body in terms of the Euler angles and their time derivatives is given by:
+    \[
+        \omega = \left(\omega^{x'}, \omega^{y'}, \omega^{z'} \right) = \left(\dot{\varphi} sin(\theta) sin(\psi) + \dot{\theta} cos(\psi), \dot{\varphi} sin(\theta) cos(\psi) - \dot{\theta} sin(\psi), \dot{\varphi} cos(\theta) + \dot{\varphi} \right)
+    \]
+    Show that in the laboratory frame itis given by:
+    \[
+        \omega = \left(\omega^{x}, \omega^{y}, \omega^{z} \right) = \left(\dot{\psi} sin(\theta) sin(\varphi) + \dot{\theta} cos(\varphi), -\dot{\psi} sin(\theta) cos(\varphi) + \dot{\theta} sin(\varphi), \dot{\psi} cos(\theta) + \dot{\psi} \right)
+    \]
+
+    \underline{Answer 2}
+    We will use Rotation Matricies to transform the the angular velocity from the body from to the lab frame. We will consider the given set of equations for $\omega$ to be the body frame.
+    \[
+        \omega_{lab} = R_t \omega_{body}
+    \]
+    The rotation matricies are defined as:
+    \[
+        R_t = R_1(\varphi) R_2(\theta) R_3(\psi)
+    \]
+    \[
+        R_1(\varphi) =
+        \begin{pmatrix}
+            cos(\varphi) & -sin(\varphi) & 0
+            \\ sin(\varphi) & cos(\varphi) & 0
+            \\ 0 & 0 & 1
+        \end{pmatrix}
+    \]
+    \[
+        R_2(\theta) =
+        \begin{pmatrix}
+            1 & 0 & 0
+            \\ 0 & cos(\theta) & sin(\theta)
+            \\ 0 -sin(\theta) & cos(\theta)
+        \end{pmatrix}
+    \]
+    \[
+        R_3(\psi) =
+        \begin{pmatrix}
+            cos(\psi) & sin(\psi) & 0
+            \\ -sin(\psi) & cos(\psi) & 0
+            \\ 0 & 0 & 1
+        \end{pmatrix}
+    \]
+    Multiply  the matricies to get
+    \[{\tiny
+        R_{tot} =
+        \begin{pmatrix}
+            cos(\theta) \left(cos(\phi) cos(\psi) - sin(\phi) sin(\phi)\right)
+            &
+            \left( -sin(\psi)cos(\phi) - cos(\psi) sin(\phi) \right)
+            & 
+            -sin(\theta) \left(cos(\phi) cos(\psi) + sin(\phi) sin(psi) \right)
+            \\
+            cos(\theta) \left(sin(\phi) cos(\psi) + cos(\phi) sin(\psi) \right)
+            & 
+            \left( -sin(\phi) sin(\psi) + cos(\phi)cos(\psi) \right)
+            & 
+            -sin(\theta) \left( sin(\phi) cos(\psi) + cos(\phi) sin(\psi) \right)
+            \\
+            sin(\theta)
+            &
+            0
+            &
+            cos(\theta)
+        \end{pmatrix}
+        }
+    \]
+    Multiply the angular velocity by the rotational matrices for each axis
+    \[
+        \begin{split}
+            \omega_{lab}^x =
+            \\
+            cos(\theta) \left(cos(\phi) cos(\psi) - sin(\phi) sin(\phi)\right) \left(\dot{\varphi} sin(\theta) sin(\psi) + \dot{\theta} cos(\psi) \right) 
+            \\
+            + \left( -sin(\psi)cos(\phi) - cos(\psi) sin(\phi) \right) \left(\dot{\varphi} sin(\theta) cos(\psi) - \dot{\theta} sin(\psi) \right)
+            \\
+            - sin(\theta) \left(cos(\phi) cos(\psi) + sin(\phi) sin(psi) \right) \left(\dot{\varphi} cos(\theta) + \dot{\varphi} \right)
+        \end{split}
+    \]
+    \[
+        \begin{split}
+            \omega_{lab}^y =
+            \\
+            cos(\theta) \left(sin(\phi) cos(\psi) + cos(\phi) sin(\psi) \right) \left(\dot{\varphi} sin(\theta) sin(\psi) + \dot{\theta} cos(\psi) \right) 
+            \\ 
+            + \left( -sin(\phi) sin(\psi) + cos(\phi)cos(\psi) \right) \left(\dot{\varphi} sin(\theta) cos(\psi) - \dot{\theta} sin(\psi) \right)
+            \\
+            + -sin(\theta) \left( sin(\phi) cos(\psi) + cos(\phi) sin(\psi) \right) \left(\dot{\varphi} cos(\theta) + \dot{\varphi} \right)
+        \end{split}
+    \]
+    \[
+        \begin{split}
+            \omega_{lab}^z =
+            \\
+            sin(\theta) \left(\dot{\varphi} sin(\theta) sin(\psi) + \dot{\theta} cos(\psi) \right) 
+            \\ 
+            + 0
+            \\
+            + cos(\theta) \left(\dot{\varphi} cos(\theta) + \dot{\varphi} \right)
+        \end{split}
+    \]
+    Simplify to get
+    \[
+        \omega_{lab}^x = \dot{\psi} sin(\theta) sin(\varphi) + \dot{\theta} cos(\varphi)
+    \]
+    \[
+        \omega_{lab}^y = -\dot{\psi} sin(\theta) cos(\varphi) + \dot{\theta} sin(\varphi)
+    \]
+    \[
+        \omega_{lab}^z = \dot{\psi} cos(\theta) + \dot{\psi}
+    \]
+    
+\newpage
+%\printbibliography
+\end{document}

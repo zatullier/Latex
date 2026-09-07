@@ -1,0 +1,450 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{classicalCH3.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Mechanics CH 3 Notes}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+
+\maketitle
+
+\section{Equations}
+    The suns attractive central force
+    \begin{equation}
+        \vec{F_s} = - G \frac{m_1 m_2}{r^2} \hat{r}
+    \end{equation}
+    Where the sun ($m_1$) is the source and the other object ($m_2$) is the probe. $\hat{r}$ is a unit vector pointing away from the source. 
+    The gravitational potential energy of this system is
+    \begin{equation}
+        U(r) = - \int F(r) dr = - G \frac{m_1 m_2}{r}
+    \end{equation}
+    The force of a spring is 
+    \begin{equation}
+        \vec{F} = - k r \hat{r}
+    \end{equation}
+    The potential energy of this system is 
+    \begin{equation}
+        U(r) = - \int F(r) dr = \frac{1}{2} k r^2
+    \end{equation}
+    The electric force is 
+    \begin{equation}
+        \vec{F} = \frac{q_1 q_2}{4 \pi \epsilon_0 r^2} \hat{r}
+    \end{equation}
+    The potential energy of this system is
+    \begin{equation}
+        U(r) = - \int F(r) dr = \frac{1}{4 \pi \epsilon_0} \frac{q_1 q_2}{r}
+    \end{equation}
+    \begin{gather*}
+        \vec{N} = \vec{r} \cross \vec{F} = 0 = \dot{\ell}
+        \\ \ell = \vec{r} \cross \vec{p} = \vec{\omega} I = I \dot{\theta}
+    \end{gather*}
+
+    Two-Body Problem: This problem removes the assumption that the source is at rest. The two bodies must be translated into a one-body central force problem
+    \begin{gather*}
+        R_{cm} = \frac{m_1 \vec{r_1} + m_2 \vec{r_2}}{m_1 + m_2}
+        \\ \vec{r} \equiv = \vec{r_2} - \vec{r_1}
+        \\ \dot{\vec{r}} = \dot{r}^2 + r^2 \dot{\theta}^2 + r^2 sin^2(\theta) \dot{\phi}^2
+        \\ \vec{r_1} = R_{cm} - \frac{m_2}{M} \vec{r}
+        \\ \vec{r_2} = R_{cm} + \frac{m_1}{M} \vec{r}
+        \\ M = m_1 + m_2
+        \\ \mu = \frac{m_1 m_2}{M}
+        \\ T = \frac{1}{2} m_1 \dot{\vec{r}}_1^2 + \frac{1}{2} m_2 \dot{\vec{r}}_2^2 = \frac{1}{2} M \dot{R}_{cm}^2 + \frac{1}{2} \mu \dot{\vec{r}}^2
+        \\ P = M \dot{R}_{cm}
+    \end{gather*}
+    Center of mass radius ($R$), Total Mass ($M$), radius between the bodies ($\vec{r}$), radius from the bodies to the center of mass ($r_i$), reduced mass ($\mu$), Total momentum of the system ($P$)
+    \newline the total momentum of the system is conserved
+    If we chose a plane then $\theta = \frac{\pi}{2}$
+    \begin{equation}
+        L = \frac{1}{2} \mu (\dot{r}^2 + r^2 \dot{\phi}^2 - U(r)
+    \end{equation}
+    Hamiltonian ($\mathcal{H}$) is conserved
+    \begin{equation}
+         \mathcal{H} = \frac{1}{2} \mu (\dot{r}^2 + r^2 \dot{\phi}^2 + U(r) = 
+    \end{equation}
+    Angular momentum ($\ell$) is conserved
+    \begin{equation}
+        p_\phi \equiv \ell = \mu r^2 \dot{\phi} = r (\mu r \dot{\phi})
+    \end{equation}
+    Combining the two conservation equations 
+    \begin{gather*}
+        \mathcal{H} = \frac{1}{2}\mu \dot{r}^2 + U_{eff}(r) = \frac{1}{2}\mu \dot{r}^2 + \frac{\ell^2}{2 \mu r^2} + U(r)
+    \end{gather*}
+    The centrifugal potential is the effective potential without the general potential energy ($U(r)$). It is a fictitious force, but is used to define the stability of the orbit
+    \begin{equation}
+        {U''}_{eff} \bigg|_{r=R} = 3 \frac{\ell^2}{\mu r^4} + {U''}(r) \bigg|_{r=R} 
+        \begin{cases}
+            > 0 \text{ Stable}
+            < 0 \text{ Unstable}
+            = 0 \text{ Critically Stable}
+        \end{cases}
+    \end{equation}
+    Travel time - Spring Case: potential energy is known ($U(r) = \frac{1}{2} k r^2$), isolate $\dot{r}$ from Hamiltonian equation, inverse ($\frac{dt}{dr}$), take integral. This gets the time it takes for the probe to move from any radius to any other radius.
+    \begin{equation}
+        t(r) = \pm \sqrt{\frac{\mu}{2}} \int_{r_0}^r \frac{r dr}{\sqrt{E r^2 - \frac{1}{2} k r^4 - \frac{\ell^2}{2 \mu}}}
+    \end{equation}
+    Travel time - Gravitational Case: potential energy is known ($U(r) = -\frac{G M m}{r}$), isolate $\dot{r}$ from Hamiltonian equation, inverse ($\frac{dt}{dr}$), take integral. This gets the time it takes for the probe to move from any radius to any other radius.
+    \begin{equation}
+        t(r) = \pm \sqrt{\frac{\mu}{2}} \int_{r_0}^r \frac{r dr}{\sqrt{E r^2 + G M \mu r - \frac{\ell^2}{2 \mu}}}
+    \end{equation}
+    
+    Shape of Orbits - Gravitational Case
+    \[
+        E = \frac{1}{2} m \dot{r}^2 + \frac{\ell^2}{2 m r^2} + U(r)
+    \]
+    \[
+        \ell = m r^2 \dot{\phi}^2
+    \]
+    \[
+        \frac{dr}{d\phi} = \frac{dr / dt}{d\phi / dt} = \pm \sqrt{\frac{2 m}{\ell^2}} \sqrt{E - \frac{\ell^2}{2 m r^2} - U(r)}
+    \]
+    \[
+        \phi = \int d\phi = \pm \frac{\ell}{\sqrt{2m}} \int^r \frac{dr / r^2}{\sqrt{E - \frac{\ell^2}{2 m r^2} - U(r)}}
+    \]
+
+    Shape of Orbits - Spring case
+    \[
+        \phi(z) = \pm \frac{\ell}{2 \sqrt{2 m}} \int^r \frac{dr / r^2}{\sqrt{E - \frac{\ell^2}{2 m r^2} - \frac{1}{2}k r^2}}
+    \]
+    Check out notes if you want inbetween
+    \[
+        r^2(\phi) = \frac{\frac{\ell^2}{m}}{E \mp \sqrt{E^2 - \frac{k \ell^2}{m}} sin2(\phi-\phi_0)}
+    \]
+    Since $r^2(\phi + 2\pi) = r^2(\phi)$, it has a long and a short axis. 
+    \[
+        \epsilon = \sqrt{1 + \frac{2 E \ell^2}{G^2 M^2 m^3}}
+    \]
+    \[
+        r = \frac{\frac{\ell^2}{G M m^2}}{1 + \epsilon cos(\phi)}
+    \]
+    The orbits shape is either defined by the energy ($E$) and the angular momentum ($\ell$) or the eccentricity ($\epsilon$) and the point of closest approach ($r_p$)
+    \[
+        r_p \equiv \frac{\frac{\ell^2}{G M m^2}}{1 + \epsilon}
+    \]
+    \[
+        \epsilon_{circles} = 0
+    \]
+    \[
+        0 < \epsilon_{ellipse} < 1
+    \]
+    The Pariapse ($r_p$)
+    The Apoapse ($r_a$)
+    The semi-major axis ($a$)
+    The Semi-minor axis ($b$)
+    The area of ellipse ($A$)
+    \begin{gather*}
+        r_p = a(1-\epsilon)
+        \\ r_a = a(1+\epsilon)
+        \\ b = a \sqrt{1 - \epsilon^2}
+        \\ A = \pi a b
+        \\ a = \frac{r_p + r_a}{2}
+        \\ \left(\frac{T_{Apollo}}{T_{Earth}} \right)^2 = \left(\frac{a_{Apollo}}{a_{Earth}} \right)^3
+        \\ 1 [AU] = 149.6 \cross 10^6 [km]
+        \\ T_{Earth} = 1
+    \end{gather*}
+
+    To determine perihelion and aphelion, we look for the point in the orbit where the radial velocity $\dot{r}=0$
+    
+    
+    For parabolas ($\epsilon = 1$)
+    For hyperbolas ($\epsilon > 1$)
+    The Period of an orbit ($T_{per}$)
+    \[
+    T_{per} = \frac{2 \pi r}{\dot{r}} = \frac{\omega}{2 \pi}
+    \]
+    Light travels at $3 \cross 10^6$ $[\frac{km}{s}]$ 
+
+    For circular orbit, the condition is 
+    \[
+        \frac{d U_{eff}}{dr} = 0
+    \]
+    Stability question
+    Stable orbit
+    \[
+        \frac{d^2 U_{eff}(r)}{dr^2} > 0
+    \]
+    Unstable Orbit
+    \[
+        \frac{d^2 U_{eff}(r)}{dr^2} < 0
+    \]
+    Neutral Stability (Small perturbations would make it stable/unstable)
+    \[
+        \frac{d^2 U_{eff}(r)}{dr^2} = 0
+    \]
+    \[
+        \frac{d}{dr} \frac{1}{r} = \frac{1}{r^2}
+    \]
+    \[
+        \frac{d}{dr} \frac{1}{r^2} = - \frac{2}{x^3}
+    \]
+
+    If you are looking for the distance where the radial velocity is zero and you have a quadratic equation
+    \[
+        \frac{\ell^2}{2 m r^2} - \frac{k}{r} = E
+    \]
+    This could be very similar to the gravitational case
+    Rewrite the equation in terms of $u = \frac{1}{r}$
+    \[
+        \frac{\ell^2}{2 m} u^2 - k u - E = 0
+    \]
+    \[
+        Au^2 + Bu + C = 0
+    \]
+    Where
+    \begin{enumerate}
+        \item [A] $= \frac{\ell^2}{2m}$
+        \item [B] $= - k$
+        \item [C] $= -E$
+    \end{enumerate}
+    The quadratic formula is 
+    \[
+        u = \frac{- B \pm \sqrt{B^2 - 4 A C}}{2 A}
+    \]
+    Substitute, Simplify, and Solve for $r$
+    \begin{gather*}
+        u = \frac{- (-k) \pm \sqrt{(-k)^2 - 4 \left(\frac{\ell^2}{2 m} (-E) \right)}}{\frac{\ell^2}{m}}
+        \\ u = \frac{m}{\ell^2} \left(k \pm \sqrt{k^2 + 2 E \frac{\ell^2}{m}} \right)
+        \\ r = \frac{1}{u} = \frac{\ell^2}{m \left(k \pm \sqrt{k^2 + 2 E \frac{\ell^2}{m}} \right)}
+    \end{gather*}
+
+    For Escape velocity 
+    \[
+        U_{eff} = U(r)
+    \]
+
+    Find the shape of the orbit
+    \[
+        E = \frac{1}{2}m (\dot{r}^2 + r^2 \dot{\theta}^2) - \frac{G M m}{r}
+    \]
+    \begin{equation} \label{eq: shape}
+        E = \frac{1}{2}m \dot{r}^2 + \frac{\ell^2}{2 m r^2} - \frac{G M m}{r} = \frac{1}{2}m \dot{r}^2 + U_{eff}(r)
+    \end{equation}
+    Where 
+    \[
+        \ell = m r^2 \dot{\theta}
+    \]
+    Substitute $u = \frac{1}{r}$
+    By definition of time derivative
+    \[
+        \dot{r} = -\frac{1}{u^2} \dot{u}
+    \]
+    By Angular momentum in a central force problem
+    \[
+        \dot{\theta} = \frac{\ell u^2}{m}
+    \]
+    Rearrange
+    \[
+        \frac{du}{dt} = \frac{du}{d\theta} \cdot \frac{d\theta}{dt} = \frac{du}{d\theta} \cdot \frac{\ell u^2}{m}
+    \]
+    Rearrange
+    \[
+        \frac{du}{d\theta} = \frac{m}{\ell u^2} \dot{u}
+    \]
+    Isolate $\dot{u}$ and re-substitute $r$
+    \[
+        \dot{r} = -\frac{\ell}{m} \frac{du}{d\theta}
+    \]
+    Substitute into equation \ref{eq: shape}
+    \[
+        E = \frac{1}{2}m \left(-\frac{\ell}{m} \frac{du}{d\theta} \right)^2 + \frac{\ell^2 u^2}{2 m} - G M m u
+    \]
+    Simplify
+    \[
+        E = \frac{\ell^2}{2 m} \left((\left(\frac{du}{d\theta} \right)^2 + u^2 \right) - G M m u 
+    \]
+    Isolate $\frac{du}{d\theta}$
+    \[
+        \left( \frac{du}{d\theta} \right)^2 = \frac{2 m}{\ell^2} \left(E + G M m u - \frac{\ell^2 u^2}{2 m} \right)
+    \]
+
+    For the shape of the orbit, given F
+    \[
+        F = \frac{G M m}{r^2} = m \ddot{r} \hat{r}
+    \]
+    \begin{gather*}
+        \vec{r} = r \hat{r}
+        \\ \dot{\vec{r}} = \dot{r} \hat{r} + r \dot{\theta} \hat{\theta}
+        \\ \ddot{\vec{r}} = (\ddot{r} - r \dot{\theta}^2) \hat{r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \hat{\theta}
+    \end{gather*}
+    Radial Equation of motion (Newtons Second Law)
+    \[
+        F = \frac{G M m}{r^2} = m (\ddot{r} - r \dot{\theta}^2) 
+    \]
+    \[
+        - \frac{G M}{r^2} = \ddot{r} - r \dot{\theta}^2
+    \]
+    Define angular momentum, isolate $\dot{\theta}$, plug into radial equation, Simplify
+    \begin{gather*}
+        \ell = m r^2 \dot{\theta}
+        \\ \dot{\theta} = \frac{\ell}{m r^2}
+        \\ - \frac{G M}{r^2} = \ddot{r} - r \left(\frac{\ell}{m r^2} \right)^2  
+    \end{gather*}
+    Define 
+    \[
+        \dot{\theta} = \frac{\ell u^2}{m}
+    \]
+    Rearrange
+    \begin{equation} \label{eq: dudt}
+        \frac{du}{dt} = \frac{du}{d\theta} \cdot \frac{d\theta}{dt} = \frac{du}{d\theta} \cdot \frac{\ell u^2}{m}
+    \end{equation}
+    Take definition of u, derive wrt t 
+    \begin{gather*}
+        r = \frac{1}{u}
+        \\ \dot{r} = \frac{1}{u^2} \frac{du}{dt}
+    \end{gather*}
+    Plug equation \ref{eq: dudt} into $\dot{r}$ equation, take derivative wrt t
+    \[
+        \ddot{r} = -\frac{d}{dt} \left( \frac{1}{u^2} \frac{du}{dt} \right) = -\frac{d}{dt} \left( \frac{1}{u^2} \frac{du}{d\theta} \cdot \frac{\ell u^2}{m} \right) = -\frac{\ell^2}{m^2} \frac{d^2 u}{d\theta^2}
+    \]
+    Plug into radial equation
+    \[
+        - \frac{G M}{r^2} = \left(-\frac{\ell^2}{m^2} \frac{d^2 u}{d\theta^2} \right) - r \left(\frac{\ell}{m r^2} \right)^2
+    \]
+    Simplify
+    \[
+        - \frac{G M}{r^2} = \left(-\frac{\ell^2}{m^2} \frac{d^2 u}{d\theta^2} \right) - \frac{\ell^2 u^3}{m^2}
+    \]
+    (\textcolor{red}{I don't understand with this next par}) Simplify further and put into second order differentiation equation . The solve differential equation. 
+    \[
+        \frac{d^2 u}{d\theta^2} + u = \frac{G M}{\ell^2}
+    \]
+    \[
+        u(\theta) = \frac{G M}{\ell^2} (1 + \epsilon cos(\theta))
+    \]
+
+    Keplers third law
+    \[
+        T^2 \propto a^3
+    \]
+
+
+    For any bound orbit
+    \begin{gather*}
+        F_g = \frac{G M m}{r^2}
+        \\ F_c = \frac{m v^2}{r}
+        \\ v^2 = \frac{G M}{r}
+        \\ E = \frac{1}{2} m v^2 - \frac{G M m}{r} = \frac{1}{2} m \frac{G M}{r} - \frac{G M m}{r} = -\frac{G M m}{2r} = -\frac{G M m}{2a}
+    \end{gather*}
+    Where a is the semi-major axis
+
+    Centripetal force equal to Gravitational force
+    \begin{gather*}
+        m r \omega^2 = m r \left(\frac{2 \pi}{T} \right)^2 = \frac{G M m}{r^2}
+        \\ 
+    \end{gather*}
+    
+
+
+\section{Math}
+    
+    
+    
+    
+
+    
+\section{Facts}
+    Central Force: Force on a particle directed toward or away from a fixed point in three dimensions and is spherically symmetric about that point. 
+    \newline For $\ell$, the angular momentum barrier vanishes, this corresponds to a particle that is aimed directly toward the origin. 
+
+\section{Variables}
+    \begin{enumerate}
+        \item $\vec{v} = $ Vector Velocity 
+        \item $\vec{r} = $ Vector Radius
+        \item $\vec{p} = $ Linear Momentum \textcolor{red}{Vector?}
+        \item $\vec{P} = $ Total Linear momentum of the system
+        \item $\vec{F} = $ Total Force \textcolor{red}{Vector?}
+        \item $\vec{L} =$ Angular Momentum
+        \item $\vec{N} = $ Moment of Force, Torque
+        \item $T = $ Kinetic Energy
+        \item $V = U = $ Potential Energy
+        \item $L = $ Lagrangian
+        \item $W_{12} = $ Work done by external force upon a particle going from point 1 to point 2
+        \item $\vec{F}_{ji} = $ Internal force on the $i^{th}$ particle due to the $j^{th}$ particle
+        \item $\vec{F}_i^{(e)}$ External force acting on the $i^{th}$ particle
+        \item $\vec{F}^{(e)} = $ Total External force on the system of particles
+        \item $\vec{R} = \frac{\sum_i m_i \vec{r}_i}{\sum_i m_i}$ Average of all particle radii vectors
+        \item $\vec{r}' = $ Radius vector from the center of mass to the $i^{th}$ particle
+        \item $\vec{r}'' = $ Radius vector from the origin to the center of mass. In the notes this is noted $\vec{R}$.
+        \item $\vec{v}'' = $ Velocity of the center of mass relative to origin. In the notes this is notes $\vec{v}$
+        \item $k = $ Number of equations in holonomic constraints
+        \item $\vec{f} = $ Force of constraint in virtual work equation
+        \item $Q_j = $ Generalized force (Not always a force unit)
+        \item $t_p = $ Time taken for a photon to travle through a medium
+        \item $c = $ Speed of light ()
+        \item $S[q_k(t)] = $ Action of a mechanical system
+    \end{enumerate}
+
+\section{Examples}
+    \subsection{Small object on hemisphere, Section 2.4, Pg 47}
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+\newpage
+%\printbibliography
+\end{document}

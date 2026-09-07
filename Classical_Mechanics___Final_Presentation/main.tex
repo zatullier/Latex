@@ -1,0 +1,211 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{classicalFinal.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Mechanics Final Presentation - Virial Theorem and its applications}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+
+\maketitle
+
+\section{History}
+    In 1870, after 20 years of work with mechanical heat, Rudolf Clausius gave a presentation titled "On a Mechanical Theorem Applicable to Heat" \cite{doi:10.1080/14786447008640370}. In 1903 Lord Rayleigh formulated a generalization of the theorem. Developed by Chandrasekhar during the 1960s. Poincare using it to investigate the dynamic stability of cosmological structures during the 1940s. Paul Ledoux developed a variation form of the theorem which was used to obtain the pulsation period for stars. Chandrasekhar and Fermi extended the virial theorem in 1953 to include the presence of magnetic fields.
+    Virial theorem is derived using moment of inertia, as shown above, this method is not 'a priori'. Noether's theorems symmetries can be used to determine that a dilatation symmetry emerges for a system that is in virial equilibrium. 
+    The condition of systems remaining bounded in phase space for extensive periods of time is often called "Virial Equilibrium". We used this condition to integrate equation \ref{eq: 3} (Reference \cite{Medium_Virial}). The following derivation will be the typical on from Clausius.
+
+\section{Virial Theorem Basics}
+    The Virial theorem is a special case property of the central force motion that relates the average over time of the total kinetic energy of a stable system of discrete particles. This theorem is used in both classical and quantum mechanics. In classical mechanics is has a special importance to central-force motion. 
+    The virial theorem is defined as the time average kinetic energy of a system of particles.
+    \begin{equation} \label{eq: 1}
+        \langle T \rangle = - \frac{1}{2} \langle \sum_i F_i \cdot r_i \rangle
+    \end{equation}
+    The textbook uses $\Bar{T}$ to denote the time average of a variable, but I prefer the brackets. The time average is explicitly denoted as
+    \[
+        \frac{1}{\tau} \int_0^\tau x dt = \langle x \rangle
+    \]
+    Equation \ref{eq: 1} is derived using the following steps (Reference \cite{LibreTexts_Virial} or \cite{Classical}
+    \newline The fundamental equations of motion are:
+    \[
+        \dot{\Vec{p}} = \Vec{F}
+    \]
+    We define a new variable ($G$):
+    \[
+        G = \sum_i \Vec{p}_i \cdot \Vec{r}_i
+    \]
+    We take the time derivative of both sides 
+    %\textcolor{red}{Do inbetween derivation}
+    \begin{equation} \label{eq: 2}
+        \frac{d G}{dt} = \sum_i \dot{\Vec{r}} \cdot \Vec{p}_i + \sum_i \dot{\Vec{p}}_i \cdot \Vec{r}_i
+    \end{equation}
+    Using the definitions of momentum and kinetic energy ($\Vec{p} \equiv m \dot{\Vec{r}}$ and $T \equiv \frac{1}{2} m v^2$ we can transform the first term to reference kinetic energy exclusively
+    \[
+        \sum_i \dot{\Vec{r}} \cdot \Vec{p}_i = \sum_i m_i \dot{\Vec{r}} \cdot \dot{\Vec{r}} = \sum_i m_i v_i^2 = 2 T
+    \]
+    Using the definition of Force ($\Vec{F} \equiv \dot{p}$) we can transform the second term to reference Force.
+    \[
+        \sum_i \dot{\Vec{p}}_i \cdot \Vec{r}_i = \sum_i \Vec{F}_i \cdot \Vec{r}_i
+    \]
+    Substitute back into equation \ref{eq: 2} 
+    \[
+        \frac{d G}{dt} = 2 T + \sum_i \Vec{F}_i \cdot \Vec{r}_i
+    \]
+    Take the time average of both sides
+    \[
+        \frac{1}{\tau} \int_0^\tau \frac{d G}{dt} dt \equiv \langle \frac{d G}{dt} \rangle = \langle 2T \rangle + \langle \sum_i \Vec{F}_i \cdot \Vec{r}_i \rangle
+    \]
+    If we chose a significantly large value for $\tau$ then the time average of $\langle \frac{d G}{dt} = 0$. 
+    \begin{equation} \label{eq: 3}
+        0 = \langle 2T \rangle + \langle \sum_i \Vec{F}_i \cdot \Vec{r}_i \rangle
+    \end{equation}
+    Rearrange to isolate $T$
+    \begin{equation} \label{eq: 4}
+        \boxed{\boldsymbol{\langle T \rangle = - \frac{1}{2} \langle \sum_i \Vec{F}_i \cdot \Vec{r}_i \rangle}}
+    \end{equation}
+    Equation \ref{eq: 4} is the quintessential "Virial Theorem"
+    \newline The right hand side of the equation is called the Virial of Clausius.
+
+\section{Example Problem 1}
+    A particle of mass $m$ is moving in one dimension under the influence of a harmonic potential:
+    \[
+        V(x) = \frac{1}{2} k x^2
+    \]
+    where $k$ is the force constant. The particle's motion is confined to this potential and it oscillates with a total energy $E$.
+    \begin{enumerate}
+        \item Use the Virial theorem to show that the time-averaged kinetic energy $\langle T \rangle$ is equal to the time-averaged potential energy $\langle V \rangle$
+        \item Compute the total energy $E$ in terms of $\langle T \rangle$
+    \end{enumerate}
+
+    \bold{\underline{Solution:}}
+    \newline Apply virial theorem
+    \[
+        2 \langle T \rangle + \langle \vec{r} \cdot \vec{F} \rangle = 0
+    \]
+    Apply constraint of one dimension
+    \[
+        \langle \vec{r} \cdot \vec{F} \rangle = \langle x F(x) \rangle = \langle x (-\frac{dV}){dx} \rangle = \langle x (-kx) \rangle = \langle kx^2 \rangle = - k \langle x^2 \rangle
+    \]
+    Plug in the above formulation and rearrange
+    \[
+        \langle T \rangle  = \frac{1}{2} k \langle x^2 \rangle
+    \]
+    To potential energy is
+    \[
+        V(x) = \frac{1}{2} k x^2
+    \]
+    The time averaged potential energy is 
+    \[
+        V(x) = \frac{1}{2} k \langle x^2 \rangle
+    \]
+    Therefore 
+    \[
+        \boxed{\langle T \rangle = \langle V \rangle}
+    \]
+    The total energy is the sum of the kinetic and the potential energy
+    \[
+        E = T + V
+    \]
+    Take the time average potential
+    \[
+        \langle E \rangle = \langle T \rangle + \langle V \rangle
+    \]
+    Simplify and rearrange
+    \[
+        E = 2 \langle T \rangle 
+    \]
+
+\section{Example Problem 2}
+    Consider a spherical galaxy that consists of two components: luminous matter with total mass $M_{lum}$ and a surrounding dark matter halo with mass $M_{DM}$. Assume that the galaxy is in virial equilibrium, the luminous matter and dark matter are well-mixed, and that the kinetic energy of the luminous matter dominates. 
+    The total gravitational potential energy of the system is approximately: 
+    \[
+        U = - \frac{G M_{tot}^2}{2 R}
+    \]
+    where $M_{tot} = M_{lum} + M_{DM}$ and R is the characteristic radius of the system. 
+    \begin{enumerate}
+        \item Use the virial theorem to derive the average velocity dispersion $\sigma^2$ of the stars in the galaxy. 
+        \item If the velocity dispersion ($\sigma$) of the stars is measured to be 200 $\frac{km}{s}$, the characteristic radius ($R$) is 30 $kpc$, and the luminous matter mass is $M_{lum} = 10^{11} M_{solar}$, estimate the mass of the dark matter halo. 
+    \end{enumerate}
+
+    \boldsymbol{\underline{Solution:}}
+    \newline Apply Virial Theorem
+    \[
+        2 \langle T \rangle  + \langle U \rangle = 0
+    \]
+    Where $T = \frac{1}{2} M_{lum} \sigma^2$
+    \newline Plug in
+    \[
+        2 \langle \frac{1}{2} M_{lum} \sigma^2 \rangle = \langle \frac{G M_{tot}^2}{2 R} \rangle
+    \]
+    Isolate the time average velocity dispersion
+    \[
+        \boxed{\sigma^2 = \frac{G M_{tot}^2}{2 R M_{lum}}}
+    \]
+    \begin{gather*}
+        \begin{split}
+            \sigma = 200 \frac{km}{s} = 2 \cdot 10^5 \frac{m}{s}
+            \\
+            R = 30 kpc = 9.26 \cdot 10^20 m
+            \\
+            M_{lum} = 10^{11} \cdot 2 \cdot 10^{30} kg
+            \\
+            G = 6.674 \cdot 10^{11} \frac{m^3}{kg s^2}
+        \end{split}
+    \end{gather*}
+    Isolate $M_{tot}$
+    \[
+        M_{tot} = \sqrt{\frac{2 R M_{lum} \sigma^2}{G}} = 2.36 \cdot 10^{11} \cdot 2 \cdot 10^{30} kg
+    \]
+    \[
+        M_{DM} = M_{tot} - M_{lum} = 1.36 \cdot 10^{11} \cdot 2 \cdot 10^{30} kg
+    \]
+
+    \section{Modern Application}    
+        The virial theorem is a useful tool for systems in equilibrium with a large number of bodies. According to the Ergodic hypothesis, the time average over an ensemble for an infinite amount of time makes all possibilities equally likely. The virial theorem allows us to state that with a sufficiently large number of bodies it is equivalent to seeing the systems evolution over a large time.
+        \subsection{Dark Matter in Galaxies and Clusters}
+        Galaxies and Clusters have large number of celestial bodies and their velocity dispersion can be calculated using virial theorem. The observed luminal mass and the rotation calculated using virial theorem indicates the presence of dark matter. 
+        \subsection{Star formation and Stability}
+        The Virial theorem can help determine whether a cloud of gass will collapse to form stars. If the gravitational energy dominates the thermal kinetic energy then the cloud will likely collapse. The virial theorem relates internal pressure to gravitational forces.
+        \subsection{Black Holes}
+        The virial theorem is applied to the motion of visible matter near black holes, allowing the calculation of the central black hole. 
+        \subsection{Neutron Stars and White Dwarfs}
+        The virial theorem is used to understand the equilbrium of dense celestial objects, particularly the balance between degeneracy and gravitational forces.
+        \subsection{Plasma Physics}
+        The virial theorem is used to relate kinetic energy of charged particles to the electromagnetic potential energy of confined plasmas.
+
+
+
+
+
+
+
+    
+\newpage
+\printbibliography
+\end{document}
