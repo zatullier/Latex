@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{seminar.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Computational Biology - Morrison}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+
+\section{Introduction and Scope of the Lecture}
+    \textbf{Speaker:} Dr. Greg Morrison, an Associate Professor in the Department of Physics at the University of Houston, specializes in theoretical and computational approaches to biological systems. His research merges physics, biology, and data science, leveraging simplified computational models to uncover insights into complex biological processes. The purpose of his lecture is to demonstrate how coarse-grained modeling can be applied to study intricate biological systems and inspire students to embrace interdisciplinary methods and break down complex problems into solvable pieces. Dr. Morrison emphasized that science thrives on curiosity, questioning, and collaboration, reassuring the audience that “no question is stupid.”
+
+
+\section{Why Physics Matters in Biology}
+    There is resistance to applying physics in biology, but he mentioned the benefits, emphasizing how physical principles provide frameworks for understanding biological dynamics. He referenced achievements like John Hopfield’s neural network modeling and Schrödinger’s work in "What is Life?" to demonstrate physics' impact on biology.
+
+
+\section{Challenges in Biological Systems Modeling}
+    Biological systems span multiple scales, from molecular interactions to neural networks and ecosystems. Non-equilibrium dynamics powered by energy inputs make these systems highly unpredictable. He introduced the concept of coarse-grained modeling: “All models are wrong, but some are useful.” Simplification focuses on essential features to make problems computationally feasible.
+
+\section{Coarse-Grained Modeling: The Basics}
+    Abstracting systems to focus on macroscopic properties rather than individual components. He presented and example: Modeling bird flocking behavior using simple rules of alignment, cohesion, and repulsion. He represented neurons as network nodes with firing thresholds to simulate patterns like synchronous firing in seizures and explored memory formation and dynamics using simplified models.
+
+
+\section{Protein Folding and Misfolding}
+    Proteins’ functions are determined by their three-dimensional structures. Misfolded proteins can aggregate and cause diseases like ALS, Parkinson’s, and Alzheimer’s. Simulations show proteins navigating energy landscapes to reach their functional native state. Simplifies protein folding simulations by focusing on key residues and interactions.
+
+
+\section{Applications of Modeling in Disease Research}
+    ALS (Amyotrophic Lateral Sclerosis) is studied the SOD1 protein, showing how mutations alter folding and aggregation pathways. Simulations reveal pathways for therapeutic intervention. Insights into protein aggregation mechanisms extend to other neurodegenerative diseases.
+
+
+\section{Multiscale Modeling in Biology}
+    Multiscale modeling links phenomena across molecular, cellular, and organism levels. His case studies include 
+    \begin{itemize}
+        \item Modeled bacterial growth under environmental changes.
+        \item Studied collective behaviors in birds and fish using simple scaling rules.
+    \end{itemize}
+
+\section{Bridging Physics, Data Science, and Biology}
+    Emphasized the role of big data and machine learning in biological research. He discussed principles like thermodynamics and statistical mechanics in understanding biological processes. He encouraged active questioning and interdisciplinary teamwork to explore diverse perspectives. Modeling and storytelling are similar, where the goal is to distill complexity into an essential narrative. There are many unresolved questions in memory storage, retrieval, and protein folding dynamics.
+
+
+\section{Conclusion}
+    Biology, physics, computer science, etc. are all necessary to solve the interdisciplinary challenges of today. Using computation and mathematical methods from physics to model protein folding mechanisms has had a major impact on neurogenerative diseases and will continue to shed light on other highly complex problems. 
+
+\end{document}
