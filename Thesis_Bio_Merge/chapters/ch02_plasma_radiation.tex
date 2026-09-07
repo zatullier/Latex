@@ -1,0 +1,195 @@
+\chapter{Relativistic Plasma Radiation and Spectral Source Terms}
+\label{ch:plasma-radiation}
+
+\section{Kinetic description of a relativistic electron population}
+
+For an isotropic relativistic electron population, momentum is conveniently normalized as
+\begin{equation}
+ u \equiv \frac{p}{m_ec}, \qquad \gamma=\sqrt{1+u^2}, \qquad E=(\gamma-1)m_ec^2.
+\end{equation}
+The dimensionless temperature is
+\begin{equation}
+ \theta \equiv \frac{k_B T_e}{m_ec^2}.
+\end{equation}
+When thermal equilibrium is a defensible approximation, the Maxwell--J\"uttner distribution can be written
+\begin{equation}
+ f_{\mathrm{MJ}}(\mathbf{p})
+ =\frac{n_e}{4\pi m_e^3c^3\theta K_2(1/\theta)}
+ \exp\!\left(-\frac{\gamma}{\theta}\right),
+\label{eq:mj}
+\end{equation}
+with normalization $\int f_{\mathrm{MJ}}\,\dd^3p=n_e$. The corresponding probability density in $\gamma$ is proportional to $\gamma^2\beta\exp(-\gamma/\theta)$, where $\beta=v/c$.
+
+Equation~\eqref{eq:mj} is a reference state, not a guarantee. In a driven plasma the stationary distribution solves a kinetic equation schematically written
+\begin{equation}
+\frac{\partial f}{\partial t}
++\dot{\mathbf{x}}\cdot\nabla f
++\dot{\mathbf{p}}\cdot\nabla_p f
+=C_{ee}[f]+C_{ei}[f]+Q-S-L,
+\label{eq:kinetic-general}
+\end{equation}
+where $C_{ee}$ and $C_{ei}$ are collision operators, $Q$ represents injection or acceleration, $S$ represents continuous sinks such as radiation reaction, and $L$ represents orbit or boundary loss. The proposed magnetic-control strategy acts mainly through $L$ and, indirectly, through changes to $\dot{\mathbf{x}}$ and $\dot{\mathbf{p}}$.
+
+\section{Classical radiation background}
+
+An accelerated charge radiates. In the nonrelativistic limit, the Larmor power is
+\begin{equation}
+ P_{\mathrm{L}}=\frac{e^2a^2}{6\pi\epsilon_0c^3}.
+\label{eq:larmor}
+\end{equation}
+The relativistic Liénard generalization is
+\begin{equation}
+P=\frac{e^2\gamma^6}{6\pi\epsilon_0c^3}
+\left[a^2-(\boldsymbol{\beta}\times\mathbf{a})^2\right],
+\label{eq:lienard}
+\end{equation}
+which emphasizes the strong energy dependence of radiation from relativistic electrons \cite{jackson1999}. Bremsstrahlung is the quantum-mechanical realization of radiation during Coulomb scattering. The photon emission probability is of order the fine-structure constant relative to elastic scattering, but the enormous number of encounters in a dense plasma makes the integrated power important \cite{jauch1976,akhiezer1965,bethe1954,koch1959}.
+
+\section{Electron--ion bremsstrahlung}
+
+For an ion species $i$ with number density $n_i$ and charge $Z_i e$, the differential spectral emissivity is
+\begin{equation}
+ j_{ei}(E_\gamma)
+ =n_i\int_{E_\gamma}^{\infty}
+ v(E)f_E(E)
+ E_\gamma\frac{\dd\sigma_{ei}(E,E_\gamma;Z_i)}{\dd E_\gamma}
+ \,\dd E,
+\label{eq:ei-emissivity}
+\end{equation}
+where $f_E(E)\dd E$ is the electron number density in the interval $[E,E+\dd E]$. The total power density is
+\begin{equation}
+ P_{ei}=\sum_i\int_0^\infty j_{ei}(E_\gamma)\,\dd E_\gamma.
+\label{eq:pei}
+\end{equation}
+The Bethe--Heitler treatment, with Coulomb and screening corrections appropriate to the regime, supplies the differential cross section \cite{bethe1954,davies1954,koch1959,haug2004}. The ion contribution scales roughly with $\sum_i n_iZ_i^2$, commonly represented using
+\begin{equation}
+ Z_{\mathrm{eff}}=\frac{\sum_i n_iZ_i^2}{n_e}.
+\end{equation}
+This weighting makes impurities important: a trace high-$Z$ species can increase radiation substantially even if it contributes little to the total particle density.
+
+In a nonrelativistic, fully ionized plasma, the familiar frequency-integrated scaling is
+\begin{equation}
+P_{ei}^{\mathrm{NR}}\propto n_en_iZ_i^2T_e^{1/2}\overline{g}_{\mathrm{ff}},
+\label{eq:ei-nr}
+\end{equation}
+where $\overline{g}_{\mathrm{ff}}$ is the thermally averaged Gaunt factor. Relativistic corrections increase the high-temperature emission and change the spectrum. The simple $T_e^{1/2}$ scaling should therefore not be extrapolated into the hundreds-of-keV regime without correction \cite{nozawa1998,svennson1982}.
+
+\section{Electron--electron bremsstrahlung}
+
+Electron--electron bremsstrahlung is suppressed at low energy because equal charge-to-mass particles have no changing electric dipole moment in their center-of-momentum frame. At relativistic energy, higher multipoles and kinematic effects make the channel significant. A general spectral expression is
+\begin{equation}
+ j_{ee}(E_\gamma)
+ =\frac{1}{2}\int\!\dd^3p_1\int\!\dd^3p_2\,
+ f(\mathbf{p}_1)f(\mathbf{p}_2)
+ v_{\mathrm{rel}}E_\gamma
+ \frac{\dd\sigma_{ee}}{\dd E_\gamma},
+\label{eq:ee-emissivity}
+\end{equation}
+with the factor $1/2$ preventing double counting. The calculation is more expensive than the electron--ion integral because it depends on two electron momenta and their relative angle. In relativistic fusion studies, however, omission can bias the total loss and spectral shape \cite{haug1975,svennson1982,munirov2023}.
+
+A frequently used fit for fully ionized relativistic plasmas separates electron--ion and electron--electron terms as functions of $\theta$ and $Z_{\mathrm{eff}}$. Such fits are useful for power-balance benchmarks, but the present thesis requires differential spectra because biological dose conversion is energy dependent. Integrated fits should therefore be used to verify, not replace, the spectral calculation.
+
+\section{Synchrotron and cyclotron radiation}
+
+A magnetized electron radiates because the Lorentz force bends its trajectory. For an ultrarelativistic electron with pitch angle $\alpha$, the synchrotron power in vacuum is
+\begin{equation}
+P_{\mathrm{syn}}
+=\frac{e^4B^2\gamma^2\beta^2\sin^2\alpha}
+{6\pi\epsilon_0m_e^2c^3}.
+\label{eq:synch-power}
+\end{equation}
+The characteristic angular frequency scales as
+\begin{equation}
+\omega_c=\frac{3}{2}\gamma^2\omega_{ce}\sin\alpha,
+\qquad \omega_{ce}=\frac{eB}{m_e}.
+\label{eq:synch-freq}
+\end{equation}
+Synchrotron power therefore competes directly with any strategy that changes pitch angle, energy, or magnetic-field strength. A perturbation that reduces bremsstrahlung by moving electrons to large perpendicular momentum could unintentionally increase synchrotron emission. Conversely, selective loss of large-$p_\perp$ electrons may reduce synchrotron at the cost of anisotropy or current changes. Bremsstrahlung and synchrotron must be optimized jointly \cite{blumenthal1970,embreus2016}.
+
+\section{Inverse Compton and other photon channels}
+
+Energetic electrons can upscatter ambient photons by inverse Compton scattering. In the Thomson limit, the average scattered photon energy grows approximately as $\gamma^2$, while the power per electron is
+\begin{equation}
+P_{\mathrm{IC}}=\frac{4}{3}\sigma_Tc\gamma^2\beta^2U_{\mathrm{rad}},
+\end{equation}
+where $U_{\mathrm{rad}}$ is the photon energy density. In dense laboratory fusion plasmas, inverse Compton power is often below bremsstrahlung and synchrotron, but it may matter in laser-driven, externally illuminated, or radiation-trapping configurations. Pair production becomes possible for photons above \SI{1.022}{\MeV}; photonuclear interactions and activation require still more source-specific treatment. These channels are retained in the hazard inventory even when not dominant in the baseline calculation.
+
+\section{Energy-cutoff and redistribution models}
+
+A hard truncation
+\begin{equation}
+ f_{\mathrm{tr}}(E)=A f_{\mathrm{MJ}}(E)H(E_c-E)
+\label{eq:hardcut}
+\end{equation}
+removes particles above cutoff $E_c$. If density is held fixed by choosing $A$, the distribution is renormalized but particle energy and entropy are altered. If the physical mechanism is escape, the removed density must be replenished by a source. If the mechanism is redistribution, particles are not removed; they are moved to lower energy.
+
+A number-conserving cutoff-and-redistribution operator can be represented as
+\begin{align}
+ f_c(E)&=f_{\mathrm{MJ}}(E)H(E_c-E)+N_{>}g_r(E;E_r,\sigma_r),\\
+ N_{>}&=\int_{E_c}^{\infty}f_{\mathrm{MJ}}(E')\,\dd E',\\
+ \int_0^\infty g_r(E;E_r,\sigma_r)\,\dd E&=1,
+\label{eq:redistribution}
+\end{align}
+where $g_r$ is a normalized narrow kernel centered at $E_r<E_c$. This model preserves particle number exactly. The change in electron energy density is
+\begin{equation}
+\Delta U_e=\int_0^\infty E\left[f_c(E)-f_{\mathrm{MJ}}(E)\right]\dd E<0,
+\label{eq:deltaU}
+\end{equation}
+so the missing energy must be transferred to fields, ions, escaping particles, walls, or another reservoir. A self-consistent kinetic simulation must identify that reservoir.
+
+A smoother, more physical stationary distribution results from an energy-dependent loss time,
+\begin{equation}
+ f(E)\approx \frac{Q(E)+C_{\mathrm{in}}(E)}{\tau_{\mathrm{coll}}^{-1}(E)+\tau_{\mathrm{loss}}^{-1}(E)+\tau_{\mathrm{rad}}^{-1}(E)},
+\label{eq:stationary-schematic}
+\end{equation}
+where $C_{\mathrm{in}}$ represents collisional inflow from adjacent energies. When $\tau_{\mathrm{loss}}$ decreases sharply above a threshold, the high-energy tail is depleted without an artificial discontinuity.
+
+\section{Radiation-weighted moments}
+
+To understand why a small tail can matter, define a generalized radiation-weighted moment
+\begin{equation}
+M_q[f]=\frac{1}{n_e}\int_0^\infty E^q f_E(E)\,\dd E.
+\label{eq:moment}
+\end{equation}
+If a radiative channel is locally approximated by single-particle power $P(E)\propto E^q$, then the total power is proportional to $n_eM_q$. The exact kernel is not a pure power law, but $M_q$ is a useful diagnostic. A redistribution from $E>E_c$ to $E_r<E_c$ changes the moment by
+\begin{equation}
+\Delta M_q
+=\frac{1}{n_e}\int_{E_c}^{\infty}\left(E_r^q-E^q\right)f_{\mathrm{MJ}}(E)\,\dd E<0
+\quad(q>0).
+\label{eq:moment-change}
+\end{equation}
+The inequality is immediate because every moved electron has lower final energy. Its magnitude increases with $q$, explaining why highly energy-weighted radiation is especially sensitive to tail control.
+
+\section{Spectral hardening and biological relevance}
+
+Total-power suppression alone does not reveal which photons were removed. Define the source ratio
+\begin{equation}
+ R_S(E_\gamma)=\frac{j_{\gamma,c}(E_\gamma)}{j_{\gamma,0}(E_\gamma)}.
+\label{eq:spectral-ratio}
+\end{equation}
+If $R_S$ rises with $E_\gamma$, the residual spectrum is harder even though integrated power falls. Hardening can increase penetration through shielding. If $R_S$ falls with $E_\gamma$, high-energy photons are preferentially removed and distant dose may decrease more strongly than total source power. The shape of $R_S$ is therefore the central input to the transport and biological analysis developed later.
+
+\section{Optical thickness and self-absorption}
+
+The optically thin approximation is valid when
+\begin{equation}
+\tau_\gamma(E_\gamma)=\int \mu(E_\gamma,s)\,\dd s\ll1
+\end{equation}
+within the emitting plasma and immediate surroundings. Many magnetically confined plasmas are optically thin to hard X rays, so emitted bremsstrahlung escapes and is a true energy loss. Dense inertial-fusion hot spots can approach conditions where reabsorption and radiation trapping alter the power balance; recent \pB \ analyses emphasize the extreme areal densities required for useful trapping \cite{ochs2025constraints}. The framework therefore allows both regimes, but source suppression has its clearest energy-balance benefit when photons escape.
+
+\section{Diagnostics of the source term}
+
+A validation campaign should combine absolute and relative measurements:
+\begin{enumerate}
+\item pulse-height or photon-counting detectors for differential spectra;
+\item filtered detector arrays or K-edge spectrometers where direct spectroscopy is impractical \cite{chen2008};
+\item image plates or radiochromic media for spatially integrated fluence;
+\item angularly distributed detectors for anisotropy;
+\item electron diagnostics such as Thomson scattering, electron cyclotron emission, hard-X-ray inversion, or magnetic spectrometry; and
+\item calorimetry and wall-power accounting to close the energy balance.
+\end{enumerate}
+Bremsstrahlung inversion is ill posed, so detector response, pileup, regularization, and uncertainty must be included \cite{voss1992,kontar2011,swanson2018,meadowcroft2012}.
+
+\section{Summary}
+
+Relativistic plasma radiation is controlled by the entire electron distribution, not only by a fitted temperature. Electron--ion and electron--electron bremsstrahlung, synchrotron emission, and secondary photon processes respond differently to energy, pitch angle, density, composition, and magnetic field. A cutoff can reduce radiation only if its particle and energy balances are physically closed. The next chapter develops magnetic mechanisms capable of producing the required energy-selective transport.

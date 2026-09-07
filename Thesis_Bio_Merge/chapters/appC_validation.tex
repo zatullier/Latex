@@ -1,0 +1,80 @@
+\chapter{Validation, Safety, and Reporting Checklists}
+\label{app:validation}
+
+\section{Plasma and magnetic validation}
+
+\begin{enumerate}[label=$\square$]
+\item Coil current, phase, and frequency are independently recorded.
+\item Vacuum field mapping agrees with the electromagnetic model.
+\item Plasma response is measured or modeled in three dimensions.
+\item Density, temperature, and impurity changes are reported with the radiation result.
+\item At least two diagnostics constrain the energetic-electron population.
+\item Particle and energy balances close within stated uncertainty.
+\item Collector and wall heat loads are measured or bounded.
+\end{enumerate}
+
+\section{Radiation-source validation}
+
+\begin{enumerate}[label=$\square$]
+\item Detector calibration covers the relevant energy and pulse range.
+\item Pileup, dead time, saturation, and electromagnetic interference are tested.
+\item Spectral unfolding includes response matrices and covariance.
+\item Angular coverage is sufficient to identify redistribution.
+\item Electron, neutron, and activation contributions are measured or bounded.
+\item Baseline measurements are repeated before and after perturbation scans.
+\end{enumerate}
+
+\section{Dosimetry validation}
+
+\begin{enumerate}[label=$\square$]
+\item A traceable absorbed-dose method is used.
+\item Detector energy dependence is addressed.
+\item Pulse-dose-rate response is characterized.
+\item Phantom geometry matches the transport model.
+\item Depth-dose and lateral profiles are measured.
+\item Monte Carlo calculations reproduce benchmark measurements.
+\item Uncertainty is propagated from source to dose.
+\end{enumerate}
+
+\section{Biological validation}
+
+\begin{enumerate}[label=$\square$]
+\item Cell lines are authenticated and mycoplasma free.
+\item Passage range, medium, oxygen, and plating efficiency are documented.
+\item Exposure order is randomized and analysis blinded where feasible.
+\item Independent biological replicates are used.
+\item A conventional reference beam is included.
+\item Both source-normalized and dose-matched comparisons are performed.
+\item Physical dose is measured at the actual sample position.
+\item Exclusion criteria and missing data are reported.
+\end{enumerate}
+
+\section{Radiation safety}
+
+\begin{enumerate}[label=$\square$]
+\item Work is authorized under the institutional radiation-safety program.
+\item Shielding calculations and surveys cover normal and credible fault states.
+\item Interlocks, warning indicators, and emergency shutdowns are tested.
+\item Access control and operating procedures are documented.
+\item Personnel dosimetry is used where required.
+\item Activation and post-run dose rates are evaluated.
+\item Magnetic-field, high-voltage, laser, vacuum, and biological hazards are integrated into one hazard analysis.
+\end{enumerate}
+
+\section{Minimum reporting table}
+
+\begin{longtable}{p{0.26\textwidth}p{0.64\textwidth}}
+\toprule
+Category & Minimum report \\
+\midrule
+Plasma & density, $T_e$, $T_i$, composition, stored energy, duration \\
+Magnetic control & equilibrium field, $\delta B/B$, mode, frequency, phase, geometry \\
+Electron population & diagnostic, energy range, anisotropy, inferred distribution \\
+Photon source & spectrum, angle, pulse structure, absolute normalization \\
+Other radiation & electrons, ions, neutrons, activation \\
+Transport & geometry version, material composition, code and physics data \\
+Dosimetry & detector type, calibration, position, uncertainty, dose rate \\
+Biology & model, endpoint, timing, replicates, dose matching, statistics \\
+Reproducibility & data identifiers, scripts, software versions, quality flags \\
+\bottomrule
+\end{longtable}

@@ -1,0 +1,96 @@
+\chapter{Selected Derivations}
+\label{app:derivations}
+
+\section{Normalization of the Maxwell--J\"uttner distribution}
+
+For an isotropic distribution,
+\begin{equation}
+ n_e=4\pi\int_0^\infty p^2 f(p)\,\dd p.
+\end{equation}
+Let $u=p/(m_ec)$ and $\gamma=\sqrt{1+u^2}$. The integral identity
+\begin{equation}
+\int_0^\infty u^2e^{-\gamma/\theta}\,\dd u
+=\theta K_2(1/\theta)
+\end{equation}
+leads to Equation~\eqref{eq:mj}. The energy density is
+\begin{equation}
+U_e=4\pi\int_0^\infty p^2(\gamma-1)m_ec^2f(p)\,\dd p.
+\end{equation}
+
+\section{Number-conserving redistribution}
+
+Starting from normalized $f_0(E)$, define
+\begin{equation}
+N_>=\int_{E_c}^{\infty}f_0(E)\dd E.
+\end{equation}
+For a normalized redistribution kernel $g_r$, the new distribution is
+\begin{equation}
+f_c(E)=f_0(E)H(E_c-E)+N_>g_r(E).
+\end{equation}
+Then
+\begin{align}
+\int_0^\infty f_c(E)\dd E
+&=\int_0^{E_c}f_0(E)\dd E+N_>\\
+&=1-N_>+N_>=1.
+\end{align}
+The energy change is
+\begin{equation}
+\Delta\langle E\rangle
+=N_>\langle E\rangle_r-\int_{E_c}^{\infty}Ef_0(E)\dd E,
+\end{equation}
+which is negative when the redistribution mean lies below the original tail mean.
+
+\section{Dose ratio as a weighted spectral average}
+
+Let the controlled source be $S_c(E)=R_S(E)S_0(E)$. For a fixed linear transport and dose weighting $W(E)$,
+\begin{equation}
+D_0=\int W(E)S_0(E)\dd E,
+\qquad
+D_c=\int W(E)R_S(E)S_0(E)\dd E.
+\end{equation}
+Therefore
+\begin{equation}
+\frac{D_c}{D_0}
+=\int R_S(E)\pi_D(E)\dd E,
+\end{equation}
+where
+\begin{equation}
+\pi_D(E)=\frac{W(E)S_0(E)}{\int W(E')S_0(E')\dd E'}
+\end{equation}
+is a normalized nonnegative weighting density. Thus $D_c/D_0$ lies between the minimum and maximum of $R_S$ over the contributing energy range. It equals the total-power ratio only for special weightings or spectrally uniform suppression.
+
+\section{Linear-quadratic survival under dose reduction}
+
+For baseline and controlled doses $D_0$ and $D_c$,
+\begin{equation}
+\ln\left(\frac{S_c}{S_0}\right)
+=-\alpha D_c-\beta D_c^2+\alpha D_0+\beta D_0^2.
+\end{equation}
+Factorization gives
+\begin{equation}
+\ln\left(\frac{S_c}{S_0}\right)
+=(D_0-D_c)\left[\alpha+\beta(D_0+D_c)\right].
+\end{equation}
+For nonnegative $\alpha$, $\beta$, and $D_0>D_c$, the controlled exposure yields greater survival. The incremental benefit increases with baseline dose in the quadratic regime.
+
+\section{A simple cutoff criterion}
+
+Suppose collisional replenishment of a tail state occurs on time $\tau_c(E)$ and perturbation loss on $\tau_L(E)$. A local stationary balance has the schematic form
+\begin{equation}
+0\approx\frac{f_{\mathrm{eq}}-f}{\tau_c}-\frac{f}{\tau_L}.
+\end{equation}
+Solving,
+\begin{equation}
+\frac{f}{f_{\mathrm{eq}}}
+=\frac{1}{1+\tau_c/\tau_L}.
+\end{equation}
+The population is reduced by one half where $\tau_c=\tau_L$. This provides a convenient operational definition of the cutoff onset, while a full kinetic model determines the smooth shape.
+
+\section{Mirror loss boundary with electrostatic potential}
+
+Conservation of total energy and magnetic moment gives, between a field minimum and mirror throat,
+\begin{equation}
+\gamma_0m_ec^2-e\phi_0
+=\gamma_mm_ec^2-e\phi_m,
+\end{equation}
+with $p_{\perp,m}^2/B_m=p_{\perp,0}^2/B_0$ under adiabatic motion. Reflection occurs when $p_{\parallel,m}=0$. Combining these relations yields the relativistic loss boundary in $(p,\xi)$; the nonrelativistic limit reduces to Equation~\eqref{eq:mirror-potential}. Numerical orbit following is preferred when fields vary rapidly or adiabatic invariance fails.

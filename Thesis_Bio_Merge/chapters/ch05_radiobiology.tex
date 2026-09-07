@@ -1,0 +1,154 @@
+\chapter{Radiobiological Foundations for Plasma-Generated Photon Fields}
+\label{ch:radiobiology}
+
+\section{Physical, chemical, and biological stages}
+
+The biological effect of ionizing radiation develops across widely separated time scales. The physical stage, lasting femtoseconds to roughly picoseconds, consists of ionization, excitation, and the production of secondary electrons. The physicochemical stage includes thermalization, solvation, and the earliest radical reactions. The chemical stage extends through radical diffusion and biomolecular reaction, while the biological stage includes damage sensing, repair, signaling, cell-cycle arrest, death, mutation, tissue response, and late disease \cite{baatout2023,hall2018,joiner2018}.
+
+The separation is useful because the plasma model controls the incident photon field, whereas tissue composition and biology determine how the deposited energy is processed. A source modification cannot specify the biological response without a receptor model, but it can constrain the initial conditions for that response.
+
+\section{Direct and indirect action}
+
+Radiation can damage Deoxyribonucleic Acid (DNA) directly through ionization in or near the molecule. It can also act indirectly by ionizing water and generating reactive species. A simplified radiolysis sequence is
+\begin{align}
+\mathrm{H_2O}&\xrightarrow{\mathrm{IR}}\mathrm{H_2O^{+}}+e^{-},\\
+\mathrm{H_2O^{+}}+\mathrm{H_2O}&\rightarrow\mathrm{H_3O^{+}}+\cdot\mathrm{OH},\\
+e^-&\rightarrow e^-_{\mathrm{aq}},
+\end{align}
+followed by reactions that generate hydroxyl radicals, hydrogen atoms, molecular hydrogen, and hydrogen peroxide. For low-LET X rays and gamma rays, indirect action is a major contributor to DNA damage. Oxygen can convert transient radical damage into chemically fixed lesions, producing the oxygen enhancement effect \cite{gray1953,alper1956,ward1988}.
+
+\section{Track structure and linear energy transfer}
+
+Linear energy transfer is the mean energy lost per unit path length by a charged particle,
+\begin{equation}
+L_\Delta=\frac{\dd E_\Delta}{\dd \ell},
+\end{equation}
+with a cutoff $\Delta$ specifying treatment of energetic secondary electrons. Photons are uncharged, so their biological track structure is created by secondary electrons. X rays and gamma rays are generally classed as low-LET radiation because their secondary-electron tracks are sparsely ionizing compared with alpha particles or heavy ions.
+
+Mean LET is not a complete descriptor. Energy deposition is stochastic at nanometer and micrometer scales. Microdosimetry uses lineal energy
+\begin{equation}
+y=\frac{\epsilon}{\bar\ell},
+\end{equation}
+where $\epsilon$ is energy imparted in a microscopic site and $\bar\ell$ is mean chord length. Nanodosimetry considers ionization clusters at dimensions comparable to DNA. These distributions help connect radiation quality to clustered molecular damage \cite{kellerer1978,hawkins1996,goodhead1994}.
+
+\section{DNA lesion classes}
+
+Ionizing radiation produces base damage, abasic sites, sugar damage, DNA--protein crosslinks, single-strand breaks, double-strand breaks, and clustered combinations of these lesions. Low-LET radiation produces many isolated lesions and a smaller but important fraction of clustered damage. High-LET radiation produces a larger fraction of complex clusters that are difficult to repair \cite{ward1988,goodhead1994,sutherland2000,olive1998}.
+
+A frequently used order-of-magnitude description is that a gray of low-LET radiation to a mammalian cell produces thousands of altered bases and single-strand lesions and several tens of double-strand breaks. Exact yields depend on genome size, oxygenation, chromatin, detection method, and radiation quality. Therefore, a thesis should not use a single lesion-per-gray coefficient as a universal biological constant. Instead, it should calibrate the coefficient for the selected cell system and assay.
+
+\section{DNA damage sensing and repair}
+
+A DNA double-strand break triggers phosphorylation of histone H2AX around the lesion, producing $\gamma$H2AX domains that can be visualized as nuclear foci \cite{rogakou1998,lobrich2010}. The broader DNA-damage response coordinates ATM, ATR, DNA-PK, checkpoint signaling, chromatin remodeling, repair, apoptosis, and senescence \cite{jackson2009ddr,ciccia2010}.
+
+The major double-strand-break pathways are non-homologous end joining and homologous recombination. Non-homologous end joining operates throughout much of the cell cycle and directly rejoins ends, sometimes with sequence loss. Homologous recombination uses a template and is concentrated in S and G2 phases. Pathway choice depends on end resection, chromatin context, cell cycle, and damage complexity \cite{chapman2012}. Persistent or misrepaired breaks lead to chromosome aberrations, micronuclei, mutation, loss of reproductive capacity, or transformation.
+
+\section{Cellular endpoints}
+
+\subsection{Clonogenic survival}
+
+The clonogenic assay measures the ability of a single cell to retain unlimited proliferative capacity. It remains a central endpoint because short-term metabolic viability can overestimate long-term survival. For low-LET radiation, survival is commonly fit by the linear-quadratic model
+\begin{equation}
+S(D)=\exp(-\alpha D-\beta D^2),
+\label{eq:lq}
+\end{equation}
+where $\alpha$ and $\beta$ depend on cell line, environment, dose rate, and radiation quality \cite{douglas1976,fowler1989,brenner1998}. The linear term is often associated with single-track lethal events, while the quadratic term reflects interaction of sublethal lesions, although the parameters are phenomenological rather than unique molecular counts.
+
+For $n$ equal fractions of dose $d$, the biologically effective dose (BED) is
+\begin{equation}
+\mathrm{BED}=nd\left(1+\frac{d}{\alpha/\beta}\right),
+\label{eq:bed}
+\end{equation}
+under the standard assumptions of complete repair between fractions and negligible repopulation during each exposure. Plasma pulses may violate these assumptions if pulses are extremely close, extremely intense, or accompanied by non-photon stressors.
+
+\subsection{Apoptosis, necrosis, mitotic catastrophe, and senescence}
+
+Radiation-induced loss of clonogenicity can occur through mitotic catastrophe, apoptosis, permanent senescence, necrosis, or delayed reproductive death. The dominant mode varies by cell type and dose. Assays should therefore combine colony formation with markers such as annexin V/propidium iodide, caspase activation, cell-cycle analysis, micronuclei, and senescence-associated activity.
+
+\subsection{Chromosome and micronucleus endpoints}
+
+Dicentric chromosome analysis is a mature biodosimetry method for acute photon exposure. Cytokinesis-block micronucleus assays provide a higher-throughput measure of chromosome breakage or loss. These endpoints integrate damage and misrepair over time and can validate whether a spectrally modified plasma field behaves like a calibrated low-LET photon field at equal absorbed dose.
+
+\section{Dose response, repair, and dose rate}
+
+If dose is delivered slowly, repair during irradiation can reduce the quadratic component. A generalized Lea--Catcheside formulation is
+\begin{equation}
+S=\exp[-\alpha D-\beta GD^2],
+\end{equation}
+where $G$ depends on the dose-rate history and repair rate. For an arbitrary history $\dot D(t)$ and mono-exponential repair constant $\mu_r$,
+\begin{equation}
+G=\frac{2}{D^2}\int_{-\infty}^{\infty}\dd t\,\dot D(t)
+\int_{-\infty}^{t}\dd t'\,\dot D(t')e^{-\mu_r(t-t')}.
+\label{eq:lea-catcheside}
+\end{equation}
+This expression is useful for repetitive plasma pulses because it distinguishes total dose from pulse spacing.
+
+At ultra-high dose rate, conventional repair-during-delivery reasoning is not sufficient. FLASH effects have been observed in selected animal systems and beam conditions, but the mechanism and generality remain active research topics \cite{favaudon2014,montay2019,abolfath2020}. A plasma-generated pulse should not be labeled FLASH solely because its instantaneous dose rate is high. Pulse dose, total dose, field uniformity, oxygen conditions, and biological sparing must be demonstrated.
+
+\section{Oxygen effect}
+
+The oxygen enhancement ratio (OER) is
+\begin{equation}
+\mathrm{OER}=\frac{D_{\mathrm{hypoxic}}}{D_{\mathrm{oxic}}}
+\end{equation}
+for the same biological endpoint. For low-LET radiation, oxygen commonly increases effectiveness by chemically fixing radical damage. OER depends on oxygen tension, LET, dose, and endpoint. A source-spectrum modification that changes secondary-electron structure may alter OER slightly, but oxygenation and tissue geometry are usually the larger determinants.
+
+For occupational or environmental exposure, oxygen effect is not normally used to reduce protection estimates. For controlled in vitro validation, oxygen should be measured or standardized because hypoxia can obscure a physical dose reduction.
+
+\section{Relative biological effectiveness (RBE)}
+
+RBE compares the dose of a reference radiation with the dose of a test radiation producing the same endpoint:
+\begin{equation}
+\mathrm{RBE}=\frac{D_{\mathrm{ref}}}{D_{\mathrm{test}}}.
+\label{eq:rbe}
+\end{equation}
+RBE is not a material constant. It depends on dose level, endpoint, cell or tissue, LET, fractionation, oxygen, and reference beam. Photon fields are often approximated as RBE unity for protection, but orthovoltage X rays can show modestly different biological effectiveness from megavoltage photons because of secondary-electron spectra. A plasma-generated broad spectrum should therefore be compared against a clearly specified reference beam at matched absorbed dose.
+
+\section{Bystander effects and non-targeted response}
+
+Cells not directly traversed by radiation tracks can exhibit damage responses after receiving signals from irradiated cells. Gap junctions, reactive species, cytokines, extracellular vesicles, and inflammatory pathways contribute to bystander effects \cite{nagasawa1992,morgan2003,azzam2003,prise2009}. These effects challenge a strictly local energy-deposition interpretation at low dose. They do not invalidate dosimetry, but they add biological variance and may broaden the spatial response beyond the high-dose region.
+
+In a plasma facility, non-targeted effects are most relevant to experimental cell systems and to interpretation of low-dose mechanistic studies. For worker protection, epidemiological and protection models remain dose based, with uncertainty acknowledged.
+
+\section{Tissue reactions and stochastic effects}
+
+Tissue reactions have severity that rises with dose and generally exhibit thresholds at the organ level, although threshold values depend on endpoint and follow-up. Examples include skin injury, lens opacities, marrow suppression, and organ-specific late effects \cite{icrp118}. Stochastic effects, especially cancer, are modeled as an increase in probability with dose. The ICRP system uses justification, optimization, and dose limitation for planned exposures \cite{icrp103,iaeaGSR3}.
+
+At low doses, the exact shape of the cancer dose-response remains scientifically debated. Some authors emphasize biological evidence inconsistent with strict linearity, while others argue that a linear model is the most defensible practical approximation given epidemiological and mechanistic uncertainty \cite{tubiana2009,little2009,beir2006,unscear2020}. This thesis uses linear no-threshold extrapolation only as a protection-model convention, not as a claim that all low-dose cellular responses are linear.
+
+\section{Biological dosimetry ladder}
+
+The proposed validation uses a hierarchy:
+\begin{enumerate}
+\item \textbf{Physical dose:} ion chamber, film, calorimeter, or traceable dosimeter.
+\item \textbf{Immediate chemistry:} radical-sensitive probes or oxygen-consumption measurements where relevant.
+\item \textbf{Early molecular damage:} $\gamma$H2AX/53BP1 foci, comet assay, oxidative base lesions.
+\item \textbf{Cytogenetic damage:} micronuclei, dicentrics, chromosome aberrations.
+\item \textbf{Functional survival:} clonogenic assay.
+\item \textbf{Tissue-level response:} organoid, spheroid, or validated animal model only after institutional approval.
+\end{enumerate}
+Agreement across levels would support the source-to-biology model. Disagreement is diagnostically useful: for example, matched physical dose but different foci persistence may indicate spectral, dose-rate, or biological-environment effects.
+
+\section{Candidate in vitro systems}
+
+A first validation should use well-characterized mammalian cell lines with known radiation response and robust colony formation. A radiosensitive and a radioresistant line provide contrast. Normal human fibroblasts are useful for DNA repair and cytogenetic endpoints, while a tumor line permits comparison with radiotherapy literature. Cell authentication, mycoplasma testing, passage control, plating efficiency, medium depth, flask orientation, and temperature control are essential.
+
+A tissue-equivalent phantom should be irradiated in parallel with cell cultures to relate detector dose to the cell monolayer. For broad or pulsed spectra, dose gradients through the culture vessel and medium should be simulated. The cell layer is thin, but the plastic and medium can filter low-energy photons substantially.
+
+\section{Statistical design}
+
+Radiobiological variability requires biological replicates rather than repeated detector readings alone. A minimum design includes independent experiments on different days, randomized exposure order, blinded image analysis where feasible, positive and negative controls, and prespecified exclusion criteria. Survival curves should be fit jointly with uncertainty in delivered dose. A hierarchical model can separate day-to-day variation from within-experiment replicate error.
+
+For the linear-quadratic model, one may fit
+\begin{equation}
+\log S_{ij}=-(\alpha+u_{\alpha,j})D_{ij}-(\beta+u_{\beta,j})D_{ij}^2+\epsilon_{ij},
+\end{equation}
+where $j$ indexes experimental day. Comparison of baseline and magnetically suppressed spectra can test whether equal measured dose yields the same $\alpha$ and $\beta$, or whether the main effect is simply dose reduction.
+
+\section{Ethical and safety considerations}
+
+Cell-line work should follow institutional biosafety requirements. Human participants, identifiable clinical samples, or prospective human tissue collection require ethics review. Animal work requires prospective institutional approval and should follow Animal Research: Reporting of In Vivo Experiments (ARRIVE) principles. Radiation work requires an approved radiation-safety program, access control, shielding verification, survey instrumentation, personnel dosimetry where required, and optimization consistent with As Low as Reasonably Achievable (ALARA) policies \cite{iaeaGSR3,icrp103}.
+
+\section{Summary}
+
+Radiobiology translates absorbed energy into molecular and organism-level consequences through track structure, chemistry, repair, and tissue context. The most defensible bridge for plasma-generated photons is a ladder from calibrated dose to DNA damage and clonogenic survival, with radiation quality and dose rate explicitly controlled. The next chapter combines the plasma, transport, and biology equations into a unified multiscale framework.

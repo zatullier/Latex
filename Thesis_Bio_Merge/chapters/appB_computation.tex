@@ -1,0 +1,54 @@
+\chapter{Reproducible Illustrative Computation}
+\label{app:computation}
+
+The project includes \texttt{scripts/illustrative\_model.py}. It generates the normalized figures and \texttt{illustrative\_results.csv}. The script requires Python, NumPy, SciPy, and Matplotlib.
+
+\section{Execution}
+
+From the project root:
+\begin{lstlisting}[language=bash]
+python scripts/illustrative_model.py
+latexmk -pdf -interaction=nonstopmode main.tex
+\end{lstlisting}
+
+\section{Algorithm}
+
+\begin{enumerate}
+\item Construct a Maxwell--J\"uttner energy density on a fine dimensionless energy grid.
+\item Normalize by numerical quadrature.
+\item Select cutoff $E_c$ and set the distribution above it to zero.
+\item Integrate the removed number fraction.
+\item Add the removed number to a normalized Gaussian kernel below the cutoff.
+\item Renormalize to remove quadrature error.
+\item Calculate moments $M_q$ and ratios to the reference distribution.
+\item Construct a surrogate continuum photon spectrum and smooth energy-dependent suppression.
+\item Apply three response weightings to illustrate why source-power and dose-like ratios differ.
+\end{enumerate}
+
+\section{Replacement by a research-grade calculation}
+
+A final calculation should replace the surrogate steps with:
+\begin{enumerate}
+\item a relativistic Fokker--Planck solution for $f(p,\xi)$;
+\item exact or benchmarked electron--ion differential cross sections;
+\item an electron--electron kernel integrated over two-particle phase space;
+\item synchrotron spectral-angular emission;
+\item collector electron transport and thick-target bremsstrahlung;
+\item Monte Carlo transport through the actual CAD geometry; and
+\item measured detector response and uncertainty covariance.
+\end{enumerate}
+
+\section{Suggested file interfaces}
+
+\begin{longtable}{p{0.25\textwidth}p{0.65\textwidth}}
+\toprule
+File & Contents \\
+\midrule
+\texttt{distribution.h5} & grids in position, momentum, pitch angle, time; $f_e$ and uncertainty \\
+\texttt{source.h5} & photon energy, angle, position, time, channel, and emitted weight \\
+\texttt{transport.inp} & geometry, materials, physics settings, source reference \\
+\texttt{dose.csv} & voxel or detector identifier, dose, statistical uncertainty \\
+\texttt{biology.csv} & sample identifier, delivered dose, endpoint, time, replicate \\
+\texttt{provenance.yaml} & software versions, git commit, calibration identifiers \\
+\bottomrule
+\end{longtable}

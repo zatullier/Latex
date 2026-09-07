@@ -1,0 +1,211 @@
+\chapter{Computational and Experimental Methodology}
+\label{ch:methodology}
+
+\section{Study design}
+
+The definitive study is organized as a controlled comparison between a baseline plasma state and one or more magnetically perturbed states. Each state is evaluated at the same nominal density, composition, input-power class, and diagnostic geometry to the extent physically possible. Because the perturbation may alter confinement and stored energy, comparison is reported under multiple normalization choices:
+\begin{enumerate}
+\item equal input energy per pulse;
+\item equal electron density and bulk temperature;
+\item equal fusion-relevant ion state;
+\item equal stored plasma energy; and
+\item equal operational output, such as fusion yield or target performance.
+\end{enumerate}
+No single normalization answers every engineering question. Equal input energy is useful for device efficiency, while equal plasma state isolates distribution effects.
+
+\section{Aim 1: characterize the baseline plasma and source}
+
+The baseline campaign measures:
+\begin{itemize}
+\item magnetic equilibrium and fluctuation spectrum;
+\item electron density and temperature;
+\item evidence of nonthermal tails and anisotropy;
+\item ion density, composition, and effective charge;
+\item time-resolved photon spectrum and angular distribution;
+\item total photon energy and charged-particle losses;
+\item wall and collector heat loads; and
+\item operating repeatability.
+\end{itemize}
+At least two independent electron-distribution diagnostics are preferred. Hard-X-ray inversion alone is circular because the same emission model is later used to claim suppression. A second diagnostic might be Thomson scattering, electron cyclotron emission with forward modeling, magnetic spectrometry of escaping electrons, or a validated kinetic reconstruction.
+
+\section{Aim 2: impose and map magnetic perturbations}
+
+Perturbation coils or internal conductors are driven through a matrix of amplitudes, frequencies, phases, and mode numbers. The design matrix should include zero-field controls and repeated baseline returns to detect drift.
+
+\begin{table}[H]
+\centering
+\caption{Illustrative perturbation scan. Actual values must be selected from device limits and resonance calculations.}
+\label{tab:perturbation-scan}
+\begin{tabularx}{\textwidth}{lccccX}
+\toprule
+Case & $\delta B/B_0$ & Frequency & Phase & Mode family & Purpose \\
+\midrule
+B0 & 0 & -- & -- & -- & Baseline reproducibility \\
+B1 & low & static & 0 & resonant & Topology sensitivity \\
+B2 & medium & static & 0 & resonant & Stronger loss-layer test \\
+B3 & medium & swept & 0 & resonant & Frequency-selective transport \\
+B4 & medium & swept & shifted & resonant & Phase and localization test \\
+B5 & medium & swept & 0 & nonresonant & Perturbation control case \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Magnetic diagnostics should reconstruct both the applied field and plasma response. Mirnov coils, internal probes where permissible, electron cyclotron emission, soft-X-ray tomography, equilibrium reconstruction, and three-dimensional Magnetohydrodynamics (MHD) modeling can be combined. The relevant quantity is the field experienced by particles, not the vacuum coil field.
+
+\section{Aim 3: measure the modified radiation source}
+
+The primary source outcome is the differential photon spectrum
+\begin{equation}
+\frac{\dd^3N_\gamma}{\dd E_\gamma\dd\Omega\dd t}.
+\end{equation}
+Detector selection depends on flux. Photon-counting detectors are useful at manageable count rates; scintillators with pulse-height analysis extend to harder energies; filtered arrays tolerate intense pulses; image plates and radiochromic media integrate over space and time. Pileup, dead time, saturation, and electromagnetic interference must be characterized.
+
+Absolute calibration is performed with traceable sources or a calibrated X-ray generator over overlapping energy ranges. Detector response matrices are simulated and benchmarked. Spectral unfolding uses nonnegative regularization, and results are reported with covariance between energy bins. A reduction factor without uncertainty bands is inadequate because unfolding errors are correlated.
+
+Angular measurements should include the expected forward-beaming direction of relativistic electrons and representative shield penetrations. Anisotropic distributions can produce anisotropic bremsstrahlung \cite{massone2004}. A single detector at ninety degrees may therefore miss a change in the most hazardous direction.
+
+\section{Aim 4: transport and phantom dosimetry}
+
+A detailed Computer-Aided Design (CAD)-derived model is converted to a radiation-transport geometry. The workflow is:
+\begin{enumerate}
+\item simplify mechanically irrelevant features while preserving mass and streaming paths;
+\item assign measured or certified material compositions;
+\item implement baseline and perturbed spectral-angular source files;
+\item calculate dose and fluence maps at detector and receptor locations;
+\item benchmark against slab attenuation and open-field measurements;
+\item compare calculated and measured dose in a tissue-equivalent phantom; and
+\item propagate source covariance into dose uncertainty.
+\end{enumerate}
+
+The phantom campaign uses a reproducible geometry containing film planes, an ionization chamber position, and cell-culture locations. If low-energy photons contribute, the entrance window, flask wall, medium depth, and air gap are included. Depth-dose curves and lateral profiles are measured for both baseline and perturbed source states.
+
+\section{Aim 5: radiobiological validation}
+
+\subsection{Exposure groups}
+
+\begin{table}[H]
+\centering
+\caption{Core biological exposure groups.}
+\label{tab:bio-groups}
+\begin{tabularx}{\textwidth}{lXXX}
+\toprule
+Group & Plasma source state & Dose strategy & Scientific purpose \\
+\midrule
+Sham & Source off & 0 Gy & Baseline biology and handling \\
+Reference beam & Calibrated X-ray unit & Dose series & Establish conventional response \\
+Baseline plasma & Unperturbed & Matched physical dose and source-normalized dose & Validate plasma field \\
+Perturbed plasma & Magnetic control active & Matched physical dose and source-normalized dose & Separate dose reduction from radiation-quality change \\
+Shielded control & Baseline plasma plus added absorber & Match perturbed dose if possible & Compare source suppression with passive attenuation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two comparisons are essential. In the \emph{source-normalized} comparison, equal plasma operation tests whether magnetic control reduces delivered dose and effect. In the \emph{dose-matched} comparison, exposure time or distance is adjusted so baseline and perturbed fields deliver equal absorbed dose; this tests whether spectral or pulse changes alter biological effectiveness.
+
+\subsection{Endpoints and sampling times}
+
+A minimum endpoint panel is:
+\begin{itemize}
+\item intracellular oxidative stress or a validated chemical proxy within minutes;
+\item $\gamma$H2AX and 53BP1 foci at approximately 0.5, 2, 6, and 24 hours;
+\item alkaline or neutral comet assay at an early time;
+\item micronuclei after one or two cell cycles;
+\item apoptosis/necrosis and cell-cycle distribution at 24--72 hours; and
+\item clonogenic survival over the colony-formation interval.
+\end{itemize}
+Exact times are optimized in pilot studies. The foci time course distinguishes initial induction from repair persistence.
+
+\subsection{Cell systems}
+
+The initial system should use one normal human fibroblast line and one tumor line with robust clonogenic growth. A second tumor line can test generality after the physical model is validated. Cell lines are authenticated, tested for mycoplasma, maintained within a specified passage window, and cultured under controlled oxygen and temperature. Plating efficiency is measured for every experiment.
+
+\subsection{Sample size}
+
+Power calculations should use pilot variance and the smallest effect considered scientifically important. For survival curves, a simulation-based design is recommended because observations are heteroscedastic and correlated through shared dose calibration. At minimum, three independent biological experiments are required, but this is a floor rather than a universal adequate sample size.
+
+\section{Computational plasma model}
+
+The reduced model solves Equation~\eqref{eq:fp-final} on a $(p,\xi)$ grid. Boundary conditions are zero flux at $p=0$, an absorbing or outflow condition at $p=p_{\max}$, and regularity at $\xi=\pm1$. The loss operator is obtained from orbit following:
+\begin{equation}
+\nu_L(p,\xi)=\frac{N_{\mathrm{lost}}(p,\xi)}{N_{\mathrm{tracked}}(p,\xi)\Delta t}.
+\end{equation}
+Test particles are launched across phase space in the measured or computed three-dimensional fields. Collisions can be included stochastically or represented separately in the Fokker--Planck solver.
+
+Numerical requirements include positivity preservation, particle and energy accounting, grid-convergence studies, and comparison with analytic collision and mirror-confinement limits. The unperturbed stationary distribution must reproduce measured diagnostics before perturbation predictions are accepted.
+
+\section{Bremsstrahlung calculation}
+
+Electron--ion emissivity is calculated with relativistic differential cross sections and summed over ion species. Electron--electron emissivity uses a tabulated or interpolated kernel in the center-of-momentum variables to reduce computational cost. The workflow is validated by reproducing published Maxwell--J\"uttner power fits and selected spectra \cite{haug1975,nozawa1998,munirov2023}.
+
+For each source state, the code reports:
+\begin{enumerate}
+\item $P_{ei}$, $P_{ee}$, and $P_{\mathrm{syn}}$;
+\item spectrum by channel;
+\item angular moments;
+\item fraction of power above selected thresholds;
+\item electron number and energy in the tail;
+\item collector-impact spectrum; and
+\item net external source after local absorption.
+\end{enumerate}
+
+\section{Statistical analysis}
+
+Plasma-shot data are analyzed with mixed-effects models to account for campaign day and operating batch. A generic model is
+\begin{equation}
+y_{ijk}=\beta_0+\beta_1A_i+\beta_2F_j+\beta_3A_iF_j+b_k+\epsilon_{ijk},
+\end{equation}
+where $A_i$ is perturbation amplitude, $F_j$ frequency or mode, and $b_k$ a random day effect. Spectral outcomes may require multivariate or functional analysis rather than independent tests in every energy bin.
+
+Biological survival is fit with a shared hierarchical linear-quadratic model. Foci counts may use negative-binomial regression if overdispersed. Multiple endpoints are controlled with a prespecified hierarchy rather than indiscriminate correction across every exploratory measurement.
+
+\section{Uncertainty budget}
+
+\begin{table}[H]
+\centering
+\caption{Representative uncertainty categories.}
+\label{tab:uncertainties}
+\begin{tabularx}{\textwidth}{lXX}
+\toprule
+Layer & Dominant uncertainties & Mitigation \\
+\midrule
+Plasma state & density, temperature, anisotropy, impurity fraction & redundant diagnostics and calibration \\
+Magnetic field & coil current, alignment, plasma screening & field mapping and 3D response modeling \\
+Spectrum & detector response, pileup, unfolding covariance & multi-detector overlap and synthetic tests \\
+Transport & geometry, material composition, physics library & benchmark experiments and cross-code checks \\
+Dose & chamber calibration, energy dependence, pulse response & traceable calibration and detector comparison \\
+Biology & plating efficiency, passage, oxygen, day effects & randomization, blocking, authentication \\
+Model & structural discrepancy and parameter identifiability & Bayesian discrepancy term and sensitivity analysis \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Data management and reproducibility}
+
+All raw data are immutable and checksummed. Processed data are generated by version-controlled scripts. Each plasma shot has a unique identifier linked to magnetic settings, diagnostics, spectrum, transport source file, dosimetry, and biological sample. Units and coordinate systems are stored explicitly. The analysis environment is captured with a lock file or container.
+
+The minimum reproducibility package contains:
+\begin{itemize}
+\item source and transport input files;
+\item detector response matrices;
+\item calibration records;
+\item analysis scripts and environment specification;
+\item anonymized or non-identifiable biological measurements;
+\item a data dictionary; and
+\item a machine-readable record of exclusions and quality flags.
+\end{itemize}
+
+\section{Decision criteria}
+
+The central hypothesis is supported only if all of the following occur:
+\begin{enumerate}
+\item independent diagnostics show depletion or redistribution of superthermal electrons;
+\item spectral measurements show a statistically and physically significant reduction in the predicted bremsstrahlung component;
+\item energy accounting does not reveal a larger compensating external source at collectors or walls;
+\item transport and phantom measurements confirm dose reduction at the receptor; and
+\item biological endpoints agree with the predicted dose reduction within uncertainty, or any discrepancy is explained by measured spectral or temporal changes.
+\end{enumerate}
+Failure at any link narrows the claim. For example, successful plasma source suppression without reduced external dose remains a plasma result, not a radiobiological benefit.
+
+\section{Summary}
+
+The methodology is deliberately redundant: no single diagnostic or model carries the thesis conclusion. The design separates source-normalized and dose-matched biological comparisons, closes the energy balance, and treats uncertainty as part of the result. The next chapter presents illustrative calculations that demonstrate how the framework behaves and define expected trends without representing unperformed experiments.

@@ -1,0 +1,239 @@
+\documentclass[12pt,oneside]{report}
+
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{pdflscape}
+\usepackage{appendix}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage[backend=biber,style=numeric-comp,sorting=nyt,maxbibnames=99,giveninits=true]{biblatex}
+\addbibresource{references.bib}
+
+\sisetup{detect-all,separate-uncertainty=true,per-mode=symbol}
+\setstretch{1.35}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.25em}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\graphicspath{{figures/}}
+
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\ThesisTitle}{Biological Implications of Suppressing Radiation Emissions from Relativistic Plasmas Using Magnetic Perturbations}
+\newcommand{\ThesisSubtitle}{A Multiscale Framework for Source-Term Control, Dosimetry, and Radiobiological Risk}
+\newcommand{\AuthorName}{Zachary R. Tullier}
+\newcommand{\DegreeName}{Master of Science}
+\newcommand{\CollegeName}{College of Science and Engineering}
+\newcommand{\UniversityName}{University of Houston--Clear Lake}
+\newcommand{\ThesisDate}{July 2026}
+
+\newcommand{\Te}{T_{\mathrm e}}
+\newcommand{\Ti}{T_{\mathrm i}}
+\newcommand{\nelec}{n_{\mathrm e}}
+\newcommand{\nion}{n_{\mathrm i}}
+\newcommand{\Egamma}{E_{\gamma}}
+\newcommand{\mecsq}{m_{\mathrm e}c^2}
+\newcommand{\Zeff}{Z_{\mathrm{eff}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\eV}{\mathrm{eV}}
+\newcommand{\keV}{\mathrm{keV}}
+\newcommand{\MeV}{\mathrm{MeV}}
+\newcommand{\Gy}{\mathrm{Gy}}
+\newcommand{\Sv}{\mathrm{Sv}}
+\newcommand{\pB}{\ensuremath{p\text{--}{}^{11}\mathrm B}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{assumption}{Assumption}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  showstringspaces=false
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{0.8in}
+{\Large\bfseries \ThesisTitle\par}
+\vspace{0.25in}
+{\large \ThesisSubtitle\par}
+\vspace{0.8in}
+{\large A Thesis\par}
+\vspace{0.2in}
+{Presented to the Academic Faculty\par}
+\vspace{0.6in}
+{by\par}
+\vspace{0.2in}
+{\Large \AuthorName\par}
+\vfill
+{In Partial Fulfillment of the Requirements for the Degree of\par}
+{\DegreeName\ in the \CollegeName\par}
+\vspace{0.45in}
+{\UniversityName\par}
+{\ThesisDate\par}
+\vspace{0.4in}
+{Copyright \textcopyright\ \AuthorName\ 2026}
+\end{titlepage}
+
+\pagenumbering{roman}
+
+\chapter*{Approval Page}
+%% Define your committee members. If you have less than 6, simple delete/comment the unused lines
+\newcommand*{\SignatureAndDate}[3]{
+    \par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.0in]{\hrulefill}
+    \par\noindent\makebox[2.5in][l]{#1}      \hfill\makebox[2.0in][l]{Date}
+    \par\noindent\makebox[2.5in][l]{#2}
+    \par\noindent\makebox[2.5in][l]{#3}}
+
+\SignatureAndDate{Samina S. Masood}{Ph.D., Chair}{Thesis Advisor}
+\vspace{.2in}
+\SignatureAndDate{Brandon Reddell}{Ph.D}{Thesis Committee}
+
+\vspace{.3in}
+\begin{center}
+    {\fontfamily{qcr}\selectfont APPROVED BY THE COLLEGE OF SCIENCE AND ENGINEERING}
+\end{center}
+
+\SignatureAndDate{David Garrison}{Ph.D}{Associate Dean}
+\vspace{.2in}
+\SignatureAndDate{Jennifer Irvin}{Ph.D}{Dean}
+
+
+
+\chapter*{Dedication}
+\addcontentsline{toc}{chapter}{Dedication}
+\begin{center}
+\emph{This thesis is dedicated to my family, whose love, patience, and encouragement made this accomplishment possible.
+To my father, whose questions continually challenged me to clarify my goals, refine my thinking, and find the path that was truly right for me. Your curiosity and guidance helped shape both my academic direction and the person I have become.
+To my mother, whose insight and thoughtful questions pushed me to look beyond the technical details and consider the deeper value, purpose, and impact of research. You taught me that meaningful work should not only expand knowledge, but also serve a greater purpose.
+To Erin, thank you for your unwavering support, patience, and belief in me throughout this journey. To Maci and Miley, you are my greatest inspiration and the reason I continue to strive for a better future.
+This work is a reflection of the love, wisdom, and encouragement each of you has given me.
+}
+\end{center}
+\clearpage
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+I would like to express my sincere gratitude to my thesis advisor, Dr. Masood, for their guidance, patience, and continued support throughout the development of this research. Their insight and expertise were invaluable in shaping the direction of this thesis and strengthening my understanding of plasma physics, radiation processes, and scientific research.
+
+I am grateful to the faculty and staff of the Department of Mathematical, Applied, and Physical Sciences at the University of Houston - Clear Lake for providing the educational foundation, resources, and opportunities necessary to complete this degree. I would also like to acknowledge the authors, researchers, and educators whose work in plasma physics, fusion science, radiation transport, and radiation biology provided the foundation for this interdisciplinary study.
+
+Most importantly, I would like to thank my family for their unconditional love, patience, and encouragement. To my father, whose questions continually challenged me to clarify my goals, refine my thinking, and find the path that was truly right for me. Your curiosity and guidance helped shape both my academic direction and the person I have become. To my mother, whose insight and thoughtful questions pushed me to look beyond the technical details and consider the deeper value, purpose, and impact of research. You taught me that meaningful work should not only expand knowledge, but also serve a greater purpose. To Erin, thank you for standing beside me, believing in me, and supporting me throughout every stage of this journey. To Maci and Miley, you have been my greatest source of inspiration and motivation. This work is a reflection of the love, wisdom, and encouragement each of you has given me.
+
+Finally, I am thankful for the perseverance, strength, and opportunities that allowed me to reach this milestone. This thesis represents not only an academic achievement, but also the support, sacrifice, and encouragement of everyone who helped me along the way.
+
+\clearpage
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Relativistic plasmas can radiate a substantial fraction of their stored energy through electron--ion and electron--electron bremsstrahlung, synchrotron emission, and related high-energy photon processes. These losses are a central obstacle for advanced fusion fuels such as proton--boron-11, and the escaping photon field is also an external radiation source relevant to shielding, occupational exposure, instrumentation, and biological risk. This thesis develops a unified plasma-physics and radiation-biology framework for evaluating whether controlled magnetic perturbations can reduce both the radiative power loss inside a relativistic plasma and the biological burden outside it.
+
+The central physical hypothesis is that magnetic perturbations, open-field-line transport, ambipolar potentials, resonant diffusion, and related distribution-function controls can selectively deplete or redistribute superthermal electrons. Because relativistic bremsstrahlung is disproportionately weighted toward the high-energy tail, a number-conserving redistribution of those electrons to lower energy can reduce total and spectrally resolved emission. The central biological hypothesis is that a reduction in emitted spectral energy fluence produces a calculable reduction in absorbed dose, DNA damage burden, clonogenic injury, and stochastic risk, but that the magnitude of the biological benefit depends on photon energy, geometry, attenuation, dose rate, and tissue response.
+
+A multiscale model is formulated from the electron distribution function to bremsstrahlung emissivity, photon transport, absorbed dose, track structure, molecular damage, and cell survival. The thesis distinguishes source-term suppression from shielding and emphasizes that the two strategies are multiplicative rather than interchangeable. It also identifies conditions under which apparent radiative suppression could be offset by increased particle loss, synchrotron emission, spectral hardening, localized hot spots, or activation products. No unreported experimental data are asserted. Numerical examples are explicitly presented as reproducible, illustrative calculations whose purpose is to define the measurements and simulations required for a definitive validation campaign.
+
+The resulting framework provides a defensible bridge between relativistic plasma engineering and radiobiology: magnetic control is evaluated not only by watts of radiative loss avoided, but also by spectral dose reduction and biologically weighted consequence. This approach is applicable to advanced-fuel fusion concepts, mirror and open-field-line systems, laser-produced plasmas, dense plasma focus devices, accelerator-driven plasma sources, and any environment in which plasma-generated ionizing radiation may reach workers, patients, electronics, or biological specimens.
+\clearpage
+
+\chapter*{Executive Summary}
+\addcontentsline{toc}{chapter}{Executive Summary}
+The original plasma problem is an energy-balance problem: energetic electrons collide with ions and other electrons, producing bremsstrahlung that removes useful plasma energy. In relativistic regimes, the high-energy tail of the electron distribution matters more than its small particle fraction might suggest. A magnetic configuration that preferentially removes, scatters, or decelerates those electrons can therefore change the radiation source at its origin. The radiation-biology extension asks a second question: what does that source change mean after the photons leave the plasma?
+
+The answer requires five linked models. First, a kinetic model predicts the electron distribution under collisions, acceleration, magnetic perturbations, and losses. Second, differential electron--ion and electron--electron cross sections convert that distribution into a photon spectrum. Third, radiation-transport calculations propagate the spectrum through vacuum windows, structures, shielding, air, and tissue. Fourth, dosimetry converts energy fluence into absorbed dose. Fifth, radiobiological models translate dose and radiation quality into measurable endpoints such as DNA double-strand breaks, chromosome aberrations, surviving fraction, tissue reaction probability, or long-term risk.
+
+The thesis makes four principal contributions. It defines a number-conserving cutoff-and-redistribution operator suitable for theoretical studies of superthermal-tail control. It shows how magnetic perturbation parameters enter an energy-dependent escape or diffusion term in a relativistic Fokker--Planck equation. It derives a source-to-dose response operator that preserves spectral information rather than equating all emitted watts. Finally, it establishes a validation plan in which plasma diagnostics, X-ray spectroscopy, Monte Carlo transport, physical dosimetry, and biological assays are performed on a shared configuration.
+
+The most important conclusion is conceptual: a percentage reduction in total bremsstrahlung power is not automatically the same percentage reduction in biological effect. If suppression removes mainly low-energy photons, shielding and shallow tissue dose may improve strongly while deep dose changes less. If it removes mainly high-energy photons, penetrating dose and secondary-electron ranges may decrease disproportionately. Conversely, a harder residual spectrum could partly offset a reduction in integrated power at a distant location. Therefore, the correct optimization objective is a weighted spectral functional, not only total radiated power.
+\clearpage
+
+\tableofcontents
+\listoftables
+\listoffigures
+\clearpage
+
+\chapter*{Nomenclature}
+\addcontentsline{toc}{chapter}{Nomenclature}
+\begin{longtable}{p{0.22\textwidth}p{0.70\textwidth}}
+$B_0$, $\delta B$ & Equilibrium and perturbing magnetic-field amplitudes \\
+$D$ & Absorbed dose, joule per kilogram (gray) \\
+$E$, $\Egamma$ & Electron kinetic energy and photon energy \\
+$f(\mathbf{x},\mathbf{p},t)$ & Electron distribution function \\
+$H_T$ & Equivalent dose to tissue or organ $T$ \\
+$K_2$ & Modified Bessel function of the second kind \\
+$L_c$ & Magnetic correlation length \\
+$P_{\mathrm{Br}}$ & Bremsstrahlung power \\
+$R_m$ & Magnetic mirror ratio \\
+$S(D)$ & Clonogenic surviving fraction after absorbed dose $D$ \\
+$\theta$ & Dimensionless electron temperature, $k_B\Te/(m_ec^2)$ \\
+$\mu/\rho$ & Mass attenuation coefficient \\
+$\mu_{\mathrm{en}}/\rho$ & Mass energy-absorption coefficient \\
+$\Phi_E$ & Differential photon fluence \\
+$\Zeff$ & Effective ion charge \\
+LET & Linear energy transfer \\
+RBE & Relative biological effectiveness \\
+RMP & Resonant magnetic perturbation \\
+DSB/SSB & DNA double-strand/single-strand break \\
+\end{longtable}
+\clearpage
+
+\pagenumbering{arabic}
+
+\include{chapters/ch01_introduction}
+\include{chapters/ch02_plasma_radiation}
+\include{chapters/ch03_magnetic_control}
+\include{chapters/ch04_transport_dosimetry}
+\include{chapters/ch05_radiobiology}
+\include{chapters/ch06_multiscale_framework}
+\include{chapters/ch07_methodology}
+\include{chapters/ch08_model_results}
+\include{chapters/ch09_applications}
+\include{chapters/ch10_discussion}
+\include{chapters/ch11_conclusions}
+
+\begin{appendices}
+\include{chapters/appA_derivations}
+\include{chapters/appB_computation}
+\include{chapters/appC_validation}
+\end{appendices}
+
+\printbibliography[heading=bibintoc,title={References}]
+
+\chapter*{Vita}
+\addcontentsline{toc}{chapter}{Vita}
+\AuthorName\ earned undergraduate degrees in aerospace and mechanical engineering and has professional experience in engineering design, integration, verification, and testing of complex aerospace hardware. His graduate work integrates relativistic plasma physics, radiation transport, and radiation biology, with emphasis on advanced fusion systems and the control of radiation-producing particle distributions.
+
+\end{document}

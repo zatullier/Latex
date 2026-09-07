@@ -1,0 +1,214 @@
+\chapter{Photon Transport, Shielding, and Dosimetry}
+\label{ch:transport}
+
+\section{From emissivity to an external radiation field}
+
+A plasma calculation produces a volumetric emissivity $j_\gamma(E_\gamma,\Omega,\mathbf{x},t)$ with units of energy emitted per volume, time, photon-energy interval, and solid angle. The uncollided differential energy fluence at a receptor position $\mathbf{r}$ is
+\begin{equation}
+\Psi_E(E_\gamma,\mathbf{r})
+=\int\!\dd t\int_V\!\dd^3x\int\!\dd\Omega\,
+\frac{j_\gamma(E_\gamma,\Omega,\mathbf{x},t)}{4\pi R^2}
+\mathcal{G}(\Omega,\mathbf{x},\mathbf{r})
+\exp\!\left[-\int_{\ell}\mu(E_\gamma,s)\,\dd s\right],
+\label{eq:fluence}
+\end{equation}
+where $R=|\mathbf{r}-\mathbf{x}|$, $\mathcal{G}$ includes directionality and aperture effects, and $\mu$ is the linear attenuation coefficient. For an extended or anisotropic source, the inverse-square law is only a local component of the full geometry integral.
+
+The photon number fluence $\Phi_E$ and energy fluence $\Psi_E$ are related by
+\begin{equation}
+\Psi_E(E_\gamma)=E_\gamma\Phi_E(E_\gamma).
+\end{equation}
+A detector often measures a convolution,
+\begin{equation}
+M_k=\int R_k(E_\gamma)\Phi_E(E_\gamma)\,\dd E_\gamma,
+\end{equation}
+so spectral reconstruction requires the detector response $R_k$ and regularization.
+
+\section{Photon interactions in matter}
+
+\subsection{Photoelectric absorption}
+
+A photon transfers essentially all of its energy to a bound electron. The photoelectron kinetic energy is
+\begin{equation}
+T_e=E_\gamma-B_e,
+\end{equation}
+followed by characteristic X rays or Auger electrons as the atomic vacancy relaxes. The cross section increases strongly with atomic number and decreases strongly with photon energy. Photoelectric absorption therefore dominates in lower-energy photons and high-$Z$ shielding, and it can create secondary characteristic radiation that must be transported.
+
+\subsection{Compton scattering}
+
+For scattering from a nominally free electron, the outgoing photon energy is
+\begin{equation}
+E_\gamma'=
+\frac{E_\gamma}{1+(E_\gamma/m_ec^2)(1-\cos\theta)}.
+\label{eq:compton}
+\end{equation}
+The recoil electron receives the difference. In water and soft tissue, Compton interactions dominate a broad range important to medical and many plasma-generated X-ray fields. Scattered photons create buildup behind shielding and distribute dose outside the direct line of sight \cite{attix1986,turner2007,baatout2023}.
+
+\subsection{Pair production}
+
+Above \SI{1.022}{\MeV}, a photon can create an electron--positron pair in a nuclear or electron field. The positron eventually annihilates, producing two approximately \SI{511}{\keV} photons in the center-of-mass limit. Pair production becomes increasingly important at higher photon energy and in high-$Z$ materials. If a relativistic plasma emits a hard tail into the multi-MeV range, shielding design must include the resulting electron, positron, and annihilation-photon cascade.
+
+\section{Attenuation coefficients and buildup}
+
+For a narrow monoenergetic beam,
+\begin{equation}
+I(x)=I_0e^{-\mu x},
+\qquad
+\mathrm{HVL}=\frac{\ln2}{\mu},
+\qquad
+\mathrm{TVL}=\frac{\ln10}{\mu}.
+\label{eq:attenuation}
+\end{equation}
+The mass attenuation coefficient $\mu/\rho$ permits material-density scaling. NIST tabulations provide photon mass attenuation and mass energy-absorption coefficients over broad energy and elemental ranges \cite{hubbell2004}.
+
+Broad-beam geometry requires a buildup factor $B(E,x)$,
+\begin{equation}
+I_{\mathrm{broad}}(x)=B(E,x)I_0e^{-\mu x},
+\label{eq:buildup}
+\end{equation}
+because scattered photons can reach the receptor. Buildup depends on energy, material, geometry, and detector response. For complex fusion or plasma hardware, Monte Carlo transport is preferable to a single buildup factor.
+
+\section{Absorbed dose}
+
+Absorbed dose is
+\begin{equation}
+D=\frac{\dd\bar\epsilon}{\dd m},
+\qquad [D]=\mathrm{J\,kg^{-1}}=\mathrm{Gy}.
+\label{eq:dose-def}
+\end{equation}
+Under charged-particle equilibrium, dose from a photon spectrum can be approximated by
+\begin{equation}
+D_T
+=\int_0^\infty
+\Psi_E(E_\gamma)
+\left(\frac{\mu_{\mathrm{en}}}{\rho}\right)_T(E_\gamma)
+\,\dd E_\gamma,
+\label{eq:dose-spectrum}
+\end{equation}
+where $T$ denotes the target material. Equation~\eqref{eq:dose-spectrum} is the central spectral bridge. A source-power ratio and a dose ratio are equal only if the spectral suppression is constant or the weighting function is effectively constant.
+
+The kinetic energy released per unit mass (KERMA) is
+\begin{equation}
+K=\frac{\dd E_{\mathrm{tr}}}{\dd m},
+\end{equation}
+where $E_{\mathrm{tr}}$ is the initial kinetic energy transferred to charged particles. Collision KERMA excludes radiative losses by secondary charged particles. In regions of charged-particle equilibrium, collision KERMA and absorbed dose are approximately equal; near interfaces, small fields, or very high energies, transport of secondary electrons breaks the equality \cite{attix1986,icru85,icru90}.
+
+\section{Equivalent and effective dose}
+
+For radiation protection,
+\begin{equation}
+H_T=\sum_R w_R D_{T,R},
+\qquad
+E=\sum_Tw_TH_T,
+\label{eq:effective-dose}
+\end{equation}
+where $w_R$ is the radiation weighting factor and $w_T$ the tissue weighting factor. Photons and electrons are assigned $w_R=1$ in the ICRP protection system, while neutrons and alpha particles receive higher or energy-dependent factors \cite{icrp103}. Effective dose is a protection quantity for populations and planning; it is not a patient-specific biological dose and should not be used to predict an individual's tissue reaction.
+
+\section{Dose rate and temporal structure}
+
+A plasma source may be steady, modulated, burst-like, or composed of sub-nanosecond emission within a longer pulse. Average dose rate is
+\begin{equation}
+\overline{\dot D}=\frac{D}{\Delta t},
+\end{equation}
+but radiobiological response can depend on instantaneous rate, pulse spacing, and repair during delivery. The generalized dose history is $\dot D(t)$, with total dose
+\begin{equation}
+D=\int\dot D(t)\,\dd t.
+\end{equation}
+For conventional low linear energy transfer (low-LET) exposure, lowering dose rate usually permits repair of sublethal damage and reduces effect. At ultra-high dose rate, FLASH studies report normal-tissue sparing under specific beam and biological conditions, possibly involving oxygen and radical chemistry \cite{favaudon2014,montay2019,abolfath2020}. Plasma-generated pulse structure should therefore be measured rather than represented only by an average.
+
+\section{Directional and pulsed source metrics}
+
+A source suitable for biological interpretation should be reported using at least:
+\begin{enumerate}
+\item differential photon spectrum and uncertainty;
+\item angular distribution or anisotropy;
+\item source dimensions and time history;
+\item total emitted photon energy per pulse or per second;
+\item dose or kerma at a reference position in a defined phantom;
+\item pulse dose, mean dose rate, and where possible instantaneous dose rate;
+\item field size, uniformity, and depth-dose distribution; and
+\item contributions from electrons, neutrons, ions, and activation products.
+\end{enumerate}
+This set prevents the ambiguous statement that two plasma configurations have the ``same radiation output'' when only one detector channel has been matched.
+
+\section{Shielding as a spectral operator}
+
+Let the source vector be discretized into energy bins $\mathbf{s}$. Transport through a structure is a linear operator for fixed material and geometry,
+\begin{equation}
+\boldsymbol{\phi}=\mathbf{T}\mathbf{s},
+\label{eq:transport-matrix}
+\end{equation}
+where $\mathbf{T}$ includes attenuation, scattering, and secondary production. Dose is
+\begin{equation}
+D=\mathbf{w}_D^{\mathsf T}\boldsymbol{\phi}
+=\mathbf{w}_D^{\mathsf T}\mathbf{T}\mathbf{s}.
+\label{eq:dose-matrix}
+\end{equation}
+Magnetic suppression changes $\mathbf{s}$; shielding changes $\mathbf{T}$. Because they act in sequence, benefits are multiplicative in the linear regime. A design can optimize both, but the optimum shield for the baseline spectrum may not remain optimum after source shaping.
+
+\section{Secondary radiation from electron interception}
+
+A particularly important coupled problem arises when magnetic control deliberately ejects high-energy electrons. Their impact on a collector produces thick-target bremsstrahlung. The radiative yield rises with electron energy and target atomic number. A low-$Z$ collector reduces photon conversion but may require greater thickness and thermal capacity. A graded shield can place low-$Z$ material first to slow electrons, followed by higher-$Z$ material to attenuate residual photons, and a final lower-$Z$ layer to absorb characteristic X rays.
+
+The total external source is then
+\begin{equation}
+\mathbf{s}_{\mathrm{ext}}
+=\mathbf{s}_{\mathrm{plasma}}(f)
++\mathbf{s}_{\mathrm{collector}}(f_{\mathrm{loss}},Z,\mathrm{geometry})
++\mathbf{s}_{\mathrm{activation}}
++\mathbf{s}_{n}.
+\label{eq:total-source}
+\end{equation}
+A claim of suppression is valid only if the relevant norm of $\mathbf{s}_{\mathrm{ext}}$ decreases.
+
+\section{Monte Carlo transport methodology}
+
+For a definitive calculation, the source spectrum and angular distribution should be implemented in a general-purpose Monte Carlo code. The model should include:
+\begin{itemize}
+\item plasma volume or effective source surface;
+\item vacuum vessel, ports, coils, diagnostics, collectors, and penetrations;
+\item material composition and density;
+\item photon, electron, positron, and neutron physics as applicable;
+\item variance reduction for shielded receptors;
+\item mesh tallies for energy deposition and dose;
+\item pulse normalization and operational duty cycle; and
+\item benchmark cases with analytic attenuation and calibrated dosimeters.
+\end{itemize}
+Cross-code comparison is advisable for high-consequence decisions. Physics-list and low-energy transport cutoffs must be documented because they can affect local energy deposition.
+
+\section{Physical dosimetry and calibration}
+
+Ionization chambers provide traceable dose measurements for many X-ray fields, with protocols depending on beam quality and energy \cite{iaea398,ma2001}. Radiochromic film offers high spatial resolution but requires scanner control, energy-response characterization, and calibration. Thermoluminescent and optically stimulated luminescent dosimeters provide integrated dose. Semiconductor detectors offer temporal and spectral information but may saturate in intense pulses. Calorimetry is closest to the definition of absorbed dose but is experimentally demanding.
+
+For nonstandard plasma-generated spectra, the dosimetry strategy should combine at least one traceable absorbed-dose measurement, one spectrally sensitive measurement, and one spatially resolved measurement. Detector perturbation and pulse-dose-rate dependence must be tested.
+
+\section{Uncertainty propagation}
+
+Let model inputs be $\mathbf{x}$ with covariance $\mathbf{C}_x$ and output dose $D(\mathbf{x})$. First-order propagation gives
+\begin{equation}
+\sigma_D^2\approx
+\nabla D^{\mathsf T}\mathbf{C}_x\nabla D.
+\label{eq:uncertainty}
+\end{equation}
+For nonlinear transport or poorly constrained spectra, Monte Carlo sampling is preferable. Major uncertainty sources include spectral unfolding, absolute source normalization, anisotropy, material composition, detector calibration, pulse timing, geometry, cross-section libraries, and biological-model parameters.
+
+\section{Source-reduction and dose-reduction factors}
+
+Define
+\begin{align}
+R_P&=\frac{P_{\gamma,c}}{P_{\gamma,0}},\\
+R_D(\mathbf{r},T)&=\frac{D_c(\mathbf{r},T)}{D_0(\mathbf{r},T)},\\
+R_H&=\frac{H_c}{H_0}.
+\end{align}
+For a photon-only field $R_H=R_D$ under the protection weighting convention, but a mixed field may not follow. The spectral distinction is captured by
+\begin{equation}
+R_D=
+\frac{\int W_D(E)R_S(E)\Psi_{E,0}(E)\,\dd E}
+{\int W_D(E)\Psi_{E,0}(E)\,\dd E},
+\label{eq:rd}
+\end{equation}
+where $W_D=(\mu_{\mathrm{en}}/\rho)_T$ after transport factors are included. Equation~\eqref{eq:rd} is a weighted average of spectral suppression, not simply $R_P$.
+
+\section{Summary}
+
+Radiation transport converts a plasma-emission spectrum into a spatial, temporal, and material-specific dose field. The biological significance of magnetic suppression cannot be determined from integrated source power alone. Spectral fluence, transport, secondary production, and dose-rate structure must be retained. The next chapter develops the biological endpoints that receive this physical dose.

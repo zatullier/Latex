@@ -1,0 +1,225 @@
+\chapter{A Multiscale Plasma-to-Biology Framework}
+\label{ch:framework}
+
+\section{Overview}
+
+The coupled problem spans at least twelve orders of magnitude in time and more than nine orders of magnitude in length. Electron acceleration and photon emission occur on sub-nanosecond scales; radiation transport crosses centimeters to meters; DNA damage evolves over seconds to hours; and late tissue or cancer outcomes may appear after years. A single simulation cannot resolve every scale directly. The practical strategy is modular coupling with conserved quantities, standardized interfaces, and uncertainty passed between modules.
+
+The framework is divided into five layers:
+\begin{enumerate}
+\item kinetic plasma state and magnetic control;
+\item photon source generation;
+\item radiation transport and physical dosimetry;
+\item molecular and cellular response; and
+\item system-level risk and design optimization.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+node distance=8mm and 9mm,
+block/.style={draw,rounded corners,align=center,minimum width=3.1cm,minimum height=1.05cm},
+arrow/.style={-{Latex[length=2.5mm]},thick}
+]
+\node[block] (mag) {Magnetic geometry\\and perturbations};
+\node[block,right=of mag] (kin) {Relativistic kinetic\\distribution $f_e$};
+\node[block,right=of kin] (src) {Spectral-angular\\source $j_\gamma$};
+\node[block,below=of src] (trans) {Photon/electron\\transport};
+\node[block,left=of trans] (dose) {Absorbed dose and\\microdosimetry};
+\node[block,left=of dose] (bio) {DNA damage, survival,\\tissue response};
+\draw[arrow] (mag)--(kin);
+\draw[arrow] (kin)--(src);
+\draw[arrow] (src)--(trans);
+\draw[arrow] (trans)--(dose);
+\draw[arrow] (dose)--(bio);
+\draw[arrow,bend left=75] (bio) to node[left,align=center,font=\small]{design objective\\and constraints} (mag);
+\end{tikzpicture}
+\caption{Modular source-to-biology framework. Each arrow is a data interface with associated uncertainty and validation tests.}
+\label{fig:framework}
+\end{figure}
+
+\section{Layer 1: kinetic plasma state}
+
+The input set is
+\begin{equation}
+\mathbf{x}_1=
+\{B_0,\delta B_{mn},\omega_{mn},n_s,T_s,Z_s,Q,\phi,\mathrm{geometry},\mathrm{boundary}\}.
+\end{equation}
+A relativistic Fokker--Planck or particle-in-cell/orbit-following model produces
+\begin{equation}
+\mathbf{y}_1=
+\{f_e(\mathbf{x},p,\xi,t),f_i,\mathbf{j},P_{\mathrm{wall}},P_{\mathrm{field}},\mathrm{loss\ distributions}\}.
+\end{equation}
+The principal verification conditions are particle conservation, energy conservation, convergence with momentum and spatial resolution, and recovery of known limits. A reduced model may use an imposed $\nu_L(E,\xi)$, but that loss operator should ultimately be calibrated against orbit calculations in the perturbed field.
+
+\section{Layer 2: photon source generation}
+
+The spectral source is a functional of the distributions:
+\begin{equation}
+ j_\gamma(E_\gamma,\Omega,\mathbf{x},t)
+ =\mathcal{S}_{ei}[f_e,f_i]
+ +\mathcal{S}_{ee}[f_e]
+ +\mathcal{S}_{\mathrm{syn}}[f_e,B]
+ +\mathcal{S}_{\mathrm{other}}.
+\label{eq:source-functional}
+\end{equation}
+The module outputs both the plasma-volume source and sources generated when escaping particles strike collectors. A useful bookkeeping identity is
+\begin{equation}
+P_{\mathrm{input}}
+=P_{\mathrm{fusion}}+P_{\mathrm{aux}}
+=P_{\mathrm{stored}}^{\dot{}}
++P_{\gamma}
++P_{\mathrm{particle}}
++P_{\mathrm{conductive}}
++P_{\mathrm{other}}.
+\label{eq:energy-balance}
+\end{equation}
+A source suppression result is credible only if this balance closes within quantified numerical and experimental uncertainty.
+
+\section{Layer 3: transport and dosimetry}
+
+The transport layer maps the source to a phase-space fluence:
+\begin{equation}
+\Phi=\mathcal{T}(\mathrm{geometry},\mathrm{materials})j_\gamma.
+\end{equation}
+Dose in a voxel or biological target is
+\begin{equation}
+D_v=\mathcal{D}_v[\Phi],
+\end{equation}
+where $\mathcal{D}_v$ may be a Monte Carlo energy-deposition tally or a coefficient-weighted integral under charged-particle equilibrium. The interface should preserve energy bins, time bins when pulse effects matter, and particle identity in a mixed field.
+
+\section{Layer 4: biological response}
+
+A minimal deterministic cell-response model uses
+\begin{align}
+\frac{\dd N_{\mathrm{DSB}}}{\dd t}
+&=Y_{\mathrm{DSB}}\dot D(t)-k_rN_{\mathrm{DSB}}-k_mN_{\mathrm{DSB}},\\
+\frac{\dd N_{\mathrm{mis}}}{\dd t}
+&=k_mN_{\mathrm{DSB}}-k_cN_{\mathrm{mis}},
+\end{align}
+where $Y_{\mathrm{DSB}}$ is an assay- and radiation-specific yield, $k_r$ repair, $k_m$ misrepair, and $k_c$ clearance or conversion. This model is not intended as a complete DNA-repair network; it provides an interpretable bridge to measured foci kinetics.
+
+Clonogenic response can be computed with the linear-quadratic model or a mechanistic kinetic model. For an arbitrary dose history, a damage-pair formulation may write
+\begin{equation}
+-\ln S
+=\alpha D+\beta\int\!\dd t\int\!\dd t'\,
+\dot D(t)\dot D(t')e^{-\mu_r|t-t'|}.
+\label{eq:history-survival}
+\end{equation}
+The model reduces to the usual form under acute delivery and appropriate normalization.
+
+\section{Layer 5: system consequence and optimization}
+
+The final outputs differ by application. For a worker, relevant quantities include ambient or personal dose equivalent and annual effective dose. For a biological experiment, they include dose uniformity, $\gamma$H2AX foci, and surviving fraction. For a reactor designer, they include radiative power loss, shield mass, maintenance dose, component activation, and access time. The multi-objective vector is
+\begin{equation}
+\mathbf{Y}=
+\left(P_{\mathrm{rad}},P_{\mathrm{wall}},Q_{\mathrm{fusion}},M_{\mathrm{shield}},D_{\mathrm{worker}},D_{\mathrm{sample}},R_{\mathrm{risk}},C_{\mathrm{system}}\right).
+\end{equation}
+The optimum is generally a Pareto set rather than a unique point.
+
+\section{A source-to-dose response kernel}
+
+For a fixed receptor $r$, define the kernel
+\begin{equation}
+K_r(E_\gamma,\Omega,\mathbf{x},t)
+=\frac{\delta D_r}{\delta j_\gamma(E_\gamma,\Omega,\mathbf{x},t)}.
+\label{eq:dose-kernel}
+\end{equation}
+Then
+\begin{equation}
+D_r=\int K_rj_\gamma\,\dd E_\gamma\dd\Omega\dd^3x\dd t.
+\end{equation}
+The kernel can be estimated by adjoint Monte Carlo or by forward basis-source simulations. It is valuable for plasma optimization because it identifies which source energies, locations, and directions contribute most to a specific dose. Instead of minimizing all radiation equally, the control algorithm can target the most consequential phase-space region.
+
+A biological kernel can be added:
+\begin{equation}
+K_{B,r}=W_{\mathrm{bio}}(D,\dot D,\mathrm{LET},\mathrm{oxygen},\mathrm{endpoint})K_r.
+\end{equation}
+For low-dose protection, $W_{\mathrm{bio}}$ may be a conventional risk coefficient; for in vitro work, it can be a fitted survival or lesion-response model.
+
+\section{Dimensionless groups}
+
+Several dimensionless quantities organize the problem.
+
+\subsection{Relativity parameter}
+\begin{equation}
+\theta=\frac{k_BT_e}{m_ec^2}.
+\end{equation}
+Relativistic effects become progressively important as $\theta$ approaches unity.
+
+\subsection{Perturbation amplitude}
+\begin{equation}
+\epsilon_B=\frac{\delta B}{B_0}.
+\end{equation}
+The relevant threshold depends on resonance and topology; small $\epsilon_B$ can be important near rational surfaces.
+
+\subsection{Loss-to-collision ratio}
+\begin{equation}
+\Lambda(E)=\frac{\tau_{\mathrm{coll}}(E)}{\tau_{\mathrm{loss}}(E)}.
+\end{equation}
+A cutoff develops near $\Lambda\sim1$, with depletion for $\Lambda\gg1$.
+
+\subsection{Radiation-to-fusion ratio}
+\begin{equation}
+\Pi_{\mathrm{rad}}=\frac{P_{\mathrm{rad}}}{P_{\mathrm{fusion}}}.
+\end{equation}
+Net power requires this and all other loss ratios to remain below the available margin.
+
+\subsection{Optical-depth parameter}
+\begin{equation}
+\tau_\gamma(E)=\int\mu(E,s)\dd s.
+\end{equation}
+This distinguishes escaping radiation from trapped or reprocessed radiation.
+
+\subsection{Pulse-repair parameter}
+\begin{equation}
+\Pi_r=\mu_r\Delta t_{\mathrm{pulse}}.
+\end{equation}
+When $\Pi_r\ll1$, little repair occurs within a pulse; spacing between pulses must be considered separately.
+
+\section{Verification, validation, and calibration hierarchy}
+
+The framework follows a staged hierarchy:
+\begin{enumerate}
+\item verify each numerical module against analytic limits;
+\item validate the unperturbed plasma source against measured spectra;
+\item validate the perturbation-induced distribution change with independent electron diagnostics;
+\item validate photon transport with benchmark slabs and calibrated detectors;
+\item validate absorbed dose in a tissue-equivalent phantom;
+\item validate biological response against a conventional reference beam; and
+\item test the complete perturbed-source prediction without refitting downstream parameters.
+\end{enumerate}
+The final step is critical. If biological parameters are refit separately for every plasma configuration, the framework cannot demonstrate predictive coupling.
+
+\section{Bayesian calibration}
+
+Let $\boldsymbol{\theta}_m$ denote uncertain model parameters and $\mathbf{y}$ measured data. Bayesian calibration gives
+\begin{equation}
+p(\boldsymbol{\theta}_m|\mathbf{y})
+\propto p(\mathbf{y}|\boldsymbol{\theta}_m)p(\boldsymbol{\theta}_m).
+\end{equation}
+The likelihood should include measurement uncertainty and model discrepancy. Posterior samples can be propagated through all layers to obtain credible intervals on dose or survival. Parameters that remain weakly identified suggest specific new diagnostics.
+
+\section{Global sensitivity analysis}
+
+For output $Y$, variance-based Sobol indices decompose uncertainty into main and interaction effects. In an initial screening, Morris elementary effects or standardized regression coefficients may suffice. Likely influential variables include cutoff energy, redistributed-energy location, perturbation amplitude, impurity concentration, source anisotropy, shield thickness, receptor geometry, and dose-response coefficients.
+
+Sensitivity analysis has two roles. Scientifically, it reveals which physical mechanism controls biological consequence. Experimentally, it prevents overinvestment in precise measurements of parameters that contribute little to output uncertainty.
+
+\section{Model credibility and prohibited shortcuts}
+
+Several shortcuts would undermine the thesis:
+\begin{enumerate}
+\item equating a reduction in one detector signal with total source suppression;
+\item using an integrated bremsstrahlung fit when spectral dose is the endpoint;
+\item ignoring electron-impact bremsstrahlung at the collector;
+\item assuming photon RBE unity proves identical cellular response at equal dose;
+\item applying effective dose to predict an individual experimental endpoint;
+\item reporting synthetic biological data as observations; or
+\item tuning every model layer simultaneously without independent benchmarks.
+\end{enumerate}
+The framework is deliberately modular so these shortcuts can be detected.
+
+\section{Summary}
+
+The multiscale framework turns the thesis question into a sequence of calibrated operators. It also changes experimental design: measurements are selected to validate interfaces, not merely to accumulate unrelated plasma and biology datasets. The next chapter specifies the computational and experimental methodology in operational detail.

@@ -1,0 +1,103 @@
+\chapter{Introduction and Research Rationale}
+\label{ch:introduction}
+
+\section{The coupled plasma and biological problem}
+
+High-temperature plasmas are simultaneously energy-conversion media and radiation sources. The same electrons that sustain ionization, carry current, exchange energy with ions, and participate in collective dynamics also emit photons when accelerated by Coulomb fields or magnetic curvature. At low electron temperature, thermal electron--ion bremsstrahlung is often treated as a correction to collisional power balance. At relativistic temperature, the correction can become a governing term: electron--electron emission becomes non-negligible, synchrotron power rises rapidly with energy and magnetic field, and a small superthermal population can dominate a broad part of the photon spectrum \cite{bekefi1966,rybicki1979,blumenthal1970,haug1975,nozawa1998}.
+
+For advanced fusion fuels, especially \pB, this radiative coupling is unusually severe. The reaction releases three energetic alpha particles and avoids the primary \SI{14.1}{\MeV} neutron channel of deuterium--tritium fusion, but the plasma conditions required for useful reactivity are much more demanding. Electrons heated to tens or hundreds of kiloelectronvolts can radiate enough bremsstrahlung to erase the fusion power margin predicted by simple thermal models \cite{rider1995,nevins2000,sikora2016,wurzel2022}. Alpha channeling, non-Maxwellian ion populations, revised nuclear data, and improved confinement concepts have renewed interest in \pB, yet all of these approaches remain constrained by electron energy flow and radiation loss \cite{fisch1992,hay2015,ochs2022,ochs2025constraints}.
+
+The biological problem begins at the plasma boundary. Escaping X rays and gamma rays interact with vessel walls, diagnostics, shielding, air, and tissue by photoelectric absorption, Compton scattering, and pair production. The energy transferred to charged secondary particles becomes absorbed dose; its spatial clustering controls molecular damage and contributes to cell killing, tissue reactions, and stochastic cancer risk \cite{attix1986,turner2007,baatout2023,hall2018,goodhead1994}. A plasma-physics optimization that reports only the reduction in total radiated power is therefore incomplete whenever personnel, biological samples, patients, or nearby electronics are part of the system. The spectrum, directionality, pulse structure, and geometry determine whether a reduction in watts becomes a comparable reduction in gray or sievert.
+
+This thesis links these domains through a source-to-consequence chain:
+\begin{equation}
+\boxed{
+ f_e(\mathbf{x},\mathbf{p},t)
+ \rightarrow j_\gamma(\Egamma,\Omega,\mathbf{x},t)
+ \rightarrow \Phi_\gamma(\Egamma,\mathbf{r},t)
+ \rightarrow D(\mathbf{r})
+ \rightarrow \mathcal{B}[D,\Egamma,\dot D,\mathrm{LET},\mathrm{biology}]
+ }
+\label{eq:source-to-biology}
+\end{equation}
+where $f_e$ is the electron distribution, $j_\gamma$ is spectral-angular photon emissivity, $\Phi_\gamma$ is transported fluence, $D$ is absorbed dose, and $\mathcal{B}$ denotes a biological-response operator. The scientific bridge is not metaphorical. Each arrow corresponds to a measurable or computable transfer function.
+
+\section{Motivation for distribution-function control}
+
+A Maxwellian or Maxwell--J\"uttner distribution is often adopted because collisions drive a closed system toward thermal equilibrium. Real plasmas, however, are open and driven. Radiofrequency waves, shocks, laser fields, reconnection, sheath potentials, mirror losses, particle injection, and finite boundaries create anisotropy and nonthermal tails. The bremsstrahlung inverse problem exploits this fact: measured X-ray spectra can be used to infer features of the electron distribution \cite{voss1992,kontar2011,swanson2018}. The same sensitivity can be used prospectively. Rather than accepting a radiative loss predicted from a thermal distribution, one can seek a controlled distribution with lower radiative weighting at fixed density and acceptable fusion performance.
+
+The key observation is that relativistic bremsstrahlung is strongly energy weighted. Removing or redistributing a small number of high-energy electrons can reduce emission more than would be expected from the removed particle fraction. Munirov and Fisch explicitly demonstrated that redistributing superthermal electrons to lower energies suppresses relativistic bremsstrahlung, in contrast to some nonrelativistic intuitions \cite{munirov2023}. This result motivates a broader control question: can magnetic perturbations create, maintain, or sharpen the required effective cutoff?
+
+Magnetic perturbations can alter particle orbits without acting as a material absorber. An externally imposed helical perturbation may generate islands, stochastic field regions, resonant pitch-angle transport, or controlled connection to open field lines. In mirror systems, the loss cone and ambipolar potential already make confinement energy and pitch-angle dependent. In toroidal systems, resonant magnetic perturbations are routinely used to modify edge topology and transport \cite{rechester1978,fitzpatrick1993,evans2004,wesson2011}. Applied deliberately to a relativistic electron population, such perturbations may create an energy-selective loss operator. The lost electron energy must still go somewhere, so a complete design must track wall loading, escaping charged particles, induced electric fields, and compensating current. Nevertheless, source modification can complement conventional shielding by reducing photons before they are produced.
+
+\section{Why radiation biology changes the optimization target}
+
+Radiobiology supplies a mature language for quantifying consequence. Absorbed dose is defined as energy imparted per unit mass, but equal absorbed doses need not produce equal biological responses. Radiation quality, dose rate, oxygenation, cell-cycle state, repair capacity, tissue architecture, and endpoint all matter \cite{baatout2023,hall2018,joiner2018}. Photon radiation is generally assigned radiation weighting factor unity for protection purposes, yet kilovoltage and megavoltage spectra can differ in microscopic secondary-electron structure and measured relative biological effectiveness. The same nominal energy fluence can also yield very different local dose after attenuation.
+
+The correct plasma-control objective is consequently not only
+\begin{equation}
+\min P_{\mathrm{Br}}=\min\int_0^\infty \Egamma\,\dot N_\gamma(\Egamma)\,\dd \Egamma,
+\end{equation}
+but, for a specified receptor or tissue,
+\begin{equation}
+\min \mathcal{J}_{\mathrm{bio}}
+=
+\min\int_0^\infty
+W_{\mathrm{geom}}(\Egamma)
+W_{\mathrm{trans}}(\Egamma)
+W_{\mathrm{abs}}(\Egamma)
+W_{\mathrm{bio}}(\Egamma,\dot D,\mathcal{E})
+\dot N_\gamma(\Egamma)
+\,\dd \Egamma .
+\label{eq:bio-objective}
+\end{equation}
+Here $W_{\mathrm{geom}}$ accounts for source geometry and direction, $W_{\mathrm{trans}}$ for attenuation and buildup, $W_{\mathrm{abs}}$ for energy absorption in the target, $W_{\mathrm{bio}}$ for endpoint-specific effectiveness, and $\mathcal{E}$ denotes the biological environment. Equation~\eqref{eq:bio-objective} formalizes why source suppression, spectral shaping, shielding, distance, and biological sensitivity must be considered together.
+
+\section{Research gap}
+
+Plasma-radiation studies commonly stop at one of three boundaries. Kinetic plasma studies predict electron distributions and radiative loss but do not propagate the emitted spectrum to tissue. Health-physics analyses begin with a prescribed source term and therefore do not ask whether the source itself can be kinetically controlled. Radiobiology studies characterize responses to a calibrated beam but rarely connect the beam to a self-consistent plasma distribution. The literature contains the ingredients for the complete chain---relativistic bremsstrahlung cross sections, magnetic transport models, radiation-transport coefficients, dosimetry standards, and biological response models---but they are seldom assembled into a single optimization framework.
+
+A second gap concerns the meaning of ``aneutronic.'' The label is valuable because the primary \pB \ channel does not produce a neutron, but it can obscure secondary reactions, activation, hard photons, and charged-particle losses. A realistic safety case must be source specific. Bremsstrahlung suppression may substantially reduce photon dose while leaving activation or secondary-neutron constraints unchanged. Conversely, a design that increases alpha confinement or wall interception may change secondary source terms. The thesis therefore treats radiological benefit as a vector of source components rather than a single scalar claim.
+
+\section{Research questions}
+
+The work is organized around five questions:
+\begin{enumerate}[label=\textbf{RQ\arabic*:},leftmargin=2.2cm]
+\item How do number-conserving high-energy cutoffs and redistribution operators modify electron--ion and electron--electron bremsstrahlung in relativistic plasmas?
+\item Which magnetic perturbation mechanisms can produce an energy- and pitch-angle-selective transport term capable of sustaining those distributions?
+\item How does the modified photon spectrum propagate through realistic structures and convert to absorbed dose in tissue-equivalent material?
+\item Which radiobiological endpoints are most defensible for translating a plasma source reduction into biological consequence?
+\item What diagnostics, simulations, controls, and uncertainty analyses are required to validate the full plasma-to-biology chain?
+\end{enumerate}
+
+\section{Hypotheses}
+
+\begin{description}[leftmargin=1.6cm,style=nextline]
+\item[H1.] At fixed electron density, redistribution of superthermal electrons to lower energy reduces relativistic bremsstrahlung power because the decrease in the radiation-weighted high-energy moment exceeds the increase produced by the added low-energy population.
+\item[H2.] A magnetic perturbation that increases orbit stochasticity or open-field-line access preferentially for large rigidity or resonant pitch angle can generate an effective high-energy loss rate, producing a stationary cutoff when balanced by collisions and sources.
+\item[H3.] For a fixed geometry and shielding configuration, reduction of differential photon fluence reduces absorbed dose monotonically, but the dose-reduction factor is generally not identical to the total-power-reduction factor because attenuation and mass energy-absorption coefficients are energy dependent.
+\item[H4.] Low-LET photon endpoints such as $\gamma$H2AX foci, clonogenic survival, and chromosome aberrations provide a measurable validation hierarchy connecting physical dose to molecular and cellular response.
+\end{description}
+
+\section{Scope and boundaries}
+
+The thesis focuses on bremsstrahlung from relativistic electron populations and includes synchrotron radiation where it competes with or constrains the proposed control. Electron--ion and electron--electron channels are retained. Photon transport is treated from the source through passive materials into tissue-equivalent media. The primary biological discussion concerns low-LET photon exposure, although comparisons with charged particles and neutrons are included to clarify radiation quality.
+
+Several boundaries are explicit. First, the thesis does not report human-subject, animal, or new cell-culture data. Biological sections define models and experimental protocols rather than claiming unperformed results. Second, illustrative numerical results use normalized distributions and documented approximations; they are not substitutes for full relativistic cross-section integration or Monte Carlo transport. Third, magnetic perturbation designs are evaluated as physics concepts rather than final reactor hardware. Engineering implementation requires stability, heat-flux, materials, current-drive, and maintainability analyses beyond the present scope.
+
+\section{Thesis contributions}
+
+The principal contributions are:
+\begin{enumerate}
+\item a unified mathematical chain from electron distribution to biological response;
+\item a number-conserving cutoff-and-redistribution representation that makes energy transfer and particle balance explicit;
+\item an energy-dependent magnetic loss operator suitable for relativistic kinetic modeling;
+\item a spectrally resolved source-to-dose transfer formulation;
+\item a radiobiological validation ladder based on physical dosimetry, molecular damage, clonogenic survival, and risk quantities;
+\item an integrated uncertainty and verification plan; and
+\item a design interpretation for advanced fusion and plasma-based radiation sources.
+\end{enumerate}
+
+\section{Organization of the thesis}
+
+\Cref{ch:plasma-radiation} develops the relativistic radiation physics. \Cref{ch:magnetic-control} connects magnetic perturbations to distribution-function control. \Cref{ch:transport} carries the resulting spectrum through shielding and into matter. \Cref{ch:radiobiology} reviews the relevant molecular, cellular, tissue, and protection biology. \Cref{ch:framework} assembles the multiscale model, and \Cref{ch:methodology} defines a validation program. \Cref{ch:model-results} presents reproducible illustrative calculations, followed by applications in \Cref{ch:applications}, limitations and interpretation in \Cref{ch:discussion}, and conclusions in \Cref{ch:conclusions}.
