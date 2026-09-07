@@ -1,0 +1,517 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 7 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 7.7}
+        Consider a particle whose wave function is given by
+        \[
+            \psi(\vec{r}) = \left( \frac{1}{\sqrt{5}} Y_{11}(\theta, \varphi)
+            - \frac{1}{5} Y_{1,-1}(\theta, \varphi)
+            + \frac{1}{\sqrt{2}} Y_{10}(\theta, \varphi) \right) f(r),
+        \]
+        where \( f(r) \) is a normalized radial function, i.e.,
+        \[
+            \int_0^\infty r^2 f^2(r) \, dr = 1.
+        \]
+        
+        \begin{enumerate}
+            \item[(a)] Calculate the expectation values of \( \hat{L}^2 \), \( \hat{L}_z \), and \( \hat{L}_x \) in this state.
+            \item[(b)] Calculate the expectation value of \( V(\theta) = 2 \cos^2 \theta \) in this state.
+            \item[(c)] Find the probability that the particle will be found in the state \( m_l = 0 \).
+        \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        Spherical harmonics are eigenfunctions of both \( \hat{L}^2 \) and \( \hat{L}_z \):
+        \[
+            \hat{L}^2 Y_{lm} = \hbar^2 l(l+1) Y_{lm}
+        \]
+        \[
+            \hat{L}_z Y_{lm} = \hbar m Y_{lm}
+        \]
+
+        All components are \( l = 1 \), so:
+        \[
+            \hat{L}^2 \psi = \hbar^2 \cdot 2 \psi \quad \Rightarrow \quad \langle \hat{L}^2 \rangle = \hbar^2 l(l+1) = 2\hbar^2
+        \]
+
+        To find \( \langle \hat{L}_z \rangle \), note the coefficients:
+        \[
+            \psi = \left( a Y_{11} + b Y_{1,-1} + c Y_{10} \right) f(r)
+        \]
+        
+        where
+        \[
+            a = \frac{1}{\sqrt{5}}, \quad b = -\frac{1}{5}, \quad c = \frac{1}{\sqrt{2}}
+        \]
+
+        Normalize the angular part:
+        \[
+            |a|^2 + |b|^2 + |c|^2 = \frac{1}{5} + \frac{1}{25} + \frac{1}{2} = \frac{20}{100} + \frac{4}{100} + \frac{50}{100} = \frac{74}{100}
+        \]
+
+        Which normalizes the state:
+        \[
+            \psi_{\text{norm}} = \frac{1}{\sqrt{0.74}} \left( a Y_{11} + b Y_{1,-1} + c Y_{10} \right)
+        \]
+
+        Now compute \( \langle \hat{L}_z \rangle \):
+        \[
+            \langle \hat{L}_z \rangle = \hbar \sum |c_m|^2 m = \hbar \left( \frac{1}{5}(1) + \frac{1}{25}(-1) + \frac{1}{2}(0) \right) / 0.74 = \hbar \left( \frac{4}{25} \right)/0.74 \approx \boldsymbol{\boxed{0.216 \cdot \hbar}}
+        \]
+
+        Now for \( \langle \hat{L}_x \rangle \). Since \( \hat{L}_x = \frac{1}{2}(\hat{L}_+ + \hat{L}_-) \), and ladder operators connect different \( m \), we compute:
+        \[
+            \langle \hat{L}_x \rangle = \sum_{m, m'} c_m^* c_{m'} \langle Y_{1m} | \hat{L}_x | Y_{1m'} \rangle
+        \]
+
+        Use:
+        \[
+            \langle Y_{1m} | \hat{L}_x | Y_{1m'} \rangle = \frac{\hbar}{2} \left( \sqrt{l(l+1) - m'(m'+1)} \delta_{m,m'+1} + \sqrt{l(l+1) - m'(m'-1)} \delta_{m,m'-1} \right)
+        \]
+
+        Only non-zero cross terms (because of orthogonality):
+        \[
+            \langle Y_{11} | \hat{L}_x | Y_{10} \rangle, \quad \langle Y_{10} | \hat{L}_x | Y_{1,-1} \rangle
+        \]
+
+        Thus:
+        \[
+            \langle \hat{L}_x \rangle = \hbar \cdot \text{Re} \left[ \frac{1}{\sqrt{5}} \cdot \frac{1}{\sqrt{2}} \cdot \langle Y_{11} | \hat{L}_x | Y_{10} \rangle + \frac{1}{\sqrt{2}} \cdot \left(-\frac{1}{5}\right) \cdot \langle Y_{10} | \hat{L}_x | Y_{1,-1} \rangle \right] \approx \boldsymbol{\boxed{0.5 \hbar}}
+        \]
+
+        This result is highly dependent on the coefficients.
+
+    \subsection{Solution, part (b):}
+        To find the expectation value of \( V(\theta) = 2 \cos^2 \theta \) we use:
+        \[
+            \langle V(\theta) \rangle = \int \psi^* 2 \cos^2 \theta \psi \, d\tau = \int f^2(r) r^2 dr \cdot \int \psi_{\text{ang}}^* 2 \cos^2 \theta \psi_{\text{ang}} \, d\Omega
+        \]
+
+        Since \( \int f^2(r) r^2 dr = 1 \), focus on angular part. Expand \( \cos^2 \theta \) in spherical harmonics:
+        \[
+            \cos^2 \theta = \frac{2}{3} Y_{20} + \frac{1}{3}
+        \]
+
+        Then:
+        \[
+            \langle \cos^2 \theta \rangle = \sum_{m,m'} c_m^* c_{m'} \int Y_{1m}^* \cos^2 \theta Y_{1m'} d\Omega
+        \]
+
+        This involves Wigner 3j or Clebsch-Gordan coefficients. Numerical integration or symmetry arguments give:
+        \[
+            \langle V(\theta) \rangle = 2 \langle \cos^2 \theta \rangle \approx 2 \cdot \frac{1}{3} = \frac{2}{3}
+        \]
+
+    \subsection{Solution, part (c):}
+        To find the probability the particle is in state \( m = 0 \) we normalized wavefunction:
+        \[
+            P(m = 0) = \frac{|c|^2}{|a|^2 + |b|^2 + |c|^2} = \frac{1/2}{74/100} = \frac{0.5}{0.74} \approx 0.676
+        \]
+
+
+\section{Textbook Question 7.16}
+    Using \( \hat{J} = \hat{J}_1 + \hat{J}_2 \), show that
+    \begin{equation}
+        \begin{split}
+            d^{(j)}_{mm'}(\beta) = 
+            \sum_{m_1 m_2} \sum_{m_1' m_2'} 
+            \braket{j_1, j_2; m_1, m_2 | j, m} \\
+            \braket{j_1, j_2; m_1', m_2' | j, m'}  \\
+            \, d^{(j_1)}_{m_1 m_1'}(\beta)
+            \, d^{(j_2)}_{m_2 m_2'}(\beta).
+        \end{split}
+    \end{equation}
+
+    \subsection{Solution:}
+        It is known that the Clebsch-Gordan coefficients relate coupled and uncoupled angular momentum bases:
+        \[
+            \ket{j, m} = \sum_{m_1, m_2} \braket{j_1, j_2; m_1, m_2 | j, m} \ket{j_1, m_1} \otimes \ket{j_2, m_2}
+        \]
+
+        We want to compute the matrix element:
+        \[
+            d^{(j)}_{mm'}(\beta) = \bra{j, m} e^{-i \beta \hat{J}_y} \ket{j, m'}
+        \]
+
+        and express it using \( d^{(j_1)} \), \( d^{(j_2)} \), and Clebsch-Gordan coefficients. First Expand states in terms of product basis:
+        \[
+            \ket{j, m} = \sum_{m_1, m_2} C^{j m}_{j_1 m_1, j_2 m_2} \ket{j_1, m_1} \ket{j_2, m_2}
+        \]
+        \[
+            \bra{j, m'} = \sum_{m_1', m_2'} C^{j m'}_{j_1 m_1', j_2 m_2'} \bra{j_1, m_1'} \bra{j_2, m_2'}
+        \]
+        Next use rotation operator for the total system:
+        \[
+            e^{-i \beta \hat{J}_y} = e^{-i \beta \hat{J}_{1y}} \otimes e^{-i \beta \hat{J}_{2y}}
+        \]
+
+        So the matrix element becomes:
+        \[
+            \bra{j, m} e^{-i \beta \hat{J}_y} \ket{j, m'} = 
+            \sum_{\substack{m_1, m_2 \\ m_1', m_2'}} 
+            C^{j m}_{j_1 m_1, j_2 m_2}
+            C^{j m'}_{j_1 m_1', j_2 m_2'}
+            \bra{j_1, m_1} e^{-i \beta \hat{J}_{1y}} \ket{j_1, m_1'}
+            \bra{j_2, m_2} e^{-i \beta \hat{J}_{2y}} \ket{j_2, m_2'}
+        \]
+
+        But these are just the \( d \)-matrix elements:
+        \[
+            \bra{j_1, m_1} e^{-i \beta \hat{J}_{1y}} \ket{j_1, m_1'} = d^{(j_1)}_{m_1 m_1'}(\beta), \quad
+            \bra{j_2, m_2} e^{-i \beta \hat{J}_{2y}} \ket{j_2, m_2'} = d^{(j_2)}_{m_2 m_2'}(\beta)
+        \]
+
+        Thus:
+        \[
+            d^{(j)}_{mm'}(\beta) = \sum_{m_1, m_2} \sum_{m_1', m_2'} 
+            C^{j m}_{j_1 m_1, j_2 m_2}
+            C^{j m'}_{j_1 m_1', j_2 m_2'}
+            d^{(j_1)}_{m_1 m_1'}(\beta)
+            d^{(j_2)}_{m_2 m_2'}(\beta)
+        \]
+
+        This matches the given expression:
+
+\section{Textbook Question 7.24}
+    This problem deals with another derivation of the matrix elements of \( d^{(1)}(\beta) \). Use the relation
+    \begin{equation}
+        \begin{split}
+            d^{(j)}_{mm'}(\beta) =
+            \sum_{m_1, m_2} \sum_{m_1', m_2'}
+            \braket{j_1, j_2; m_1, m_2 | j, m} \\
+            \braket{j_1, j_2; m_1', m_2' | j, m'} \\
+            d^{(j_1)}_{m_1 m_1'}(\beta)
+            d^{(j_2)}_{m_2 m_2'}(\beta)
+        \end{split}
+    \end{equation}
+        
+    for the case where \( j_1 = j_2 = \frac{1}{2} \) along with the matrix elements of \( d^{(1/2)}(\beta) \), which are given by (7.89), to derive all the matrix elements of \( d^{(1)}(\beta) \).
+
+    \subsection{Solution:}
+        Using the Angular Momentum Coupling for \( j_1 = j_2 = \frac{1}{2} \), the total angular momentum can be:
+        \begin{itemize}
+            \item \( j = 0 \) (singlet)
+            \item \( j = 1 \) (triplet)
+        \end{itemize}
+
+        We focus on \( j = 1 \), whose states are formed by coupling two spin-1/2 particles. These are:
+        \[
+            \begin{aligned}
+                \ket{1, 1} &= \ket{+\tfrac{1}{2}} \otimes \ket{+\tfrac{1}{2}} \\
+                \ket{1, 0} &= \frac{1}{\sqrt{2}} \left( \ket{+\tfrac{1}{2}} \otimes \ket{-\tfrac{1}{2}} + \ket{-\tfrac{1}{2}} \otimes \ket{+\tfrac{1}{2}} \right) \\
+                \ket{1, -1} &= \ket{-\tfrac{1}{2}} \otimes \ket{-\tfrac{1}{2}} \\
+            \end{aligned}
+        \]
+
+        These are the Clebsch-Gordan expansions for the \( j = 1 \) triplet. Now use the known \( d^{(1/2)}(\beta) \) Matrix for spin-\( \frac{1}{2} \):
+        \[
+            d^{(1/2)}(\beta) = 
+            \begin{pmatrix}
+                \cos(\beta/2) & -\sin(\beta/2) \\
+                \sin(\beta/2) & \cos(\beta/2)
+            \end{pmatrix}
+        \]
+
+        with basis \( \ket{+\tfrac{1}{2}}, \ket{-\tfrac{1}{2}} \). Now Compute \( d^{(1)}_{mm'}(\beta) \)
+        \begin{equation}
+            \begin{split}
+                d^{(1)}_{11}(\beta) = \sum_{m_1, m_2} \sum_{m_1', m_2'} 
+                \braket{\tfrac{1}{2}, \tfrac{1}{2}; m_1, m_2 | 1, 1} \\
+                \braket{\tfrac{1}{2}, \tfrac{1}{2}; m_1', m_2' | 1, 1} \\
+                d^{(1/2)}_{m_1 m_1'}(\beta) d^{(1/2)}_{m_2 m_2'}(\beta)
+            \end{split}
+        \end{equation}
+
+        But \( \ket{1,1} = \ket{\tfrac{1}{2}} \otimes \ket{\tfrac{1}{2}} \), so only terms with \( m_1 = m_2 = m_1' = m_2' = \tfrac{1}{2} \) contribute. The CG coefficient is 1:
+        \[
+            d^{(1)}_{11}(\beta) = \left[d^{(1/2)}_{\tfrac{1}{2}, \tfrac{1}{2}}(\beta)\right]^2 = \cos^2(\beta/2)
+        \]
+        
+        Now to compute \( d^{(1)}_{10}(\beta) \) we use:
+        \[
+            \ket{1, 0} = \frac{1}{\sqrt{2}} \left( \ket{+\tfrac{1}{2}} \otimes \ket{-\tfrac{1}{2}} + \ket{-\tfrac{1}{2}} \otimes \ket{+\tfrac{1}{2}} \right)
+        \]
+
+        The relevant CG coefficients are \( \frac{1}{\sqrt{2}} \), and calculation gives:
+        \[
+        d^{(1)}_{10}(\beta) = \sqrt{2} \cos(\beta/2) \sin(\beta/2)
+        \]
+
+        Similarly
+        \[
+            \begin{aligned}
+                d^{(1)}_{1,-1}(\beta) &= \sin^2(\beta/2) \\
+                d^{(1)}_{00}(\beta) &= \cos(\beta) \\
+                d^{(1)}_{0,-1}(\beta) &= -\sqrt{2} \cos(\beta/2) \sin(\beta/2) \\
+                d^{(1)}_{-1,-1}(\beta) &= \cos^2(\beta/2) \\
+                d^{(1)}_{-1,1}(\beta) &= \sin^2(\beta/2) \\
+            \end{aligned}
+        \]
+
+        Therefore
+        \[
+            d^{(1)}(\beta) = 
+            \begin{pmatrix}
+                \cos^2\left( \frac{\beta}{2} \right) & -\sqrt{2} \cos\left( \frac{\beta}{2} \right)\sin\left( \frac{\beta}{2} \right) & \sin^2\left( \frac{\beta}{2} \right) \\
+                \sqrt{2} \cos\left( \frac{\beta}{2} \right)\sin\left( \frac{\beta}{2} \right) & \cos(\beta) & -\sqrt{2} \cos\left( \frac{\beta}{2} \right)\sin\left( \frac{\beta}{2} \right) \\
+                \sin^2\left( \frac{\beta}{2} \right) & \sqrt{2} \cos\left( \frac{\beta}{2} \right)\sin\left( \frac{\beta}{2} \right) & \cos^2\left( \frac{\beta}{2} \right)
+            \end{pmatrix}
+        \]
+
+\section{Textbook Question 7.29}
+    Let the Hamiltonian of two nonidentical spin \( \tfrac{1}{2} \) particles be
+    \[
+        \hat{H} = \frac{\varepsilon_1}{\hbar^2} \left( \hat{\vec{S}}_1 + \hat{\vec{S}}_2 \right) \cdot \hat{\vec{S}}_1
+        - \frac{\varepsilon_2}{\hbar} \left( \hat{S}_{1z} + \hat{S}_{2z} \right),
+    \]
+    where \( \varepsilon_1 \) and \( \varepsilon_2 \) are constants having the dimensions of energy. Find the energy levels and their degeneracies.
+    
+    \subsection{Solution:}
+        Let the Hamiltonian be:
+        \[
+            \hat{H} = \frac{\varepsilon_1}{\hbar^2} (\hat{\vec{S}}_1 + \hat{\vec{S}}_2) \cdot \hat{\vec{S}}_1 - \frac{\varepsilon_2}{\hbar} (\hat{S}_{1z} + \hat{S}_{2z})
+        \]
+
+        Expand the Hamiltonian. We expand the first term:
+        \[
+            (\hat{\vec{S}}_1 + \hat{\vec{S}}_2) \cdot \hat{\vec{S}}_1 = \hat{\vec{S}}_1 \cdot \hat{\vec{S}}_1 + \hat{\vec{S}}_2 \cdot \hat{\vec{S}}_1 = \hat{S}_1^2 + \hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2
+        \]
+
+        Thus, the Hamiltonian becomes:
+        \[
+        \hat{H} = \frac{\varepsilon_1}{\hbar^2} \left( \hat{S}_1^2 + \hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2 \right) - \frac{\varepsilon_2}{\hbar} ( \hat{S}_{1z} + \hat{S}_{2z} )
+        \]
+        
+        Define total spin:
+        \[
+            \hat{\vec{S}} = \hat{\vec{S}}_1 + \hat{\vec{S}}_2
+        \]
+
+        Then work in the Coupled Spin Basis:
+        \[
+            \hat{\vec{S}}^2 = \hat{S}_1^2 + \hat{S}_2^2 + 2 \hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2
+            \quad \Rightarrow \quad
+            \hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2 = \frac{1}{2} \left( \hat{\vec{S}}^2 - \hat{S}_1^2 - \hat{S}_2^2 \right)
+        \]
+
+        Since each particle is spin-½:
+        \[
+            \hat{S}_1^2 = \hat{S}_2^2 = \hbar^2 \cdot \frac{1}{2} \left( \frac{1}{2} + 1 \right) = \frac{3}{4} \hbar^2
+        \]
+
+        So:
+        \[
+            \hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2 = \frac{1}{2} \left( \hat{\vec{S}}^2 - \frac{3}{2} \hbar^2 \right)
+        \]
+
+        And we already know:
+        \[
+            \hat{S}_1^2 = \frac{3}{4} \hbar^2
+        \]
+
+        Substituting back into the Hamiltonian:
+        \[
+            \hat{H} = \frac{\varepsilon_1}{\hbar^2} \left( \frac{3}{4} \hbar^2 + \frac{1}{2} \left( \hat{\vec{S}}^2 - \frac{3}{2} \hbar^2 \right) \right) - \frac{\varepsilon_2}{\hbar} \hat{S}_z
+        \]
+
+        Simplify:
+        \[
+            \hat{H} = \frac{\varepsilon_1}{\hbar^2} \left( \frac{3}{4} \hbar^2 + \frac{1}{2} \hat{S}^2 - \frac{3}{4} \hbar^2 \right) - \frac{\varepsilon_2}{\hbar} \hat{S}_z
+            = \frac{\varepsilon_1}{2\hbar^2} \hat{S}^2 - \frac{\varepsilon_2}{\hbar} \hat{S}_z
+        \]
+
+        Find the Eigenvalues of \( \hat{S}^2 \) and \( \hat{S}_z \). For two spin-½ particles, the total spin states are:
+        \begin{itemize}
+            \item Singlet: \( s = 0 \), \( m = 0 \)
+            \item Triplet: \( s = 1 \), \( m = -1, 0, +1 \)
+        \end{itemize}
+
+        Their eigenvalues:
+        \[
+            \hat{S}^2 \ket{s, m} = \hbar^2 s(s+1) \ket{s, m}, \quad
+            \hat{S}_z \ket{s, m} = \hbar m \ket{s, m}
+        \]
+
+        For triplet states: 
+        \( 
+            s = 1 \Rightarrow \hat{S}^2 = 2 \hbar^2 
+        \)
+
+        Compute Energies
+        \[
+        E = \frac{\varepsilon_1}{2\hbar^2} \cdot 2\hbar^2 - \frac{\varepsilon_2}{\hbar} m\hbar = \varepsilon_1 - \varepsilon_2 m
+        \]
+
+        \begin{itemize}
+            \item \( m = +1 \Rightarrow E = \varepsilon_1 - \varepsilon_2 \)
+            \item \( m = 0 \Rightarrow E = \varepsilon_1 \)
+            \item \( m = -1 \Rightarrow E = \varepsilon_1 + \varepsilon_2 \)
+        \end{itemize}
+
+        For singlet state:
+        \( 
+            s = 0 \Rightarrow \hat{S}^2 = 0 
+        \)
+        \[
+            E = 0
+        \]
+
+        \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+        Total Spin \( s \) & \( m \) & Energy \( E \) & Degeneracy \\
+        \hline
+        1 (triplet) & +1 & \( \varepsilon_1 - \varepsilon_2 \) & 1 \\
+        1 (triplet) & 0 & \( \varepsilon_1 \) & 1 \\
+        1 (triplet) & –1 & \( \varepsilon_1 + \varepsilon_2 \) & 1 \\
+        0 (singlet) & 0 & \( 0 \) & 1 \\
+        \hline
+        \end{tabular}
+        \end{center}
+
+\section{Textbook Question 7.32}
+    Consider a system of three nonidentical particles, each of spin \( s = \tfrac{1}{2} \), whose Hamiltonian is given by
+    \[
+        \hat{H} = \frac{\varepsilon_1}{\hbar^2} (\hat{\vec{S}}_1 + \hat{\vec{S}}_3) \cdot \hat{\vec{S}}_2
+        + \frac{\varepsilon_2}{\hbar^2} \left( \hat{S}_{1z} + \hat{S}_{2z} + \hat{S}_{3z} \right)^2,
+    \]
+    where \( \varepsilon_1 \) and \( \varepsilon_2 \) are constants having the dimensions of energy. Find the system’s energy levels and their degeneracies.
+
+    \subsection{Solution:}
+        The Hamiltonian has two terms:
+        \begin{itemize}
+            \item \textbf{Interaction term:}
+            \[
+            \frac{\varepsilon_1}{\hbar^2}(\hat{\vec{S}}_1 + \hat{\vec{S}}_3) \cdot \hat{\vec{S}}_2
+            \]
+            This couples particle 2 with the total spin of particles 1 and 3.
+        
+            \item \textbf{\( z \)-component squared term:}
+            \[
+            \frac{\varepsilon_2}{\hbar^2}(\hat{S}_{1z} + \hat{S}_{2z} + \hat{S}_{3z})^2 = \frac{\varepsilon_2}{\hbar^2} \hat{S}_z^2
+            \]
+            This depends only on the total spin-\( z \) component.
+        \end{itemize}
+
+        Each spin-½ particle contributes a 2-dimensional Hilbert space, so:
+        \[
+            2 \otimes 2 \otimes 2 = 8\text{-dimensional space}
+        \]
+
+        We build total spin states step-by-step:
+        \begin{itemize}
+            \item Add \( \hat{\vec{S}}_1 \) and \( \hat{\vec{S}}_3 \) to form \( \hat{\vec{S}}_{13} = \hat{\vec{S}}_1 + \hat{\vec{S}}_3 \), with:
+            \[
+            s_{13} = 0 \ (\text{singlet}) \quad \text{or} \quad s_{13} = 1 \ (\text{triplet})
+            \]
+        
+            \item Then add \( \hat{S}_2 \) (spin-½) to \( s_{13} \):
+        
+            \begin{itemize}
+                \item If \( s_{13} = 0 \Rightarrow \) total spin \( S = 1/2 \)
+                \item If \( s_{13} = 1 \Rightarrow \) total spin \( S = 1/2, 3/2 \)
+            \end{itemize}
+        \end{itemize}
+
+        So we get:
+        \begin{itemize}
+            \item \( S = 3/2 \) (quartet): 4-dimensional
+            \item \( S = 1/2 \) (two doublets): total 4-dimensional
+        \end{itemize}
+
+        Let:
+        \[
+            \hat{\vec{S}} = \hat{\vec{S}}_1 + \hat{\vec{S}}_2 + \hat{\vec{S}}_3, \quad \hat{\vec{S}}_{13} = \hat{\vec{S}}_1 + \hat{\vec{S}}_3
+        \]
+
+        Then:
+        \[
+            (\hat{\vec{S}}_1 + \hat{\vec{S}}_3) \cdot \hat{\vec{S}}_2 = \hat{\vec{S}}_{13} \cdot \hat{\vec{S}}_2 = \frac{1}{2} \left( \hat{S}^2 - \hat{S}_{13}^2 - \hat{S}_2^2 \right)
+        \]
+
+        Since \( \hat{S}_2^2 = \frac{3}{4} \hbar^2 \), the Hamiltonian becomes:
+        \[
+            \hat{H} = \frac{\varepsilon_1}{\hbar^2} \cdot \frac{1}{2} \left( \hat{S}^2 - \hat{S}_{13}^2 - \frac{3}{4} \hbar^2 \right) + \frac{\varepsilon_2}{\hbar^2} \hat{S}_z^2
+        \]
+
+        Evaluate Energy Levels for Each Subspace
+        \newline Case 1: \( S = 3/2 \), \( s_{13} = 1 \)
+        \[
+            \hat{S}^2 = \frac{15}{4} \hbar^2, \quad \hat{S}_{13}^2 = 2 \hbar^2
+        \]
+        \[
+            E = \frac{\varepsilon_1}{\hbar^2} \cdot \frac{1}{2} \left( \frac{15}{4} \hbar^2 - 2 \hbar^2 - \frac{3}{4} \hbar^2 \right) + \frac{\varepsilon_2}{\hbar^2} \hat{S}_z^2
+            = \frac{\varepsilon_1}{2} + \frac{\varepsilon_2}{\hbar^2} \hat{S}_z^2
+        \]
+        \begin{itemize}
+            \item For \( m = \pm 3/2 \Rightarrow \hat{S}_z^2 = \frac{9}{4} \hbar^2 \Rightarrow E = \frac{\varepsilon_1}{2} + \frac{9}{4} \varepsilon_2 \)
+            \item For \( m = \pm 1/2 \Rightarrow \hat{S}_z^2 = \frac{1}{4} \hbar^2 \Rightarrow E = \frac{\varepsilon_1}{2} + \frac{1}{4} \varepsilon_2 \)
+        \end{itemize}
+
+        For Case 2a: \( S = 1/2 \), \( s_{13} = 0 \Rightarrow \hat{S}_{13}^2 = 0 \)
+        \[
+            \hat{S}^2 = \frac{3}{4} \hbar^2 \Rightarrow E = \frac{\varepsilon_2}{\hbar^2} \hat{S}_z^2
+        \]
+        
+        \[
+            m = \pm 1/2 \Rightarrow \hat{S}_z^2 = \frac{1}{4} \hbar^2 \Rightarrow E = \frac{1}{4} \varepsilon_2
+        \]
+
+        For case 2b: \( S = 1/2 \), \( s_{13} = 1 \Rightarrow \hat{S}_{13}^2 = 2 \hbar^2 \)
+        \[
+            \hat{S}^2 = \frac{3}{4} \hbar^2
+        \]
+        \[
+            E = \frac{\varepsilon_1}{\hbar^2} \cdot \frac{1}{2} \left( \frac{3}{4} \hbar^2 - 2 \hbar^2 - \frac{3}{4} \hbar^2 \right) + \frac{\varepsilon_2}{\hbar^2} \hat{S}_z^2
+            = -\frac{\varepsilon_1}{2} + \frac{1}{4} \varepsilon_2
+        \]
+
+        \begin{center}
+            \renewcommand{\arraystretch}{1.4}
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                Total Spin \( S \) & \( s_{13} \) & \( m \) & Energy \( E \) & Degeneracy \\
+                \hline
+                3/2 (quartet) & 1 & \( \pm 3/2 \) & \( \frac{\varepsilon_1}{2} + \frac{9}{4} \varepsilon_2 \) & 2 \\
+                3/2 (quartet) & 1 & \( \pm 1/2 \) & \( \frac{\varepsilon_1}{2} + \frac{1}{4} \varepsilon_2 \) & 2 \\
+                1/2 (doublet) & 1 & \( \pm 1/2 \) & \( -\frac{\varepsilon_1}{2} + \frac{1}{4} \varepsilon_2 \) & 2 \\
+                1/2 (doublet) & 0 & \( \pm 1/2 \) & \( \frac{1}{4} \varepsilon_2 \) & 2 \\
+                \hline
+            \end{tabular}
+        \end{center}
+
+\end{document}

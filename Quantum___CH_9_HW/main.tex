@@ -1,0 +1,720 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 9 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 9.4}
+    Consider a system whose Hamiltonian is given by
+    \[
+        \hat{H} = E_0
+        \begin{pmatrix}
+            3 & 2\lambda & 0 & 0 \\
+            2\lambda & -3 & 0 & 0 \\
+            0 & 0 & -7 & \sqrt{2}\lambda \\
+            0 & 0 & \sqrt{2}\lambda & 7
+        \end{pmatrix},
+    \]
+    where \( \lambda \ll 1 \).\\
+    \begin{itemize}
+        \item [(a)] Calculate the \textit{exact} eigenvalues of \( \hat{H} \); expand each of these eigenvalues to the second power of \( \lambda \).
+        \item [(b)] Calculate the energy eigenvalues to second-order perturbation theory and compare them with the exact results obtained in (a).
+        \item [(c)] Calculate the eigenstates of \( \hat{H} \) up to the first-order correction.
+    \end{itemize}
+        
+    \subsection{Solution, part (a):}
+        Get exact eigenvalues expanded to second order in \( \lambda \). This is a block-diagonal matrix composed of two \( 2 \times 2 \) blocks. The Top-Left block is:
+        \[
+            \begin{pmatrix}
+                3 & 2\lambda \\
+                2\lambda & -3
+            \end{pmatrix}
+        \]
+
+        The characteristic equation:
+        \[
+            \det 
+            \begin{pmatrix}
+                3 - E & 2\lambda \\
+                2\lambda & -3 - E
+            \end{pmatrix} = (3 - E)(-3 - E) - 4\lambda^2 = E^2 - 9 - 4\lambda^2 = 0
+            \Rightarrow E = \pm \sqrt{9 + 4\lambda^2}
+        \]
+
+        Expand using binomial series:
+        \[
+            \sqrt{9 + 4\lambda^2} = 3\left(1 + \frac{4}{9} \lambda^2\right)^{1/2} \approx 3\left(1 + \frac{2}{9} \lambda^2\right)
+            = 3 + \frac{2}{3} \lambda^2
+        \]
+
+        The Bottom-Right block is:
+        \[
+            \begin{pmatrix}
+                -7 & \sqrt{2}\lambda \\
+                \sqrt{2}\lambda & 7
+            \end{pmatrix}
+        \]
+
+        The characteristic equation:
+        \[
+            E^2 - 49 - 2\lambda^2 = 0 \Rightarrow E = \pm \sqrt{49 + 2\lambda^2}
+        \]
+
+        Expand using binomial series:
+        \[
+            \sqrt{49 + 2\lambda^2} = 7\left(1 + \frac{2}{49} \lambda^2\right)^{1/2} \approx 7\left(1 + \frac{1}{49} \lambda^2\right)
+            = 7 + \frac{1}{7} \lambda^2
+        \]
+
+        Combine solutions
+        \[
+            \boxed{
+            \begin{aligned}
+                E_1 &= E_0\left(3 + \frac{2}{3} \lambda^2\right), \quad
+                E_2 = E_0\left(-3 - \frac{2}{3} \lambda^2\right) \\
+                E_3 &= E_0\left(7 + \frac{1}{7} \lambda^2\right), \quad
+                E_4 = E_0\left(-7 - \frac{1}{7} \lambda^2\right)
+            \end{aligned}}
+        \]
+
+    \subsection{Solution, part (b):}
+        To get total hamiltonian 
+        \[
+            \hat{H} = \hat{H}_0 + \lambda \hat{V} 
+        \] 
+                    
+        where:
+        \[
+            \hat{H}_0 = E_0 \cdot \text{diag}(3, -3, -7, 7)
+        \]
+
+        \[
+            \hat{V} = E_0 
+            \begin{pmatrix}
+                0 & 2 & 0 & 0 \\
+                2 & 0 & 0 & 0 \\
+                0 & 0 & 0 & \sqrt{2} \\
+                0 & 0 & \sqrt{2} & 0
+            \end{pmatrix}
+        \]
+
+        First-Order Corrections
+        \[
+            E_n^{(1)} = \bra{n} \hat{V} \ket{n} = 0 \quad \text{(since all diagonal elements of } \hat{V} \text{ are zero)}
+        \]
+
+        Second-Order Corrections
+        \[
+            E_n^{(2)} = \sum_{k \neq n} \frac{|\bra{k} \hat{V} \ket{n}|^2}{E_n^{(0)} - E_k^{(0)}}
+        \]
+
+        For \( \ket{1} \) with \( E_1^{(0)} = 3E_0 \), only term is \( \bra{2} \hat{V} \ket{1} = 2E_0 \):
+        \[
+            E_1^{(2)} = \frac{(2E_0)^2}{3E_0 - (-3E_0)} = \frac{4E_0^2}{6E_0} = \frac{2}{3}E_0
+            \Rightarrow E_1 = 3E_0 + \lambda^2 \cdot \frac{2}{3}E_0
+        \]
+
+        Similarly
+        \[
+            \begin{aligned}
+                E_2 &= -3E_0 - \lambda^2 \cdot \frac{2}{3}E_0 \\
+                E_3 &= 7E_0 + \lambda^2 \cdot \frac{1}{7}E_0 \\
+                E_4 &= -7E_0 - \lambda^2 \cdot \frac{1}{7}E_0
+            \end{aligned}
+        \]
+
+    \subsection{Solution, part (c):}
+        The first-order corrected state is:
+        \[
+            \ket{n}^{(1)} = \sum_{k \neq n} \frac{\bra{k} \hat{V} \ket{n}}{E_n^{(0)} - E_k^{(0)}} \ket{k}
+        \]
+
+        For \( \ket{4} \) has energy \( -7E_0 \), only couples to \( \ket{3} \) via:
+        \[
+            \bra{3} \hat{V} \ket{4} = \sqrt{2}E_0
+        \]
+        \[
+            \ket{4}^{(1)} = \frac{\sqrt{2}E_0}{-7E_0 - 7E_0} \ket{3} = -\frac{1}{7\sqrt{2}} \ket{3}
+        \]
+        \[
+            \boldsymbol{\boxed{\ket{4}' = \ket{4} - \lambda \cdot \frac{1}{7\sqrt{2}} \ket{3}}}
+        \]
+
+
+\section{Textbook Question 9.13}
+    Consider a particle of mass \( m \) that is bouncing vertically and elastically on a smooth reflecting floor in the Earth's gravitational field
+    \[
+        V(z) = 
+        \begin{cases}
+            mgz, & z > 0 \\
+            +\infty, & z \leq 0
+        \end{cases}
+    \]
+
+    where \( g \) is a constant (the acceleration due to gravity). Use the variational method to estimate the ground state energy of this particle by means of the trial wave function, 
+    \[
+        \psi(z) = z \exp(-\alpha z^4),
+    \]
+    where \( \alpha \) is an adjustable parameter that needs to be determined. Compare your result with the exact value 
+    \[
+        E_0^{\text{exact}} = 2.338 \left( \tfrac{1}{2}mg^2\hbar^2 \right)^{1/3}
+    \]
+    by calculating the relative error.
+
+    \subsection{Solution:}
+        We are given the potential:
+        \[
+            V(z) = 
+            \begin{cases}
+                mgz & z > 0 \\
+                +\infty & z \leq 0
+            \end{cases}
+        \]
+        
+        We apply the variational method using the trial wavefunction:
+        \[
+            \psi(z) = z e^{-\alpha z^4}, \quad z > 0
+        \]
+
+        Our goal is to compute the expectation value of the energy:
+        \[
+            E[\psi] = \frac{\langle \psi | \hat{H} | \psi \rangle}{\langle \psi | \psi \rangle} = \frac{T + V}{N}
+        \]
+
+        where:
+        \[
+            T = \frac{\hbar^2}{2m} \int_0^\infty |\psi'(z)|^2 \, dz, \quad
+            V = mg \int_0^\infty z |\psi(z)|^2 \, dz, \quad
+            N = \int_0^\infty |\psi(z)|^2 \, dz
+        \]
+
+        Compute normalization integral
+        \[
+            \psi(z) = z e^{-\alpha z^4} \quad \Rightarrow \quad |\psi(z)|^2 = z^2 e^{-2\alpha z^4}
+        \]
+        \[
+            N = \int_0^\infty z^2 e^{-2\alpha z^4} \, dz
+        \]
+
+        Use u-substitution: 
+        \( 
+            u = z^4 \Rightarrow z = u^{1/4}, \, dz = \frac{1}{4} u^{-3/4} du 
+        \)
+        \[
+            N = \int_0^\infty z^2 e^{-2\alpha z^4} \, dz = \int_0^\infty u^{1/2} e^{-2\alpha u} \cdot \frac{1}{4} u^{-3/4} du = \frac{1}{4} \int_0^\infty u^{-1/4} e^{-2\alpha u} du
+        \]
+        \[
+            N = \frac{1}{4} \cdot \Gamma\left(\frac{3}{4}\right)(2\alpha)^{-3/4}
+        \]
+
+        Compute the kinetic energy term
+        \[
+            \psi'(z) = \dv{z} \left(z e^{-\alpha z^4}\right) = e^{-\alpha z^4}(1 - 4\alpha z^4)
+        \]
+        \[
+            |\psi'(z)|^2 = e^{-2\alpha z^4} (1 - 4\alpha z^4)^2
+        \]
+        \[
+            T = \frac{\hbar^2}{2m} \int_0^\infty (1 - 8\alpha z^4 + 16\alpha^2 z^8) e^{-2\alpha z^4} \, dz
+        \]
+
+        Use u-substitution 
+        \( 
+            u = z^4 \Rightarrow dz = \frac{1}{4} u^{-3/4} du 
+        \)
+        \[
+            T = \frac{\hbar^2}{2m} \cdot \frac{1}{4} \int_0^\infty \left( u^{-3/4} - 8\alpha u^{1/4} + 16\alpha^2 u^{5/4} \right) e^{-2\alpha u} du
+        \]
+        \[
+            T = \frac{\hbar^2}{8m} \left[
+            \Gamma\left(\frac{1}{4}\right)(2\alpha)^{-1/4}
+            - 8\alpha \Gamma\left(\frac{5}{4}\right)(2\alpha)^{-5/4}
+            + 16\alpha^2 \Gamma\left(\frac{9}{4}\right)(2\alpha)^{-9/4} \right]
+        \]
+        
+        Compute the potential energy term
+        \[
+            V = mg \int_0^\infty z^3 e^{-2\alpha z^4} dz
+        \]
+
+        Using the same substitution:
+        \[
+            V = mg \cdot \int_0^\infty u^{3/4} e^{-2\alpha u} \cdot \frac{1}{4} u^{-3/4} du = \frac{mg}{4} \int_0^\infty e^{-2\alpha u} du = \frac{mg}{4} \cdot \frac{1}{2\alpha}
+            = \frac{mg}{8\alpha}
+        \]
+
+        Sum termos to get total energy
+        \[
+            E(\alpha) = \frac{T + V}{N}
+        \]
+
+        Where:
+        \[
+            N = \frac{1}{4} \Gamma\left(\frac{3}{4}\right)(2\alpha)^{-3/4}
+        \]
+
+        Thus:
+        \[
+            E(\alpha) = \frac{
+            \frac{\hbar^2}{8m} \left[ 
+            \Gamma\left(\frac{1}{4}\right)(2\alpha)^{-1/4}
+            - 8\alpha \Gamma\left(\frac{5}{4}\right)(2\alpha)^{-5/4}
+            + 16\alpha^2 \Gamma\left(\frac{9}{4}\right)(2\alpha)^{-9/4}
+            \right]
+            + \frac{mg}{8\alpha}
+            }{
+            \frac{1}{4} \Gamma\left(\frac{3}{4}\right)(2\alpha)^{-3/4}
+            }
+        \]
+
+        Compare to exact energy
+        \[
+            E_0^{\text{exact}} = 2.338 \left( \frac{1}{2}mg^2 \hbar^2 \right)^{1/3}
+        \]
+        
+        The relative error is:
+        \[
+            \text{Relative Error} = \frac{|E_{\text{var}} - E_{\text{exact}}|}{E_{\text{exact}}}
+        \]
+
+
+\section{Textbook Question 9.25}
+    Use the trial function 
+    \[
+        \psi_0(x, \alpha) =
+        \begin{cases}
+            A(\alpha^2 - x^2)^2, & |x| \leq \alpha, \\
+            0, & |x| \geq \alpha,
+        \end{cases}
+    \]
+    to estimate the ground state energy of a one-dimensional harmonic oscillator by means of the variational method; \( \alpha \) is an adjustable parameter and \( A \) is the normalization constant. Calculate the relative error and assess the accuracy of the result.
+    
+    \subsection{Solution:}
+        We are given the trial wavefunction:
+        \[
+            \psi_0(x, \alpha) = 
+            \begin{cases}
+                A(\alpha^2 - x^2)^2, & |x| \leq \alpha \\
+                0, & |x| > \alpha
+            \end{cases}
+        \]
+
+        Our goal is to estimate the ground state energy of a 1D harmonic oscillator using the variational method. The Hamiltonian is:
+        \[
+            \hat{H} = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + \frac{1}{2} m\omega^2 x^2
+        \]
+
+        Using the variational principle:
+        \[
+            E[\psi] = \frac{\braket{\psi|\hat{H}|\psi}}{\braket{\psi|\psi}} = \frac{T + V}{N}
+        \]
+
+        where:
+        \begin{align*}
+            T &= \frac{\hbar^2}{2m} \int_{-\alpha}^{\alpha} \left| \frac{d\psi}{dx} \right|^2 dx \\
+            V &= \frac{1}{2} m\omega^2 \int_{-\alpha}^{\alpha} x^2 |\psi(x)|^2 dx \\
+            N &= \int_{-\alpha}^{\alpha} |\psi(x)|^2 dx
+        \end{align*}
+
+        Normalize the wavefunction
+        \[
+            |\psi(x)|^2 = A^2 (\alpha^2 - x^2)^4
+        \]
+        \[
+            N = \int_{-\alpha}^{\alpha} A^2 (\alpha^2 - x^2)^4 dx = A^2 \cdot 2 \int_0^{\alpha} (\alpha^2 - x^2)^4 dx
+        \]
+
+        Use u-substitution and substitute \( x = \alpha u \), \( dx = \alpha du \):
+        \[
+            N = 2A^2 \alpha^9 \int_0^1 (1 - u^2)^4 du = 2A^2 \alpha^9 \cdot \frac{128}{315} = A^2 \cdot \frac{256}{315} \alpha^9
+            \Rightarrow A^2 = \frac{315}{256 \alpha^9}
+        \]
+
+        Compute kinetic energy term
+        \[
+            \psi'(x) = -4A x (\alpha^2 - x^2), \quad
+            |\psi'(x)|^2 = 16A^2 x^2 (\alpha^2 - x^2)^2
+        \]
+        \[
+            T = \frac{\hbar^2}{2m} \int_{-\alpha}^{\alpha} 16A^2 x^2 (\alpha^2 - x^2)^2 dx
+            = \frac{16\hbar^2 A^2}{2m} \cdot 2 \int_0^\alpha x^2 (\alpha^2 - x^2)^2 dx
+        \]
+        
+        Use u-substitution \( x = \alpha u \):
+        \[
+            T = \frac{16\hbar^2 A^2}{m} \cdot \alpha^7 \int_0^1 u^2 (1 - u^2)^2 du
+            = \frac{16\hbar^2 A^2}{m} \cdot \alpha^7 \cdot \frac{8}{105}
+            = \frac{128 \hbar^2 A^2}{105 m} \alpha^7
+        \]
+        
+        Compute potential energy term
+        \[
+            V = \frac{1}{2} m\omega^2 \int_{-\alpha}^{\alpha} x^2 |\psi(x)|^2 dx = m\omega^2 A^2 \int_0^\alpha x^2 (\alpha^2 - x^2)^4 dx
+        \]
+        
+        Use u-substitution \( x = \alpha u \):
+        \[
+            V = m\omega^2 A^2 \alpha^{11} \int_0^1 u^2 (1 - u^2)^4 du
+            = m\omega^2 A^2 \alpha^{11} \cdot \frac{128}{1155}
+        \]
+        
+        Sum to get total energy
+        Using \( A^2 = \frac{315}{256 \alpha^9} \), we get:
+        \[
+            E(\alpha) = T + V = \frac{315}{256 \alpha^9} \left( \frac{128 \hbar^2}{105 m} \alpha^7 + \frac{128 m \omega^2}{1155} \alpha^{11} \right)
+        \]
+        
+        Simplify:
+        \[
+            E(\alpha) = \frac{315}{256} \left( \frac{128 \hbar^2}{105 m} \alpha^{-2} + \frac{128 m \omega^2}{1155} \alpha^2 \right)
+        \]
+                
+        Minimize the energy and let:
+        \[
+            f(\alpha) = A \alpha^{-2} + B \alpha^2, \quad
+            A = \frac{128 \hbar^2}{105 m}, \quad
+            B = \frac{128 m \omega^2}{1155}
+        \]
+        
+        Minimum occurs at:
+        \[
+            \alpha^4 = \frac{A}{B} = \frac{1155 \hbar^2}{105 m^2 \omega^2}
+            \Rightarrow \alpha^4 = 11 \cdot \frac{\hbar^2}{m^2 \omega^2}
+        \]
+        
+        Substitute into energy:
+        \[
+            E_{min} = 2 \sqrt{AB} = 2 \sqrt{ \frac{128 \hbar^2}{105 m} \cdot \frac{128 m \omega^2}{1155} }
+            = \hbar \omega \cdot \frac{256}{\sqrt{121275}} \approx 0.531 \hbar \omega
+        \]
+        
+        Compare to exact energy
+        \[
+            E_0 = \frac{1}{2} \hbar \omega, \quad
+            \text{Relative error} = \frac{0.531 - 0.5}{0.5} = \boxed{6.2\%}
+        \]
+
+\section{Textbook Question 9.35}
+    Three distinguishable particles of equal mass \( m \) are in a one-dimensional harmonic oscillator potential
+    \[
+        \hat{H}_0 = \sum_{i=1}^{3} \left( \frac{p_i^2}{2m} + \frac{1}{2} m \omega^2 x_i^2 \right).
+    \]
+    If the three particles are subject to a weak, short-range attractive potential
+    \[
+        \hat{H}_p = -V_0 \left[ \delta(x_1 - x_2) + \delta(x_2 - x_3) + \delta(x_3 - x_1) \right],
+    \]
+    use first-order perturbation theory to calculate the system’s energy levels of \\
+    \begin{itemize}
+        \item [(a)] the ground state
+        \item [(b)] the first-excited state
+    \end{itemize}
+
+    \subsection{Solution, part (a):}
+        We are given three distinguishable particles of equal mass \( m \) in a 1D harmonic oscillator. The unperturbed Hamiltonian is:
+        \[
+            \hat{H}_0 = \sum_{i=1}^{3} \left( \frac{p_i^2}{2m} + \frac{1}{2} m\omega^2 x_i^2 \right)
+        \]
+        
+        The perturbation is a short-range attractive potential:
+        \[
+            \hat{H}_p = -V_0 \left[ \delta(x_1 - x_2) + \delta(x_2 - x_3) + \delta(x_3 - x_1) \right]
+        \]
+        
+        In the ground state, all quantum numbers are zero: \( n_1 = n_2 = n_3 = 0 \). Thus, the unperturbed wavefunction is:
+        \[
+            \psi_0(x_1, x_2, x_3) = \phi_0(x_1) \phi_0(x_2) \phi_0(x_3)
+        \]
+        
+        where:
+        \[
+            \phi_0(x) = \left( \frac{m\omega}{\pi\hbar} \right)^{1/4} e^{- \frac{m\omega x^2}{2\hbar} }
+        \]
+        
+        The first-order correction is:
+        \[
+            E^{(1)} = \bra{\psi_0} \hat{H}_p \ket{\psi_0} = -V_0 \sum_{i<j} \int |\psi_0|^2 \delta(x_i - x_j) \, dx_1 dx_2 dx_3
+        \]
+        
+        Let us evaluate a representative term:
+        \begin{equation}
+            \begin{split}
+                \int |\psi_0|^2 \delta(x_1 - x_2) \, dx_1 dx_2 dx_3 \\ 
+                = \int |\phi_0(x_1)|^2 |\phi_0(x_1)|^2 |\phi_0(x_3)|^2 dx_1 dx_3 \\
+                = \int |\phi_0(x_1)|^4 dx_1 \cdot \int |\phi_0(x_3)|^2 dx_3
+            \end{split}
+        \end{equation}
+                
+        We define:
+        \[
+            I = \int |\phi_0(x)|^4 dx
+        \]
+        \[
+            |\phi_0(x)|^2 = \sqrt{ \frac{m\omega}{\pi\hbar} } e^{- \frac{m\omega x^2}{\hbar} }, \quad
+            |\phi_0(x)|^4 = \left( \frac{m\omega}{\pi\hbar} \right) e^{-2 \frac{m\omega x^2}{\hbar} }
+        \]
+        
+        Then:
+        \[
+            I = \left( \frac{m\omega}{\pi\hbar} \right) \int_{-\infty}^{\infty} e^{-2 \frac{m\omega x^2}{\hbar}} dx
+            = \left( \frac{m\omega}{\pi\hbar} \right) \cdot \sqrt{ \frac{\pi \hbar}{2m\omega} } 
+            = \sqrt{ \frac{m\omega}{2\pi\hbar} }
+        \]
+        
+        Since there are 3 delta functions:
+        \[
+            E_0^{(1)} = -3 V_0 \cdot \sqrt{ \frac{m\omega}{2\pi\hbar} }
+        \]
+        \[
+            \boldsymbol{\boxed{E_{\text{ground}} = \frac{3}{2} \hbar \omega - 3 V_0 \sqrt{ \frac{m\omega}{2\pi\hbar}}}}
+        \]
+
+    \subsection{Solution, part (b):}
+        The first excited states correspond to one particle in the first excited level (\( n = 1 \)), the others in the ground state. This gives 3 degenerate states:
+        \[
+            \begin{aligned}
+                \psi_1 &= \phi_1(x_1) \phi_0(x_2) \phi_0(x_3) \\
+                \psi_2 &= \phi_0(x_1) \phi_1(x_2) \phi_0(x_3) \\
+                \psi_3 &= \phi_0(x_1) \phi_0(x_2) \phi_1(x_3)
+            \end{aligned}
+        \]
+        
+        Construct the \( 3 \times 3 \) matrix \( H_{ij} = \bra{\psi_i} \hat{H}_p \ket{\psi_j} \). We focus on the symmetric combination:
+        \[
+            \psi_S = \frac{1}{\sqrt{3}} (\psi_1 + \psi_2 + \psi_3)
+        \]
+        
+        The energy correction for this symmetric state is:
+        \[
+            E^{(1)} = \bra{\psi_S} \hat{H}_p \ket{\psi_S} = -3 V_0 \cdot \mathcal{I}_{\text{excited}}
+        \]
+        
+        Where \( \mathcal{I}_{\text{excited}} \) is the corresponding integral for the symmetric state (value depends on overlap involving \( \phi_1(x) \phi_0(x) \)).
+        \[
+            \boldsymbol{\boxed{
+            E_{\text{first excited}} = \frac{5}{2} \hbar \omega - V_0 \cdot \text{(state-dependent integral)} \approx \frac{5}{2} \hbar \omega - \mathcal{C} V_0
+            }}
+        \]
+
+
+\section{Textbook Question 9.43}
+        Calculate the energy levels of the \( n = 2 \) states of positronium in a weak external electrical field \( \vec{\mathcal{E}} \) along the \( z \)-axis: 
+        \[
+        \vec{\mathcal{E}} = \mathcal{E} \hat{k};
+        \]
+        positronium consists of an electron and a positron bound by the electric interaction.
+
+    \subsection{Solution:}
+        Positronium is a hydrogen-like system formed by an electron and a positron bound by the Coulomb interaction. Since both have equal mass \( m \), the reduced mass is:
+        \[
+            \mu = \frac{m}{2}
+        \]
+        
+        The energy levels (in the absence of perturbation) are hydrogenic but scaled by the reduced mass:
+        \[
+            E_n^{(0)} = -\frac{\mu e^4}{2\hbar^2 n^2} = -\frac{m e^4}{4 \hbar^2 n^2}
+        \]
+        
+        For \( n = 2 \), this gives:
+        \[
+            E_2^{(0)} = -\frac{m e^4}{16 \hbar^2}
+        \]
+        
+        The degeneracy of the \( n = 2 \) level is 4: one \( s \)-state (\( l = 0 \)) and three \( p \)-states (\( l = 1 \), with \( m = -1, 0, +1 \)).
+        
+        The perturbation due to a weak external electric field \( \vec{\mathcal{E}} = \mathcal{E} \hat{z} \) is:
+        \[
+            \hat{H}' = e \mathcal{E} z
+        \]
+        
+        In spherical coordinates, since \( z = r \cos\theta \), the perturbation becomes:
+        \[
+            \hat{H}' = e \mathcal{E} r \cos\theta
+        \]
+        
+        Using first-order perturbation theory, the energy correction is:
+        \[
+            \Delta E_n^{(1)} = \bra{n, l, m} e \mathcal{E} r \cos\theta \ket{n, l', m}
+        \]
+        
+        \textbf{Selection rules:}
+        \begin{itemize}
+            \item \( \Delta l = \pm 1 \)
+            \item \( \Delta m = 0 \)
+        \end{itemize}
+        
+        Therefore, only matrix elements between degenerate states with \( l = 0 \leftrightarrow l = 1 \) contribute. Consider the basis \( \{ \ket{200}, \ket{210}, \ket{211}, \ket{21{-1}} \} \). The only nonzero matrix element is:
+        \[
+            \bra{200} \hat{H}' \ket{210} = e \mathcal{E} \bra{200} r\cos\theta \ket{210}
+        \]
+        
+        From hydrogenic results:
+        \[
+            \bra{200} z \ket{210} = -3a_0 \quad \text{(for hydrogen)}
+        \]
+        \[
+             \bra{200} z \ket{210} = -3a_0' = -\frac{6\hbar^2}{me^2} \quad \text{for positronium}
+        \]
+        Where 
+        \[
+            a_0' = \frac{2\hbar^2}{me^2}
+        \]
+        
+        Thus:
+        \[
+            \bra{200} \hat{H}' \ket{210} = -\frac{6\hbar^2 \mathcal{E}}{m e}
+        \]
+        
+        In the basis \( \{ \ket{200}, \ket{210}, \ket{211}, \ket{21{-1}} \} \), the matrix of \( \hat{H}' \) is:
+        \[
+            H' = 
+            \begin{pmatrix}
+                0 & V & 0 & 0 \\
+                V & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0
+            \end{pmatrix}, \quad V = -\frac{6\hbar^2 \mathcal{E}}{m e}
+        \]
+        
+        This \( 2 \times 2 \) block has eigenvalues:
+        \[
+            \Delta E = \pm |V| = \pm \frac{6\hbar^2 \mathcal{E}}{m e}
+        \]
+        
+        So two levels shift symmetrically, and two remain unperturbed.
+        \[
+            E_2^{(0)} = -\frac{m e^4}{16 \hbar^2}
+        \]
+        
+        With perturbation:
+        \[
+            \boldsymbol{\boxed{
+            \begin{aligned}
+                E_1 &= E_2^{(0)} + \frac{6\hbar^2 \mathcal{E}}{m e} \\
+                E_2 &= E_2^{(0)} - \frac{6\hbar^2 \mathcal{E}}{m e} \\
+                E_3 &= E_2^{(0)} \quad (\text{degeneracy 2})
+            \end{aligned}
+            }}
+        \]
+
+\section{Textbook Question 9.45}
+    Two identical particles of spin \( \frac{1}{2} \) are enclosed in a cubical box of side \( L \). 
+    \begin{itemize}
+        \item [(a)] Calculate to first-order perturbation theory the ground state energy when the two particles are subject to \textit{weak} short-range, attractive interaction:
+        \[
+            \hat{V}(\vec{r}_1 - \vec{r}_2) = -\frac{4}{3} \pi a^3 V_0 \delta(\vec{r}_1 - \vec{r}_2).
+        \]
+        \item [(b)] Find a numerical value for the energy derived in (a) for 
+        \[
+            L = 10^{-10} \, \text{m}, \quad a = 10^{-12} \, \text{m}, \quad V_0 = 10^{-3} \, \text{eV},
+        \]
+    \end{itemize}
+    and the mass of each individual particle is to be taken to be the mass of the electron.
+
+    \subsection{Solution, part (a):}
+        The unperturbed Hamiltonian describes two noninteracting particles in a cubic box of side \( L \). The single-particle eigenfunctions are:
+        \[
+            \phi_{n_x,n_y,n_z}(x,y,z) = \left( \frac{2}{L} \right)^{3/2} \sin\left( \frac{n_x \pi x}{L} \right) \sin\left( \frac{n_y \pi y}{L} \right) \sin\left( \frac{n_z \pi z}{L} \right)
+        \]
+        
+        The ground state has \( n_x = n_y = n_z = 1 \), so:
+        \[
+            \phi_1(\vec{r}) = \left( \frac{2}{L} \right)^{3/2} \sin\left( \frac{\pi x}{L} \right) \sin\left( \frac{\pi y}{L} \right) \sin\left( \frac{\pi z}{L} \right)
+        \]
+        
+        Each particle is in the same spatial state \( \phi_1(\vec{r}) \), and due to Fermi statistics, the total wavefunction must be antisymmetric. Therefore the spatial state is symmetric and the spin state is antisymmetric (singlet state)
+        
+        Total wavefunction:
+        \[
+            \Psi(\vec{r}_1, \vec{r}_2) = \phi_1(\vec{r}_1)\phi_1(\vec{r}_2) \otimes \frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow} - \ket{\downarrow\uparrow})
+        \]
+        
+        
+        We compute the first-order correction:
+        \[
+            E^{(1)} = \bra{\Psi} \hat{V}(\vec{r}_1 - \vec{r}_2) \ket{\Psi} = -\frac{4}{3} \pi a^3 V_0 \int |\phi_1(\vec{r})|^4 d^3r
+        \]
+        
+        The wavefunction squared:
+        \[
+            |\phi_1(\vec{r})|^2 = \left( \frac{2}{L} \right)^3 \sin^2\left( \frac{\pi x}{L} \right)\sin^2\left( \frac{\pi y}{L} \right)\sin^2\left( \frac{\pi z}{L} \right)
+        \]
+        
+        So:
+        \[
+            |\phi_1(\vec{r})|^4 = \left( \frac{2}{L} \right)^6 \sin^4\left( \frac{\pi x}{L} \right)\sin^4\left( \frac{\pi y}{L} \right)\sin^4\left( \frac{\pi z}{L} \right)
+        \]
+        
+        The integral factorizes:
+        \[
+            \int |\phi_1(\vec{r})|^4 d^3r = \left( \frac{2}{L} \right)^6 \left[ \int_0^L \sin^4\left( \frac{\pi x}{L} \right) dx \right]^3
+        \]
+        
+        Recall:
+        \[
+            \int_0^L \sin^4\left( \frac{\pi x}{L} \right) dx = \frac{3L}{8}
+        \]
+        
+        Therefore:
+        \[
+            \int |\phi_1(\vec{r})|^4 d^3r = \left( \frac{2}{L} \right)^6 \left( \frac{3L}{8} \right)^3
+            = \frac{64}{L^6} \cdot \frac{27L^3}{512} = \frac{1728}{8192L^3} = \frac{27}{128 L^3}
+        \]
+        
+        So the energy correction becomes:
+        \[
+            E^{(1)} = -\frac{4}{3} \pi a^3 V_0 \cdot \frac{27}{128 L^3} = -\frac{9\pi}{32} \cdot \frac{a^3 V_0}{L^3}
+        \]
+        \[
+            \boldsymbol{\boxed{ E^{(1)} = -\frac{9\pi}{32} \cdot \frac{a^3 V_0}{L^3} }}
+        \]
+
+    \subsection{Solution, part (b):}
+        Given:
+        \[
+            L = 10^{-10} \, \text{m}, \quad a = 10^{-12} \, \text{m}, \quad V_0 = 10^{-3} \, \text{eV}
+        \]
+        
+        Substitute into the expression and compute
+        \[
+            E^{(1)} = -\frac{9\pi}{32} \cdot \frac{(10^{-12})^3 \cdot 10^{-3}}{(10^{-10})^3} \, \text{eV}
+            = -\frac{9\pi}{32} \cdot \frac{10^{-36} \cdot 10^{-3}}{10^{-30}} \, \text{eV}
+            = -\frac{9\pi}{32} \cdot 10^{-9} \, \text{eV}
+        \]
+        \[
+            \frac{9\pi}{32} \approx \frac{28.27}{32} \approx 0.883
+            \Rightarrow E^{(1)} \approx -0.883 \cdot 10^{-9} \, \text{eV} = \boxed{ -8.83 \times 10^{-10} \, \text{eV} }
+        \]
+    
+\end{document}

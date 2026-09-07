@@ -1,0 +1,344 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 11 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 11.3}
+    Consider the scattering from the potential \( V(r) = V_0 e^{-r^2/a^2} \). Find  
+    \begin{itemize}
+        \item [(a)] the differential cross section in the first Born approximation
+        \item [(b)] the total cross section
+    \end{itemize}
+
+    \subsection{Solution, part (a):}
+        In the first Born approximation, the scattering amplitude for a spherically symmetric potential is:
+        \[
+            f(\theta) = -\frac{2m}{\hbar^2} \int_0^\infty V(r) \frac{\sin(qr)}{q} r \, dr
+        \]
+        
+        where 
+        \[ 
+            q = 2k \sin\left( \frac{\theta}{2} \right) 
+        \]
+        
+        Substitute the given potential:
+        \[
+            f(\theta) = -\frac{2m V_0}{\hbar^2 q} \int_0^\infty r e^{-r^2/a^2} \sin(qr) \, dr
+        \]
+        
+        This is a known integral:
+        \[
+            \int_0^\infty r e^{-r^2/a^2} \sin(qr) \, dr = \frac{q a^2}{2} e^{-q^2 a^2 / 4}
+        \]
+        
+        Thus:
+        \[
+            f(\theta) = -\frac{2m V_0}{\hbar^2 q} \cdot \frac{q a^2}{2} e^{-q^2 a^2 / 4} = -\frac{m V_0 a^2}{\hbar^2} e^{-q^2 a^2 / 4}
+        \]
+        
+        The differential cross section is:
+        \[
+            \boxed{
+            \frac{d\sigma}{d\Omega} = \left| f(\theta) \right|^2 = \left( \frac{m V_0 a^2}{\hbar^2} \right)^2 \exp\left[ -\frac{q^2 a^2}{2} \right]}
+        \]
+        
+        with 
+        \[
+            q = 2k \sin\left( \frac{\theta}{2} \right) 
+        \]
+
+    \subsection{Solution, part (b):}
+        The total cross section is obtained by integrating over all solid angles:
+        \[
+            \sigma = \int \frac{d\sigma}{d\Omega} \, d\Omega = 2\pi \int_0^\pi \left| f(\theta) \right|^2 \sin\theta \, d\theta
+        \]
+        
+        Substitute the expression for \( f(\theta) \):
+        \[
+            \sigma = 2\pi \left( \frac{m V_0 a^2}{\hbar^2} \right)^2 \int_0^\pi \exp\left[ -4k^2 a^2 \sin^2\left( \frac{\theta}{2} \right) \right] \sin\theta \, d\theta
+        \]
+        
+        Use u-substitution \( \theta' = \theta/2 \), then \( \sin\theta = 2\sin\theta' \cos\theta' \), \( d\theta = 2 d\theta' \)
+        \[
+            \sigma = 8\pi \left( \frac{m V_0 a^2}{\hbar^2} \right)^2 \int_0^{\pi/2} \sin\theta' \cos\theta' \, e^{-4k^2 a^2 \sin^2\theta'} \, d\theta'
+        \]
+        
+        Now substitute \( u = \sin\theta' \Rightarrow du = \cos\theta' d\theta' \), limits: \( u = 0 \to 1 \)
+        \[
+            \sigma = 8\pi \left( \frac{m V_0 a^2}{\hbar^2} \right)^2 \int_0^1 u e^{-4k^2 a^2 u^2} \, du
+        \]
+        
+        This integral evaluates to:
+        \[
+            \int_0^1 u e^{-bu^2} \, du = \frac{1 - e^{-b}}{2b}, \quad \text{with } b = 4k^2 a^2
+        \]
+        
+        So:
+        \[
+            \sigma = 8\pi \left( \frac{m V_0 a^2}{\hbar^2} \right)^2 \cdot \frac{1 - e^{-4k^2 a^2}}{8k^2 a^2}
+            = \pi \left( \frac{m V_0 a}{\hbar^2 k} \right)^2 \left( 1 - e^{-4k^2 a^2} \right)
+        \]
+        
+        \[
+            \boxed{\sigma = \pi \left( \frac{m V_0 a}{\hbar^2 k} \right)^2 \left( 1 - e^{-4k^2 a^2} \right)}
+        \]
+
+
+\section{Textbook Question 11.5}
+    Consider the elastic scattering from the delta potential \( V(r) = V_0 \delta(r - a) \).
+    
+    \begin{enumerate}
+        \item[(a)] Calculate the differential cross section in the first Born approximation.
+        \item[(b)] Find an expression between \( V_0, a, \mu, \) and \( k \) so the Born approximation is valid.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        The first Born approximation for a spherically symmetric potential gives the scattering amplitude:
+        \[
+            f(\theta) = -\frac{2\mu}{\hbar^2 q} \int_0^\infty V(r)\, r\, \sin(qr) \, dr
+        \]
+        
+        where \( q = 2k \sin\left( \frac{\theta}{2} \right) \), \( \mu \) is the reduced mass, and \( k = \sqrt{2\mu E} / \hbar \).
+    
+        Substituting the delta-shell potential \( V(r) = V_0 \delta(r - a) \):
+        \[
+            f(\theta) = -\frac{2\mu V_0}{\hbar^2 q} \cdot a \sin(qa)
+        \]
+    
+        Therefore, the differential cross section is:
+        \[
+            \frac{d\sigma}{d\Omega} = |f(\theta)|^2 = \left( \frac{2\mu a V_0}{\hbar^2 q} \right)^2 \sin^2(qa)
+        \]
+    
+        Substitute \( q = 2k \sin\left( \frac{\theta}{2} \right) \) and \( qa = 2ka \sin\left( \frac{\theta}{2} \right) \):
+        \[
+            \boxed{
+            \frac{d\sigma}{d\Omega} = \left( \frac{\mu a V_0}{\hbar^2 k \sin(\theta/2)} \right)^2 \sin^2\left( 2ka \sin\left( \frac{\theta}{2} \right) \right)}
+        \]
+
+    \subsection{Solution, part (b):}
+        The Born approximation is valid when the scattering amplitude is small:
+        \[
+            |f(\theta)| \ll 1
+        \]
+    
+        From part (a), the maximum of \( \sin(qa) \leq 1 \), so:
+        \[
+            |f(\theta)|_{\max} = \frac{2\mu a V_0}{\hbar^2 q}
+        \]
+    
+        To ensure validity for all \( \theta \), we impose:
+        \[
+            \boxed{
+            \frac{2\mu a V_0}{\hbar^2} \ll 1            }
+        \]
+    
+        Or more conservatively, accounting for typical \( q \sim k \):
+        \[
+            \boxed{
+            \frac{2\mu a V_0}{\hbar^2 k} \ll 1
+        }
+        \]
+
+
+\section{Textbook Question 11.7}
+    Find the differential cross section in the first Born approximation for the elastic scattering of a particle of mass \( m \), which is initially traveling along the \( z \)-axis, from a nonspherical, double-delta potential:
+    \[
+        V(\vec{r}) = V_0 \delta(\vec{r} - a \vec{k}) - V_0 \delta(\vec{r} + a \vec{k}),
+    \]
+    
+    where \( \vec{k} \) is the unit vector along the \( z \)-axis.
+
+    \subsection{Solution:}
+        We are given a non-spherically symmetric double-delta potential:
+        \[
+            V(\vec{r}) = V_0 \delta(\vec{r} - a \hat{k}) - V_0 \delta(\vec{r} + a \hat{k}),
+        \]
+        where \( \hat{k} \) is the unit vector along the \( z \)-axis.
+        
+        The scattering amplitude in the first Born approximation is:
+        \[
+            f(\vec{q}) = -\frac{2\mu}{\hbar^2} \frac{1}{4\pi} \int e^{i \vec{q} \cdot \vec{r}} V(\vec{r}) \, d^3r
+        \]
+        
+        Substituting the potential:
+        \[
+            f(\vec{q}) = -\frac{2\mu V_0}{\hbar^2} \frac{1}{4\pi} \left[ e^{i q_z a} - e^{-i q_z a} \right]
+            = -i \frac{\mu V_0}{\pi \hbar^2} \sin(q_z a)
+        \]
+        
+        Differential Cross Section
+        \[
+            \frac{d\sigma}{d\Omega} = |f(\vec{q})|^2 = \left( \frac{\mu V_0}{\pi \hbar^2} \right)^2 \sin^2(q_z a)
+        \]
+        
+        Since the incident direction is along the \( z \)-axis and \( \vec{q} = \vec{k} - \vec{k}' \), we get:
+        \[
+            q_z = k \cos\theta - k = -2k \sin^2\left( \frac{\theta}{2} \right)
+        \]
+        
+        Substitute into the result:
+        \[
+            \boxed{
+            \frac{d\sigma}{d\Omega} = \left( \frac{\mu V_0}{\pi \hbar^2} \right)^2 \sin^2\left( 2ka \sin^2\left( \frac{\theta}{2} \right) \right)        }
+        \]
+
+\section{Textbook Question 11.9}
+    Consider the elastic scattering of a particle of mass \( m \) and initial momentum \( \hbar k \) off a delta potential 
+    \[
+        V(\vec{r}) = V_0 \delta(x) \delta(y) \delta(z - a),
+    \]
+    where \( V_0 \) is a constant.
+    
+    \begin{enumerate}
+        \item[(a)] What is the physical dimension of the constant \( V_0 \)?
+        \item[(b)] Calculate the differential cross section in the first Born approximation.
+        \item[(c)] Repeat (b) for the case where the potential is now given by
+        \[
+        V(\vec{r}) = V_0 \delta(x) \left[ \delta(y - b)\delta(z) + \delta(y)\delta(z - a) \right].
+        \]
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+    Since the delta functions have dimensions of inverse length:
+    \[
+        [V(\vec{r})] = \text{energy}, \quad [\delta(x)\delta(y)\delta(z)] = L^{-3} \Rightarrow [V_0] = \text{energy} \cdot \text{volume}
+    \]
+    \[
+        \boxed{[V_0] = \text{Joule} \cdot \text{m}^3}
+    \]
+
+    \subsection{Solution, part (b):}
+    Compute differential cross section (First Born Approximation). The scattering amplitude is:
+    \[
+        f(\vec{q}) = -\frac{2\mu}{\hbar^2} \frac{1}{4\pi} \int e^{i \vec{q} \cdot \vec{r}} V(\vec{r}) \, d^3r
+        = -\frac{2\mu V_0}{\hbar^2} \frac{1}{4\pi} e^{i q_z a}
+    \]
+
+    The differential cross section is:
+    \[
+        \boxed{
+        \frac{d\sigma}{d\Omega} = \left( \frac{\mu V_0}{2\pi \hbar^2} \right)^2    }
+    \]
+
+    \subsection{Solution, part (c):}
+        Find the new potential:
+        \[
+            V(\vec{r}) = V_0 \delta(x)\left[ \delta(y - b)\delta(z) + \delta(y)\delta(z - a) \right]
+        \]
+    
+        Then:
+        \[
+            f(\vec{q}) = -\frac{2\mu V_0}{\hbar^2} \frac{1}{4\pi} \left( e^{i q_y b} + e^{i q_z a} \right)
+        \]
+    
+        So:
+        \[
+            \frac{d\sigma}{d\Omega} = \left( \frac{\mu V_0}{2\pi \hbar^2} \right)^2 \left| e^{i q_y b} + e^{i q_z a} \right|^2
+            = 2 \left( \frac{\mu V_0}{2\pi \hbar^2} \right)^2 \left[ 1 + \cos(q_y b - q_z a) \right]
+        \]
+    
+        Use \( q_y = k \sin\theta \sin\phi \), \( q_z = k(1 - \cos\theta) \):
+    
+        \[
+            \boxed{
+            \frac{d\sigma}{d\Omega} = 2 \left( \frac{\mu V_0}{2\pi \hbar^2} \right)^2 \left[ 1 + \cos\left( k b \sin\theta \sin\phi - k a (1 - \cos\theta) \right) \right]        }
+        \]
+
+
+\section{Textbook Question 11.12}
+    Consider the \( S \)-partial wave scattering (\( l = 0 \)) between two identical spin \( 1/2 \) particles where the interaction potential is given approximately by
+    \[
+        \hat{V}(r) = V_0 \vec{S}_1 \cdot \vec{S}_2 \delta(r - a),
+    \]
+    where \( \vec{S}_1 \) and \( \vec{S}_2 \) are the spin vector operators of the two particles, and \( V_0 > 0 \). Assuming that the incident and target particles are unpolarized, find the differential and total cross sections.
+
+    \subsection{Solution:}
+        For two spin-1/2 particles, the possible total spin states are:
+        \begin{itemize}
+            \item Singlet: \( S = 0 \), one state
+            \item Triplet: \( S = 1 \), three states
+        \end{itemize}
+    
+        The operator \( \vec{S}_1 \cdot \vec{S}_2 \) acts as:
+        \[
+            \vec{S}_1 \cdot \vec{S}_2 = \frac{1}{2} \left[ S(S+1) - \frac{3}{2} \right] \hbar^2
+        \]
+    
+        So:
+        \[
+            \vec{S}_1 \cdot \vec{S}_2 =
+            \begin{cases}
+                -\frac{3}{4} \hbar^2 & \text{for } S = 0 \ (\text{singlet}) \\
+                \ \frac{1}{4} \hbar^2 & \text{for } S = 1 \ (\text{triplet})
+            \end{cases}
+        \]
+    
+        For each spin channel, the S-wave cross section is:
+        \[
+            \sigma = \frac{4\pi}{k^2} \left( \frac{\mu \lambda}{\hbar^2 k} \cdot \frac{\sin(ka)}{ka} \right)^2
+        \]
+    
+        where \( \lambda = V_0 \cdot (\vec{S}_1 \cdot \vec{S}_2) \). So:
+    
+        \[
+            \sigma_s = \frac{4\pi}{k^2} \left( \frac{\mu V_0}{k} \cdot \frac{-3}{4} \cdot \frac{\sin(ka)}{ka} \right)^2,
+            \quad
+            \sigma_t = \frac{4\pi}{k^2} \left( \frac{\mu V_0}{k} \cdot \frac{1}{4} \cdot \frac{\sin(ka)}{ka} \right)^2
+        \]
+    
+        Unpolarized Averaging:
+        \[
+            \sigma_{\text{total}} = \frac{1}{4} \sigma_s + \frac{3}{4} \sigma_t
+        \]
+    
+        Compute:
+    
+        \[
+            \sigma_{\text{total}} = \frac{4\pi}{k^2} \left( \frac{\mu V_0 \sin(ka)}{k a} \right)^2 \cdot \left( \frac{9}{64} + \frac{3}{64} \right)
+            = \frac{3\pi}{4k^2} \left( \frac{\mu V_0 \sin(ka)}{k a} \right)^2
+        \]
+    
+        \[
+            \boxed{            \sigma_{\text{total}} = \frac{3\pi}{4k^2} \left( \frac{\mu V_0 \sin(ka)}{k a} \right)^2        }
+        \]
+    
+        Differential Cross Section (isotropic):
+        \[
+            \boxed{        \frac{d\sigma}{d\Omega} = \frac{\sigma_{\text{total}}}{4\pi} = \frac{3}{16k^2} \left( \frac{\mu V_0 \sin(ka)}{k a} \right)^2        }
+        \]
+    
+\end{document}

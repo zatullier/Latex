@@ -1,0 +1,525 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 10 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 10.2}
+    Evaluate the expectation value $\langle \hat{X}_H(t) \hat{P} \rangle_3$ for the third excited state of a one-dimensional harmonic oscillator.
+
+    \subsection{Solution:}
+        We are asked to evaluate the expectation value:
+        \[
+            \bra{3} \hat{X}_H(t) \hat{P} \ket{3}
+        \]
+        for the third excited state (\(n = 3\)) of a one-dimensional harmonic oscillator.
+
+        In the Heisenberg picture, the position operator evolves as:
+        \[
+            \hat{X}_H(t) = \hat{X}(t) = \hat{X}(0) \cos(\omega t) + \frac{\hat{P}(0)}{m\omega} \sin(\omega t)
+        \]
+        
+        So the expectation value becomes:
+        \[
+            \bra{3} \left[ \hat{X}(0) \cos(\omega t) + \frac{\hat{P}(0)}{m\omega} \sin(\omega t) \right] \hat{P} \ket{3}
+        \]
+        
+        This simplifies to:
+        \[
+            \cos(\omega t) \bra{3} \hat{X} \hat{P} \ket{3} + \frac{\sin(\omega t)}{m\omega} \bra{3} \hat{P}^2 \ket{3}
+        \]
+        
+        Both \(\hat{X}\) and \(\hat{P}\) are Hermitian operators. In harmonic oscillator eigenstates, the expectation value of their commutator gives the imaginary part:
+        \[
+            \bra{n} \hat{X} \hat{P} \ket{n} = \frac{1}{2} \bra{n} [\hat{X}, \hat{P}] \ket{n} + \Re\left[ \bra{n} \hat{X} \hat{P} \ket{n} \right]
+        \]
+        
+        Since:
+        \[
+            [\hat{X}, \hat{P}] = i\hbar \quad \Rightarrow \quad \Im(\bra{n} \hat{X} \hat{P} \ket{n}) = \frac{i\hbar}{2}
+        \]
+        
+        It follows that \(\bra{n} \hat{X} \hat{P} \ket{n}\) is purely imaginary, so its real part is zero. Therefore:
+        \[
+            \bra{3} \hat{X} \hat{P} \ket{3} = 0 
+        \]
+        
+        For harmonic oscillator states:
+        \[
+            \bra{n} \hat{P}^2 \ket{n} = m \hbar \omega \left(n + \frac{1}{2} \right)
+        \]
+        
+        So for \(n = 3\):
+        \[
+            \bra{3} \hat{P}^2 \ket{3} = \frac{7}{2} m \hbar \omega 
+        \]
+        
+        Plugging into our original expression:
+        \[
+            \bra{3} \hat{X}_H(t) \hat{P} \ket{3} = \cos(\omega t) \cdot 0 + \frac{\sin(\omega t)}{m\omega} \cdot \frac{7}{2} m \hbar \omega
+            = \frac{7}{2} \hbar \sin(\omega t) 
+        \]
+        \[
+            \boldsymbol{\boxed{\bra{3} \hat{X}_H(t) \hat{P} \ket{3} = \frac{7}{2} \hbar \sin(\omega t)}}
+        \]
+
+\section{Textbook Question 10.6}
+    Consider the Hamiltonian \( H = -\left( \frac{eB}{mc} \right) \hat{S}_x = \omega \hat{S}_x \).
+    \begin{itemize}
+        \item[(a)] Write down the Heisenberg equations of motion for the time-dependent operators \( \hat{S}_x(t) \), \( \hat{S}_y(t) \), and \( \hat{S}_z(t) \).
+        \item[(b)] Solve these equations to obtain \( S_x \), \( S_y \), \( S_z \) as functions of time.
+    \end{itemize}
+
+    \subsection{Solution, part (a):}
+        The Hamiltonian is given as
+        \[
+            \hat{H} = -\left(\frac{eB}{mc}\right) \hat{S}_x = \omega \hat{S}_x,
+        \]
+        
+        where
+        \[
+            \omega = -\frac{eB}{mc}.
+        \]
+        
+        In the Heisenberg picture, the time evolution of an operator \( \hat{O}(t) \) is given by:
+        \[
+            \frac{d\hat{O}}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{O}].
+        \]
+        
+        Apply this to \( \hat{S}_x(t), \hat{S}_y(t), \hat{S}_z(t) \):
+        
+        Heisenberg Equation for \( \hat{S}_x(t) \):
+        \[
+            \frac{d\hat{S}_x}{dt} = \frac{i}{\hbar} [\omega \hat{S}_x, \hat{S}_x] = 0
+            \quad \Rightarrow \quad
+            \boldsymbol{\boxed{ \frac{d\hat{S}_x}{dt}=0 }}
+        \]
+        
+        Heisenberg Equation for \( \hat{S}_y(t) \):
+        \[
+            \frac{d\hat{S}_y}{dt} = \frac{i}{\hbar} [\omega \hat{S}_x, \hat{S}_y] = \omega \frac{i}{\hbar} [\hat{S}_x, \hat{S}_y] 
+            = \omega \frac{i}{\hbar}(i\hbar \hat{S}_z) = -\omega \hat{S}_z
+            \quad \Rightarrow \quad
+            \boxed{ \frac{d\hat{S}_y}{dt} = -\omega \hat{S}_z }
+        \]
+        
+        Heisenberg Equation for \( \hat{S}_z(t) \):
+        \[
+            \frac{d\hat{S}_z}{dt} = \frac{i}{\hbar} [\omega \hat{S}_x, \hat{S}_z] = \omega \frac{i}{\hbar} [\hat{S}_x, \hat{S}_z]
+            = \omega \frac{i}{\hbar}(-i\hbar \hat{S}_y) = \omega \hat{S}_y
+            \quad \Rightarrow \quad
+            \boxed{ \frac{d\hat{S}_z}{dt} = \omega \hat{S}_y }
+        \]
+
+    \subsection{Solution, part (b):}
+        We solve the coupled system:
+        \[
+            \frac{d\hat{S}_y}{dt} = -\omega \hat{S}_z, \qquad \frac{d\hat{S}_z}{dt} = \omega \hat{S}_y
+        \]
+        
+        Differentiate the first equation:
+        \[
+            \frac{d^2 \hat{S}_y}{dt^2} = -\omega \frac{d\hat{S}_z}{dt} = -\omega^2 \hat{S}_y
+            \Rightarrow \frac{d^2 \hat{S}_y}{dt^2} + \omega^2 \hat{S}_y = 0
+        \]
+        
+        This is a simple harmonic oscillator equation with solution:
+        \[
+            \boldsymbol{\boxed{\hat{S}_y(t) = \hat{S}_y(0) \cos(\omega t) - \hat{S}_z(0) \sin(\omega t)}}
+        \]
+        
+        Similarly:
+        \[
+            \boldsymbol{\boxed{\hat{S}_z(t) = \hat{S}_z(0) \cos(\omega t) + \hat{S}_y(0) \sin(\omega t)}}
+        \]
+
+\section{Textbook Question 10.13}
+    \begin{itemize}
+        \item [(a)] Calculate the reduced matrix element $\langle 1 \| Y_1 \| 2 \rangle$. \textit{Hint:} For this, you may need to calculate $\langle 1, 0|Y_{10}|2, 0 \rangle$ directly and then from the Wigner–Eckart theorem.
+        \item [(b)] Using the Wigner–Eckart theorem and the relevant Clebsch–Gordan coefficients from tables, calculate $\langle 1, m | Y_{1m'} | 2, m'' \rangle$ for all possible values of $m$, $m'$, and $m''$.
+        \item [(c)] Using the results of part (b), calculate the $3d \rightarrow 2p$ transition rate for the hydrogen atom in the dipole approximation; give a numerical value. \textit{Hint:} You may use the integral
+        \[
+            \int_0^\infty r^3 R_{21}^*(r) R_{32}(r)\, dr = \left(\frac{64 a_0}{15 \sqrt{5}} \right) \left( \frac{6}{5} \right)^5
+        \]
+        and the following Clebsch–Gordan coefficients:
+        \[
+            \begin{aligned}
+                \langle j, 1;\, m, 0 | (j-1), m \rangle &= -\sqrt{ \frac{(j - m)(j + m)}{j(2j + 1)} }, \\
+                \langle j, 1;\, (m - 1), 1 | (j - 1), m \rangle &= \sqrt{ \frac{(j - m)(j - m + 1)}{2j(2j + 1)} }, \\
+                \langle j, 1;\, (m + 1), -1 | (j - 1), m \rangle &= \sqrt{ \frac{(j + m)(j + m + 1)}{2j(2j + 1)} }.
+            \end{aligned}
+        \]
+    \end{itemize}
+
+    \subsection{Solution, part (a):}
+        We are to compute the reduced matrix element:
+        \[
+            \langle 1 \parallel Y_1 \parallel 2 \rangle
+        \]
+        
+        We first calculate:
+        \[
+            \langle 1, 0 | Y_{1, 0} | 2, 0 \rangle
+        \]
+        
+        This is a Gaunt integral involving three spherical harmonics:
+        \[
+            \langle 1, 0 | Y_{1, 0} | 2, 0 \rangle = \int Y_{1, 0}^*(\theta, \phi)\, Y_{1, 0}(\theta, \phi)\, Y_{2, 0}(\theta, \phi)\, d\Omega
+        \]
+        
+        Using the general formula for Gaunt integrals:
+        \[
+            \int Y_{l_1 m_1}^* Y_{l m} Y_{l_2 m_2} d\Omega = 
+            \sqrt{\frac{(2l_1+1)(2l+1)(2l_2+1)}{4\pi}} 
+            \begin{pmatrix}
+                l_1 & l & l_2 \\
+                0 & 0 & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                l_1 & l & l_2 \\
+                m_1 & m & m_2
+            \end{pmatrix}
+        \]
+        
+        In our case:
+        \[
+            l_1 = 1,\ m_1 = 0;\quad l = 1,\ m = 0;\quad l_2 = 2,\ m_2 = 0
+        \]
+        
+        Then:
+        \[
+            \langle 1, 0 | Y_{1, 0} | 2, 0 \rangle = 
+            \sqrt{\frac{(2 \cdot 1 + 1)(2 \cdot 1 + 1)(2 \cdot 2 + 1)}{4\pi}} 
+            \begin{pmatrix}
+                1 & 1 & 2 \\
+                0 & 0 & 0
+            \end{pmatrix}^2
+        \]
+        
+        We use the known Wigner 3-j symbol:
+        \[
+            \begin{pmatrix}
+                1 & 1 & 2 \\
+                0 & 0 & 0
+            \end{pmatrix} = -\sqrt{\frac{1}{30}}
+        \]
+        
+        So:
+        \[
+            \langle 1, 0 | Y_{1, 0} | 2, 0 \rangle = 
+            \sqrt{\frac{3 \cdot 3 \cdot 5}{4\pi}} \cdot \left(-\sqrt{\frac{1}{30}}\right)^2 
+            = \sqrt{\frac{45}{4\pi}} \cdot \frac{1}{30} 
+            = \frac{1}{\sqrt{4\pi}} \cdot \sqrt{\frac{1}{20}} 
+            = \frac{1}{\sqrt{80\pi}}
+        \]
+        
+        Now apply the Wigner–Eckart theorem:
+        \[
+            \langle l_1, m_1 | Y_{1, q} | l_2, m_2 \rangle 
+            = \langle l_1 \parallel Y_1 \parallel l_2 \rangle 
+            \cdot \frac{\langle l_1, m_1; 1, q | l_2, m_2 \rangle}{\sqrt{2l_1 + 1}}
+        \]
+        
+        Solving for the reduced matrix element:
+        \[
+            \langle 1 \parallel Y_1 \parallel 2 \rangle 
+            = \langle 1, 0 | Y_{1, 0} | 2, 0 \rangle \cdot \sqrt{2 \cdot 1 + 1} 
+            \Big/ \langle 1, 0; 1, 0 | 2, 0 \rangle
+        \]
+        
+        Using:
+        \[
+            \langle 1, 0; 1, 0 | 2, 0 \rangle = \sqrt{\frac{2}{5}}
+        \]
+        
+        we obtain:
+        \[
+            \langle 1 \parallel Y_1 \parallel 2 \rangle 
+            = \frac{1}{\sqrt{80\pi}} \cdot \sqrt{3} \cdot \sqrt{\frac{5}{2}} 
+            = \frac{\sqrt{15}}{\sqrt{160\pi}} 
+            = \frac{1}{\sqrt{(32/3)\pi}}
+        \]
+
+    \subsection{Solution, part (b):}
+        Using the Wigner–Eckart theorem again:
+        \[
+            \langle 1, m | Y_{1, q} | 2, m'' \rangle = 
+            \langle 1 \parallel Y_1 \parallel 2 \rangle \cdot 
+            \frac{\langle 1, m; 1, q | 2, m'' \rangle}{\sqrt{3}}
+        \]
+        
+        For all allowed values of \( m, q \in \{-1, 0, 1\} \), such that \( m'' = m + q \in [-2, 2] \), compute the Clebsch–Gordan coefficients and scale by the reduced matrix element.
+        \[
+            \langle 1, 0 | Y_{1, 0} | 2, 0 \rangle 
+            = \frac{\langle 1 \parallel Y_1 \parallel 2 \rangle}{\sqrt{3}} \cdot \sqrt{\frac{2}{5}}
+        \]
+
+    \subsection{Solution, part (c):}
+        We now compute the dipole transition rate from \( 3d \rightarrow 2p \) using:
+        \[
+            W_{if} = \frac{4 \alpha \omega^3}{3c^2} \left| \langle f | \mathbf{r} | i \rangle \right|^2
+        \]
+        
+        Here:
+        \[
+            \langle f | \mathbf{r} | i \rangle = 
+            \left( \int_0^\infty r^3 R_{21}^*(r) R_{32}(r)\, dr \right) 
+            \cdot \langle 1, m | Y_{1, q} | 2, m' \rangle
+        \]
+        
+        Given:
+        \[
+            \int_0^\infty r^3 R_{21}^*(r) R_{32}(r)\, dr = 
+            \left( \frac{64 a_0}{15 \sqrt{5}} \right) \left( \frac{6}{5} \right)^5
+            = \frac{64 a_0}{15 \sqrt{5}} \cdot \frac{7776}{3125} \approx 0.714 a_0
+        \]
+        
+        The angular part:
+        \[
+            |\langle 1, m | Y_{1, q} | 2, m' \rangle|^2 
+            = \left( \frac{\langle 1 \parallel Y_1 \parallel 2 \rangle}{\sqrt{3}} 
+            \cdot \langle 1, m; 1, q | 2, m' \rangle \right)^2
+        \]
+        
+        Substitute into the transition rate formula:
+        \[
+            W_{if} = \frac{4 \alpha \omega^3}{3c^2} 
+            \cdot \left(0.714 a_0 \cdot \frac{\langle 1 \parallel Y_1 \parallel 2 \rangle}{\sqrt{3}} \cdot 
+            \langle 1, m; 1, q | 2, m' \rangle \right)^2
+        \]
+        
+        Use:
+        \[
+            \omega = \frac{E_{3d} - E_{2p}}{\hbar} 
+            = \frac{13.6\, \text{eV}}{\hbar} \left( \frac{1}{2^2} - \frac{1}{3^2} \right)
+            = \frac{13.6 \cdot (5/36)}{\hbar} \approx \frac{1.89\, \text{eV}}{\hbar}
+        \]
+
+
+\section{Textbook Question 10.18}
+    \begin{enumerate}
+        \item[(a)] Find the total transition rate associated with the decay of a harmonic oscillator, of charge $q$ and mass $m$, from the $n$th excited state to the state just below.
+        
+        \item[(b)] Find the power radiated by this oscillator as a result of its decay.
+        
+        \item[(c)] Find the lifetime of the $n$th excited state.
+        
+        \item[(d)] Estimate the order of magnitudes for the transition rate, the power, and the lifetime of the fifth excited state ($n = 5$) in the case of a harmonically oscillating electron (i.e., $q = e$) for the case of an optical radiation $\omega \simeq 10^{15}~\text{rad}\,\text{s}^{-1}$.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        The spontaneous emission rate for a charged harmonic oscillator decaying from level \( n \) to \( n-1 \) is given by:
+        \[
+            \Gamma_{n \to n-1} = \frac{q^2 \omega^3}{3\pi \varepsilon_0 \hbar c^3} \abs{\langle n-1 | x | n \rangle}^2
+        \]
+        
+        The dipole matrix element for a quantum harmonic oscillator is:
+        \[
+            \langle n-1 | x | n \rangle = \sqrt{\frac{\hbar}{2m\omega}} \cdot \sqrt{n}
+            \quad \Rightarrow \quad
+            \abs{\langle n-1 | x | n \rangle}^2 = \frac{\hbar}{2m\omega} \cdot n
+        \]
+        
+        Therefore, the transition rate becomes:
+        \[
+            \boxed{
+            \Gamma_{n \to n-1} = \frac{q^2 \omega^2 n}{6\pi \varepsilon_0 m c^3}
+            }
+        \]
+
+    \subsection{Solution, part (b):}
+        The power radiated by the oscillator during the transition is:
+        \[
+            P_n = \hbar \omega \cdot \Gamma_{n \to n-1}
+            = \hbar \omega \cdot \frac{q^2 \omega^2 n}{6\pi \varepsilon_0 m c^3}
+            = \boxed{
+            \frac{q^2 \hbar \omega^3 n}{6\pi \varepsilon_0 m c^3}}
+        \]
+
+    \subsection{Solution, part (c):}
+        The lifetime is the inverse of the decay rate:
+        \[
+            \tau_n = \frac{1}{\Gamma_{n \to n-1}} 
+            = \boxed{
+            \frac{6\pi \varepsilon_0 m c^3}{q^2 \omega^2 n}}
+        \]
+
+    \subsection{Solution, part (d):}
+        Numerical Estimates
+        \vspace{0.5em}
+        \noindent
+        \begin{align*}
+            q = e &= 1.6 \times 10^{-19} \, \text{C} \\
+            m &= 9.11 \times 10^{-31} \, \text{kg} \\
+            \varepsilon_0 &= 8.85 \times 10^{-12} \, \text{F/m} \\
+            \hbar &= 1.05 \times 10^{-34} \, \text{J$\cdot$s} \\
+            c &= 3 \times 10^8 \, \text{m/s} \\
+            \omega &= 10^{15} \, \text{rad/s} \\
+            n &= 5
+        \end{align*}
+        
+        \vspace{0.5em}
+        \noindent
+        Transition rate:
+        \[
+            \Gamma = \frac{e^2 \omega^2 n}{6\pi \varepsilon_0 m c^3}
+            \approx \frac{(1.6 \times 10^{-19})^2 \cdot (10^{15})^2 \cdot 5}{6\pi \cdot 8.85 \times 10^{-12} \cdot 9.11 \times 10^{-31} \cdot (3 \times 10^8)^3}
+            \approx \boxed{3.1 \times 10^7 \, \text{s}^{-1}}
+        \]
+        
+        \vspace{0.5em}
+        \noindent
+        Lifetime:
+        \[
+            \tau = \frac{1}{\Gamma} \approx \boxed{3.2 \times 10^{-8} \, \text{s}}
+        \]
+        
+        \vspace{0.5em}
+        \noindent
+        Power:
+        \[
+            P = \hbar \omega \cdot \Gamma 
+            = 1.05 \times 10^{-34} \cdot 10^{15} \cdot 3.1 \times 10^7 
+            \approx \boxed{3.3 \times 10^{-12} \, \text{W}}
+        \]
+
+\section{Textbook Question 10.24}
+    Consider a particle which is initially (i.e., when \( t < 0 \)) in its ground state in a three-dimensional box potential
+    \[
+        V(x, y, z) = 
+        \begin{cases}
+            0, & 0 < x < a,\ 0 < y < 2a,\ 0 < z < 4a, \\
+            +\infty, & \text{elsewhere}.
+        \end{cases}
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Find the energies and wave functions of the ground state and first excited state.
+        
+        \item[(b)] This particle is then subject, starting at time \( t = 0 \), to a time-dependent perturbation 
+        \[
+            \hat{V}(t) = V_0 \hat{x} \hat{z} e^{-t^2}
+        \]
+        where \( V_0 \) is a small parameter. Calculate the probability that the particle will be found in the first excited state after a long time \( t = +\infty \).
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        The stationary states are:
+        \[
+            \psi_{n_x,n_y,n_z}(x, y, z) = \sqrt{\frac{8}{a \cdot 2a \cdot 4a}} \sin\left(\frac{n_x \pi x}{a}\right) \sin\left(\frac{n_y \pi y}{2a}\right) \sin\left(\frac{n_z \pi z}{4a}\right)
+        \]
+        
+        where 
+        \[ 
+            n_x, n_y, n_z = 1, 2, 3, \dots 
+        \]
+        
+        The energy eigenvalues are:
+        \[
+            E_{n_x,n_y,n_z} = \frac{\hbar^2 \pi^2}{2m} \left( \frac{n_x^2}{a^2} + \frac{n_y^2}{(2a)^2} + \frac{n_z^2}{(4a)^2} \right)
+        \]
+        
+        The ground state \( n_x = 1,\ n_y = 1,\ n_z = 1 \)
+        \[
+            E_{111} = \frac{\hbar^2 \pi^2}{2m a^2} \left( 1^2 + \frac{1^2}{4} + \frac{1^2}{16} \right) = \frac{\hbar^2 \pi^2}{2m a^2} \cdot \frac{21}{16}
+        \]
+        
+        The first excited state \( n_x = 1,\ n_y = 1,\ n_z = 2 \)
+        \[
+            E_{112} = \frac{\hbar^2 \pi^2}{2m a^2} \left( 1 + \frac{1}{4} + \frac{4}{16} \right) = \frac{\hbar^2 \pi^2}{2m a^2} \cdot \frac{29}{16}
+        \]
+        
+    \subsection{Solution, part (a):}
+        The perturbation is:
+        \[
+            \hat{V}(t) = V_0 \hat{x} \hat{z} e^{-t^2}
+        \]
+        
+        We compute the transition amplitude using time-dependent perturbation theory:
+        \[
+            c_f(t \to \infty) = \frac{1}{i\hbar} \int_{-\infty}^{\infty} \langle f | \hat{V}(t) | i \rangle e^{i\omega_{fi} t} dt
+        \]
+        
+        Let 
+        \[ 
+            |i\rangle = \psi_{111},\ |f\rangle = \psi_{112},\ \omega_{fi} = \frac{E_f - E_i}{\hbar} 
+        \]
+        
+        The matrix element:
+        \[
+            \langle f | \hat{x} \hat{z} | i \rangle = \left[ \int_0^a \psi_1(x) x \psi_1(x) dx \right]
+            \left[ \int_0^{2a} \psi_1(y)^2 dy \right]
+            \left[ \int_0^{4a} \psi_2(z) z \psi_1(z) dz \right]
+        \]
+        
+        where
+        \begin{equation}
+            \begin{split}
+                \psi_1(x) = \sqrt{\frac{2}{a}} \sin\left(\frac{\pi x}{a}\right),\\
+                \psi_1(y) = \sqrt{\frac{1}{a}} \sin\left(\frac{\pi y}{2a}\right),\\
+                \psi_1(z) = \sqrt{\frac{1}{2a}} \sin\left(\frac{\pi z}{4a}\right),\\
+                \psi_2(z) = \sqrt{\frac{1}{2a}} \sin\left(\frac{2\pi z}{4a}\right)
+            \end{split}
+        \end{equation}  
+        
+        The integrals yield:
+        \[
+            \int_0^a \psi_1(x) x \psi_1(x) dx = \frac{a}{2},\quad
+            \int_0^{2a} \psi_1(y)^2 dy = 1,\quad
+            \int_0^{4a} \psi_2(z) z \psi_1(z) dz = \frac{32 a^2}{9\pi^2}
+        \]
+        
+        Thus:
+        \[
+            \langle f | \hat{x} \hat{z} | i \rangle = \frac{a}{2} \cdot 1 \cdot \frac{32 a^2}{9\pi^2} = \frac{16 a^3}{9\pi^2}
+        \]
+        
+        Now compute the integral over time:
+        \[
+            c_f = \frac{1}{i\hbar} V_0 \langle f | xz | i \rangle \int_{-\infty}^{\infty} e^{-t^2} e^{i\omega t} dt = \frac{1}{i\hbar} V_0 \cdot \frac{16 a^3}{9\pi^2} \cdot \sqrt{\pi} e^{-\omega^2/4}
+        \]
+        
+        So the transition probability is:
+        \[
+            P_{i \to f} = |c_f|^2 = \left( \frac{V_0}{\hbar} \cdot \frac{16 a^3}{9\pi^2} \cdot \sqrt{\pi} e^{-\omega^2/4} \right)^2
+        \]
+        
+        where
+        \[
+            \omega = \frac{E_{112} - E_{111}}{\hbar} = \frac{\hbar \pi^2}{2ma^2} \cdot \frac{8}{16} = \frac{\hbar \pi^2}{4ma^2}
+        \]
+
+    
+\end{document}
