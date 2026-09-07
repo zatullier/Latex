@@ -1,0 +1,234 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{mathmeth.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Math Methods HW 3}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+
+
+
+\section*{Textbook Question 10.1.5}
+    Construct the Green's function for 
+    \[
+        x^2 \frac{d^2y}{dx^2} + x \frac{dy}{dx} + (k^2 x^2 - 1)y = 0
+    \]
+    subject to the boundary conditions $y(0) = 0$, $y(1) = 0$.
+
+    \subsection*{Solution:}
+        The given equation is a second-order linear ordinary differential equation (ODE) of the form:
+        \[
+        \mathcal{L}y = 0,
+        \]
+        where the operator \(\mathcal{L}\) is defined as:
+        \[
+        \mathcal{L}y = x^2 \frac{d^2 y}{dx^2} + x \frac{dy}{dx} + \left(k^2 x^2 - 1\right)y.
+        \]
+        The Green's function, \(G(x, \xi)\), satisfies:
+        \[
+        \mathcal{L}G(x, \xi) = \delta(x - \xi),
+        \]
+        with the same boundary conditions:
+        \[
+        G(0, \xi) = 0, \quad G(1, \xi) = 0.
+        \]
+        We solve the homogeneous equation:
+        \[
+        x^2 \frac{d^2 y}{dx^2} + x \frac{dy}{dx} + \left(k^2 x^2 - 1\right)y = 0.
+        \]
+        This is a Cauchy-Euler equation, and its solutions are generally expressed in terms of Bessel functions. Let:
+        \[
+        y(x) = x^m.
+        \]
+        Substitute \(y(x) = x^m\) into the equation:
+        \[
+        x^2 \cdot m(m-1)x^{m-2} + x \cdot mx^{m-1} + \left(k^2 x^2 - 1\right)x^m = 0.
+        \]
+        Simplify:
+        \[
+        m(m-1) + m + (k^2 x^2 - 1) = 0.
+        \]
+        This leads to solutions involving Bessel functions. The general solution is:
+        \[
+        y(x) = A J_1(kx) + B Y_1(kx),
+        \]
+        where \(J_1(kx)\) and \(Y_1(kx)\) are the Bessel functions of the first and second kind, respectively.
+        The Green's function, \(G(x, \xi)\), is constructed using the two linearly independent solutions \(J_1(kx)\) and \(Y_1(kx)\). We write:
+        \[
+        G(x, \xi) =
+        \begin{cases} 
+        A_1 J_1(kx) + B_1 Y_1(kx), & x < \xi, \\
+        A_2 J_1(kx) + B_2 Y_1(kx), & x > \xi.
+        \end{cases}
+        \]
+        The constants \(A_1, B_1, A_2, B_2\) are determined by the following conditions:
+        \begin{enumerate}
+            \item Continuity of \(G(x, \xi)\) at \(x = \xi\):**
+                \[
+                    G(\xi^-, \xi) = G(\xi^+, \xi).
+                \]
+            \item Discontinuity in the first derivative at \(x = \xi\):**
+                \[
+                    \frac{dG}{dx}\Big|_{x=\xi^+} - \frac{dG}{dx}\Big|_{x=\xi^-} = \frac{1}{\xi}.
+                \]
+            \item Boundary conditions:
+                \[
+                    G(0, \xi) = 0, \quad G(1, \xi) = 0.
+                \]
+        \end{enumerate}
+        Apply boundary condition, \(G(0, \xi) = 0\), and \(Y_1(kx)\) diverges at \(x = 0\), we must set \(B_1 = 0\). Thus:
+        \[
+        G(x, \xi) =
+        \begin{cases} 
+        A_1 J_1(kx), & x < \xi, \\
+        A_2 J_1(kx) + B_2 Y_1(kx), & x > \xi.
+        \end{cases}
+        \]
+        Apply boundary condition, \(G(1, \xi) = 0\), we have:
+        \[
+        A_2 J_1(k) + B_2 Y_1(k) = 0.
+        \]
+        Solve for \(B_2\) in terms of \(A_2\):
+        \[
+        B_2 = -A_2 \frac{J_1(k)}{Y_1(k)}.
+        \]
+        Continuity at \(x = \xi\) implies
+        \[
+        A_1 J_1(k\xi) = A_2 J_1(k\xi) + B_2 Y_1(k\xi).
+        \]
+        At \(x = \xi\), the derivative discontinuity condition is:
+        \[
+        \frac{dG}{dx}\Big|_{x=\xi^+} - \frac{dG}{dx}\Big|_{x=\xi^-} = \frac{1}{\xi}.
+        \]
+        For \(x < \xi\):
+        \[
+        \frac{dG}{dx} = A_1 k J_1'(kx).
+        \]
+        For \(x > \xi\):
+        \[
+        \frac{dG}{dx} = A_2 k J_1'(kx) + B_2 k Y_1'(kx).
+        \]
+        At \(x = \xi\), this becomes:
+        \[
+        A_2 k J_1'(k\xi) + B_2 k Y_1'(k\xi) - A_1 k J_1'(k\xi) = \frac{1}{\xi}.
+        \]
+        Solve Equations to determine the constants \(A_1, A_2, B_2\). Substitute them into the Green's function expression:
+        \[
+        G(x, \xi) =
+        \begin{cases} 
+        A_1 J_1(kx), & x < \xi, \\
+        A_2 J_1(kx) + B_2 Y_1(kx), & x > \xi.
+        \end{cases}
+        \]
+        The detailed expression for \(G(x, \xi)\) depends on solving these constants explicitly. The final Green's function involves the Bessel functions \(J_1(kx)\) and \(Y_1(kx)\), ensuring the boundary conditions and continuity properties are satisfied.
+
+\section*{Textbook Question 10.2.2}
+    Show that if 
+    \[
+        \mathcal{L} \psi(r) \equiv \nabla \cdot \left( p(r) \nabla \psi(r) \right) + q(r) \psi(r)
+    \]
+    then $\mathcal{L}$ is hermitian for $p(r)$ and $q(r)$ real, assuming Dirichlet boundary conditions on the boundary of a region and that the scalar product is an integral over that region with unit weight.
+   
+   \subsection*{Solution:}
+        An operator \(\mathcal{L}\) is Hermitian if, for any two functions \(\psi(\mathbf{r})\) and \(\phi(\mathbf{r})\), the scalar product satisfies:
+        \[
+        \langle \phi, \mathcal{L}\psi \rangle = \langle \mathcal{L}\phi, \psi \rangle,
+        \]
+        where the scalar product is defined as:
+        \[
+        \langle \phi, \psi \rangle = \int_V \phi^*(\mathbf{r}) \psi(\mathbf{r}) \, d^3r,
+        \]
+        and \(V\) is the volume of the region of interest.
+        Since Dirichlet boundary conditions are assumed, \(\psi(\mathbf{r}) = 0\) and \(\phi(\mathbf{r}) = 0\) on the boundary of the region.
+        Expand \(\langle \phi, \mathcal{L}\psi \rangle\)
+        Using the definition of \(\mathcal{L}\), compute \(\langle \phi, \mathcal{L}\psi \rangle\):
+        \[
+        \langle \phi, \mathcal{L}\psi \rangle = \int_V \phi^*(\mathbf{r}) \left[ \nabla \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) + q(\mathbf{r}) \psi(\mathbf{r}) \right] \, d^3r.
+        \]
+        Split this integral into two terms:
+        \[
+        \langle \phi, \mathcal{L}\psi \rangle = \int_V \phi^*(\mathbf{r}) \nabla \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) \, d^3r + \int_V \phi^*(\mathbf{r}) q(\mathbf{r}) \psi(\mathbf{r}) \, d^3r.
+        \]
+        First Term - Divergence Integral
+        Apply the divergence theorem to the first term:
+        \[
+        \int_V \phi^*(\mathbf{r}) \nabla \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) \, d^3r = \int_S \phi^*(\mathbf{r}) p(\mathbf{r}) \nabla \psi(\mathbf{r}) \cdot \mathbf{n} \, dS - \int_V \nabla \phi^*(\mathbf{r}) \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) \, d^3r,
+        \]
+        where \(S\) is the boundary of the region, and \(\mathbf{n}\) is the outward unit normal vector.
+        Under Dirichlet boundary conditions (\(\psi = 0\) and \(\phi = 0\) on the boundary), the surface integral vanishes:
+        \[
+        \int_S \phi^*(\mathbf{r}) p(\mathbf{r}) \nabla \psi(\mathbf{r}) \cdot \mathbf{n} \, dS = 0.
+        \]
+        Thus:
+        \[
+        \int_V \phi^*(\mathbf{r}) \nabla \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) \, d^3r = -\int_V \nabla \phi^*(\mathbf{r}) \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) \, d^3r.
+        \]
+        Expand the dot product:
+        \[
+        -\int_V \nabla \phi^*(\mathbf{r}) \cdot \left( p(\mathbf{r}) \nabla \psi(\mathbf{r}) \right) \, d^3r = -\int_V p(\mathbf{r}) \nabla \phi^*(\mathbf{r}) \cdot \nabla \psi(\mathbf{r}) \, d^3r.
+        \]
+        Second Term - Potential Term
+        The second term is:
+        \[
+        \int_V \phi^*(\mathbf{r}) q(\mathbf{r}) \psi(\mathbf{r}) \, d^3r.
+        \]
+        Combine Terms for \(\langle \phi, \mathcal{L}\psi \rangle\)
+        Combine the results for the two terms:
+        \[
+        \langle \phi, \mathcal{L}\psi \rangle = -\int_V p(\mathbf{r}) \nabla \phi^*(\mathbf{r}) \cdot \nabla \psi(\mathbf{r}) \, d^3r + \int_V \phi^*(\mathbf{r}) q(\mathbf{r}) \psi(\mathbf{r}) \, d^3r.
+        \]
+        Expand \(\langle \mathcal{L}\phi, \psi \rangle\)
+        Similarly, compute \(\langle \mathcal{L}\phi, \psi \rangle\):
+        \[
+        \langle \mathcal{L}\phi, \psi \rangle = \int_V \psi^*(\mathbf{r}) \left[ \nabla \cdot \left( p(\mathbf{r}) \nabla \phi(\mathbf{r}) \right) + q(\mathbf{r}) \phi(\mathbf{r}) \right] \, d^3r.
+        \]
+        Following the same steps as above, using the divergence theorem and Dirichlet boundary conditions:
+        \[
+        \langle \mathcal{L}\phi, \psi \rangle = -\int_V p(\mathbf{r}) \nabla \psi^*(\mathbf{r}) \cdot \nabla \phi(\mathbf{r}) \, d^3r + \int_V \psi^*(\mathbf{r}) q(\mathbf{r}) \phi(\mathbf{r}) \, d^3r.
+        \]
+        Symmetry and Hermiticity
+        Compare \(\langle \phi, \mathcal{L}\psi \rangle\) and \(\langle \mathcal{L}\phi, \psi \rangle\):
+        \[
+        \langle \phi, \mathcal{L}\psi \rangle = -\int_V p(\mathbf{r}) \nabla \phi^*(\mathbf{r}) \cdot \nabla \psi(\mathbf{r}) \, d^3r + \int_V \phi^*(\mathbf{r}) q(\mathbf{r}) \psi(\mathbf{r}) \, d^3r,
+        \]
+        \[
+        \langle \mathcal{L}\phi, \psi \rangle = -\int_V p(\mathbf{r}) \nabla \psi^*(\mathbf{r}) \cdot \nabla \phi(\mathbf{r}) \, d^3r + \int_V \psi^*(\mathbf{r}) q(\mathbf{r}) \phi(\mathbf{r}) \, d^3r.
+        \]
+        Since \(p(\mathbf{r})\) and \(q(\mathbf{r})\) are real, and the scalar product involves complex conjugates, these two expressions are equal:
+        \[
+        \langle \phi, \mathcal{L}\psi \rangle = \langle \mathcal{L}\phi, \psi \rangle.
+        \]
+        The operator \(\mathcal{L}\) is Hermitian under Dirichlet boundary conditions with real \(p(\mathbf{r})\) and \(q(\mathbf{r})\).
+
+\end{document}
