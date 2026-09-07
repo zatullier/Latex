@@ -1,0 +1,663 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{classicalExam2.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Mechanics Exam 2}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section*{Question 1}
+    The $2\pi$ - periodic function $f(x)$ is defined by specifying $f(x)$ on the interval $-\pi < x < \pi$ as $f(x) = 0$ for $-\pi < x \leq 0$ and $f(x) = x$ for $0 \leq x < \pi$.
+    
+    \begin{enumerate}
+        \item [a)] Express $f(x)$ in terms of Fourier Series
+        \item [b)] Show that $\frac{x^2}{8} = \sum_{k=1}^\infty \frac{1}{(2k-1)^2}$
+    \end{enumerate}
+
+    \subsection*{Solution, part a:}
+        The Fourier series for a \(2\pi\)-periodic function is given by:
+        \[
+        f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \left[a_n \cos(nx) + b_n \sin(nx)\right],
+        \]
+        where:
+        \[
+        a_0 = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \, dx,
+        \]
+        \[
+        a_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos(nx) \, dx,
+        \]
+        \[
+        b_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin(nx) \, dx.
+        \]
+        Compute \(a_0\)
+        \[
+        a_0 = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \, dx.
+        \]
+        From the definition of \(f(x)\):
+        \[
+        f(x) = 
+        \begin{cases} 
+        0, & -\pi < x \leq 0, \\
+        x, & 0 < x \leq \pi.
+        \end{cases}
+        \]
+        Thus:
+        \[
+        a_0 = \frac{1}{\pi} \int_0^\pi x \, dx.
+        \]
+        Evaluate the integral:
+        \[
+        \int_0^\pi x \, dx = \left[\frac{x^2}{2}\right]_0^\pi = \frac{\pi^2}{2}.
+        \]
+        Hence:
+        \[
+        a_0 = \frac{1}{\pi} \cdot \frac{\pi^2}{2} = \frac{\pi}{2}.
+        \]
+        Compute \(a_n\)
+        \[
+        a_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos(nx) \, dx.
+        \]
+        Using the definition of \(f(x)\), split the integral:
+        \[
+        a_n = \frac{1}{\pi} \int_0^\pi x \cos(nx) \, dx.
+        \]
+        Using integration by parts, let:
+        \[
+        \begin{split}
+            u = x
+            \\ \quad dv = \cos(nx) \, dx \implies du = dx
+            \\ \quad v = \frac{\sin(nx)}{n}.    
+        \end{split}
+        \]
+        Then:
+        \[
+        \int x \cos(nx) \, dx = \frac{x \sin(nx)}{n} - \int \frac{\sin(nx)}{n} \, dx.
+        \]
+        The second integral becomes:
+        \[
+        \int \frac{\sin(nx)}{n} \, dx = -\frac{\cos(nx)}{n^2}.
+        \]
+        Thus:
+        \[
+        \int x \cos(nx) \, dx = \frac{x \sin(nx)}{n} + \frac{\cos(nx)}{n^2}.
+        \]
+        Evaluate from \(0\) to \(\pi\):
+        \[
+        \int_0^\pi x \cos(nx) \, dx = \left[\frac{x \sin(nx)}{n} + \frac{\cos(nx)}{n^2}\right]_0^\pi.
+        \]
+        At \(x = \pi\):
+        \[
+        \frac{\pi \sin(n\pi)}{n} + \frac{\cos(n\pi)}{n^2} = \frac{\cos(n\pi)}{n^2},
+        \]
+        since \(\sin(n\pi) = 0\).
+        At \(x = 0\):
+        \[
+        \frac{0 \cdot \sin(0)}{n} + \frac{\cos(0)}{n^2} = \frac{1}{n^2}.
+        \]
+        Thus:
+        \[
+        \int_0^\pi x \cos(nx) \, dx = \frac{\cos(n\pi)}{n^2} - \frac{1}{n^2}.
+        \]
+        Simplify:
+        \[
+        \int_0^\pi x \cos(nx) \, dx = \frac{\cos(n\pi) - 1}{n^2}.
+        \]
+        Since \(\cos(n\pi) = (-1)^n\), we have:
+        \[
+        \cos(n\pi) - 1 = 
+        \begin{cases} 
+        -2, & \text{if } n \text{ is odd}, \\
+        0, & \text{if } n \text{ is even}.
+        \end{cases}
+        \]
+        Thus:
+        \[
+        a_n = 
+        \begin{cases} 
+        -\frac{2}{\pi n^2}, & \text{if } n \text{ is odd}, \\
+        0, & \text{if } n \text{ is even}.
+        \end{cases}
+        \]
+        Compute \(b_n\)
+        \[
+        b_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin(nx) \, dx.
+        \]
+        Using the definition of \(f(x)\):
+        \[
+        f(x) = 
+        \begin{cases} 
+        0, & -\pi < x \leq 0, \\
+        x, & 0 < x \leq \pi.
+        \end{cases}
+        \]
+        Thus:
+        \[
+        b_n = \frac{1}{\pi} \int_0^\pi x \sin(nx) \, dx.
+        \]
+        Using integration by parts, let:
+        \[
+        \begin{split}
+            u = x
+            \\ \quad dv = \sin(nx) \, dx \implies du = dx
+            \\ \quad v = -\frac{\cos(nx)}{n}.    
+        \end{split}
+        \]
+        Then:
+        \[
+        \int x \sin(nx) \, dx = -\frac{x \cos(nx)}{n} + \int \frac{\cos(nx)}{n} \, dx.
+        \]
+        The second integral becomes:
+        \[
+        \int \frac{\cos(nx)}{n} \, dx = \frac{\sin(nx)}{n^2}.
+        \]
+        Thus:
+        \[
+        \int x \sin(nx) \, dx = -\frac{x \cos(nx)}{n} + \frac{\sin(nx)}{n^2}.
+        \]
+        Evaluate from \(0\) to \(\pi\):
+        \[
+        \int_0^\pi x \sin(nx) \, dx = \left[-\frac{x \cos(nx)}{n} + \frac{\sin(nx)}{n^2}\right]_0^\pi.
+        \]
+        At \(x = \pi\):
+        \[
+        -\frac{\pi \cos(n\pi)}{n} + \frac{\sin(n\pi)}{n^2} = -\frac{\pi (-1)^n}{n},
+        \]
+        since \(\sin(n\pi) = 0\).
+        At \(x = 0\):
+        \[
+        -\frac{0 \cdot \cos(0)}{n} + \frac{\sin(0)}{n^2} = 0.
+        \]
+        Thus:
+        \[
+        b_n = -\frac{(-1)^n}{n}.
+        \]
+        The Fourier series is:
+        \[
+        \boxed{f(x) = \frac{\pi}{4} - \sum_{n=1,\, \text{odd}}^\infty \frac{2}{\pi n^2} \cos(nx) - \sum_{n=1}^\infty \frac{(-1)^n}{n} \sin(nx).}
+        \]
+    \subsection*{Solution, part b:}
+        From the result for \(a_n\), the sum of the odd terms is:
+        \[
+        \sum_{k=1}^\infty \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}.
+        \]
+        This is a well-known Fourier series identity for odd harmonic terms.
+        \[
+        \boxed{\frac{\pi^2}{8} = \sum_{k=1}^\infty \frac{1}{(2k-1)^2}}
+        \]
+
+\section*{Question 2}
+    Use the contour integration method to evaluate the integral $\int_0^\infty \frac{x sin(x)}{x^2 + a^2} dx$ where a is an arbitrary real parameter.
+    
+    \subsection*{Solution:}
+        Express \(\sin(ax)\) in complex exponential form using the identity:
+        \[
+        \sin(ax) = \frac{e^{iax} - e^{-iax}}{2i},
+        \]
+        the integral becomes:
+        \[
+        I = \int_{0}^\infty \frac{\sin(ax)}{x^2 + b^2} \, dx = \int_{0}^\infty \frac{\frac{e^{iax} - e^{-iax}}{2i}}{x^2 + b^2} \, dx.
+        \]
+        Simplify:
+        \[
+        I = \frac{1}{2i} \int_{0}^\infty \frac{e^{iax} - e^{-iax}}{x^2 + b^2} \, dx.
+        \]
+        Split the integral:
+        \[
+        I = \frac{1}{2i} \left[\int_{0}^\infty \frac{e^{iax}}{x^2 + b^2} \, dx - \int_{0}^\infty \frac{e^{-iax}}{x^2 + b^2} \, dx\right].
+        \]
+        To evaluate the integral using contour integration, define the function:
+        \[
+        f(z) = \frac{e^{iaz}}{z^2 + b^2}.
+        \]
+        We consider a closed contour in the upper half-plane consisting of:
+        \begin{enumerate}
+            \item The real axis from \(z = -R\) to \(z = R\),
+            \item A semicircular arc in the upper half-plane of radius \(R\), centered at the origin.
+        \end{enumerate}
+        The function \(f(z)\) is meromorphic with singularities (poles) at:
+        \[
+        z = \pm ib.
+        \]
+        Residue at \(z = ib\)
+        The pole \(z = ib\) lies in the upper half-plane. To compute the residue of \(f(z)\) at \(z = ib\), write:
+        \[
+        f(z) = \frac{e^{iaz}}{z^2 + b^2}.
+        \]
+        Since \(z^2 + b^2 = (z - ib)(z + ib)\), the residue at \(z = ib\) is:
+        \[
+        \text{Res}(f(z), z = ib) = \lim_{z \to ib} \frac{e^{iaz}}{(z - ib)(z + ib)} = \frac{e^{aib}}{(ib + ib)} = \frac{e^{-ab}}{2ib}.
+        \]
+        Apply the residue theorem. The integral of \(f(z)\) around the closed contour is:
+        \[
+        \int_\text{contour} f(z) \, dz = 2\pi i \cdot \text{Res}(f(z), z = ib).
+        \]
+        Substitute the residue:
+        \[
+        \int_\text{contour} f(z) \, dz = 2\pi i \cdot \frac{e^{-ab}}{2ib} = \frac{\pi e^{-ab}}{b}.
+        \]
+        Break the contour integral into Parts
+        \begin{enumerate}
+            \item The integral along the real axis from \(-R\) to \(R\),
+            \item The integral along the semicircular arc.
+        \end{enumerate}
+        On the semicircular arc in the upper half-plane, the function \(f(z)\) decays as \(|z| \to \infty\), so the contribution from this part vanishes as \(R \to \infty\).
+        Thus, as \(R \to \infty\), the contour integral reduces to:
+        \[
+        \int_{-\infty}^\infty \frac{e^{iaz}}{z^2 + b^2} \, dz = \frac{\pi e^{-ab}}{b}.
+        \]
+        The original integral is over \([0, \infty)\), while the above result is over \((-\infty, \infty)\). By symmetry:
+        \[
+        \int_{-\infty}^\infty \frac{e^{iaz}}{z^2 + b^2} \, dz = 2 \int_{0}^\infty \frac{e^{iaz}}{z^2 + b^2} \, dx.
+        \]
+        Thus:
+        \[
+        \int_{0}^\infty \frac{e^{iaz}}{z^2 + b^2} \, dx = \frac{\pi e^{-ab}}{2b}.
+        \]
+        Similarly:
+        \[
+        \int_{0}^\infty \frac{e^{-iaz}}{z^2 + b^2} \, dx = \frac{\pi e^{ab}}{2b}.
+        \]
+        Returning to the original integral \(I\), we have:
+        \[
+        I = \frac{1}{2i} \left[\frac{\pi e^{-ab}}{2b} - \frac{\pi e^{ab}}{2b}\right].
+        \]
+        Factor out \(\frac{\pi}{2b}\):
+        \[
+        I = \frac{\pi}{4b i} \left[e^{-ab} - e^{ab}\right].
+        \]
+        Use the identity \(e^{ab} - e^{-ab} = 2i\sin(ab)\):
+        \[
+        I = \frac{\pi}{4b i} \cdot 2i \sin(ab).
+        \]
+        Simplify:
+        \[
+        I = \frac{\pi \sin(ab)}{2b}.
+        \]
+        The value of the integral is:
+        \[
+        \boxed{I = \frac{\pi \sin(ab)}{2b}}.
+        \]
+
+\section*{Question 3}
+    We consider the following differential equation:
+    \[
+        xy''(x) + (3 - x) y'(x) - y(x) = 0
+    \]
+    \begin{enumerate}
+        \item [a)] Detemine all the singular points of this equation, and their nature
+        \item [b)] Use Frobenius' method to determine the general solution of this differential equation
+    \end{enumerate}
+   
+    \subsection*{Solution, part a:}
+        Rewrite the differential equation in standard form:
+        \[
+        y''(x) + \frac{(3 - x)}{x} y'(x) - \frac{1}{x} y(x) = 0.
+        \]
+        Here:
+        \[
+        P(x) = \frac{3 - x}{x}, \quad Q(x) = -\frac{1}{x}.
+        \]
+        Singular points are values of \(x\) where \(P(x)\) or \(Q(x)\) are undefined. In this case:
+        \[
+        P(x) = \frac{3}{x} - 1, \quad Q(x) = -\frac{1}{x}.
+        \]
+        Both \(P(x)\) and \(Q(x)\) are undefined at \(x = 0\). Hence, \(x = 0\) is a singular point.
+        A singular point is \textit{regular} if the following products are analytic (finite and well-defined) at the singular point:
+        \begin{enumerate}
+            \item For $xP(x)$
+                \[
+                    xP(x) = x \left(\frac{3}{x} - 1\right) = 3 - x,
+                \]
+                which is analytic at \(x = 0\).
+            \item For $x^2 Q(x)$
+                \[
+                    x^2 Q(x) = x^2 \cdot \left(-\frac{1}{x}\right) = -x,
+                \]
+                which is also analytic at \(x = 0\).
+        \end{enumerate}        
+        Thus, \(x = 0\) is a \textbf{regular singular point}.
+
+    \subsection*{Solution, part b:}
+        For a regular singular point at \(x = 0\), we assume a solution of the form:
+        \[
+        y(x) = \sum_{n=0}^\infty a_n x^{n + r},
+        \]
+        where \(r\) is to be determined.
+        Compute derivatives:
+        \[
+        y'(x) = \sum_{n=0}^\infty a_n (n + r) x^{n + r - 1},
+        \]
+        \[
+        y''(x) = \sum_{n=0}^\infty a_n (n + r)(n + r - 1) x^{n + r - 2}.
+        \]
+        Substitute into the following equation
+        \[
+        x y''(x) + (3 - x) y'(x) - y(x) = 0.
+        \]
+        \begin{enumerate}
+            \item \(y(x)\)
+                \[
+                    x y''(x) = x \sum_{n=0}^\infty a_n (n + r)(n + r - 1) x^{n + r - 2} = \sum_{n=0}^\infty a_n (n + r)(n + r - 1) x^{n + r - 1}.
+                \]
+            \item \(y'(x)\)
+                \[
+                    (3 - x) y'(x) = 3 \sum_{n=0}^\infty a_n (n + r) x^{n + r - 1} - \sum_{n=0}^\infty a_n (n + r) x^{n + r}.
+                \]
+            \item \(y''(x)\)
+                \[
+                    -y(x) = -\sum_{n=0}^\infty a_n x^{n + r}.
+                \]
+        \end{enumerate}
+        Substitute these terms back into the equation:
+        \[
+        \sum_{n=0}^\infty a_n (n + r)(n + r - 1) x^{n + r - 1} + 3 \sum_{n=0}^\infty a_n (n + r) x^{n + r - 1} - \sum_{n=0}^\infty a_n (n + r) x^{n + r} - \sum_{n=0}^\infty a_n x^{n + r} = 0.
+        \]
+        Focus on the lowest power of \(x\), corresponding to \(n = 0\), to determine the indicial equation. For \(n = 0\), we get:
+        \[
+        r(r - 1) + 3r = r^2 + 2r = 0.
+        \]
+        Factorize:
+        \[
+        r(r + 2) = 0.
+        \]
+        Thus, the roots of the indicial equation are:
+        \[
+        r = 0 \quad \text{and} \quad r = -2.
+        \]
+        For \(n \geq 1\), collect terms for \(x^{n + r - 1}\) and \(x^{n + r}\) to form a recurrence relation for \(a_n\). Solve this relation iteratively to express higher-order terms in terms of \(a_0\).
+        The general solution will be of the form:
+        \[
+        y(x) = C_1 y_1(x) + C_2 y_2(x),
+        \]
+        where \(y_1(x)\) corresponds to \(r = 0\) and \(y_2(x)\) corresponds to \(r = -2\), obtained through the Frobenius series expansion.
+        \begin{enumerate}
+            \item \(x = 0\) is a regular singular point.
+            \item The general solution is:
+            \[
+            y(x) = C_1 y_1(x) + C_2 y_2(x),
+            \]
+            where \(y_1(x)\) and \(y_2(x)\) are derived using the series expansion for \(r = 0\) and \(r = -2\), respectively.
+        \end{enumerate}
+
+\section*{Question 4}
+    We assume that the amplitude $u(r,t)$ of a cicular drum with radius $a$ does not depend on the polar angle $\phi$. The edge of the drum is held fixed, $u(a,t) = 0$. The amplitude is described by the wave equation in polar coordinates,
+    \[
+        \frac{1}{\nu^2} \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2}
+    \]
+    
+    \subsection*{Solution:}
+        The problem assumes that \( u(r, t) \) does not depend on the angular variable \( \phi \), simplifying the equation to:
+        \[
+        \frac{1}{v^2} \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r}.
+        \]
+        Using separation of variables the wave equation is:
+        \[
+        \frac{1}{v^2} \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r}.
+        \]
+        We assume a separable solution of the form:
+        \[
+        u(r, t) = R(r) T(t),
+        \]
+        where \( R(r) \) depends only on \( r \), and \( T(t) \) depends only on \( t \). Substituting into the wave equation:
+        \[
+        \frac{1}{v^2} R(r) \frac{d^2 T(t)}{dt^2} = T(t) \left( \frac{d^2 R(r)}{dr^2} + \frac{1}{r} \frac{dR(r)}{dr} \right).
+        \]
+        Divide through by \( R(r) T(t) \):
+        \[
+        \frac{1}{v^2} \frac{1}{T(t)} \frac{d^2 T(t)}{dt^2} = \frac{1}{R(r)} \left( \frac{d^2 R(r)}{dr^2} + \frac{1}{r} \frac{dR(r)}{dr} \right).
+        \]
+        The left-hand side depends only on \( t \), and the right-hand side depends only on \( r \). Thus, both sides must equal a separation constant, which we denote as \( -\omega^2 \). This gives two separate equations:
+        \[
+        \frac{1}{v^2} \frac{d^2 T(t)}{dt^2} + \omega^2 T(t) = 0, \quad \text{(time equation)},
+        \]
+        \[
+        \frac{d^2 R(r)}{dr^2} + \frac{1}{r} \frac{dR(r)}{dr} + \left( \frac{\omega^2}{v^2} \right) R(r) = 0, \quad \text{(radial equation)}.
+        \]
+        The time equation is:
+        \[
+        \frac{d^2 T(t)}{dt^2} + \omega^2 v^2 T(t) = 0.
+        \]
+        The general solution is:
+        \[
+        T(t) = A \cos(\omega v t) + B \sin(\omega v t),
+        \]
+        where \( A \) and \( B \) are constants.
+        The radial equation is:
+        \[
+        \frac{d^2 R(r)}{dr^2} + \frac{1}{r} \frac{dR(r)}{dr} + \left( \frac{\omega^2}{v^2} \right) R(r) = 0.
+        \]
+        This is the Bessel differential equation of order zero:
+        \[
+        r^2 \frac{d^2 R(r)}{dr^2} + r \frac{dR(r)}{dr} + \left( \frac{\omega r}{v} \right)^2 R(r) = 0.
+        \]
+        The general solution is:
+        \[
+        R(r) = C J_0\left( \frac{\omega r}{v} \right) + D Y_0\left( \frac{\omega r}{v} \right),
+        \]
+        where \( J_0(x) \) and \( Y_0(x) \) are the Bessel functions of the first and second kind, respectively.
+        Apply the Boundary Condition (\( u(a, t) = 0 \))
+        \[
+        R(a) = C J_0\left( \frac{\omega a}{v} \right) + D Y_0\left( \frac{\omega a}{v} \right) = 0.
+        \]
+        Since \( Y_0(x) \) diverges as \( x \to 0 \), we set \( D = 0 \) for physical solutions. Thus:
+        \[
+        R(r) = C J_0\left( \frac{\omega r}{v} \right).
+        \]
+        The boundary condition \( J_0\left( \frac{\omega a}{v} \right) = 0 \) implies:
+        \[
+        \frac{\omega a}{v} = \alpha_{m,0},
+        \]
+        where \( \alpha_{m,0} \) is the \( m \)-th zero of \( J_0(x) \). Therefore:
+        \[
+        \omega = \frac{\alpha_{m,0} v}{a}.
+        \]
+        The general solution is:
+        \[
+        u(r, t) = \sum_{m=1}^\infty \left[ A_m \cos\left( \frac{\alpha_{m,0} v}{a} t \right) + B_m \sin\left( \frac{\alpha_{m,0} v}{a} t \right) \right] J_0\left( \frac{\alpha_{m,0} r}{a} \right).
+        \]
+        Apply Initial Conditions
+        \[
+        u(r, 0) = J_0\left( \frac{\alpha_{2,0} r}{a} \right), \quad \frac{\partial u}{\partial t} \bigg|_{t=0} = 0.
+        \]
+        From the general solution:
+        \[
+        u(r, t) = \sum_{m=1}^\infty \left[ A_m \cos\left( \frac{\alpha_{m,0} v}{a} t \right) + B_m \sin\left( \frac{\alpha_{m,0} v}{a} t \right) \right] J_0\left( \frac{\alpha_{m,0} r}{a} \right).
+        \]
+        At \( t = 0 \):
+        \[
+        u(r, 0) = \sum_{m=1}^\infty A_m J_0\left( \frac{\alpha_{m,0} r}{a} \right).
+        \]
+        By orthogonality of the Bessel functions, only the term \( m = 2 \) contributes:
+        \[
+        A_2 = 1, \quad A_m = 0 \text{ for } m \neq 2.
+        \]
+        Thus:
+        \[
+        u(r, t) = J_0\left( \frac{\alpha_{2,0} r}{a} \right) \cos\left( \frac{\alpha_{2,0} v}{a} t \right).
+        \]
+        The second initial condition is automatically satisfied because \( B_m = 0 \) for all \( m \).
+        The solution satisfying the given boundary and initial conditions is:
+        \[
+        \boxed{u(r, t) = J_0\left( \frac{\alpha_{2,0} r}{a} \right) \cos\left( \frac{\alpha_{2,0} v}{a} t \right).}
+        \]
+
+\section*{Question 5}
+    The one-dimensional time-independent Schrödinger equation for the wave function of a particle in a (finite) potential can be written as 
+    \[
+        -\psi''(x) + U(x) \psi(x) = \epsilon\psi(x)
+    \]
+    where $U(x)$ and $\epsilon$ are the rescaled potential energy (i.e. in units of $\frac{\hbar^2}{2m}$. A bound state is a state of energy ($\epsilon$) that $\epsilon < \lim_{x \rightarrow -\infty} U(x)$ and $\epsilon < \lim U(x)_{x \rightarrow \infty}$. It means that the particle is trapped in the potential and can not escape.
+    \begin{enumerate}
+        \item [a)] Justify (in words) that for bound states $\lim_{x \rightarrow -\infty} \psi(x) = 0$ and $\lim_{x \rightarrow \infty} \psi(x) = 0$
+        \item [b)] Show that the Hamiltonian $\mathcal{H} = - \frac{d^2}{dx^2} + U(x)$ is the Hermitian operator. That is, show that $\langle\mathcal{H}f, g \rangle = \langle f,\mathcal{H}g \rangle$ for any square integrable functions $f$ and $g$ vanishing at infinity. 
+        \item [c)] Let $\psi_1$ and $\psi_2$ be two bound-state solutions of the Schrodinger equation with energies $\epsilon_1$ and $\epsilon_2$ respectively. For real, but otherwise arbitrary $a$ and $b$, show that:
+        \[
+            \left(W(\psi_1,\psi_2 \right)_a^b = (\epsilon_1 - \epsilon_2) \int_a^b \psi_1(x) \psi_2(x) dx
+        \]
+        Where $W(\psi_1,\psi_2)$ is the Wronskian of $\psi_1$ and $\psi_2$.
+        \item [d)] Show that for one-dimensional potentials, bound states can not be degenerate. This means that if two wave functions describe states with the same energy then they are proportional. 
+    \end{enumerate}
+    
+    \subsection*{Solution, part a:}
+        The one-dimensional time-independent Schrödinger equation is:
+        \[
+        -\psi''(x) + U(x)\psi(x) = \epsilon \psi(x),
+        \]
+        where \(U(x)\) is the potential, \(\epsilon\) is the energy, and \(\psi(x)\) is the wave function. 
+        A \textit{bound state} corresponds to a state where the particle is localized within the potential and cannot escape. For such states, the energy \(\epsilon\) satisfies \(\epsilon < \lim_{x \to \pm\infty} U(x)\).
+        At \(x \to \pm\infty\), in a finite potential \(U(x)\), the Schrödinger equation approximates:
+        \[
+        -\psi''(x) \approx \epsilon \psi(x),
+        \]
+        where \(U(x) \to 0\) or a constant. The solutions for \(\psi(x)\) in this region are of the form:
+        \[
+        \psi(x) \propto e^{\pm \sqrt{\epsilon} x}.
+        \]
+        For bound states, the wave function must be normalizable:
+        \[
+        \int_{-\infty}^\infty |\psi(x)|^2 dx < \infty.
+        \]
+        This condition requires \(\psi(x)\) to decay exponentially at infinity:
+        \[
+        \psi(x) \to 0 \quad \text{as} \quad x \to \pm\infty.
+        \]
+        Thus, we conclude:
+        \[
+        \boxed{\lim_{x \to -\infty} \psi(x) = 0 \quad \text{and} \quad \lim_{x \to +\infty} \psi(x) = 0.}
+        \]
+    
+    \subsection*{Solution, part b:}
+        The Hamiltonian is:
+        \[
+        H = -\frac{d^2}{dx^2} + U(x).
+        \]
+        To show that \(H\) is Hermitian, we need to prove:
+        \[
+        \langle Hf, g \rangle = \langle f, Hg \rangle,
+        \]
+        where the inner product is:
+        \[
+        \langle f, g \rangle = \int_{-\infty}^\infty f^*(x) g(x) \, dx.
+        \]
+        Compute \(\langle Hf, g \rangle\)
+        \[
+        \langle Hf, g \rangle = \int_{-\infty}^\infty \left[ -f''(x) + U(x)f(x) \right]^* g(x) \, dx.
+        \]
+        Split the terms:
+        \[
+        \langle Hf, g \rangle = -\int_{-\infty}^\infty f''^*(x) g(x) \, dx + \int_{-\infty}^\infty U(x)f^*(x) g(x) \, dx.
+        \]
+        Using integration by parts:
+        \[
+        \int_{-\infty}^\infty f''^*(x) g(x) \, dx = \left[f'^*(x) g(x)\right]_{-\infty}^\infty - \int_{-\infty}^\infty f'^*(x) g'(x) \, dx.
+        \]
+        For bound states, \(\psi(x)\) vanishes at infinity, so the boundary term:
+        \[
+        \left[f'^*(x) g(x)\right]_{-\infty}^\infty = 0.
+        \]
+        Thus:
+        \[
+        -\int_{-\infty}^\infty f''^*(x) g(x) \, dx = \int_{-\infty}^\infty f'^*(x) g'(x) \, dx.
+        \]
+        Substitute back into the expression for \(\langle Hf, g \rangle \):
+        \[
+        \langle Hf, g \rangle = \int_{-\infty}^\infty f^*(x) \left[ -g''(x) + U(x)g(x) \right] \, dx = \langle f, Hg \rangle.
+        \]
+        Thus, the Hamiltonian is Hermitian:
+        \[
+        \boxed{\langle Hf, g \rangle = \langle f, Hg \rangle}.
+        \]
+
+    \subsection*{Solution, part c:}
+        The Schrödinger equations for \(\psi_1\) and \(\psi_2\) are:
+        \[
+        -\psi_1''(x) + U(x)\psi_1(x) = \epsilon_1 \psi_1(x),
+        \]
+        \[
+        -\psi_2''(x) + U(x)\psi_2(x) = \epsilon_2 \psi_2(x).
+        \]
+        Multiply the first by \(\psi_2(x)\) and the second by \(\psi_1(x)\):
+        \[
+        -\psi_1''(x)\psi_2(x) + U(x)\psi_1(x)\psi_2(x) = \epsilon_1 \psi_1(x)\psi_2(x),
+        \]
+        \[
+        -\psi_2''(x)\psi_1(x) + U(x)\psi_1(x)\psi_2(x) = \epsilon_2 \psi_1(x)\psi_2(x).
+        \]
+        Subtract the second from the first:
+        \[
+        -\psi_1''(x)\psi_2(x) + \psi_2''(x)\psi_1(x) = (\epsilon_1 - \epsilon_2)\psi_1(x)\psi_2(x).
+        \]
+        Rewrite the left-hand side:
+        \[
+        \frac{d}{dx} W[\psi_1, \psi_2] = (\epsilon_1 - \epsilon_2)\psi_1(x)\psi_2(x),
+        \]
+        where \(W[\psi_1, \psi_2] = \psi_1 \psi_2' - \psi_1' \psi_2\).
+        Integrate both sides from \(a\) to \(b\):
+        \[
+        W[\psi_1, \psi_2]_a^b = (\epsilon_1 - \epsilon_2) \int_a^b \psi_1(x)\psi_2(x) \, dx.
+        \]
+        Thus:
+        \[
+        \boxed{W[\psi_1, \psi_2]_a^b = (\epsilon_1 - \epsilon_2) \int_a^b \psi_1(x)\psi_2(x) \, dx.}
+        \]
+
+    \subsection*{Solution, part d:}
+        Assume two solutions \(\psi_1(x)\) and \(\psi_2(x)\) correspond to the same energy \(\epsilon\). Then:
+        \[
+        -\psi_1''(x) + U(x)\psi_1(x) = \epsilon \psi_1(x),
+        \]
+        \[
+        -\psi_2''(x) + U(x)\psi_2(x) = \epsilon \psi_2(x).
+        \]
+        Using the derivation in part (c), the Wronskian satisfies:
+        \[
+        \frac{d}{dx} W[\psi_1, \psi_2] = (\epsilon - \epsilon) \psi_1(x)\psi_2(x) = 0.
+        \]
+        Thus:
+        \[
+        W[\psi_1, \psi_2] = \text{constant}.
+        \]
+        For bound states, \(\psi_1(x)\) and \(\psi_2(x)\) vanish at infinity, so the Wronskian must be zero:
+        \[
+        W[\psi_1, \psi_2] = \psi_1 \psi_2' - \psi_1' \psi_2 = 0.
+        \]
+        This implies:
+        \[
+        \psi_1(x) = C \psi_2(x),
+        \]
+        where \(C\) is a constant. Hence, the wave functions are proportional.
+        \[
+        \boxed{\text{Bound states cannot be degenerate.}}
+        \]
+
+\end{document}

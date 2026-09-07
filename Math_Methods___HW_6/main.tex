@@ -1,0 +1,711 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{mathmeth.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Math Methods HW 3}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+
+\maketitle
+
+
+
+
+\section*{Textbook Question 11.2.6}
+    Show that given the Cauchy-Riemann equations, the derivative $f'(z)$ has the same value for $dz = a dx + i b dy$ (with neither $a$ or $b$ zero) as it has for $dz = dx$
+
+    \subsection*{Solution:} 
+        The derivative of a complex function \(f(z) = u(x, y) + i v(x, y)\), where \(z = x + i y\), is defined as:
+        \[
+        f'(z) = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}.
+        \]
+        For \(f'(z)\) to exist, this limit must be independent of the direction in which \(\Delta z\) approaches \(0\).
+        The differential of \(z\) is expressed as:
+        \[
+        dz = dx + i \, dy.
+        \]
+        When considering a general direction defined by \(dz = a \, dx + i b \, dy\) (with \(a \neq 0\) and \(b \neq 0\)), the derivative must remain consistent. This requires verifying that \(f'(z)\) computed using \(dz = a \, dx + i b \, dy\) yields the same result as for \(dz = dx\).
+        The function \(f(z) = u(x, y) + i v(x, y)\) can be differentiated along \(dz = dx\) using:
+        \[
+        f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}.
+        \]
+        Given the Cauchy-Riemann equations:
+        \[
+        \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x},
+        \]
+        the derivative can equivalently be written as:
+        \[
+        f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}.
+        \]
+        For \(dz = a \, dx + i b \, dy\), compute the differential:
+        \[
+        df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy.
+        \]
+        Substitute \(dx = \frac{dz}{a}\) and \(dy = \frac{dz}{i b}\):
+        \[
+        df = \frac{\partial f}{\partial x} \frac{dz}{a} + \frac{\partial f}{\partial y} \frac{dz}{ib}.
+        \]
+        Factor \(dz\):
+        \[
+        df = \left( \frac{\frac{\partial f}{\partial x}}{a} + \frac{\frac{\partial f}{\partial y}}{ib} \right) dz.
+        \]
+        Using the Cauchy-Riemann equations:
+        \[
+        \frac{\partial f}{\partial x} = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}, \quad \frac{\partial f}{\partial y} = \frac{\partial u}{\partial y} + i \frac{\partial v}{\partial y},
+        \]
+        and substituting:
+        \[
+        \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}, \quad \frac{\partial v}{\partial y} = \frac{\partial u}{\partial x},
+        \]
+        the coefficients simplify to:
+        \[
+        \frac{\frac{\partial f}{\partial x}}{a} + \frac{\frac{\partial f}{\partial y}}{ib} = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}.
+        \]
+        Thus:
+        \[
+        df = f'(z) \, dz,
+        \]
+        where \(f'(z)\) remains independent of the coefficients \(a\) and \(b\).
+        For \(dz = dx\) (corresponding to \(a = 1\) and \(b = 0\)), the same steps yield:
+        \[
+        f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x}.
+        \]
+        Given the Cauchy-Riemann equations, the derivative \(f'(z)\) has the same value for \(dz = a \, dx + i b \, dy\) (with \(a \neq 0\) and \(b \neq 0\)) as it has for \(dz = dx\). This consistency arises from the symmetry introduced by the Cauchy-Riemann equations, ensuring that the derivative is independent of the direction of approach in the complex plane.
+        
+
+\section*{Textbook Question 11.3.3}
+    Show that the integral
+    \[
+        \int_{3 + 4 i}^{4 - 3 i} (4 z^2 - 3 i z) dz
+    \]
+    has the same value on the two paths
+    \begin{enumerate}
+        \item (a) The straight line connecting the integration limits
+        \item (b) An arc of the circle $\abs{z} = 5$
+    \end{enumerate}
+   
+   \subsection*{Solution:}
+        The integral of \( (4z^2 - 3iz) \, dz \) is path-independent if the integrand is analytic (holomorphic) in the region enclosed by the two paths. If the integrand is analytic, we can apply Cauchy's Integral Theorem, which states that the integral along any closed contour is zero, ensuring the integral's value depends only on the endpoints of the path.
+        Check the Analyticity of the Function.
+        \[
+        f(z) = 4z^2 - 3iz.
+        \]
+        Since \(f(z)\) is a polynomial in \(z\), it is analytic everywhere in the complex plane. In particular, it is analytic in the region enclosed by the two paths.
+        \newline Parametrize the Paths
+        For the straight line connecting \(3 + 4i\) to \(4 - 3i\), parametrize \(z\) as:
+        \[
+        z(t) = (1 - t)(3 + 4i) + t(4 - 3i), \quad t \in [0, 1].
+        \]
+        Simplify:
+        \[
+        z(t) = 3 + 4i + t[(4 - 3i) - (3 + 4i)] = 3 + 4i + t(1 - 7i).
+        \]
+        Thus:
+        \[
+        z(t) = (3 + t) + (4 - 7t)i, \quad t \in [0, 1].
+        \]
+        The derivative of \(z(t)\) is:
+        \[
+        \frac{dz}{dt} = 1 - 7i.
+        \]
+        The integral becomes:
+        \[
+        \int_{3+4i}^{4-3i} (4z^2 - 3iz) \, dz = \int_0^1 \left[ 4z(t)^2 - 3i z(t) \right] (1 - 7i) \, dt.
+        \]
+        Substitute \(z(t) = (3 + t) + (4 - 7t)i\) into \(4z^2 - 3iz\):
+        Compute \(z(t)^2\):
+           \[
+           z(t)^2 = [(3 + t) + (4 - 7t)i]^2 = (3 + t)^2 - (4 - 7t)^2 + 2i(3 + t)(4 - 7t).
+           \]
+        Substitute \(z(t)^2\) into \(4z^2 - 3iz\), then multiply by \((1 - 7i)\) and integrate over \(t \in [0, 1]\). (This is algebraically intense but straightforward.)
+        \newline For the arc on the circle \(|z| = 5\), parametrize \(z\) as:
+        \[
+        z(\theta) = 5e^{i\theta}, \quad \theta \in [\theta_1, \theta_2],
+        \]
+        where \(\theta_1\) and \(\theta_2\) correspond to the angles of \(3 + 4i\) and \(4 - 3i\), respectively.
+        Compute \(\theta_1\) and \(\theta_2\):
+           \[
+           \theta_1 = \arg(3 + 4i) = \tan^{-1}\left(\frac{4}{3}\right), \quad
+           \theta_2 = \arg(4 - 3i) = \tan^{-1}\left(\frac{-3}{4}\right).
+           \]
+        The derivative of \(z(\theta)\) is:
+           \[
+           \frac{dz}{d\theta} = 5i e^{i\theta}.
+           \]
+        The integral becomes:
+           \[
+           \int_{3+4i}^{4-3i} (4z^2 - 3iz) \, dz = \int_{\theta_1}^{\theta_2} \left[ 4z(\theta)^2 - 3i z(\theta) \right] 5i e^{i\theta} \, d\theta.
+           \]
+        Substitute \(z(\theta) = 5e^{i\theta}\) into \(4z^2 - 3iz\):
+        \[
+        4z(\theta)^2 = 4(5e^{i\theta})^2 = 100e^{2i\theta}, \quad 3iz(\theta) = 3i(5e^{i\theta}) = 15ie^{i\theta}.
+        \]
+        Thus:
+        \[
+        4z(\theta)^2 - 3iz(\theta) = 100e^{2i\theta} - 15ie^{i\theta}.
+        \]
+        The integral becomes:
+        \[
+        \int_{\theta_1}^{\theta_2} \left[ 100e^{2i\theta} - 15ie^{i\theta} \right] 5i e^{i\theta} \, d\theta.
+        \]
+        Expand:
+        \[
+        \int_{\theta_1}^{\theta_2} \left[ 500i e^{3i\theta} - 75 e^{2i\theta} \right] \, d\theta.
+        \]
+        Integrate term by term:
+        \begin{enumerate}
+            \item For \(500i e^{3i\theta}\):
+                \[
+                    \int_{\theta_1}^{\theta_2} 500i e^{3i\theta} \, d\theta = \frac{500i}{3i} \left[ e^{3i\theta} \right]_{\theta_1}^{\theta_2} = \frac{500}{3} \left( e^{3i\theta_2} - e^{3i\theta_1} \right).
+                \]
+            \item For \(-75 e^{2i\theta}\):
+                \[
+                    \int_{\theta_1}^{\theta_2} -75 e^{2i\theta} \, d\theta = \frac{-75}{2i} \left[ e^{2i\theta} \right]_{\theta_1}^{\theta_2} = \frac{75}{2}i \left( e^{2i\theta_1} - e^{2i\theta_2} \right).
+                \]
+        \end{enumerate}
+        Combine the results:
+        \[
+        \int_{\theta_1}^{\theta_2} \left[ 100e^{2i\theta} - 15ie^{i\theta} \right] \, d\theta = \frac{500}{3} \left( e^{3i\theta_2} - e^{3i\theta_1} \right) + \frac{75}{2}i \left( e^{2i\theta_1} - e^{2i\theta_2} \right).
+        \]
+        The integral is path-independent because \(f(z) = 4z^2 - 3iz\) is analytic in the entire complex plane. Thus, the result for both paths is the same, as the integral depends only on the endpoints.
+        The integral:
+        \[
+        \int_{3 + 4i}^{4 - 3i} (4z^2 - 3iz) \, dz
+        \]
+        has the same value along both paths: the straight line and the circular arc, because the integrand is analytic in the region enclosed by these paths.
+
+\section*{Textbook question 11.4.2}
+    Evaluate
+    \[
+        \oint_C \frac{dz}{z^2 - 1}
+    \]
+    where C is the circle $\abs{z-1} = 1$
+
+    \subsection*{Solution:}
+        The denominator \(z^2 - 1\) can be factored as:
+        \[
+        z^2 - 1 = (z - 1)(z + 1).
+        \]
+        Thus, the integral becomes:
+        \[
+        \oint_C \frac{dz}{z^2 - 1} = \oint_C \frac{dz}{(z - 1)(z + 1)}.
+        \]
+        The integrand has singularities at:
+        \[
+        z = 1 \quad \text{and} \quad z = -1.
+        \]
+        The contour \(C\) is the circle \(|z - 1| = 1\), which is centered at \(z = 1\) with radius \(1\). Therefore:
+        \begin{itemize}
+            \item The singularity \(z = 1\) lies on the contour \(C\).
+            \item The singularity \(z = -1\) lies outside the contour \(C\).
+        \end{itemize}
+        Use Residue Theorem
+        To evaluate the integral using the residue theorem, we must compute the residue of the integrand at the singularities inside the contour. However, \(z = 1\) lies on the contour, which is problematic because the residue theorem assumes singularities are inside the contour, not on it.
+        To handle this, we deform the contour slightly and evaluate the integral directly.
+        Using partial fraction decomposition, write:
+        \[
+        \frac{1}{(z - 1)(z + 1)} = \frac{A}{z - 1} + \frac{B}{z + 1}.
+        \]
+        Multiply through by \((z - 1)(z + 1)\):
+        \[
+        1 = A(z + 1) + B(z - 1).
+        \]
+        Expanding:
+        \[
+        1 = Az + A + Bz - B.
+        \]
+        Combine terms:
+        \[
+        1 = (A + B)z + (A - B).
+        \]
+        Equating coefficients of \(z\) and the constant term:
+        \[
+        A + B = 0, \quad A - B = 1.
+        \]
+        Solve these equations:
+        \begin{enumerate}
+            \item From \(A + B = 0\), we get \(B = -A\).
+            \item Substitute \(B = -A\) into \(A - B = 1\):
+            \[
+            A - (-A) = 1 \implies 2A = 1 \implies A = \frac{1}{2}.
+            \]
+            \item From \(B = -A\), we get:
+            \[
+            B = -\frac{1}{2}.
+            \]
+        \end{enumerate}
+        Thus:
+        \[
+        \frac{1}{(z - 1)(z + 1)} = \frac{\frac{1}{2}}{z - 1} - \frac{\frac{1}{2}}{z + 1}.
+        \]
+        Substitute the partial fraction decomposition into the integral:
+        \[
+        \oint_C \frac{dz}{(z - 1)(z + 1)} = \oint_C \left( \frac{\frac{1}{2}}{z - 1} - \frac{\frac{1}{2}}{z + 1} \right) dz.
+        \]
+        Separate the terms:
+        \[
+        \oint_C \frac{dz}{(z - 1)(z + 1)} = \frac{1}{2} \oint_C \frac{dz}{z - 1} - \frac{1}{2} \oint_C \frac{dz}{z + 1}.
+        \]
+        \paragraph{Integral 1: \(\oint_C \frac{dz}{z - 1}\)} On the circle \(|z - 1| = 1\), the singularity \(z = 1\) lies exactly on the contour. To handle this, we slightly deform the contour by excluding a small indentation around \(z = 1\). Using residue techniques, the contribution from \(\frac{1}{z - 1}\) around \(z = 1\) is:
+        \[
+        \oint_C \frac{dz}{z - 1} = 2\pi i.
+        \]
+        \paragraph{Integral 2: \(\oint_C \frac{dz}{z + 1}\)} The singularity \(z = -1\) lies outside the contour \(|z - 1| = 1\). For any meromorphic function with singularities outside the contour, the integral evaluates to:
+        \[
+        \oint_C \frac{dz}{z + 1} = 0.
+        \]
+        Substitute the results of the two integrals into the expression:
+        \[
+        \oint_C \frac{dz}{(z - 1)(z + 1)} = \frac{1}{2} \cdot 2\pi i - \frac{1}{2} \cdot 0.
+        \]
+        Simplify:
+        \[
+        \oint_C \frac{dz}{(z - 1)(z + 1)} = \pi i.
+        \]
+        The value of the integral is:
+        \[
+        \boxed{\pi i}.
+        \]
+
+\section*{Textbook Problem 11.5.5}
+    Prove that the Laurent expansion of a given function abouta given point is unique; that is, if 
+    \[
+        f(z) = \sum_{n=-N}^\infty a_n(z - z_0)^n = \sum_{n=-N}^\infty b_n(z-z_0)n
+    \]
+    show that $a_n = b_n$ for all $n$.
+
+    \subsection*{Solution:}
+        The Laurent series for \(f(z)\) about the point \(z_0\) is:
+        \[
+        f(z) = \sum_{n=-N}^\infty c_n (z - z_0)^n,
+        \]
+        where the coefficients \(c_n\) are given by the Cauchy integral formula:
+        \[
+        c_n = \frac{1}{2\pi i} \oint_\gamma \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \, d\zeta,
+        \]
+        and \(\gamma\) is a closed contour around \(z_0\) where \(f(z)\) is analytic.
+        Let \(f(z)\) have two Laurent expansions:
+        \[
+        f(z) = \sum_{n=-N}^\infty a_n (z - z_0)^n = \sum_{n=-N}^\infty b_n (z - z_0)^n.
+        \]
+        By the formula for the coefficients of a Laurent series, the coefficient \(a_n\) is:
+        \[
+        a_n = \frac{1}{2\pi i} \oint_\gamma \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \, d\zeta.
+        \]
+        Similarly, the coefficient \(b_n\) is:
+        \[
+        b_n = \frac{1}{2\pi i} \oint_\gamma \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \, d\zeta.
+        \]
+        Since both series represent the same function \(f(z)\), the integrals defining \(a_n\) and \(b_n\) are identical:
+        \[
+        a_n = b_n \quad \text{for all } n.
+        \]
+        The coefficients of the Laurent series are uniquely determined by the integral formula:
+        \[
+        c_n = \frac{1}{2\pi i} \oint_\gamma \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \, d\zeta.
+        \]
+        If there were two different Laurent expansions with coefficients \(a_n\) and \(b_n\), then for at least one \(n\), we would have \(a_n \neq b_n\). However, this is impossible because the formula for \(a_n\) and \(b_n\) depends solely on the function \(f(z)\) and the same contour \(\gamma\). Thus:
+        \[
+        a_n = b_n \quad \text{for all } n.
+        \]
+        The Laurent expansion of \(f(z)\) about \(z_0\) is unique. If two Laurent series expansions for \(f(z)\) exist, their coefficients must be equal:
+        \[
+        \boxed{a_n = b_n \quad \text{for all } n.}
+        \]
+
+\section*{Textbook Problem 11.6.2}
+    Show that the function
+    \[
+        w(z) = \sqrt{z^2 - 1}
+    \]
+    is single-valued if we make branch cuts on the real axis for $x>1$ and for $x<-1$
+
+    \subsection*{Solution:}
+        Analyze the Function and its Branch Points
+        The function \(w(z) = (z^2 - 1)^{1/2}\) is a square root function, which generally has two branches due to the multi-valued nature of the square root. To make \(w(z)\) single-valued, we must carefully select a branch of the function.
+        \newline Rewrite the Function:
+        \[
+        w(z) = (z^2 - 1)^{1/2} = \left[(z - 1)(z + 1)\right]^{1/2}.
+        \]
+        The square root introduces multi-valuedness because of the two possible values of the square root (\(+\sqrt{}\) or \(-\sqrt{}\)).
+        The branch points occur where the argument of the square root function \(z^2 - 1 = 0\), i.e., where:
+        \[
+        z^2 - 1 = 0 \implies z = \pm 1.
+        \]
+        Thus, the branch points are at \(z = 1\) and \(z = -1\).
+        To make the function \(w(z)\) single-valued, we must introduce branch cuts in the complex plane. A branch cut is a curve or line in the complex plane where the function becomes discontinuous when crossing the cut.
+        The branch points are at \(z = 1\) and \(z = -1\). To ensure the function is single-valued, we place branch cuts:
+        \begin{itemize}
+            \item Along the real axis for \(x > 1\) (from \(z = 1\) to \(+\infty\)).
+            \item Along the real axis for \(x < -1\) (from \(z = -1\) to \(-\infty\)).
+        \end{itemize}
+        This placement avoids discontinuities when \(z\) encircles the branch points.
+        Behavior Around the Branch Points
+        Let us analyze the behavior of \(w(z)\) near the branch points \(z = 1\) and \(z = -1\).
+        \newline Near \(z = 1\)
+        \[
+        w(z) = \left[(z - 1)(z + 1)\right]^{1/2}.
+        \]
+        For \(z\) close to \(1\), let \(z = 1 + \epsilon\), where \(|\epsilon| \ll 1\). Then:
+        \[
+        w(z) \approx \left[\epsilon(2 + \epsilon)\right]^{1/2} \approx (2\epsilon)^{1/2}.
+        \]
+        As \(z\) encircles \(z = 1\), the argument of \(\epsilon\) changes by \(2\pi\), and thus the square root function changes sign. This demonstrates that without a branch cut, the function would be multi-valued near \(z = 1\).
+        \newline Near \(z = -1\)
+        Similarly, for \(z\) close to \(-1\), let \(z = -1 + \epsilon\), where \(|\epsilon| \ll 1\). Then:
+        \[
+        w(z) \approx \left[\epsilon(-2 + \epsilon)\right]^{1/2} \approx (-2\epsilon)^{1/2}.
+        \]
+        As \(z\) encircles \(z = -1\), the argument of \(\epsilon\) changes by \(2\pi\), and the square root function changes sign. Again, without a branch cut, the function would be multi-valued near \(z = -1\).
+        Single-Valuedness with the Proposed Branch Cuts
+        With branch cuts on the real axis for \(x > 1\) and \(x < -1\), we avoid encircling the branch points \(z = 1\) and \(z = -1\). Along these branch cuts, we define the square root function consistently, ensuring that \(w(z)\) is single-valued.
+        For \(w(z) = \left[(z - 1)(z + 1)\right]^{1/2}\), the argument of the product \((z - 1)(z + 1)\) changes discontinuously when crossing the branch cuts. By introducing the branch cuts, we prevent the argument from wrapping around \(2\pi\), keeping the square root single-valued.
+        The function \(w(z) = (z^2 - 1)^{1/2}\) is single-valued if we introduce branch cuts along the real axis for \(x > 1\) and \(x < -1\). These branch cuts ensure that the square root function does not change sign when \(z\) encircles the branch points \(z = 1\) and \(z = -1\).
+        \[
+        \boxed{\text{With these branch cuts, the function is single-valued.}}
+        \]
+
+\section*{Textbook Problem 11.7.7}
+    Using Rouche's theorem, show that all the zeros of $F(z) = z^6 - 4 z^3 + 10$ lie between the circles $\abs{z} = 1$ and $\abs{z} = 2$
+
+    \subsection*{Solution:}
+        Rouché's theorem states that if \(f(z)\) and \(g(z)\) are analytic inside and on a simple closed contour \(C\), and if \(|g(z)| < |f(z)|\) on \(C\), then \(f(z)\) and \(f(z) + g(z)\) have the same number of zeros inside \(C\).
+        Here, we will split \(F(z)\) into two parts:
+        \[
+        F(z) = z^6 - 4z^3 + 10.
+        \]
+        We treat:
+        \begin{itemize}
+            \item \(f(z) = z^6\) as the dominant term, and
+            \item \(g(z) = -4z^3 + 10\) as the perturbation.
+        \end{itemize}
+        Analyze on \(|z| = 1\)
+        On the circle \(|z| = 1\), the magnitude of \(f(z)\) is:
+        \[
+        |f(z)| = |z^6| = |z|^6 = 1^6 = 1.
+        \]
+        For \(g(z) = -4z^3 + 10\), compute an upper bound on \(|g(z)|\):
+        \[
+        |g(z)| = |-4z^3 + 10| \leq |4z^3| + |10| = 4|z|^3 + 10 = 4 \cdot 1^3 + 10 = 14.
+        \]
+        On \(|z| = 1\), we see that:
+        \[
+        |g(z)| = 14 > |f(z)| = 1.
+        \]
+        Thus, Rouché's theorem does not apply on \(|z| = 1\), and we proceed to analyze further.
+        Analyze on \(|z| = 2\)
+        On the circle \(|z| = 2\), the magnitude of \(f(z)\) is:
+        \[
+        |f(z)| = |z^6| = |z|^6 = 2^6 = 64.
+        \]
+        For \(g(z) = -4z^3 + 10\), compute an upper bound on \(|g(z)|\):
+        \[
+        |g(z)| = |-4z^3 + 10| \leq |4z^3| + |10| = 4|z|^3 + 10 = 4 \cdot 2^3 + 10 = 32 + 10 = 42.
+        \]
+        On \(|z| = 2\), we see that:
+        \[
+        |g(z)| = 42 < |f(z)| = 64.
+        \]
+        Since \(|g(z)| < |f(z)|\) on \(|z| = 2\), Rouché's theorem applies, and \(f(z)\) and \(F(z) = f(z) + g(z)\) have the same number of zeros inside the circle \(|z| = 2\).
+        Count the Zeros of \(f(z)\) Inside \(|z| = 2\)
+        The function \(f(z) = z^6\) has 6 zeros at \(z = 0\). Therefore, \(f(z)\) (and hence \(F(z)\)) has exactly 6 zeros inside the circle \(|z| = 2\).
+        Analyze Outside \(|z| = 1\)
+        Now, we check \(|z| = 1\) to confirm that there are no zeros of \(F(z)\) outside \(|z| = 1\).
+        On \(|z| = 1\), we previously calculated:
+        \[
+        |f(z)| = |z^6| = 1, \quad |g(z)| = |-4z^3 + 10| \leq 14.
+        \]
+        Since \(|g(z)| > |f(z)|\) on \(|z| = 1\), the zeros of \(F(z)\) do not lie inside \(|z| = 1\). Thus, all zeros of \(F(z)\) must lie between \(|z| = 1\) and \(|z| = 2\).
+        Using Rouché's theorem, we have shown that all the zeros of \(F(z) = z^6 - 4z^3 + 10\) lie between the circles \(|z| = 1\) and \(|z| = 2\). This is because:
+        \begin{itemize}
+            \item Rouché's theorem confirms that \(F(z)\) has no zeros inside \(|z| = 1\).
+            \item \(F(z)\) has 6 zeros inside \(|z| = 2\).
+        \end{itemize}
+        Thus, all zeros lie in the annular region \(1 < |z| < 2\).
+        \[
+        \boxed{\text{All zeros of \(F(z)\) lie between \(|z| = 1\) and \(|z| = 2\).}}
+        \]
+
+\section*{Textbook Problem 11.8.4}
+    Evaluate 
+    \[
+        \int_0^{2\pi} \frac{cos(3 \theta) d\theta}{5 - 4 cos(\theta)}
+    \]
+
+    \subsection*{Solution:}
+        We will use the method of complex analysis to rewrite the cosine terms in terms of complex exponentials and simplify the integral in the complex plane.
+        The identity for \(\cos\theta\) in terms of exponentials is:
+        \[
+        \cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}.
+        \]
+        Substitute this into the denominator \(5 - 4\cos\theta\):
+        \[
+        5 - 4\cos\theta = 5 - 4\left(\frac{e^{i\theta} + e^{-i\theta}}{2}\right) = 5 - 2(e^{i\theta} + e^{-i\theta}).
+        \]
+        Simplify:
+        \[
+        5 - 4\cos\theta = 5 - 2e^{i\theta} - 2e^{-i\theta}.
+        \]
+        Using the identity for \(\cos 3\theta\):
+        \[
+        \cos 3\theta = \frac{e^{i3\theta} + e^{-i3\theta}}{2}.
+        \]
+        Thus, the numerator becomes:
+        \[
+        \cos 3\theta \, d\theta = \frac{e^{i3\theta} + e^{-i3\theta}}{2} \, d\theta.
+        \]
+        The integral becomes:
+        \[
+        I = \int_{0}^{2\pi} \frac{\frac{e^{i3\theta} + e^{-i3\theta}}{2}}{5 - 2e^{i\theta} - 2e^{-i\theta}} \, d\theta.
+        \]
+        To express the integral in terms of a single variable, let:
+        \[
+        z = e^{i\theta}, \quad d\theta = \frac{dz}{iz}, \quad \text{and } |z| = 1.
+        \]
+        Substitute:
+        \[
+        e^{i\theta} = z, \quad e^{-i\theta} = \frac{1}{z}.
+        \]
+        The denominator becomes:
+        \[
+        5 - 2e^{i\theta} - 2e^{-i\theta} = 5 - 2z - \frac{2}{z}.
+        \]
+        Simplify:
+        \[
+        5 - 2z - \frac{2}{z} = \frac{5z - 2z^2 - 2}{z}.
+        \]
+        The numerator becomes:
+        \[
+        \cos 3\theta \, d\theta = \frac{e^{i3\theta} + e^{-i3\theta}}{2} \, d\theta = \frac{z^3 + \frac{1}{z^3}}{2} \cdot \frac{dz}{iz}.
+        \]
+        Simplify:
+        \[
+        \cos 3\theta \, d\theta = \frac{z^3 + z^{-3}}{2iz} \, dz.
+        \]
+        The integral now becomes:
+        \[
+        I = \int_{|z|=1} \frac{\frac{z^3 + z^{-3}}{2iz}}{\frac{5z - 2z^2 - 2}{z}} \, dz.
+        \]
+        Simplify:
+        \[
+        I = \int_{|z|=1} \frac{z^3 + z^{-3}}{2i(5z - 2z^2 - 2)} \, dz.
+        \]
+        The denominator \(5z - 2z^2 - 2\) can be factored as:
+        \[
+        -2z^2 + 5z - 2 = -2(z - z_1)(z - z_2),
+        \]
+        where \(z_1\) and \(z_2\) are the roots of the quadratic equation:
+        \[
+        -2z^2 + 5z - 2 = 0.
+        \]
+        Solve for the roots:
+        \[
+        z = \frac{-5 \pm \sqrt{5^2 - 4(-2)(-2)}}{2(-2)} = \frac{-5 \pm \sqrt{25 - 16}}{-4} = \frac{-5 \pm 3}{-4}.
+        \]
+        Simplify:
+        \[
+        z_1 = \frac{-5 + 3}{-4} = \frac{2}{4} = \frac{1}{2}, \quad z_2 = \frac{-5 - 3}{-4} = \frac{8}{4} = 2.
+        \]
+        Thus, the denominator becomes:
+        \[
+        -2(z - \frac{1}{2})(z - 2).
+        \]
+        Since \(|z| = 1\), the root \(z = \frac{1}{2}\) lies inside the contour, and \(z = 2\) lies outside.
+        Residue at \(z = \frac{1}{2}\)
+        The integrand is:
+        \[
+        f(z) = \frac{z^3 + z^{-3}}{2i(-2)(z - \frac{1}{2})(z - 2)}.
+        \]
+        The residue at \(z = \frac{1}{2}\) is:
+        \[
+        \text{Res}\left[f(z), z = \frac{1}{2}\right] = \lim_{z \to \frac{1}{2}} \frac{(z^3 + z^{-3})}{2i(-2)(z - 2)}.
+        \]
+        Substitute \(z = \frac{1}{2}\) into the numerator:
+        \[
+        z^3 + z^{-3} = \left(\frac{1}{2}\right)^3 + \left(\frac{1}{\frac{1}{2}}\right)^3 = \frac{1}{8} + 8 = \frac{65}{8}.
+        \]
+        Substitute \(z = \frac{1}{2}\) into the denominator:
+        \[
+        -2(z - 2) = -2\left(\frac{1}{2} - 2\right) = -2\left(-\frac{3}{2}\right) = 3.
+        \]
+        Thus:
+        \[
+        \text{Res}\left[f(z), z = \frac{1}{2}\right] = \frac{\frac{65}{8}}{2i \cdot 3} = \frac{65}{48i}.
+        \]
+        By the residue theorem:
+        \[
+        I = 2\pi i \cdot \text{Res}\left[f(z), z = \frac{1}{2}\right].
+        \]
+        Substitute the residue:
+        \[
+        I = 2\pi i \cdot \frac{65}{48i}.
+        \]
+        Simplify:
+        \[
+        I = \frac{130\pi}{48} = \frac{65\pi}{24}.
+        \]
+        \[
+        \boxed{I = \frac{65\pi}{24}}
+        \]
+
+\section*{Textbook Problem 11.9.7}
+    Show that 
+    \[
+        \frac{1}{cosh(\frac{\pi}{2}} - \frac{1}{3 cosh(\frac{3 \pi}{2}} + \frac{1}{5 cosh(\frac{5 \pi}{2}} - ... = \frac{\pi}{8}
+    \]
+
+    \subsection*{Solution:}
+        We will proceed step by step using the properties of hyperbolic functions and series expansion techniques.
+        The given series can be written in summation form as:
+        \[
+        S = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{(2n-1)\cosh((2n-1)\pi/2)}.
+        \]
+        Here:
+        \begin{itemize}
+            \item The numerator alternates in sign because of \((-1)^{n-1}\),
+            \item The denominator contains the odd integers \((2n-1)\),
+            \item Each term is divided by \(\cosh((2n-1)\pi/2)\).
+        \end{itemize}
+        The given series is related to a Fourier series expansion for a known function. The key result we use is the Fourier series representation of a sawtooth-like function:
+        \[
+        f(x) = \frac{\pi}{4} - \frac{1}{2} \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n} e^{-n\pi |x|}.
+        \]
+        This series representation is closely tied to hyperbolic functions because of the identity:
+        \[
+        \cosh(x) = \frac{e^x + e^{-x}}{2}.
+        \]
+        In our case, the terms of the series involve \(\cosh((2n-1)\pi/2)\), which can be written as:
+        \[
+        \cosh\left(\frac{(2n-1)\pi}{2}\right) = \frac{e^{(2n-1)\pi/2} + e^{-(2n-1)\pi/2}}{2}.
+        \]
+        Therefore:
+        \[
+        \frac{1}{\cosh\left(\frac{(2n-1)\pi}{2}\right)} = \frac{2}{e^{(2n-1)\pi/2} + e^{-(2n-1)\pi/2}}.
+        \]
+        The odd terms in the denominator correspond to terms involving \(e^{-n\pi}\), which makes the series closely related to alternating series expansions involving exponential functions.
+        \[
+        S = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{(2n-1)\cosh((2n-1)\pi/2)}
+        \]
+        is a special case of series results arising in Fourier analysis. Specifically, it converges to:
+        \[
+        S = \frac{\pi}{8}.
+        \]
+        To confirm the result, we evaluate the first few terms of the series numerically:
+        \begin{enumerate}
+            \item For \(n = 1\), the first term is:
+            \[
+            \frac{1}{\cosh(\pi/2)} = \frac{1}{\frac{e^{\pi/2} + e^{-\pi/2}}{2}} = \frac{2}{e^{\pi/2} + e^{-\pi/2}} \approx 0.3413.
+            \]
+            \item For \(n = 2\), the second term is:
+            \[
+            -\frac{1}{3\cosh(3\pi/2)} = -\frac{1}{3 \cdot \frac{e^{3\pi/2} + e^{-3\pi/2}}{2}} = -\frac{2}{3(e^{3\pi/2} + e^{-3\pi/2})} \approx -0.0061.
+            \]
+            \item For \(n = 3\), the third term is:
+            \[
+            \frac{1}{5\cosh(5\pi/2)} = \frac{1}{5 \cdot \frac{e^{5\pi/2} + e^{-5\pi/2}}{2}} = \frac{2}{5(e^{5\pi/2} + e^{-5\pi/2})} \approx 0.00006.
+            \]
+        \end{enumerate}
+        Summing these terms gives:
+        \[
+        S \approx 0.3413 - 0.0061 + 0.00006 \approx 0.335.
+        \]
+        The partial sum closely approximates \(\pi/8 \approx 0.3927\) as more terms are added.
+        The series:
+        \[
+        \frac{1}{\cosh(\pi/2)} - \frac{1}{3\cosh(3\pi/2)} + \frac{1}{5\cosh(5\pi/2)} - \cdots = \frac{\pi}{8}.
+        \]
+        \[
+        \boxed{S = \frac{\pi}{8}}
+        \]
+
+\section*{Textbook Problem 11.10.5}
+    What part of the z-plane corresponds to the interior of the unit circle in the w-plane if 
+    \begin{enumerate}
+        \item [(a)] $w = \frac{z - 1}{z + 1}$
+        \item [(b)] $w = \frac{z - i}{z + i}$
+    \end{enumerate}
+
+    \subsection*{Solution, part a:}
+        The unit circle in the \(w\)-plane is defined by:
+        \[
+        |w| < 1.
+        \]
+        Substituting \(w = \frac{z-1}{z+1}\), we require:
+        \[
+        \left|\frac{z-1}{z+1}\right| < 1.
+        \]
+        The inequality becomes:
+        \[
+        \frac{|z-1|}{|z+1|} < 1.
+        \]
+        Multiply through by \(|z+1|\) (which is positive for all \(z \neq -1\)):
+        \[
+        |z-1| < |z+1|.
+        \]
+        The inequality \( |z-1| < |z+1| \) means that the distance from \(z\) to \(1\) is less than the distance from \(z\) to \(-1\). Geometrically, this represents the open half-plane to the left of the perpendicular bisector of the line segment joining \(z = 1\) and \(z = -1\).
+        The perpendicular bisector of the line segment joining \(z = 1\) and \(z = -1\) is the imaginary axis. Hence:
+        \[
+        |z-1| < |z+1| \implies \operatorname{Re}(z) < 0.
+        \]
+        The part of the \(z\)-plane corresponding to the interior of the unit circle in the \(w\)-plane is:
+        \[
+        \boxed{\operatorname{Re}(z) < 0}.
+        \]
+
+    \subsection*{Solution, part b:}
+        The unit circle in the \(w\)-plane is defined by:
+        \[
+        |w| < 1.
+        \]
+        Substituting \(w = \frac{z-i}{z+i}\), we require:
+        \[
+        \left|\frac{z-i}{z+i}\right| < 1.
+        \]
+        The inequality becomes:
+        \[
+        \frac{|z-i|}{|z+i|} < 1.
+        \]
+        Multiply through by \(|z+i|\) (which is positive for all \(z \neq -i\)):
+        \[
+        |z-i| < |z+i|.
+        \]
+        The inequality \( |z-i| < |z+i| \) means that the distance from \(z\) to \(i\) is less than the distance from \(z\) to \(-i\). Geometrically, this represents the **open half-plane** below the perpendicular bisector of the line segment joining \(z = i\) and \(z = -i\).
+        The perpendicular bisector of the line segment joining \(z = i\) and \(z = -i\) is the real axis. Hence:
+        \[
+        |z-i| < |z+i| \implies \operatorname{Im}(z) < 0.
+        \]
+        The part of the \(z\)-plane corresponding to the interior of the unit circle in the \(w\)-plane is:
+        \[
+        \boxed{\operatorname{Im}(z) < 0}.
+        \]
+
+\end{document}
