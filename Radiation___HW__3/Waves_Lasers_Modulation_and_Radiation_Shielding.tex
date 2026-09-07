@@ -1,0 +1,1155 @@
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+\onehalfspacing
+
+\title{Waves, Coherence, Lasers, Modulation, Quantum Wave Phenomena, and Radiation Shielding}
+\author{Zachary Tullier}
+\date{6/24/26}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Identification Parameters of Waves and Their Quantum-Mechanical Relationships}
+
+A wave is a disturbance that transfers energy and momentum through space or matter. A monochromatic harmonic wave traveling in the positive $x$-direction may be written as
+
+\begin{equation}
+\psi(x,t)=A\cos(kx-\omega t+\phi_0),
+\end{equation}
+
+where $A$ is the amplitude, $k$ is the wave number, $\omega$ is the angular frequency, and $\phi_0$ is the initial phase.
+
+\subsection{Wavelength}
+
+The wavelength $\lambda$ is the spatial distance over which the wave repeats itself:
+
+\begin{equation}
+\psi(x+\lambda,t)=\psi(x,t).
+\end{equation}
+
+The wave number is related to wavelength by
+
+\begin{equation}
+k=\frac{2\pi}{\lambda}.
+\end{equation}
+
+For electromagnetic radiation in vacuum,
+
+\begin{equation}
+c=\lambda \nu,
+\end{equation}
+
+where $c$ is the speed of light and $\nu$ is the frequency. Therefore,
+
+\begin{equation}
+\lambda=\frac{c}{\nu}.
+\end{equation}
+
+Quantum mechanically, a photon has momentum
+
+\begin{equation}
+p=\hbar k=\frac{h}{\lambda},
+\end{equation}
+
+which is the de Broglie relation. Thus,
+
+\begin{equation}
+\boxed{\lambda=\frac{h}{p}}.
+\end{equation}
+
+A shorter wavelength corresponds to a larger photon momentum.
+
+\subsection{Frequency}
+
+Frequency $\nu$ is the number of complete oscillations per unit time:
+
+\begin{equation}
+\nu=\frac{N}{t}.
+\end{equation}
+
+Its SI unit is the hertz:
+
+\begin{equation}
+1~\mathrm{Hz}=1~\mathrm{s}^{-1}.
+\end{equation}
+
+Angular frequency is
+
+\begin{equation}
+\omega=2\pi\nu.
+\end{equation}
+
+Quantum mechanically, the energy of one photon is
+
+\begin{equation}
+\boxed{E=h\nu=\hbar\omega}.
+\end{equation}
+
+Combining $c=\lambda\nu$ with $E=h\nu$ gives
+
+\begin{equation}
+\boxed{E=\frac{hc}{\lambda}}.
+\end{equation}
+
+Thus, photon energy is inversely proportional to wavelength.
+
+\subsection{Period}
+
+The period $T$ is the time required for one complete oscillation:
+
+\begin{equation}
+T=\frac{1}{\nu}.
+\end{equation}
+
+Since $E=h\nu$,
+
+\begin{equation}
+E=\frac{h}{T},
+\end{equation}
+
+and therefore,
+
+\begin{equation}
+\boxed{T=\frac{h}{E}}.
+\end{equation}
+
+The associated quantum state evolves with angular frequency
+
+\begin{equation}
+\omega=\frac{E}{\hbar}.
+\end{equation}
+
+The time dependence of an energy eigenstate is
+
+\begin{equation}
+\Psi(\mathbf{r},t)=\psi(\mathbf{r})e^{-iEt/\hbar}.
+\end{equation}
+
+\subsection{Energy}
+
+For electromagnetic radiation, the energy density is
+
+\begin{equation}
+u=\frac{1}{2}\epsilon_0 E_0^2+\frac{1}{2\mu_0}B_0^2.
+\end{equation}
+
+For a plane electromagnetic wave,
+
+\begin{equation}
+B_0=\frac{E_0}{c}.
+\end{equation}
+
+The electric and magnetic contributions are equal, so the average total energy density is
+
+\begin{equation}
+\langle u\rangle=\frac{1}{2}\epsilon_0 E_0^2.
+\end{equation}
+
+The time-averaged intensity is
+
+\begin{equation}
+\boxed{I=\frac{1}{2}c\epsilon_0 E_0^2}.
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+I\propto E_0^2.
+\end{equation}
+
+Quantum mechanically, if $N$ photons of frequency $\nu$ pass through an area $A_s$ during time $\Delta t$, then
+
+\begin{equation}
+I=\frac{Nh\nu}{A_s\Delta t}.
+\end{equation}
+
+\subsection{Amplitude in Terms of Energy}
+
+For a classical mechanical wave,
+
+\begin{equation}
+E_{\text{wave}}\propto A^2.
+\end{equation}
+
+For a harmonic oscillator,
+
+\begin{equation}
+E=\frac{1}{2}m\omega^2A^2.
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+A=\sqrt{\frac{2E}{m\omega^2}}.
+\end{equation}
+
+For an electromagnetic wave occupying a volume $V$,
+
+\begin{equation}
+U=\langle u\rangle V=\frac{1}{2}\epsilon_0E_0^2V.
+\end{equation}
+
+Hence,
+
+\begin{equation}
+\boxed{E_0=\sqrt{\frac{2U}{\epsilon_0V}}}.
+\end{equation}
+
+If the electromagnetic field contains $N$ photons,
+
+\begin{equation}
+U=Nh\nu,
+\end{equation}
+
+so that
+
+\begin{equation}
+\boxed{E_0=\sqrt{\frac{2Nh\nu}{\epsilon_0V}}}.
+\end{equation}
+
+Thus,
+
+\begin{equation}
+E_0\propto \sqrt{N}.
+\end{equation}
+
+For a particle wavefunction $\Psi$,
+
+\begin{equation}
+\boxed{|\Psi(\mathbf r,t)|^2}
+\end{equation}
+
+is the probability density of finding the particle at position $\mathbf r$ and time $t$.
+
+\subsection{Summary of Quantum Relations}
+
+The principal wave--particle relations are
+
+\begin{equation}
+\boxed{E=h\nu=\hbar\omega},
+\end{equation}
+
+\begin{equation}
+\boxed{p=\frac{h}{\lambda}=\hbar k},
+\end{equation}
+
+\begin{equation}
+\boxed{c=\lambda\nu},
+\end{equation}
+
+and for a photon,
+
+\begin{equation}
+\boxed{E=pc}.
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+E=\frac{hc}{\lambda},
+\qquad
+p=\frac{E}{c}.
+\end{equation}
+
+\section{Phase and Coherence}
+
+\subsection{Phase of a Wave}
+
+The phase of the harmonic wave
+
+\begin{equation}
+\psi(x,t)=A\cos(kx-\omega t+\phi_0)
+\end{equation}
+
+is
+
+\begin{equation}
+\boxed{\phi(x,t)=kx-\omega t+\phi_0}.
+\end{equation}
+
+For two waves,
+
+\begin{align}
+\psi_1 &= A_1\cos(kx-\omega t+\phi_1),\\
+\psi_2 &= A_2\cos(kx-\omega t+\phi_2),
+\end{align}
+
+the phase difference is
+
+\begin{equation}
+\Delta\phi=\phi_2-\phi_1.
+\end{equation}
+
+Constructive interference occurs when
+
+\begin{equation}
+\Delta\phi=2m\pi,
+\end{equation}
+
+whereas destructive interference occurs when
+
+\begin{equation}
+\Delta\phi=(2m+1)\pi.
+\end{equation}
+
+The resultant intensity is
+
+\begin{equation}
+\boxed{
+I=I_1+I_2+2\sqrt{I_1I_2}\cos\Delta\phi
+}.
+\end{equation}
+
+For equal intensities $I_1=I_2=I_0$,
+
+\begin{equation}
+I=2I_0(1+\cos\Delta\phi)
+=4I_0\cos^2\left(\frac{\Delta\phi}{2}\right).
+\end{equation}
+
+\subsection{Coherence}
+
+Coherence describes the degree to which a wave maintains a predictable phase relationship. Two waves are perfectly coherent if their phase difference remains constant:
+
+\begin{equation}
+\frac{d}{dt}\Delta\phi=0.
+\end{equation}
+
+The normalized first-order coherence function is
+
+\begin{equation}
+g^{(1)}(\mathbf r_1,t_1;\mathbf r_2,t_2)
+=
+\frac{
+\langle E^*(\mathbf r_1,t_1)E(\mathbf r_2,t_2)\rangle
+}{
+\sqrt{
+\langle |E(\mathbf r_1,t_1)|^2\rangle
+\langle |E(\mathbf r_2,t_2)|^2\rangle
+}
+}.
+\end{equation}
+
+Perfect coherence corresponds to
+
+\begin{equation}
+|g^{(1)}|=1,
+\end{equation}
+
+whereas complete incoherence corresponds approximately to
+
+\begin{equation}
+|g^{(1)}|=0.
+\end{equation}
+
+\subsection{Temporal Coherence}
+
+Temporal coherence describes the correlation of a wave with itself at different times at the same spatial location. It is related to spectral bandwidth $\Delta\nu$ by
+
+\begin{equation}
+\boxed{\tau_c\sim\frac{1}{\Delta\nu}}.
+\end{equation}
+
+The coherence length is
+
+\begin{equation}
+\boxed{L_c=c\tau_c\sim\frac{c}{\Delta\nu}}.
+\end{equation}
+
+For a narrow wavelength bandwidth,
+
+\begin{equation}
+\Delta\nu\approx\frac{c\Delta\lambda}{\lambda^2}.
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+\boxed{L_c\approx\frac{\lambda^2}{\Delta\lambda}}.
+\end{equation}
+
+\subsection{Spatial or Positional Coherence}
+
+Spatial coherence describes the phase correlation between different points across the same wavefront at the same time. For an incoherent source of diameter $d$ observed at distance $R$, the transverse coherence width is approximately
+
+\begin{equation}
+\ell_{\perp}\sim\frac{\lambda R}{d}.
+\end{equation}
+
+A smaller source therefore produces greater spatial coherence.
+
+\subsection{Best Ways to Acquire Coherence}
+
+Highly coherent light is most effectively produced with a laser because stimulated emission generates photons with closely matched frequency, phase, direction, and polarization.
+
+Temporal coherence can be improved using optical resonators, narrow-band interference filters, monochromators, and single-longitudinal-mode operation. Spatial coherence can be improved with pinholes, single-mode optical fibers, spatial filters, and well-aligned optical cavities.
+
+\section{LASER: Meaning, Production, and Distinctive Features}
+
+\subsection{Meaning of LASER}
+
+LASER stands for
+
+\begin{equation}
+\boxed{\text{Light Amplification by Stimulated Emission of Radiation}}.
+\end{equation}
+
+\subsection{Atomic Processes Involved}
+
+Consider two atomic energy levels $E_1$ and $E_2$, where
+
+\begin{equation}
+E_2-E_1=h\nu.
+\end{equation}
+
+\subsubsection{Absorption}
+
+\begin{equation}
+\mathrm{Atom}(E_1)+h\nu
+\rightarrow
+\mathrm{Atom}(E_2).
+\end{equation}
+
+\subsubsection{Spontaneous Emission}
+
+\begin{equation}
+\mathrm{Atom}(E_2)
+\rightarrow
+\mathrm{Atom}(E_1)+h\nu.
+\end{equation}
+
+\subsubsection{Stimulated Emission}
+
+\begin{equation}
+\mathrm{Atom}(E_2)+h\nu
+\rightarrow
+\mathrm{Atom}(E_1)+2h\nu.
+\end{equation}
+
+The stimulated photon has the same frequency, phase, direction, and polarization as the incident photon.
+
+\subsection{Population Inversion}
+
+At thermal equilibrium,
+
+\begin{equation}
+N_1>N_2.
+\end{equation}
+
+Laser operation requires population inversion:
+
+\begin{equation}
+\boxed{N_2>N_1}.
+\end{equation}
+
+The thermal-equilibrium population ratio is
+
+\begin{equation}
+\frac{N_2}{N_1}
+=
+\exp\left[-\frac{E_2-E_1}{k_BT}\right].
+\end{equation}
+
+\subsection{Optical Resonator}
+
+A laser normally contains a gain medium, a pump source, and two mirrors forming an optical cavity.
+
+The threshold gain condition is approximately
+
+\begin{equation}
+\boxed{
+g_{\mathrm{th}}
+=
+\alpha_i
++
+\frac{1}{2L}
+\ln\left(\frac{1}{R_1R_2}\right)
+},
+\end{equation}
+
+where $\alpha_i$ is the internal loss coefficient, $L$ is cavity length, and $R_1$ and $R_2$ are mirror reflectivities.
+
+The resonant longitudinal modes satisfy
+
+\begin{equation}
+2L=m\lambda.
+\end{equation}
+
+Equivalently,
+
+\begin{equation}
+\nu_m=\frac{mc}{2nL}.
+\end{equation}
+
+\subsection{Distinctive Features of Laser Light}
+
+Laser light is characterized by high monochromaticity, coherence, directionality, intensity, and often strong polarization.
+
+For a diffraction-limited circular aperture,
+
+\begin{equation}
+\theta\approx1.22\frac{\lambda}{D}.
+\end{equation}
+
+For a Gaussian beam,
+
+\begin{equation}
+\theta\approx\frac{\lambda}{\pi w_0}.
+\end{equation}
+
+The intensity is
+
+\begin{equation}
+I=\frac{P}{A}.
+\end{equation}
+
+The most distinctive feature is coherent amplification by stimulated emission.
+
+\section{Collective Behavior of Radiation Beams}
+
+\subsection{Reflection}
+
+Reflection obeys
+
+\begin{equation}
+\boxed{\theta_i=\theta_r}.
+\end{equation}
+
+At normal incidence, the electric-field reflection coefficient is
+
+\begin{equation}
+r=\frac{n_1-n_2}{n_1+n_2}.
+\end{equation}
+
+The reflected intensity fraction is
+
+\begin{equation}
+\boxed{
+R=|r|^2
+=
+\left(\frac{n_1-n_2}{n_1+n_2}\right)^2
+}.
+\end{equation}
+
+Quantum mechanically, an incident photon state may become
+
+\begin{equation}
+|\psi\rangle
+=
+r|\text{reflected}\rangle
++
+t|\text{transmitted}\rangle.
+\end{equation}
+
+The associated probabilities are
+
+\begin{equation}
+P_R=|r|^2,
+\qquad
+P_T=|t|^2.
+\end{equation}
+
+\subsection{Refraction}
+
+The refractive index is
+
+\begin{equation}
+n=\frac{c}{v}.
+\end{equation}
+
+Snell's law is
+
+\begin{equation}
+\boxed{n_1\sin\theta_1=n_2\sin\theta_2}.
+\end{equation}
+
+Quantum mechanically, conservation of momentum parallel to the interface gives
+
+\begin{equation}
+p_{1,\parallel}=p_{2,\parallel},
+\end{equation}
+
+or
+
+\begin{equation}
+\hbar k_1\sin\theta_1
+=
+\hbar k_2\sin\theta_2.
+\end{equation}
+
+Since
+
+\begin{equation}
+k=\frac{n\omega}{c},
+\end{equation}
+
+Snell's law follows.
+
+\subsection{Transmission}
+
+For a nonabsorbing interface,
+
+\begin{equation}
+R+T=1.
+\end{equation}
+
+With absorption,
+
+\begin{equation}
+\boxed{R+T+A=1}.
+\end{equation}
+
+For a homogeneous absorbing material,
+
+\begin{equation}
+\boxed{I(x)=I_0e^{-\mu x}}.
+\end{equation}
+
+Quantum mechanically, the survival probability is
+
+\begin{equation}
+P_{\text{survival}}(x)=e^{-\mu x},
+\end{equation}
+
+and the interaction probability is
+
+\begin{equation}
+P_{\text{interaction}}(x)=1-e^{-\mu x}.
+\end{equation}
+
+\section{Modulation: Classical or Quantum?}
+
+Modulation is primarily a classical wave phenomenon, although it also has a quantum description. A carrier wave may be written as
+
+\begin{equation}
+c(t)=A_c\cos(2\pi f_ct+\phi_c).
+\end{equation}
+
+\subsection{Amplitude Modulation}
+
+For a message
+
+\begin{equation}
+m(t)=A_m\cos(2\pi f_mt),
+\end{equation}
+
+the amplitude-modulated signal is
+
+\begin{equation}
+\boxed{
+s_{\text{AM}}(t)
+=
+A_c
+\left[
+1+m_a\cos(2\pi f_mt)
+\right]
+\cos(2\pi f_ct)
+},
+\end{equation}
+
+where
+
+\begin{equation}
+m_a=\frac{A_m}{A_c}.
+\end{equation}
+
+Expanding,
+
+\begin{align}
+s_{\text{AM}}(t)
+&=
+A_c\cos(2\pi f_ct)
++
+\frac{m_aA_c}{2}
+\cos[2\pi(f_c+f_m)t] \nonumber\\
+&\quad+
+\frac{m_aA_c}{2}
+\cos[2\pi(f_c-f_m)t].
+\end{align}
+
+\subsection{Frequency Modulation}
+
+The instantaneous frequency is
+
+\begin{equation}
+f_i(t)=f_c+k_fm(t).
+\end{equation}
+
+The phase is
+
+\begin{equation}
+\phi(t)
+=
+2\pi\int_0^t f_i(t')\,dt'.
+\end{equation}
+
+For sinusoidal modulation,
+
+\begin{equation}
+\boxed{
+s_{\text{FM}}(t)
+=
+A_c
+\cos
+\left[
+2\pi f_ct+\beta\sin(2\pi f_mt)
+\right]
+},
+\end{equation}
+
+where
+
+\begin{equation}
+\beta=\frac{\Delta f}{f_m}.
+\end{equation}
+
+The FM spectrum can be written as
+
+\begin{equation}
+s_{\text{FM}}(t)
+=
+A_c
+\sum_{n=-\infty}^{\infty}
+J_n(\beta)
+\cos[2\pi(f_c+nf_m)t].
+\end{equation}
+
+\subsection{Phase Modulation}
+
+\begin{equation}
+\boxed{
+s_{\text{PM}}(t)
+=
+A_c\cos[2\pi f_ct+k_pm(t)]
+}.
+\end{equation}
+
+Instantaneous frequency is related to phase by
+
+\begin{equation}
+f_i(t)
+=
+\frac{1}{2\pi}\frac{d\phi}{dt}.
+\end{equation}
+
+\subsection{Pulse Modulation}
+
+Pulse modulation includes pulse amplitude modulation, pulse width modulation, pulse position modulation, and pulse code modulation.
+
+A pulse of duration $\Delta t$ has a finite bandwidth satisfying approximately
+
+\begin{equation}
+\Delta\nu\,\Delta t\gtrsim\frac{1}{4\pi}.
+\end{equation}
+
+\subsection{Quantum Modulation}
+
+Information may be encoded in photon number, phase, polarization, frequency, arrival time, or orbital angular momentum.
+
+For polarization encoding,
+
+\begin{equation}
+|0\rangle=|H\rangle,
+\qquad
+|1\rangle=|V\rangle.
+\end{equation}
+
+A general superposition is
+
+\begin{equation}
+|\psi\rangle
+=
+\alpha|H\rangle+\beta|V\rangle,
+\end{equation}
+
+where
+
+\begin{equation}
+|\alpha|^2+|\beta|^2=1.
+\end{equation}
+
+\section{Quantum-Mechanical Wave Phenomena Observable Classically}
+
+\subsection{Interference}
+
+Quantum amplitudes add:
+
+\begin{equation}
+\Psi=\Psi_1+\Psi_2.
+\end{equation}
+
+The probability density becomes
+
+\begin{equation}
+|\Psi|^2
+=
+|\Psi_1|^2
++
+|\Psi_2|^2
++
+2\operatorname{Re}(\Psi_1^*\Psi_2).
+\end{equation}
+
+The cross term produces interference.
+
+\subsection{Diffraction}
+
+For a single slit,
+
+\begin{equation}
+I(\theta)
+=
+I_0
+\left(
+\frac{\sin\beta}{\beta}
+\right)^2,
+\end{equation}
+
+where
+
+\begin{equation}
+\beta=\frac{\pi a\sin\theta}{\lambda}.
+\end{equation}
+
+The minima occur when
+
+\begin{equation}
+a\sin\theta=m\lambda,
+\qquad
+m=\pm1,\pm2,\ldots
+\end{equation}
+
+For matter waves,
+
+\begin{equation}
+\lambda=\frac{h}{p}.
+\end{equation}
+
+\subsection{Superposition}
+
+Classical waves obey
+
+\begin{equation}
+\psi=\psi_1+\psi_2.
+\end{equation}
+
+Quantum states obey
+
+\begin{equation}
+|\Psi\rangle
+=
+c_1|\psi_1\rangle
++
+c_2|\psi_2\rangle.
+\end{equation}
+
+\subsection{Tunneling Analogues}
+
+For a rectangular barrier with $V_0>E$,
+
+\begin{equation}
+\psi(x)\propto e^{-\kappa x},
+\end{equation}
+
+where
+
+\begin{equation}
+\kappa
+=
+\frac{\sqrt{2m(V_0-E)}}{\hbar}.
+\end{equation}
+
+The transmission probability approximately satisfies
+
+\begin{equation}
+\boxed{T\propto e^{-2\kappa a}}.
+\end{equation}
+
+Classical analogues include evanescent electromagnetic coupling, frustrated total internal reflection, acoustic tunneling, and waveguide cutoff transmission.
+
+\subsection{Standing Waves and Quantization}
+
+For a string fixed at both ends,
+
+\begin{equation}
+L=\frac{n\lambda_n}{2},
+\end{equation}
+
+so that
+
+\begin{equation}
+\lambda_n=\frac{2L}{n}.
+\end{equation}
+
+The allowed frequencies are
+
+\begin{equation}
+f_n=\frac{nv}{2L}.
+\end{equation}
+
+For a quantum particle in an infinite square well,
+
+\begin{equation}
+E_n=\frac{n^2\pi^2\hbar^2}{2mL^2}.
+\end{equation}
+
+\section{Radiation Shielding and Its Quantum-Mechanical Explanation}
+
+Radiation shielding reduces radiation intensity or energy by forcing radiation to interact with matter through discrete quantum processes.
+
+\subsection{Attenuation Law}
+
+For a narrow monoenergetic photon beam,
+
+\begin{equation}
+\boxed{I(x)=I_0e^{-\mu x}}.
+\end{equation}
+
+The attenuation coefficient is
+
+\begin{equation}
+\mu=n\sigma,
+\end{equation}
+
+where $n$ is the target number density and $\sigma$ is the microscopic cross section.
+
+The mean free path is
+
+\begin{equation}
+\boxed{\ell=\frac{1}{\mu}=\frac{1}{n\sigma}}.
+\end{equation}
+
+The half-value layer is
+
+\begin{equation}
+\boxed{x_{1/2}=\frac{\ln 2}{\mu}}.
+\end{equation}
+
+The tenth-value layer is
+
+\begin{equation}
+\boxed{x_{1/10}=\frac{\ln 10}{\mu}}.
+\end{equation}
+
+\subsection{Photon Shielding}
+
+\subsubsection{Photoelectric Effect}
+
+\begin{equation}
+\gamma+\mathrm{Atom}
+\rightarrow
+\mathrm{Atom}^+
++
+e^-.
+\end{equation}
+
+The photoelectron kinetic energy is
+
+\begin{equation}
+\boxed{K_e=h\nu-E_b}.
+\end{equation}
+
+The approximate dependence is
+
+\begin{equation}
+\sigma_{\mathrm{pe}}\propto\frac{Z^n}{E_\gamma^3}.
+\end{equation}
+
+\subsubsection{Compton Scattering}
+
+\begin{equation}
+\gamma+e^-
+\rightarrow
+\gamma'+e^-.
+\end{equation}
+
+The Compton wavelength shift is
+
+\begin{equation}
+\boxed{
+\lambda'-\lambda
+=
+\frac{h}{m_ec}(1-\cos\theta)
+}.
+\end{equation}
+
+The scattered photon energy is
+
+\begin{equation}
+\boxed{
+E_\gamma'
+=
+\frac{E_\gamma}
+{
+1+
+\frac{E_\gamma}{m_ec^2}(1-\cos\theta)
+}
+}.
+\end{equation}
+
+\subsubsection{Pair Production}
+
+Pair production becomes possible when
+
+\begin{equation}
+E_\gamma\geq 2m_ec^2=1.022~\mathrm{MeV}.
+\end{equation}
+
+The reaction is
+
+\begin{equation}
+\gamma+Z
+\rightarrow
+e^-+e^++Z.
+\end{equation}
+
+The kinetic energy balance is
+
+\begin{equation}
+K_{e^-}+K_{e^+}
+=
+E_\gamma-1.022~\mathrm{MeV}.
+\end{equation}
+
+Annihilation produces
+
+\begin{equation}
+e^++e^-
+\rightarrow
+2\gamma,
+\end{equation}
+
+typically with each photon having energy
+
+\begin{equation}
+511~\mathrm{keV}.
+\end{equation}
+
+\subsection{Charged-Particle Shielding}
+
+The stopping power is
+
+\begin{equation}
+\boxed{
+S=-\frac{dE}{dx}
+}.
+\end{equation}
+
+For heavy charged particles, the Bethe relation has the approximate dependence
+
+\begin{equation}
+-\frac{dE}{dx}
+\propto
+\frac{z^2}{v^2}
+\left[
+\ln\left(\frac{2m_ev^2}{I}\right)-\cdots
+\right].
+\end{equation}
+
+Ionization may be represented as
+
+\begin{equation}
+\mathrm{Atom}+q
+\rightarrow
+\mathrm{Atom}^++q+e^-.
+\end{equation}
+
+\subsection{Beta-Particle Shielding and Bremsstrahlung}
+
+Bremsstrahlung production is represented by
+
+\begin{equation}
+e^-+Z
+\rightarrow
+e^-+Z+\gamma.
+\end{equation}
+
+A practical beta shield commonly uses a low-$Z$ material to stop electrons, followed by a high-$Z$ material to attenuate secondary photons.
+
+\subsection{Alpha-Particle Shielding}
+
+Alpha particles are helium nuclei:
+
+\begin{equation}
+{}^4_2\mathrm{He}^{2+}.
+\end{equation}
+
+They lose energy rapidly through ionization and can be stopped by paper, clothing, several centimeters of air, or the outer layer of skin. Internal alpha contamination is much more hazardous.
+
+\subsection{Neutron Shielding}
+
+Neutrons interact with nuclei by elastic scattering, inelastic scattering, capture, and nuclear reactions.
+
+For elastic scattering, the maximum fractional energy transfer is
+
+\begin{equation}
+\boxed{
+\frac{\Delta E_{\max}}{E}
+=
+\frac{4A}{(1+A)^2}
+}.
+\end{equation}
+
+For hydrogen, $A=1$, giving
+
+\begin{equation}
+\frac{\Delta E_{\max}}{E}=1.
+\end{equation}
+
+Examples of neutron capture include
+
+\begin{equation}
+n+{}^{10}\mathrm{B}
+\rightarrow
+{}^7\mathrm{Li}+\alpha,
+\end{equation}
+
+and
+
+\begin{equation}
+n+{}^1\mathrm{H}
+\rightarrow
+{}^2\mathrm{H}+\gamma.
+\end{equation}
+
+Hydrogen-rich materials slow neutrons, while boron-containing materials absorb thermal neutrons.
+
+\subsection{Layered Shielding}
+
+Mixed radiation fields often require layered shielding. A neutron--gamma shield may use hydrogen-rich material for moderation, boron-containing material for neutron capture, and high-density material for secondary gamma attenuation.
+
+Similarly, beta shielding may use low-$Z$ plastic followed by a high-$Z$ layer.
+
+\section{Conclusion}
+
+Classical wave quantities are connected to quantum mechanics through
+
+\begin{equation}
+E=h\nu=\hbar\omega,
+\qquad
+p=\frac{h}{\lambda}=\hbar k.
+\end{equation}
+
+Coherence describes stable phase relationships and may be temporal or spatial. Laser light is generated through population inversion and stimulated emission, producing highly coherent, directional, monochromatic, and intense radiation.
+
+Reflection, refraction, and transmission follow classical electromagnetic boundary conditions and can also be described quantum mechanically through probability amplitudes, momentum conservation, and coherent scattering.
+
+Modulation is primarily classical but can be generalized to quantum states. Interference, diffraction, superposition, resonant modes, and tunneling-like effects occur in both classical and quantum systems.
+
+Radiation shielding works through probabilistic interactions such as photoelectric absorption, Compton scattering, pair production, ionization, nuclear scattering, and neutron capture.
+
+\end{document}

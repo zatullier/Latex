@@ -1,0 +1,297 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Astrophysics Midterm}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section*{Problem 1: Hot Star in M31}
+
+A star in the Andromeda galaxy (M31) is observed to have a flux
+\[
+F = 10^{-12}~\mathrm{erg~cm^{-2}~s^{-1}},
+\]
+and is assumed to radiate as a blackbody with temperature
+\[
+T = 6\times 10^{5}~\mathrm{K}.
+\]
+The distance to M31 is taken as
+\[
+d = 800~\mathrm{kpc}.
+\]
+
+\subsection*{(a) Luminosity}
+
+Convert distance to centimeters:
+\[
+d = 800~\mathrm{kpc}
+  = 800\times 10^{3}~\mathrm{pc}
+  = 8\times 10^{5}~\mathrm{pc}
+  = 8\times 10^{5}(3.086\times 10^{18}~\mathrm{cm})
+  = 2.47\times 10^{24}~\mathrm{cm}.
+\]
+The luminosity is
+\[
+L = 4\pi d^{2}F.
+\]
+Compute:
+\[
+d^{2} = (2.47\times 10^{24})^{2} = 6.10\times 10^{48}~\mathrm{cm^{2}},
+\]
+\[
+L = 4\pi(6.10\times 10^{48})(10^{-12})
+  = 7.7\times 10^{37}~\mathrm{erg~s^{-1}}.
+\]
+\[
+\boxed{L \approx 7.7\times 10^{37}~\mathrm{erg~s^{-1}}}
+\]
+
+\subsection*{(b) Radius}
+
+Using the Stefan--Boltzmann law:
+\[
+L = 4\pi R^{2}\sigma T^{4},
+\qquad
+R = \sqrt{\frac{L}{4\pi\sigma T^{4}}}.
+\]
+Compute:
+\[
+T^{4} = (6\times 10^{5})^{4}
+      = 1.296\times 10^{23},
+\]
+\[
+4\pi\sigma T^{4}
+  = 12.57(5.67\times 10^{-5})(1.296\times 10^{23})
+  = 9.24\times 10^{19}.
+\]
+Thus,
+\[
+R^{2} = \frac{7.7\times 10^{37}}{9.24\times 10^{19}}
+      = 8.3\times 10^{17},
+\]
+\[
+R = 9.1\times 10^{8}~\mathrm{cm} = 9.1\times 10^{3}~\mathrm{km}.
+\]
+\[
+\boxed{R \approx 9\times 10^{8}~\mathrm{cm}}
+\]
+
+\subsection*{(c) Peak Wavelength}
+
+Using Wien's law:
+\[
+\lambda_{\max} = \frac{b}{T}
+= \frac{2.898\times 10^{-3}}{6\times 10^{5}}
+= 4.83\times 10^{-9}~\mathrm{m}
+= 4.8~\mathrm{nm}
+= 48~\text{\AA}.
+\]
+\[
+\boxed{\lambda_{\max} \approx 4.8~\mathrm{nm}}
+\]
+
+\section*{Problem 2: Binary System with an X-ray Pulsar}
+
+The system has an orbital period
+\[
+P = 10~\mathrm{days} = 8.64\times 10^{5}~\mathrm{s},
+\]
+optical star velocity
+\[
+v_{1} = 20~\mathrm{km\,s^{-1}} = 2\times 10^{4}~\mathrm{m\,s^{-1}},
+\]
+and pulsar orbital radius
+\[
+r_{2} = 3\times 10^{12}~\mathrm{cm} = 3\times 10^{10}~\mathrm{m}.
+\]
+
+\subsection*{(a) Orbit radius of star 1}
+
+Circular orbit:
+\[
+v_{1} = \frac{2\pi r_{1}}{P}
+\Rightarrow
+r_{1} = \frac{v_{1}P}{2\pi}.
+\]
+\[
+r_{1} = \frac{(2\times 10^{4})(8.64\times 10^{5})}{6.283}
+      = 2.75\times 10^{9}~\mathrm{m}.
+\]
+\[
+\boxed{r_{1} \approx 2.8\times 10^{9}~\mathrm{m}}
+\]
+
+\subsection*{(b) Separation}
+
+\[
+a = r_{1} + r_{2}
+= 2.75\times 10^{9} + 3\times 10^{10}
+= 3.28\times 10^{10}~\mathrm{m}.
+\]
+\[
+\boxed{a \approx 3.3\times 10^{10}~\mathrm{m}}
+\]
+
+\subsection*{(c) Total Mass}
+
+Newtonian form of Kepler’s third law:
+\[
+M_{\mathrm{tot}} = \frac{4\pi^{2}a^{3}}{GP^{2}}.
+\]
+Compute:
+\[
+a^{3} = (3.28\times 10^{10})^{3}
+      = 3.53\times 10^{31}~\mathrm{m^{3}},
+\]
+\[
+4\pi^{2}a^{3}
+= 1.39\times 10^{33},
+\]
+\[
+GP^{2}
+= (6.674\times 10^{-11})(7.47\times 10^{11})
+= 49.9.
+\]
+Thus:
+\[
+M_{\mathrm{tot}}
+= \frac{1.39\times 10^{33}}{49.9}
+= 2.8\times 10^{31}~\mathrm{kg}
+\approx 14\,M_{\odot}.
+\]
+\[
+\boxed{M_{\mathrm{tot}} \approx 14\,M_{\odot}}
+\]
+
+\subsection*{(d) Individual Masses}
+
+Center-of-mass condition:
+\[
+M_{1}r_{1} = M_{2}r_{2},
+\qquad
+\frac{M_{2}}{M_{1}} = \frac{r_{1}}{r_{2}}
+= 0.0917.
+\]
+Let $q = M_{2}/M_{1}$. Then
+\[
+M_{1} = \frac{M_{\mathrm{tot}}}{1+q}
+= \frac{2.8\times 10^{31}}{1.0917}
+= 2.55\times 10^{31}~\mathrm{kg}
+\approx 12.8\,M_{\odot},
+\]
+\[
+M_{2} = M_{\mathrm{tot}} - M_{1}
+= 2.3\times 10^{30}~\mathrm{kg}
+\approx 1.2\,M_{\odot}.
+\]
+\[
+\boxed{M_{1} \approx 13\,M_{\odot}},\qquad
+\boxed{M_{2} \approx 1.2\,M_{\odot}}
+\]
+
+\section*{Problem 3: The Standard Solar Model}
+
+The \emph{Standard Solar Model} (SSM) is a self-consistent description of the Sun’s
+interior and evolution based on hydrostatic equilibrium, nuclear fusion,
+radiative/convective energy transport, and realistic microphysics.
+
+\subsection*{Core}
+
+The core ($0$--$0.25R_{\odot}$) contains the temperature and density required for
+hydrogen fusion:
+\[
+T_{\mathrm{c}}\sim 1.5\times 10^{7}~\mathrm{K},\qquad
+\rho_{\mathrm{c}}\sim 150~\mathrm{g\,cm^{-3}}.
+\]
+Energy is generated through the proton--proton chain and, at a lower level, the
+CNO cycle:
+\[
+p + p \rightarrow d + e^{+} + \nu_{e},\qquad
+^{3}\mathrm{He} + ^{3}\mathrm{He} \rightarrow \, ^{4}\mathrm{He} + 2p.
+\]
+Most of the Sun’s luminosity arises from this region.
+
+\subsection*{Radiative Zone}
+
+From $0.25R_{\odot}$ to $0.7R_{\odot}$ energy is transported by radiation.  The
+temperature decreases smoothly from several million kelvin.  Photons undergo a
+random walk, giving diffusion times of $10^{5}$--$10^{6}$ years.
+
+\subsection*{Convective Zone}
+
+Above $0.7R_{\odot}$, rising opacity and partial ionization of H and He make
+radiative transport inefficient.  The layer becomes convectively unstable.
+Energy transport is dominated by bulk motions.  This convection drives
+photospheric granulation.
+
+\subsection*{Photosphere}
+
+The visible ``surface’’ of the Sun, with
+\[
+T_{\mathrm{eff}} \approx 5770~\mathrm{K}.
+\]
+It produces the continuous optical spectrum plus Fraunhofer absorption lines.
+Granulation is observed here.
+
+\subsection*{Chromosphere}
+
+A region of low density where the temperature rises from $4500~\mathrm{K}$ to
+$\sim 10^{4}~\mathrm{K}$.  Visible in H$\alpha$ as a reddish rim during eclipses.
+Contains spicules and is governed strongly by magnetic fields.
+
+\subsection*{Transition Region}
+
+A thin layer in which temperature rises sharply by orders of magnitude, linking
+the chromosphere to the corona.
+
+\subsection*{Corona}
+
+A hot, tenuous, magnetically structured plasma with
+\[
+T \sim 10^{6}~\mathrm{K}.
+\]
+It emits X-rays and EUV radiation.  The mechanism of coronal heating remains an
+active research topic.
+
+\subsection*{Solar Wind}
+
+The corona extends outward into interplanetary space as a supersonic plasma
+flow, carrying magnetic fields into the heliosphere.
+
+\section*{Conclusion}
+
+The Standard Solar Model provides a consistent physical description of the Sun
+from core to corona, matching observed luminosity, radius, helioseismic data,
+and solar neutrino measurements (after accounting for neutrino oscillations).
+\end{document}

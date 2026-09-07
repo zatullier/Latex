@@ -1,0 +1,252 @@
+
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable}
+\usepackage{hyperref}
+\title{Space Radiation, Diagnostic X-rays, and Radiation Interaction with Biological Materials}
+\author{Zachary Tullier}
+\date{7/12/26}
+\begin{document}
+\maketitle
+
+\section*{Q1. Types of Space Radiation}
+
+Space radiation consists primarily of Galactic Cosmic Rays (GCRs), Solar Particle Events (SPEs), Van Allen belt particles, and secondary radiation produced when primary particles interact with spacecraft materials.
+
+\subsection*{Galactic Cosmic Rays (GCRs)}
+
+GCRs are composed mainly of protons ($\sim85\%$), alpha particles ($\sim14\%$), and heavy ions (HZE particles). Their energies range from
+
+\[
+10^8~\mathrm{eV} \text{ to } 10^{20}~\mathrm{eV}.
+\]
+
+Using Planck's equation,
+
+\[
+E=h\nu,
+\]
+
+the equivalent photon frequency is
+
+\[
+\nu=\frac{E}{h}.
+\]
+
+For a $1~\mathrm{GeV}$ particle,
+
+\[
+\nu\approx2.4\times10^{23}\ \mathrm{Hz}.
+\]
+
+Biological effects include DNA double-strand breaks, chromosomal aberrations, cancer induction, cataracts, cardiovascular disease, and neurological damage.
+
+\subsection*{Solar Particle Events (SPEs)}
+
+Solar particle events are generated during solar flares and coronal mass ejections. They mainly contain protons with energies from
+
+\[
+10~\mathrm{MeV} - 500~\mathrm{MeV},
+\]
+
+corresponding to frequencies of approximately
+
+\[
+10^{21}-10^{23}\ \mathrm{Hz}.
+\]
+
+Large SPEs may produce acute radiation syndrome during long-duration missions.
+
+\subsection*{Van Allen Radiation Belts}
+
+The Earth's magnetic field traps energetic protons and electrons. The inner belt is proton-rich while the outer belt contains energetic electrons. These particles are a major concern during lunar missions crossing the belts.
+
+\subsection*{Secondary Radiation}
+
+Primary cosmic rays striking spacecraft materials produce neutrons, gamma rays, muons, pions, and secondary electrons that contribute significantly to astronaut dose.
+
+\subsection*{Typical Astronaut Dose}
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Mission & Effective Dose \\
+\midrule
+Natural background & 2--3 mSv/year\\
+ISS (6 months) & 80--160 mSv\\
+Lunar mission (6 months) & 200--400 mSv\\
+Mars mission (6 months) & 600--1200 mSv\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Q2. Working of Diagnostic X-ray Machines}
+
+A diagnostic X-ray tube consists of a cathode, tungsten filament, focusing cup, evacuated tube, tungsten anode, high-voltage supply, protective housing, and X-ray window.
+
+\subsection*{Electron Emission}
+
+Heating the tungsten filament produces thermionic emission described approximately by the Richardson--Dushman equation,
+
+\[
+J=AT^2e^{-\phi/kT}.
+\]
+
+\subsection*{Electron Acceleration}
+
+Electrons are accelerated through a potential difference of approximately $30$--$150~\mathrm{kV}$.
+
+Their kinetic energy is
+
+\[
+K=eV.
+\]
+
+For a $100~\mathrm{kV}$ tube,
+
+\[
+K=100~\mathrm{keV}.
+\]
+
+\subsection*{X-ray Production}
+
+Two mechanisms produce X-rays:
+
+\begin{enumerate}
+\item Bremsstrahlung radiation from electron deceleration near nuclei.
+\item Characteristic X-rays produced when inner-shell vacancies are filled by outer-shell electrons.
+\end{enumerate}
+
+The maximum Bremsstrahlung energy is
+
+\[
+E_{\max}=eV.
+\]
+
+\subsection*{Frequency Range Used}
+
+Diagnostic X-rays typically have energies between
+
+\[
+20-150~\mathrm{keV},
+\]
+
+corresponding to frequencies of
+
+\[
+5\times10^{18}
+-
+4\times10^{19}\ \mathrm{Hz},
+\]
+
+and wavelengths between approximately
+
+\[
+0.008-0.06~\mathrm{nm}.
+\]
+
+This range provides sufficient penetration through soft tissue while maintaining contrast between tissues and bone.
+
+\subsection*{Radiation Damage}
+
+X-rays damage tissue through direct DNA ionization and indirect free-radical production.
+
+Water radiolysis occurs according to
+
+\[
+H_2O
+\rightarrow
+OH^\bullet+H^\bullet+e^-.
+\]
+
+Deterministic effects include skin burns and cataracts, while stochastic effects include cancer and hereditary mutations.
+
+\section*{Q3. Interaction of Radiation with Biological Material}
+
+Ionizing radiation interacts with tissue through photoelectric absorption, Compton scattering, pair production, and Coulomb interactions.
+
+\subsection*{Direct Action}
+
+DNA may be directly ionized:
+
+\[
+DNA\rightarrow DNA^+ + e^-.
+\]
+
+This can produce strand breaks and chromosomal damage.
+
+\subsection*{Indirect Action}
+
+Radiolysis of water generates highly reactive hydroxyl radicals:
+
+\[
+H_2O
+\rightarrow
+OH^\bullet+H^\bullet+e^-.
+\]
+
+These radicals attack DNA, proteins, and cell membranes.
+
+\subsection*{Cellular Effects}
+
+Biological effects include apoptosis, necrosis, mutation, carcinogenesis, and tissue dysfunction. Rapidly dividing tissues such as bone marrow and gastrointestinal epithelium are particularly radiosensitive.
+
+\section*{Radiation Dose Units}
+
+\subsection*{Exposure}
+
+\[
+X=\frac{dQ}{dm},
+\]
+
+with SI unit C/kg.
+
+\subsection*{Absorbed Dose}
+
+\[
+D=\frac{dE}{dm},
+\]
+
+measured in Gray (Gy), where
+
+\[
+1~\mathrm{Gy}=1~\mathrm{J/kg}.
+\]
+
+\subsection*{Equivalent Dose}
+
+\[
+H=Dw_R,
+\]
+
+measured in Sievert (Sv).
+
+Typical radiation weighting factors are:
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Radiation & $w_R$\\
+\midrule
+X-rays & 1\\
+Gamma rays & 1\\
+Beta particles & 1\\
+Protons & 2\\
+Alpha particles & 20\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Effective Dose}
+
+\[
+E=\sum w_TH_T,
+\]
+
+also measured in Sievert.
+
+\section*{Importance of Dosimetry}
+
+Radiation dosimetry ensures patient safety, treatment accuracy, occupational protection, environmental monitoring, astronaut health, and compliance with international standards. The ALARA (As Low As Reasonably Achievable) principle is used to minimize unnecessary radiation exposure.
+
+\end{document}

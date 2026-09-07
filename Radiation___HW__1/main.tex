@@ -1,0 +1,679 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{Assignment 1}
+\author{Zachary Tullier}
+\date{6/8/26}
+
+\begin{document}
+
+\maketitle
+
+\section*{Q1. What are radiations? Do they satisfy the properties of waves?}
+
+\textbf{Radiation} is energy emitted and transported through space or matter. In physics, radiation can appear as:
+
+\begin{enumerate}
+    \item \textbf{Electromagnetic radiation}, such as radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, and gamma rays.
+    \item \textbf{Particle radiation}, such as alpha particles, beta particles, neutrons, protons, electrons, and neutrinos.
+    \item \textbf{Gravitational radiation}, or gravitational waves, produced by accelerating masses.
+\end{enumerate}
+
+Radiation can behave like a \textbf{wave}, a \textbf{particle}, or both, depending on the situation. Electromagnetic radiation especially shows \textbf{wave-particle duality}.
+
+Electromagnetic radiation satisfies the main properties of waves:
+
+\begin{itemize}
+    \item It has wavelength.
+    \item It has frequency.
+    \item It has speed.
+    \item It can undergo reflection, refraction, diffraction, interference, and polarization.
+    \item It transports energy and momentum.
+\end{itemize}
+
+In vacuum, electromagnetic radiation is described by Maxwell's equations. A plane electromagnetic wave may be written as
+
+\begin{equation}
+\mathbf{E}(\mathbf{r},t)=\mathbf{E}_0\cos(\mathbf{k}\cdot\mathbf{r}-\omega t),
+\end{equation}
+
+\begin{equation}
+\mathbf{B}(\mathbf{r},t)=\mathbf{B}_0\cos(\mathbf{k}\cdot\mathbf{r}-\omega t),
+\end{equation}
+
+where $\mathbf{E}$ is the electric field, $\mathbf{B}$ is the magnetic field, $\mathbf{k}$ is the wave vector, and $\omega$ is the angular frequency.
+
+For electromagnetic waves in vacuum,
+
+\begin{equation}
+c=\frac{1}{\sqrt{\mu_0\varepsilon_0}},
+\end{equation}
+
+where $c$ is the speed of light, $\mu_0$ is the permeability of free space, and $\varepsilon_0$ is the permittivity of free space.
+
+Quantum mechanically, electromagnetic radiation is made of photons. Each photon has energy
+
+\begin{equation}
+E=h\nu=\hbar\omega.
+\end{equation}
+
+So radiation behaves as a wave during propagation and as particles during emission, absorption, and detection.
+
+\section*{Q2. Types of radiations and how they differ}
+
+Radiation can be classified in several ways.
+
+\subsection*{1. Ionizing vs. non-ionizing radiation}
+
+\textbf{Non-ionizing radiation} does not usually have enough energy per quantum to remove tightly bound electrons from atoms. Examples include
+
+\[
+\text{radio waves, microwaves, infrared, visible light, low-energy ultraviolet.}
+\]
+
+\textbf{Ionizing radiation} has enough energy to ionize atoms or molecules. Examples include
+
+\[
+\text{high-energy ultraviolet, X-rays, gamma rays, alpha particles, beta particles, neutrons.}
+\]
+
+The key distinction is photon or particle energy. Ionization typically requires energies of order several electronvolts or more, depending on the atom or molecule.
+
+\subsection*{2. Electromagnetic radiation}
+
+Electromagnetic radiation consists of oscillating electric and magnetic fields. It does not require a material medium.
+
+Types include
+
+\[
+\text{radio} \rightarrow \text{microwave} \rightarrow \text{infrared} \rightarrow \text{visible} \rightarrow \text{ultraviolet} \rightarrow \text{X-ray} \rightarrow \gamma\text{-ray}.
+\]
+
+They differ mainly by \textbf{frequency}, \textbf{wavelength}, and \textbf{energy}.
+
+Higher frequency means shorter wavelength and higher photon energy:
+
+\begin{equation}
+E=h\nu=\frac{hc}{\lambda}.
+\end{equation}
+
+Gamma rays and X-rays are high-energy electromagnetic radiations. Radio waves are low-energy electromagnetic radiations.
+
+\subsection*{3. Particle radiation}
+
+Particle radiation consists of moving particles with mass or charge.
+
+Important examples are shown in Table~\ref{tab:radiation_types}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{0.8\textwidth}
+\toprule
+\textbf{Radiation type} & \textbf{Particle} & \textbf{Charge} & \textbf{Main origin} & \textbf{Penetration} \\
+\midrule
+Alpha radiation & $^4\mathrm{He}^{2+}$ nucleus & $+2e$ & Nuclear decay & Low \\
+Beta-minus radiation & Electron & $-e$ & Weak nuclear decay & Moderate \\
+Beta-plus radiation & Positron & $+e$ & Weak nuclear decay & Moderate \\
+Neutron radiation & Neutron & $0$ & Fission, fusion, nuclear reactions & High \\
+Proton radiation & Proton & $+e$ & Cosmic rays, accelerators & Moderate to high \\
+Neutrino radiation & Neutrino & $0$ & Weak interactions, stars, reactors & Extremely high \\
+\bottomrule
+\end{tabular}
+\caption{Examples of particle radiation.}
+\label{tab:radiation_types}
+\end{table}
+
+For massive particles, the energy is not simply $E=h\nu$. Instead, the relativistic energy is
+
+\begin{equation}
+E^2=p^2c^2+m^2c^4.
+\end{equation}
+
+For photons, $m=0$, so
+
+\begin{equation}
+E=pc.
+\end{equation}
+
+For massive particles, their de Broglie wavelength is
+
+\begin{equation}
+\lambda=\frac{h}{p}.
+\end{equation}
+
+Thus even particle radiation can have wave-like behavior.
+
+\subsection*{4. Gravitational radiation}
+
+Gravitational radiation consists of propagating disturbances in spacetime curvature. These are gravitational waves.
+
+In linearized general relativity, the metric is written as
+
+\begin{equation}
+g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu},
+\end{equation}
+
+where $\eta_{\mu\nu}$ is the flat spacetime metric and $h_{\mu\nu}$ is a small perturbation. In vacuum, gravitational waves satisfy a wave equation:
+
+\begin{equation}
+\Box h_{\mu\nu}=0.
+\end{equation}
+
+where the d’Alembertian operator, or wave operator, is written as
+
+\begin{equation}
+\Box \equiv \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2
+\end{equation}
+
+
+They are generated by accelerating mass distributions with a changing quadrupole moment.
+
+\section*{Q3. Wavelength, frequency, wave speed, and radiation energy}
+
+The \textbf{wavelength} $\lambda$ is the spatial distance between two consecutive points of the wave that have the same phase, such as crest to crest or trough to trough.
+
+The \textbf{frequency} $\nu$, sometimes written $f$, is the number of oscillations per unit time.
+
+The \textbf{period} $T$ is the time for one full oscillation:
+
+\begin{equation}
+T=\frac{1}{\nu}.
+\end{equation}
+
+The angular frequency is
+
+\begin{equation}
+\omega=2\pi\nu.
+\end{equation}
+
+The wave number is
+
+\begin{equation}
+k=\frac{2\pi}{\lambda}.
+\end{equation}
+
+For a sinusoidal traveling wave,
+
+\begin{equation}
+y(x,t)=A\cos(kx-\omega t+\phi),
+\end{equation}
+
+where $A$ is amplitude and $\phi$ is a phase constant.
+
+The wave speed is
+
+\begin{equation}
+v=\lambda\nu.
+\end{equation}
+
+For electromagnetic radiation in vacuum,
+
+\begin{equation}
+c=\lambda\nu.
+\end{equation}
+
+The energy of a photon is related to frequency by Planck's relation:
+
+\begin{equation}
+E=h\nu.
+\end{equation}
+
+Since $\nu=c/\lambda$, the energy can also be written as
+
+\begin{equation}
+E=\frac{hc}{\lambda}.
+\end{equation}
+
+So higher-frequency radiation has higher energy, and shorter-wavelength radiation has higher energy.
+
+The photon momentum is
+
+\begin{equation}
+p=\frac{E}{c}=\frac{h}{\lambda}.
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+E=pc
+\end{equation}
+
+for massless radiation such as photons.
+
+For material particles, the de Broglie relation is
+
+\begin{equation}
+\lambda=\frac{h}{p}.
+\end{equation}
+
+In relativistic form,
+
+\begin{equation}
+E^2=p^2c^2+m^2c^4.
+\end{equation}
+
+This reduces to $E=pc$ only when $m=0$.
+
+\section*{Q4. Fundamental forces and their mediators}
+
+Modern physics recognizes four fundamental interactions:
+
+\begin{enumerate}
+    \item Strong nuclear force
+    \item Electromagnetic force
+    \item Weak nuclear force
+    \item Gravitational force
+\end{enumerate}
+
+They differ in strength, range, mediator particles, and the particles that experience them.
+
+\subsection*{1. Strong interaction}
+
+The \textbf{strong force} is described by quantum chromodynamics, or QCD. It acts on particles with \textbf{color charge}, especially quarks and gluons.
+
+The mediator particles are \textbf{gluons}:
+
+\[
+g.
+\]
+
+The QCD gauge group is
+
+\begin{equation}
+SU(3)_C.
+\end{equation}
+
+The interaction term in the QCD Lagrangian has the form
+
+\begin{equation}
+\mathcal{L}_{\text{int}}=-g_s\bar{q}\gamma^\mu T^a qG^a_\mu,
+\end{equation}
+
+where $g_s$ is the strong coupling constant, $q$ is a quark field, $T^a$ are the generators of $SU(3)$, and $G^a_\mu$ is the gluon field.
+
+Particles that participate in the strong interaction are
+
+\[
+\text{quarks and gluons.}
+\]
+
+Composite particles such as protons, neutrons, mesons, and nuclei experience the strong force because they are made of quarks and gluons.
+
+The strong force is the strongest of the four at nuclear scales, but it is short-ranged due to confinement.
+
+\subsection*{2. Electromagnetic interaction}
+
+The electromagnetic force acts on particles with electric charge.
+
+The mediator particle is the \textbf{photon}:
+
+\[
+\gamma.
+\]
+
+Its gauge group is
+
+\begin{equation}
+U(1)_{\text{EM}}.
+\end{equation}
+
+The electromagnetic interaction term is
+
+\begin{equation}
+\mathcal{L}_{\text{int}}=-e\bar{\psi}\gamma^\mu A_\mu\psi,
+\end{equation}
+
+where $e$ is the electric charge, $\psi$ is a charged fermion field, and $A_\mu$ is the electromagnetic four-potential.
+
+Particles that participate are
+
+\[
+\text{charged leptons, quarks, } W^\pm \text{ bosons, and charged composite particles.}
+\]
+
+Examples include electrons, muons, taus, protons, charged pions, and atomic nuclei.
+
+The electromagnetic force has infinite range because the photon is massless.
+
+\subsection*{3. Weak interaction}
+
+The weak force is responsible for processes such as beta decay, neutrino interactions, and flavor-changing reactions.
+
+The mediator particles are
+
+\[
+W^+,\quad W^-,\quad Z^0.
+\]
+
+The electroweak gauge group before symmetry breaking is
+
+\begin{equation}
+SU(2)_L \times U(1)_Y.
+\end{equation}
+
+A charged-current weak interaction has the schematic form
+
+\begin{equation}
+\mathcal{L}_{\text{CC}}=-\frac{g}{\sqrt{2}}
+\left(J^\mu_+W^+_\mu+J^\mu_-W^-_\mu\right),
+\end{equation}
+
+and the neutral-current interaction has the form
+
+\begin{equation}
+\mathcal{L}_{\text{NC}}=-\frac{g}{\cos\theta_W}J^\mu_Z Z_\mu.
+\end{equation}
+
+Particles that participate are
+
+\[
+\text{all quarks and leptons.}
+\]
+
+Neutrinos participate in the weak interaction but not in electromagnetic or strong interactions.
+
+The weak force is short-ranged because $W^\pm$ and $Z^0$ are massive.
+
+\subsection*{4. Gravitational interaction}
+
+Gravity acts on all particles and fields with energy, momentum, and stress.
+
+In general relativity, gravity is described not as an ordinary force but as curvature of spacetime. The source is the stress-energy tensor $T_{\mu\nu}$.
+
+Einstein's field equations are
+
+\begin{equation}
+G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}.
+\end{equation}
+
+In a quantum-field-theory description, the hypothetical mediator is the \textbf{graviton}:
+
+\[
+G \quad \text{or} \quad h_{\mu\nu}.
+\]
+
+The graviton is expected to be massless and spin-2, although it has not been directly detected as an individual quantum.
+
+Particles that participate are
+
+\[
+\text{all particles with energy-momentum.}
+\]
+
+Gravity has infinite range, but it is by far the weakest interaction at the particle scale.
+
+\subsection*{Order of strength}
+
+At typical particle or nuclear scales, the approximate ordering is
+
+\begin{equation}
+\text{strong} > \text{electromagnetic} > \text{weak} > \text{gravity}.
+\end{equation}
+
+A rough relative comparison is
+
+\begin{equation}
+1 : 10^{-2} : 10^{-5} : 10^{-38}.
+\end{equation}
+
+This ordering is scale-dependent because coupling constants run with energy, but it is the usual low-energy/nuclear-scale ordering.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{0.8\textwidth}
+\toprule
+\textbf{Force} & \textbf{Relative strength} & \textbf{Mediator} & \textbf{Range} & \textbf{Acts on} \\
+\midrule
+Strong & $1$ & Gluons & $\sim 10^{-15}\,\mathrm{m}$ & Quarks, gluons \\
+Electromagnetic & $\sim 10^{-2}$ & Photon & Infinite & Electrically charged particles \\
+Weak & $\sim 10^{-5}$ & $W^\pm, Z^0$ & $\sim 10^{-18}\,\mathrm{m}$ & Quarks and leptons \\
+Gravity & $\sim 10^{-38}$ & Graviton, hypothetical & Infinite & All energy-momentum \\
+\bottomrule
+\end{tabular}
+\caption{Approximate comparison of the four fundamental interactions.}
+\label{tab:forces}
+\end{table}
+
+\section*{Q5. Fundamental particles in nature and their interactions}
+
+In the Standard Model, fundamental particles are divided into:
+
+\begin{enumerate}
+    \item \textbf{Fermions}, which make up matter.
+    \item \textbf{Bosons}, which mediate interactions.
+    \item The \textbf{Higgs boson}, associated with electroweak symmetry breaking and particle masses.
+\end{enumerate}
+
+\subsection*{Fundamental fermions}
+
+There are \textbf{12 fundamental fermions}, not counting antiparticles.
+
+They consist of:
+
+\begin{itemize}
+    \item 6 quarks
+    \item 6 leptons
+\end{itemize}
+
+Each has a corresponding antiparticle, so including antiparticles gives 24 fermionic particle species.
+
+\subsection*{Quarks}
+
+The six quarks are
+
+\[
+u,\ d,\ c,\ s,\ t,\ b.
+\]
+
+They are arranged in three generations.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Generation} & \textbf{Up-type quark} & \textbf{Down-type quark} \\
+\midrule
+1 & Up $u$ & Down $d$ \\
+2 & Charm $c$ & Strange $s$ \\
+3 & Top $t$ & Bottom $b$ \\
+\bottomrule
+\end{tabular}
+\caption{The six quarks arranged by generation.}
+\label{tab:quarks}
+\end{table}
+
+Quarks participate in strong, electromagnetic, weak, and gravitational interactions and they
+carry color charge, electric charge, weak isospin/hypercharge, and energy-momentum.
+
+\subsection*{Leptons}
+
+The six leptons are
+
+\[
+e,\ \mu,\ \tau,\ \nu_e,\ \nu_\mu,\ \nu_\tau.
+\]
+
+They are arranged in three generations.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Generation} & \textbf{Charged lepton} & \textbf{Neutrino} \\
+\midrule
+1 & Electron $e^-$ & Electron neutrino $\nu_e$ \\
+2 & Muon $\mu^-$ & Muon neutrino $\nu_\mu$ \\
+3 & Tau $\tau^-$ & Tau neutrino $\nu_\tau$ \\
+\bottomrule
+\end{tabular}
+\caption{The six leptons arranged by generation.}
+\label{tab:leptons}
+\end{table}
+
+Charged leptons participate in electromagnetic, weak, and gravitational interactions.
+
+Neutrinos participate in weak and gravitational interactions.
+
+Neutrinos do not participate in the strong interaction and have no electric charge.
+
+\subsection*{Fundamental bosons}
+
+The gauge bosons are
+
+\[
+\gamma,\quad g,\quad W^+,\quad W^-,\quad Z^0.
+\]
+
+More specifically:
+
+\begin{itemize}
+    \item 1 photon
+    \item 8 gluons
+    \item 3 weak bosons: $W^+$, $W^-$, and $Z^0$
+\end{itemize}
+
+So the Standard Model has 12 gauge bosons if the eight gluon color states are counted separately.
+
+The Higgs boson is
+
+\[
+H^0.
+\]
+
+Thus, in the Standard Model, the usual count is
+
+\begin{equation}
+6\text{ quarks}+6\text{ leptons}+12\text{ gauge bosons}+1\text{ Higgs}=25
+\end{equation}
+
+fundamental particles, not counting antiparticles separately.
+
+If antiparticles are counted separately, the number increases.
+
+\section*{Particles participating in each interaction}
+
+\subsection*{Strong interaction}
+
+Particles participating directly are
+
+\[
+q,\ \bar{q},\ g.
+\]
+
+That means all quarks, antiquarks, and gluons.
+
+Leptons do not experience the strong force.
+
+\subsection*{Electromagnetic interaction}
+
+Particles participating directly are those with nonzero electric charge:
+
+\[
+e^-,\ \mu^-,\ \tau^-,
+\]
+
+\[
+u,\ d,\ c,\ s,\ t,\ b,
+\]
+
+\[
+W^+,\ W^-,
+\]
+
+and their antiparticles.
+
+The photon mediates the electromagnetic interaction, but photons do not carry electric charge, so they do not directly couple to other photons at tree level in ordinary QED.
+
+Neutrinos do not participate electromagnetically because
+
+\begin{equation}
+Q_{\nu}=0.
+\end{equation}
+
+\subsection*{Weak interaction}
+
+All quarks and leptons participate in the weak interaction:
+
+\[
+u,\ d,\ c,\ s,\ t,\ b,
+\]
+
+\[
+e,\ \mu,\ \tau,\ \nu_e,\ \nu_\mu,\ \nu_\tau.
+\]
+
+The weak interaction can change flavor through charged-current interactions. For example, beta decay is mediated by the $W^-$ boson:
+
+\begin{equation}
+d \rightarrow u + W^-,
+\end{equation}
+
+\begin{equation}
+W^- \rightarrow e^-+\bar{\nu}_e.
+\end{equation}
+
+Together,
+
+\begin{equation}
+d \rightarrow u+e^-+\bar{\nu}_e.
+\end{equation}
+
+Inside a neutron,
+
+\begin{equation}
+n \rightarrow p+e^-+\bar{\nu}_e.
+\end{equation}
+
+Neutral-current weak interactions are mediated by the $Z^0$ boson and do not change electric charge.
+
+\subsection*{Gravitational interaction}
+
+All particles participate gravitationally because all have energy and momentum.
+
+The gravitational coupling is to the stress-energy tensor:
+
+\[
+T_{\mu\nu}.
+\]
+
+Thus gravity acts on
+
+\[
+\text{quarks, leptons, gauge bosons, Higgs bosons, photons, neutrinos, and composite particles.}
+\]
+
+\section*{Summary table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{0.8\textwidth}
+\toprule
+\textbf{Interaction} & \textbf{Mediator} & \textbf{Participating fundamental particles} \\
+\midrule
+Strong & Gluons $g$ & Quarks, antiquarks, gluons \\
+Electromagnetic & Photon $\gamma$ & Charged leptons, quarks, $W^\pm$, charged antiparticles \\
+Weak & $W^\pm, Z^0$ & All quarks and leptons \\
+Gravity & Graviton, hypothetical & All particles with energy-momentum \\
+\bottomrule
+\end{tabular}
+\caption{Fundamental interactions and participating particles.}
+\label{tab:interaction_summary}
+\end{table}
+
+The Standard Model contains
+
+\begin{equation}
+12\ \text{fermions} + 12\ \text{gauge bosons} + 1\ \text{Higgs boson} = 25
+\end{equation}
+
+fundamental particle types, excluding antiparticles as separate entries.
+
+\end{document}

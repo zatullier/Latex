@@ -1,0 +1,431 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw1.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 1 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 1.2}
+    Consider a star, a light bulb, and a slab of ice; their respective temperatures are 8500 [K], 850 [K], and 273.15 [K].
+    \begin{itemize}
+        \item [(a)] Estimate the wavelength at which their radiated energies peak
+        \item [(b)] Estimate the intensities of their radiation
+    \end{itemize}
+
+    \subsection{Solution, part (a):}
+        Variables
+        \begin{itemize}
+            \item $\lambda_{\text{max}}$ = Peak Wavelength [m]
+            \item $T$ = Absolute Temperature [K]
+            \item $b$ = Wien’s constant ~$2.898 \times 10^{-3}$ [m K]
+        \end{itemize}
+
+        Use Wien's displacement Law
+        \begin{equation}
+            \lambda_{\text{max}} = \frac{b}{T}
+        \end{equation}
+
+        For the Star ($T = 8500$ K)
+        \begin{equation}
+            \lambda_{\text{max}} = \frac{2.898 \times 10^{-3}}{8500} = 3.41 \times 10^{-7} \textbf{[m]} = 341 \textbf{[nm]}
+        \end{equation}
+        This falls in the \textbf{ultraviolet (UV) region}.
+        
+        For the Light Bulb ($T = 850$ K)
+        \begin{equation}
+            \lambda_{\text{max}} = \frac{2.898 \times 10^{-3}}{850} = 3.41 \times 10^{-6} \textbf{[m]} = 3.41 \textbf{[nm]}
+        \end{equation}
+        This falls in the \textbf{infrared (IR) region}.
+
+        For the Slab of Ice ($T = 273.15$ K)
+        \begin{equation}
+            \lambda_{\text{max}} = \frac{2.898 \times 10^{-3}}{273.15} = 1.06 \times 10^{-5} \textbf{[m]} = 10.6 \textbf{[nm]}
+        \end{equation}
+        This falls in the \textbf{far infrared (thermal IR) region}.
+
+    \subsection{Solution, part (b):}
+        Variables
+        \begin{itemize}
+            \item $I$ = Intensity of radiation [$\frac{W}{m^2}$],
+            \item $\sigma$ = Stefan-Boltzmann constant = $5.670 \cdot 10^{-8}$ [$\frac{W}{m^2 K^4}$]
+            \item $T$ = Absolute Temperature [K]
+        \end{itemize}
+
+        Use Stefan-Boltzmann’s Law
+
+        \begin{equation}
+            I = \sigma T^4
+        \end{equation}
+
+        For the Star ($T = 8500$ K)
+        \begin{equation}
+            I = (5.670 \cdot 10^{-8}) \cdot (8500)^4 = (5.670 \cdot 10^{-8}) \cdot (5.22 \cdot 10^{15}) = 2.96 \cdot 10^{8} [\frac{W}{m^2}]
+        \end{equation}
+
+        For the Light Bulb ($T = 850$ K)
+        \begin{equation}
+        I = (5.670 \cdot 10^{-8}) \cdot (850)^4 = (5.670 \cdot 10^{-8}) \cdot (5.23 \cdot 10^{11}) = 2.96 \cdot 10^{4} [\frac{W}{m^2}]
+        \end{equation}
+
+        For the Slab of Ice ($T = 273.15$ K)
+        \begin{equation}
+        I = (5.670 \cdot 10^{-8}) \cdot (273.15)^4 = (5.670 \cdot 10^{-8}) \cdot (5.58 \cdot 10^{9}) = 317.9 [\frac{W}{m^2}]
+        \end{equation}
+
+\section{Textbook Question 1.16}
+    A light source of frequency $9.5 \cdot 10^{14}$ [Hz] illuminates the surface of a metal of work function 2.8 [eV] and ejects electrons. Calculate
+    \begin{itemize}
+        \item [(a)] the stopping potential
+        \item [(b)] the cutoff frequency
+        \item [(c)] the kinetic energy of the ejected electrons
+    \end{itemize}
+
+    Known Variables
+    \begin{itemize}
+        \item $W_f$ = Work function of metal = $2.8$ [eV]
+        \item $\nu$ = Frequency of incident light = $9.5 \cdot 10^14$ [$Hz$]
+        \item $h$ = Plank's constant = $h = 6.626 \cdot 10^{-34}$ [$J \cdot s$]
+        \item $e_c$ = Charge of Electron = $1.602 \cdot 10^{-19}$ [$C$]
+        \item $c$ = Speed of light = $3.0 \cdot 10^8$ [$\frac{m}{s}$]
+        \item $1$ [$eV$] = $1.602 \cdot 10^{-19}$ [$J$]
+    \end{itemize}
+
+    Unknown Variables
+    \begin{itemize}
+        \item $V_s$ = Stopping Potential
+        \item $KE_{max}$ = Maximum Kinetic Energy of ejected electrons
+        \item $\nu_c$ = Cutoff Frequency
+    \end{itemize}
+    
+    \subsection{Solution, part (a):}  
+        Calculate Stopping Potential $V_s$ using the photoelectric equation:
+        \begin{equation}
+            KE_{max} = h \nu - W_f = V_s \cdot e_c
+        \end{equation}
+
+        Isolate $V_s$
+        \begin{equation}
+            V_s = \frac{KE_{max}}{e_c} = \frac{h \nu - W_f}{e_c}
+        \end{equation}
+
+        Calculate
+        \begin{equation}
+            V_s = \frac{\frac{(6.626 \times 10^{-34}) \times (9.5 \times 10^{14})}{1.602 \times 10^{-19}} - 2.8}{1} = 1.13 [V]
+        \end{equation}
+
+    \subsection{Solution, part (b):}
+        Cutoff frequency is defined as    
+        
+        \begin{equation}
+            \nu_c = \frac{W_f}{h}
+        \end{equation}
+
+        Calculate
+        \begin{equation}
+            \nu_c = \frac{(2.8 \cdot 1.602 \cdot 10^{-19})}{6.626 \cdot 10^{-34}} = \frac{4.4856 \cdot 10^{-19}}{6.626 \cdot 10^{-34}} = 6.77 \cdot 10^{14} [Hz]
+        \end{equation}
+    
+    \subsection{Solution, part (c):}
+        Calculated in part a. Convert to Joules per problem prompt
+        \begin{equation}
+            KE_{max} = 1.13 [eV] \cdot 1.602 \cdot 10^{-19} [\frac{J}{eV}] = 1.81 \cdot 10^{-19} [J]
+        \end{equation}
+          
+\section*{Textbook question 1.18}
+    A light of frequency $7.2 \cdot 10^{14}$ [Hz] is incident on four different metallic surfaces of cesium, aluminum, cobalt, and platinum whose work functions are 2.14 [eV], 4.08 [eV], 3.9 [eV], and 6.35 [eV], respectively.
+    \begin{itemize}
+        \item [(a)] Which among these metals will exhibit the photoelectric effect?
+        \item [(b)] For each one of the metals producing photoelectrons, calculate the maximum kinetic energy for the electrons ejected.
+    \end{itemize}
+
+    Given Variables
+        \begin{itemize}
+            \item $\nu$ = Frequency of incident light = $7.2 \cdot 10^{14} [Hz]$
+            \item Work functions of the metals
+            \begin{itemize}
+                \item $W_{f-Cs}$ = Cesium = $2.14 [eV]$
+                \item $W_{f-Al}$ = Aluminum = $4.08 [eV]$
+                \item $W_{f-Co}$ = Cobalt = $3.9 [eV]$
+                \item $W_{f-Pl}$ = Platinum = $6.35 [eV]$
+            \end{itemize}
+            \item $h$ = Planck’s constant = $6.626 \cdot 10^{-34} [J \cdot s]$
+            \item $e_c$ = Charge of an electron = $1.602 \cdot 10^{-19} [C]$
+            \item $1 [eV] = 1.602 \cdot 10^{-19} [J]$
+    \end{itemize}
+    
+    \subsection*{Solution, part (a):}
+        The energy of the incident photon is defined as
+        \begin{equation}
+            E_{p} = h \nu = (6.626 \cdot 10^{-34}) \cdot (7.2 \cdot 10^{14}) \cdot 10^{-19} [J] \cdot \frac{1}{1.602 \times 10^{-19}} \frac{[eV]}{[J]} = 2.98 [eV]
+        \end{equation}
+    
+        Comparing with the work functions:
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} \hline 
+                \multicolumn{4}{|c|}{\textbf{Comparing with the work functions}}\\ \hline 
+                \textbf{Metal}      &   \textbf{Work Function (eV)}     &   \textbf{$E_{photon} = 2.98 [eV]$}  &   \textbf{Photoelectric Effect?} \\ \hline 
+                Cesium              &   $2.14$                          &   $2.98 > 2.14$                           &   Yes \\ \hline 
+                Aluminum            &   $4.08$                          &   $2.98 < 4.08$                           &   No \\ \hline 
+                Cobalt              &   $3.9$                           &   $2.98 < 3.9$                            &   No \\ \hline 
+                Platinum            &   $6.35$                          &   $2.98 < 6.35$                           &   No \\ \hline
+            \end{tabular}
+        \end{center}
+        
+        Only Cesium exhibits the photoelectric effect
+
+    \subsection*{Solution, part (b):}
+        For Cesium:
+        \begin{equation}
+            KE_{max} = E_{p} - W_f = 2.98 - 2.14 [eV] = 0.84 [eV] \cdot (1.602 \cdot 10^{-19} \frac{J}{eV}) = 1.35 \cdot 10^{-19} [J]
+        \end{equation}
+
+        All other metals do not produce photoelectrons
+            
+\section*{Textbook Problem 1.25}
+    When scattering photons from electrons at rest, if the scattered photons are detected at 90$\deg$ and if their wavelength is double that of the incident photons, find
+    \begin{itemize}
+        \item [(a)] the wavelength of the incident photons
+        \item [(b)] the energy of the recoiling electrons and the angle at which they recoil
+        \item [(c)] the energies of the incident and scattered photons
+    \end{itemize}
+
+    Given Variables
+    \begin{itemize}
+        \item $\theta$ = Scattering Angle = $90 \deg$
+        \item $\lambda'$ = Scattered Wavelength = $2 \lambda$
+        \item $h$ = Planks Constant = $6.626 \cdot 10^{-34} [J \cdot s]$
+        \item $m_e$ = Electron Mass = $9.109 \cdot 10^{-31} [kg]$
+        \item $c$ = Speed of Light = $3.0 \cdot 10^8 [\frac{m}{s}]$    
+        \item $E_i$ = Energy of incident photon 
+        \item $E_s$ = Energy of scattered photon
+        \item $E_c$ = Energy of recoiled electron
+        \item $\phi$ = Electron recoil angle
+    \end{itemize}
+    
+    \subsection*{Solution, part (a):}
+
+        Using the Compton wavelength shift formula:
+        \begin{equation}
+            \lambda' - \lambda = \frac{h}{m_e c} (1 - \cos \theta)
+        \end{equation}
+
+        Subtitute and Isolate $\lambda$
+        \begin{equation}
+            \lambda = 2\lambda - \lambda = \frac{h}{m_e c} (1 - \cos \theta)
+        \end{equation}
+
+        Calculate
+        \begin{equation}
+            \lambda = \frac{6.626 \cdot 10^{-34} [Js]}{9.109 \cdot 10^{-31} [kg] \cdot 3.0 \cdot 10^8 [\frac{m}{s}]} (1 - \cos(90)) \frac{kg m^2}{Js^2}
+        \end{equation}
+
+        Answer
+        \begin{equation}
+            \boxed{\boldsymbol{\lambda = 2.4*10^{-12} [m]}}
+        \end{equation}
+
+        \subsection*{Solution, part (b):}
+
+        The energy of a photon is defined as
+        \begin{equation}
+            E = \frac{hc}{\lambda}
+        \end{equation}
+
+        Calculate for the incident photon
+        \begin{equation}
+            E = \frac{6.626 \cdot 10^{-34} [J \cdot s] \cdot 3.0 \cdot 10^8 [\frac{m}{s}]}{2.42*10^{-12} [m] \cdot 1.602 \times 10^{-19} [\frac{J}{eV}]}
+        \end{equation}
+
+        Answer for the incident photon
+        \begin{equation}
+            E = 512.8 [keV]
+        \end{equation}
+
+        Calculate for the scattered photon
+        \begin{equation}
+            E = \frac{hc}{\lambda'} = \frac{hc}{2 \cdot \lambda}\frac{6.626 \cdot 10^{-34} [J \cdot s] \cdot 3.0 \cdot 10^8 [\frac{m}{s}]}{2 \cdot 2.42*10^{-12} [m] \cdot 1.602 \times 10^{-19} [\frac{J}{eV}]}
+        \end{equation}
+
+        Answer for the scattered photon
+        \begin{equation}
+            E = 256.4 [keV]
+        \end{equation}
+
+        Energy is conserved
+        \begin{equation}
+            E_{tot} = E_i - E_s - E_c = 0
+        \end{equation}
+
+        Isolate $E_c$
+        \begin{equation}
+            E_c = E_i - E_s = 512.8 - 256.4 [keV] = 256.4 [keV]
+        \end{equation}
+        
+        The recoil angle $\phi$ is defined as
+        \begin{equation}
+            \tan \phi = \frac{ \lambda' \sin \theta }{\lambda - \lambda' \cos \theta}
+        \end{equation}
+
+        Calculate
+        \begin{equation}
+            \tan \phi = \frac{2 \cdot 2.4 \cdot 10^{-12} [m] \cdot \sin 90 ^{\circ}}{2.4 \cdot 10^{-12} [m] - 0} = 2
+        \end{equation}
+
+        Isolate $\phi$ and calculate
+        \begin{equation}
+            \phi = tan^-1(2) = 45^{\circ}
+        \end{equation}
+
+        \subsection*{Solution, part (c):}
+        From part (b):
+        \begin{itemize}
+            \item \textbf{Energy of the incident photon:} $E_i = 512$ keV
+            \item \textbf{Energy of the scattered photon:} $E_s = 256$ keV
+        \end{itemize}
+   
+\section*{Textbook Problem 1.34}
+    A simple one-dimensional harmonic oscillator is a particle acted upon by a linear restoring force $F(x) = -m \omega^2 x$. Classically, the minimum energy of the oscillator is zero, because we can place it precisely at $x=0$, its equilibrium position, while giving it zero initial velocity. Quantum mechanically, the uncertainty principle does not allow us to localize the particle precisely and simultaneously have it at rest. Using the uncertainty principle, estimate the minimum energy of the quantum mechanical oscillator.
+
+    Given Variables
+    \begin{itemize}
+        \item $\Delta x$ = Uncertainty in position
+        \item $\Delta p$ = Uncertainty in momentum
+        \item $\hbar$ = Reduced Plank's Constant
+        \item $h$ = Plank's Constant
+        \item $E_{tot}$ = Total Energy
+        \item $K$ = Kinetic Energy
+        \item $U$ = Potential Energy
+        
+    \end{itemize}
+    \subsection*{Solution:}
+
+        Using the Heisenberg Uncertainty Principle
+        \begin{equation}
+            \Delta x \Delta p \geq \frac{\hbar}{2}
+        \end{equation}
+
+        Assume ground state, so uncertainty product is near lowest bound
+        \begin{equation}
+            \Delta p \approx \frac{\hbar}{2 \Delta x}
+        \end{equation}
+
+        Assuming $p \approx \Delta p = \frac{\hbar}{2 \Delta x}$ and $x \approx \Delta x$ calculate the Total Energy ($E_{tot}$) using the definitions of kinetic and potential energy
+        \begin{equation} \label{eq: E}
+            \begin{split}
+                E = K + U \\
+                U = \frac{1}{2} m \omega x^2 = \frac{1}{2} m \omega (\Delta x)^2 \\
+                K = \frac{p}{2m} = \frac{(\frac{\hbar}{2 \Delta x})^2}{2m} = \frac{\hbar^2}{8 m (\Delta x)^2} \\
+                E = \frac{\hbar^2}{8 m (\Delta x)^2} + \frac{1}{2} m \omega (\Delta x)^2 \\
+            \end{split}
+        \end{equation}
+
+        Take derivative and set to zero to find minimum value of $E$
+        \begin{equation}
+            \frac{d E}{d (\Delta x)} = \frac{\hbar^2}{8 m (\Delta x)^2} + \frac{1}{2} m \omega^2 (\Delta x)^2
+        \end{equation}
+
+        Isolate $\Delta x$
+        \begin{equation}
+            \Delta x = \frac{\sqrt{\hbar}}{\sqrt{2 m \omega}}
+        \end{equation}
+
+        Substitute back into general Energy Equation \ref{eq: E}
+        \begin{equation}
+            E_{min} = \frac{\hbar^2}{8 m (\Delta x)^2} + \frac{1}{2} m \omega^2 (\Delta x)^2
+        \end{equation}
+
+        Substitute $(\Delta x)^2 = \frac{\hbar}{2 m \omega}$
+        \begin{equation}
+            E_{min} = \frac{\hbar \omega}{2}
+        \end{equation}
+        
+        This confirms why even in the lowest quantum state, a harmonic oscillator has \textbf{nonzero energy} due to quantum fluctuations.
+
+\section*{Textbook Problem 1.47}
+    Show that for those waves whose angular frequency ($\omega$) and wave number ($k$) obey the dispersion relation ($k^2c^2 = \omega^2 + const$), the product of the phase and group velocities is equal to $c^2$, $\nu_g \nu_{ph} = c^2$, where c is the speed of light.
+
+    Given Variables
+    \begin{itemize}
+        \item $k$ = Wave Number
+        \item $\omega$ = Angular Frequency
+        \item $c$ = Speed of Light
+        \item $\nu_{ph}$ = Phase Velocity
+        \item $\nu_g$ = Group Velocity
+        
+    \end{itemize}
+    \subsection*{Solution:} 
+        Dispersion relation:
+        \begin{equation}
+            k^2 c^2 = \omega^2 + \text{constant},
+        \end{equation}
+
+        Prove that
+        \begin{equation}
+            \nu_g \nu_{ph} = c^2
+        \end{equation}
+
+        Define the Phase Velocity
+        \begin{equation}
+            \nu_{ph} = \frac{\omega}{k}.
+        \end{equation}
+
+        Define the Group Velocity
+        \begin{equation}
+            \nu_g = \frac{d\omega}{dk}.
+        \end{equation}
+
+        Differentiate both sides of the given dispersion relation with respect to $k$
+        \begin{equation}
+            \begin{split}
+                2k c^2 \frac{dk}{dk} = 2\omega \frac{d\omega}{dk} \\
+                2k c^2 = 2\omega \frac{d\omega}{dk} \\            
+                c^2 k = \omega \frac{d\omega}{dk}
+            \end{split}
+        \end{equation}
+
+        Isolate $\nu_g$
+        \begin{equation}
+            \nu_g = \frac{d\omega}{dk} = \frac{c^2 k}{\omega}.
+        \end{equation}
+
+        Compute the Product $v_g v_{ph}$
+
+        \begin{equation}
+            \begin{split}
+                v_g v_{ph} = \left( \frac{c^2 k}{\omega} \right) \left( \frac{\omega}{k} \right) \\ 
+                v_g v_{ph} = \frac{c^2 k \omega}{\omega k} \\            
+                v_g v_{ph} = c^2 \\
+            \end{split}
+        \end{equation}
+\end{document}

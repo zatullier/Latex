@@ -1,0 +1,348 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+\onehalfspacing
+
+\title{Summary of Chapter 2 and Detailed Discussion of Tumour Radiotherapy}
+\author{Zachary Tullier}
+\date{7/12/26}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Summary of Chapter 2}
+
+Chapter 2 of the \textit{Radiation Biology: A Handbook for Teachers and Students} provides the scientific foundation of radiation biology by introducing the physical principles of ionizing radiation, its interactions with matter, molecular and cellular mechanisms of radiation damage, and the biological principles underlying radiotherapy and radiation protection.
+
+The chapter is organized into five major sections.
+
+\subsection{Physics and Chemistry of Radiation Interactions with Matter}
+
+This section discusses:
+
+\begin{itemize}
+\item Sources of ionizing radiation
+\item Electromagnetic and particulate radiation
+\item Photon interactions (photoelectric effect, Compton scattering, pair production)
+\item Linear Energy Transfer (LET)
+\item Radiation dose quantities
+\item Radiation dosimetry
+\item Direct and indirect radiation effects
+\end{itemize}
+
+The chapter emphasizes that biological damage begins with energy deposition through ionization. Radiation may damage biomolecules directly or indirectly through radiolysis of water, producing reactive free radicals.
+
+\subsection{Molecular and Cellular Radiobiology}
+
+This section explains:
+
+\begin{itemize}
+\item DNA damage mechanisms
+\item DNA repair pathways
+\item Cell cycle effects
+\item Cell survival curves
+\item Relative Biological Effectiveness (RBE)
+\item Radiation sensitizers
+\item Radioprotectors
+\item Bystander effects
+\end{itemize}
+
+DNA double-strand breaks are identified as the most critical lesions responsible for radiation-induced cell death.
+
+\subsection{Tumour Radiotherapy}
+
+Major topics include
+
+\begin{itemize}
+\item Tumour growth
+\item Tumour response to radiation
+\item Tumour control probability
+\item Dose fractionation
+\item Tumour hypoxia
+\end{itemize}
+
+These concepts form the biological basis of modern radiation therapy.
+
+\subsection{Normal Tissue Response to Radiotherapy}
+
+Topics include
+
+\begin{itemize}
+\item Acute tissue injury
+\item Late tissue injury
+\item Tissue repair
+\item Therapeutic ratio
+\item Whole-body irradiation
+\end{itemize}
+
+The objective is to maximize tumour control while minimizing damage to healthy tissues.
+
+\subsection{Radiobiological Basis of Radiation Protection}
+
+This section discusses
+
+\begin{itemize}
+\item Radiation accidents
+\item Radiation-induced cancer
+\item Embryonic and fetal effects
+\item Heritable genetic effects
+\item Epidemiological evidence for radiation risks
+\end{itemize}
+
+These concepts form the scientific basis for radiation protection standards and dose limits.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Detailed Discussion of Section 2.4: Tumour Radiotherapy}
+
+Section 2.4 is one of the most important parts of radiation biology because it combines radiation physics, molecular biology, tumour biology, and clinical oncology. It explains why ionizing radiation can selectively destroy tumour cells while preserving surrounding healthy tissues.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tumour Growth}
+
+Tumour growth depends on cellular proliferation, cell loss, angiogenesis, nutrient availability, and oxygen supply.
+
+For small tumour populations, exponential growth may be approximated by
+
+\begin{equation}
+N(t)=N_0e^{\lambda t},
+\end{equation}
+
+where
+
+\begin{itemize}
+\item $N_0$ is the initial number of tumour cells,
+\item $\lambda$ is the growth constant,
+\item $N(t)$ is the tumour population after time $t$.
+\end{itemize}
+
+Most clinical tumours do not continue exponential growth indefinitely because nutrient and oxygen limitations reduce proliferation. Instead, tumour growth is better represented by the Gompertz model,
+
+\begin{equation}
+N(t)=N_0
+\exp\left[
+\frac{G}{B}
+\left(
+1-e^{-Bt}
+\right)
+\right],
+\end{equation}
+
+where
+
+\begin{itemize}
+\item $G$ represents the initial growth rate,
+\item $B$ describes progressive slowing of growth.
+\end{itemize}
+
+This slowing results from poor vascularization, hypoxia, nutrient depletion, and waste accumulation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tumour Response to Irradiation}
+
+Ionizing radiation deposits energy into tumour cells through ionization and excitation.
+
+The most lethal lesions are DNA double-strand breaks (DSBs).
+
+Cell survival following irradiation is described by the Linear--Quadratic (LQ) model,
+
+\begin{equation}
+S(D)=e^{-(\alpha D+\beta D^2)},
+\end{equation}
+
+where
+
+\begin{itemize}
+\item $S(D)$ is the surviving fraction,
+\item $D$ is the absorbed dose,
+\item $\alpha$ represents single-track damage,
+\item $\beta$ represents double-track interactions.
+\end{itemize}
+
+At low doses, the linear term dominates, whereas at higher doses the quadratic term becomes increasingly important.
+
+The ratio
+
+\[
+\frac{\alpha}{\beta}
+\]
+
+characterizes tissue sensitivity to dose fractionation.
+
+Typical values are
+
+\begin{itemize}
+\item Tumours and acute tissues:
+\[
+\alpha/\beta \approx 10~\mathrm{Gy}
+\]
+
+\item Late-responding tissues:
+\[
+\alpha/\beta \approx 2-3~\mathrm{Gy}
+\]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tumour Control Probability (TCP)}
+
+Radiotherapy aims to eliminate every clonogenic tumour cell.
+
+If
+
+\begin{itemize}
+\item $N$ is the number of clonogenic cells,
+\item $S(D)$ is the surviving fraction,
+\end{itemize}
+
+then the expected number of surviving clonogens is
+
+\begin{equation}
+N_s=NS(D).
+\end{equation}
+
+Assuming a Poisson distribution,
+
+\begin{equation}
+\boxed{
+TCP=e^{-NS(D)}
+}
+\end{equation}
+
+where TCP denotes Tumour Control Probability.
+
+Larger tumours require higher doses because they initially contain more clonogenic cells.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Dose Fractionation}
+
+Instead of administering the total radiation dose in one session, treatment is divided into multiple fractions.
+
+Fractionation exploits the Five Rs of Radiobiology:
+
+\begin{enumerate}
+\item Repair
+\item Redistribution
+\item Reoxygenation
+\item Repopulation
+\item Radiosensitivity
+\end{enumerate}
+
+These biological processes improve tumour control while reducing normal tissue toxicity.
+
+The Biological Effective Dose (BED) is
+
+\begin{equation}
+\boxed{
+BED
+=
+nd
+\left(
+1+\frac{d}{\alpha/\beta}
+\right)
+}
+\end{equation}
+
+where
+
+\begin{itemize}
+\item $n$ is the number of fractions,
+\item $d$ is the dose per fraction.
+\end{itemize}
+
+BED enables comparison between different treatment schedules.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tumour Hypoxia}
+
+Tumour hypoxia is one of the major causes of radioresistance.
+
+Oxygen stabilizes radiation-induced DNA damage by reacting with free radicals generated during irradiation.
+
+The Oxygen Enhancement Ratio (OER) is defined as
+
+\begin{equation}
+\boxed{
+OER
+=
+\frac{D_{\mathrm{hypoxic}}}
+{D_{\mathrm{oxygenated}}}
+}
+\end{equation}
+
+where
+
+\begin{itemize}
+\item $D_{\mathrm{hypoxic}}$ is the dose required under hypoxic conditions,
+\item $D_{\mathrm{oxygenated}}$ is the dose required under oxygenated conditions.
+\end{itemize}
+
+For low-LET radiation,
+
+\[
+OER\approx2.5-3.
+\]
+
+Therefore, hypoxic tumour cells may require nearly three times the radiation dose to achieve the same biological effect.
+
+Methods to overcome tumour hypoxia include
+
+\begin{itemize}
+\item Hyperbaric oxygen therapy
+\item Carbogen breathing
+\item Hypoxic cell radiosensitizers
+\item High-LET particle therapy
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Clinical Importance}
+
+Tumour radiotherapy is fundamentally a balance between maximizing tumour eradication and minimizing injury to surrounding normal tissues.
+
+Modern treatment planning combines
+
+\begin{itemize}
+\item the Linear--Quadratic model,
+\item Tumour Control Probability,
+\item Biological Effective Dose,
+\item Oxygen Enhancement Ratio,
+\item fractionation principles,
+\item tumour hypoxia,
+\item and clonogenic cell survival
+\end{itemize}
+
+to optimize treatment outcomes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{References}
+
+\begin{enumerate}
+\item International Atomic Energy Agency (IAEA). \textit{Radiation Biology: A Handbook for Teachers and Students}. Training Course Series No. 42, Vienna, Austria, 2010.
+
+\item Hall, E. J., and Giaccia, A. J. \textit{Radiobiology for the Radiologist}. 8th Edition. Wolters Kluwer, 2019.
+
+\item Joiner, M. C., and van der Kogel, A. J. \textit{Basic Clinical Radiobiology}. 5th Edition. CRC Press, 2018.
+
+\item Steel, G. G. \textit{Basic Clinical Radiobiology}. Arnold Publishers.
+\end{enumerate}
+
+\end{document}

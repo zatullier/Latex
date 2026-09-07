@@ -1,0 +1,177 @@
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    columns=fullflexible,
+    frame=single
+}
+
+\title{Ionizing and Non-Ionizing Radiation with Emphasis on X-Rays}
+\author{Zachary Tullier}
+\date{6/29/26}
+
+\begin{document}
+
+\maketitle
+\section{Radiation Dose (Dosage), Dosimetry, and Dosimetry Methods}
+
+\subsection{Radiation Dose}
+Radiation dose is a quantitative measure of the energy deposited by ionizing radiation in matter, particularly biological tissues.
+
+\subsubsection{Exposure}
+\begin{equation}
+X=\frac{dQ}{dm}
+\end{equation}
+where $Q$ is electric charge and $m$ is the mass of air. The SI unit is C/kg, with
+\[
+1~\mathrm{R}=2.58\times10^{-4}\,\mathrm{C/kg}.
+\]
+
+\subsubsection{Absorbed Dose}
+\begin{equation}
+D=\frac{dE}{dm}
+\end{equation}
+The SI unit is the Gray:
+\[
+1~\mathrm{Gy}=1~\mathrm{J/kg}=100~\mathrm{rad}.
+\]
+
+\subsubsection{Equivalent Dose}
+\begin{equation}
+H_T=Dw_R
+\end{equation}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\hline
+Radiation & $w_R$\\ \hline
+X-rays & 1\\
+Gamma rays & 1\\
+Beta particles & 1\\
+Protons & 2\\
+Alpha particles & 20\\
+Neutrons & 5--20\\
+\hline
+\end{tabular}
+\caption{Radiation weighting factors.}
+\end{table}
+
+\subsubsection{Effective Dose}
+\begin{equation}
+E=\sum_T w_T H_T
+\end{equation}
+
+\section{Radiation Dosimetry}
+Radiation dosimetry is the science of measuring absorbed radiation dose.
+
+Applications include radiation therapy, diagnostic radiology, nuclear medicine, industrial radiography, environmental monitoring, occupational protection, and space radiation monitoring.
+
+\section{Types of Dosimeters}
+
+\subsection{Film Badge}
+Film badges darken in proportion to radiation exposure due to silver bromide ionization.
+
+\begin{verbatim}
+Radiation
+   |
+Film
+   |
+Latent Image
+   |
+Development
+   |
+Dose
+\end{verbatim}
+
+Advantages: inexpensive, permanent record.
+Disadvantages: single-use, affected by heat and humidity.
+
+\subsection{Thermoluminescent Dosimeter (TLD)}
+Heating releases trapped electrons from LiF, CaSO$_4$, or CaF$_2$ crystals.
+
+\[
+L\propto D
+\]
+
+\subsection{Optically Stimulated Luminescence (OSL)}
+Laser light releases trapped electrons from Al$_2$O$_3$:C crystals. The emitted light is proportional to dose.
+
+\subsection{Ionization Chamber}
+\begin{equation}
+I=\frac{Q}{t}
+\end{equation}
+
+Gas ionization current is measured with an electrometer.
+
+\subsection{Geiger--M\"uller Counter}
+Radiation initiates a Townsend avalanche producing detectable electrical pulses.
+
+\subsection{Semiconductor Dosimeters}
+Radiation creates electron-hole pairs in silicon or diamond.
+
+\[
+Q\propto D
+\]
+
+\subsection{Chemical Dosimeters}
+Fricke dosimeters measure:
+\[
+\mathrm{Fe^{2+}\rightarrow Fe^{3+}}
+\]
+
+\subsection{Alanine Dosimeters}
+Alanine crystals form stable free radicals measured by ESR spectroscopy.
+
+\section{Comparison of Dosimetry Methods}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\hline
+Dosimeter & Principle & Readout & Use\\ \hline
+Film Badge & Film darkening & Delayed & Personnel\\
+TLD & Thermoluminescence & Delayed & Medical\\
+OSL & Optical luminescence & Delayed & Personnel\\
+Ionization Chamber & Gas ionization & Real time & Calibration\\
+GM Counter & Gas avalanche & Real time & Surveys\\
+Semiconductor & Electron-hole pairs & Real time & Radiotherapy\\
+Fricke & Chemical oxidation & Delayed & High dose\\
+Alanine & ESR & Delayed & Industrial\\
+\hline
+\end{tabular}
+\caption{Comparison of dosimetry methods.}
+\end{table}
+
+\section{Applications of Dosimetry}
+\begin{itemize}
+\item Diagnostic radiology
+\item Radiation therapy
+\item Nuclear medicine
+\item Occupational monitoring
+\item Environmental monitoring
+\item Industrial irradiation
+\item Space radiation monitoring
+\end{itemize}  
+\end{document}
