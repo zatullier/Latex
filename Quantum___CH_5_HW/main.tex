@@ -1,0 +1,854 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 5 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 5.3}
+    If \( \hat{L}_\pm \) and \( \hat{R}_\pm \) are defined by
+    \[
+        \hat{L}_\pm = \hat{L}_x \pm i \hat{L}_y, \quad \text{and} \quad \hat{R}_\pm = \hat{X} \pm i \hat{Y},
+    \]
+    prove the following commutators:
+    
+    \begin{enumerate}
+        \item[(a)] \( [\hat{L}_\pm, \hat{R}_\pm] = \pm 2 \hbar \hat{Z} \)
+        \item[(b)] \( [\hat{L}_\pm, \hat{R}_\mp] = 0 \)
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        We compute:
+        \[
+            [\hat{L}_\pm, \hat{R}_\pm] = [\hat{L}_x \pm i \hat{L}_y, \hat{X} \pm i \hat{Y}]
+        \]
+        
+        Using the identity \( [A + B, C + D] = [A, C] + [A, D] + [B, C] + [B, D] \), we expand:
+        \[
+            [\hat{L}_x, \hat{X}] + i[\hat{L}_x, \hat{Y}] \pm i[\hat{L}_y, \hat{X}] - [\hat{L}_y, \hat{Y}]
+        \]
+
+        Using the standard angular momentum commutators:
+        \begin{align*}
+            [\hat{L}_x, \hat{X}] &= 0, & [\hat{L}_x, \hat{Y}] &= i\hbar \hat{Z} \\
+            [\hat{L}_y, \hat{X}] &= -i\hbar \hat{Z}, & [\hat{L}_y, \hat{Y}] &= 0
+        \end{align*}
+
+        Plug in:
+        \[
+            0 + i(i\hbar \hat{Z}) \pm i(-i\hbar \hat{Z}) + 0 = \hbar \hat{Z} \pm \hbar \hat{Z} = \boxed{ \pm 2\hbar \hat{Z} }
+        \]
+
+    \subsection{Solution, part (b):}
+        We compute:
+        \[
+            [\hat{L}_\pm, \hat{R}_\mp] = [\hat{L}_x \pm i \hat{L}_y, \hat{X} \mp i \hat{Y}]
+        \]
+
+        Expanding:
+        \[
+            [\hat{L}_x, \hat{X}] \mp i[\hat{L}_x, \hat{Y}] \pm i[\hat{L}_y, \hat{X}] + [\hat{L}_y, \hat{Y}]
+        \]
+
+        Using commutators again:
+        \[
+            0 \mp i(i\hbar \hat{Z}) \pm i(-i\hbar \hat{Z}) + 0 = -\hbar \hat{Z} + \hbar \hat{Z} = \boxed{0}
+        \]
+
+\section{Textbook Question 5.8}
+    Prove the following relation:
+    \[
+        [\hat{L}_z, \sin(2\varphi)] = 2i\hbar \left( \sin^2 \varphi - \cos^2 \varphi \right),
+    \]
+    where \( \varphi \) is the azimuthal angle. 
+
+    \textit{Hint:} \( [\hat{A}, \hat{B} \hat{C}] = \hat{B} [\hat{A}, \hat{C}] + [\hat{A}, \hat{B}] \hat{C} \).
+
+    \subsection{Solution:}
+        We are to prove the commutator:
+        \[
+            [\hat{L}_z, \sin(2\varphi)] = 2i\hbar \left( \sin^2 \varphi - \cos^2 \varphi \right),
+        \]
+        where \( \hat{L}_z = -i\hbar \frac{\partial}{\partial \varphi} \), and \( \varphi \) is the azimuthal angle.
+
+        This commutator tells us how the angular momentum operator $\hat{L}_z$ fails to commute with the function $sin(2\varphi)$. The commutator with a function acts as a differential operator
+        \[
+            [\hat{L}_z. f(\varphi)] = - i \hbar \frac{\partial f}{\partial \varphi}
+        \]
+        \[
+            [\hat{L}_z, sin(2 \varphi] = - i \hbar \frac{\partial}{\partial \varphi} sin(2 \varphi)
+        \]
+
+        Perform derivation
+        \[
+            \frac{d}{d \varphi} sin(2 \varphi) = 2 cos(2 \varphi)
+        \]
+        \[
+            [\hat{L}_z, sin(2 \varphi)] = - 2 i \hbar cos(2 \varphi) = - 2 i \hbar cos(2 \varphi)
+        \]
+
+        Using the given equation
+        \[
+            [\hat{L}_z, sin(2 \varphi] = 2 i \hbar (sin^2(\varphi) - cos^2(\varphi)
+        \]
+        
+        Using the identity
+        \[
+            cos(2\varphi) = cos^2(\varphi) - sin^2(\varphi) \Rightarrow sin^2(\varphi) - cos^2(\varphi) = - cos(2\varphi)
+        \]
+
+        Therefore
+        \[
+            \boldsymbol{\boxed{2 i \hbar(sin^2(\varphi) - cos^2(\varphi)) = - 2 i \hbar cos(2 \varphi)}}
+        \]
+
+        Which matches what we got from directly computing the commutator therefore the identity is proven. 
+
+\section{Textbook Question 5.16}
+    Consider a system which is described by the state
+    \[
+        \psi(\theta, \varphi) = \sqrt{\frac{3}{8}}\, Y_{11}(\theta, \varphi)
+        + \sqrt{\frac{1}{8}}\, Y_{10}(\theta, \varphi)
+        + A Y_{1,-1}(\theta, \varphi),
+    \]
+    where \( A \) is a real constant.
+    
+    \begin{enumerate}
+        \item[(a)] Calculate \( A \) so that \( \ket{\psi} \) is normalized. 
+        \item[(b)] Find \( \hat{L}_+ \psi(\theta, \varphi) \). 
+        \item[(c)] Calculate the expectation values of \( \hat{L}_x \) and \( \hat{L}^2 \) in the state \( \ket{\psi} \).
+        \item[(d)] Find the probability associated with a measurement that gives zero for the \( z \)-component of the angular momentum.
+        \item[(e)] Calculate 
+        \( 
+            \langle \Phi | \hat{L}_z | \psi \rangle 
+        \) 
+        and 
+        \( 
+            \langle \Phi | \hat{L}_- | \psi \rangle 
+        \)
+        , where
+        \[
+            \Phi(\theta, \varphi) =
+            \sqrt{\frac{8}{15}}\, Y_{11}(\theta, \varphi)
+            + \sqrt{\frac{4}{15}}\, Y_{10}(\theta, \varphi)
+            + \sqrt{\frac{3}{15}}\, Y_{2,-1}(\theta, \varphi).
+        \]
+    \end{enumerate}
+
+
+    \subsection{Solution, part (a):}
+        Spherical harmonics are orthonormal
+        \[
+            \int Y_{lm}^*(\theta,\varphi) Y_{l'm'}(\theta, \varphi) d\Omega = \delta_{ll'} \delta_{mm'}
+        \]
+
+        We want $\braket{\psi}{\psi} = 1$. Using orthonormality:
+        \[
+        \braket{\psi}{\psi} = \frac{3}{8} + \frac{1}{8} + A^2 = \frac{1}{2} + A^2
+        \]
+
+        Normalize this by setting it equal to 1
+        \[
+            \braket{\psi}{\psi} = 1 \Rightarrow A^2 = \frac{1}{2} \Rightarrow A = \boldsymbol{\boxed{\pm \frac{1}{\sqrt{2}}}}
+        \]
+
+        Since $A$ is real, both signs are valid, but often the positive root is taken unless stated otherwise.
+
+    \subsection{Solution, part (b):}
+        We use the identity
+        \[
+            \hat{L}_+ Y_{\ell m} = \hbar \sqrt{\ell(\ell+1) - m(m+1)} Y_{\ell, m+1}
+        \]
+
+        Apply to each term:
+        \begin{align*}
+            \hat{L}_+ Y_{1,1} &= \hbar \sqrt{1(1+1) - (1(1+1)} Y_{1,1} &= 0 \\
+            \hat{L}_+ Y_{1,0} &= \hbar \sqrt{1(1+1) - (0(0+1)} Y_{1,1} &= \hbar \sqrt{2} Y_{1,1} \\
+            \hat{L}_+ Y_{1,-1} &= \hbar \sqrt{1(1+1) - (-1)(0)} Y_{1,0} &= \hbar \sqrt{2} Y_{1,0}
+        \end{align*}
+
+        Thus:
+        \[
+            \boldsymbol{\boxed{\hat{L}_+ \psi = \hbar \left( \sqrt{\frac{1}{4}} Y_{1,1} + A \sqrt{2} Y_{1,0} \right)}}
+        \]
+
+    \subsection{Solution, part (c):}
+        All $Y_{1,m}$ have $\ell=1$, so:
+        \[
+            \hat{L}^2 Y_{1,m} = 2\hbar^2 Y_{1,m} \Rightarrow \langle \hat{L}^2 \rangle = 2\hbar^2
+        \]
+        \[
+            \hat{L}_x = \frac{1}{2}(\hat{L}_+ + \hat{L}_-):
+        \]
+
+        We already computed $\hat{L}_{+\psi}$. Similarly compute $\hat{L}_{-\psi}$
+        \begin{align*}
+        \hat{L}_- Y_{1,1} &= \hbar \sqrt{2} Y_{1,0} \\
+        \hat{L}_- Y_{1,0} &= \hbar \sqrt{2} Y_{1,-1} \\
+        \hat{L}_- Y_{1,-1} &= 0
+        \end{align*}
+
+        \[
+            \hat{L}_- \psi = \hbar \left( \sqrt{\frac{3}{8}} Y_{1,0} + \sqrt{\frac{1}{8}} Y_{1,-1} \right)
+        \]
+
+        Then:
+        \[
+            \hat{L}_x \psi = \frac{\hbar}{2} \left[
+            \sqrt{\frac{1}{4}} Y_{1,1} + (A \sqrt{2} + \sqrt{\frac{3}{8}}) Y_{1,0} + \sqrt{\frac{1}{8}} Y_{1,-1}
+            \right]
+        \]
+
+        Take the average
+        \[
+            \boldsymbol{\boxed{\langle \hat{L}_x \rangle = \langle \psi | \hat{L}_x | \psi \rangle = \frac{1}{2} \langle \psi | (\hat{L}_+ + \hat{L}_-) | \psi \rangle}}
+        \]
+
+        Only terms with $\leftrightarrow m \pm 1$ overlap. So you compute each overlap:
+        \begin{align*}
+            \langle Y_{1,1} | \hat{L}_x | Y_{1,0} \rangle \\
+            \langle Y_{1,0} | \hat{L}_x | Y_{1,-1} \rangle
+        \end{align*}
+
+    \subsection{Solution, part (d):}
+        Only $Y_{1,0}$ has $m=0$ and it is $\sqrt{\frac{1}{8}}$, so:
+        \[
+            P(m=0) = \left| \sqrt{\frac{1}{8}} \right|^2 = \boxed{\frac{1}{8}}
+        \]
+
+    \subsection{Solution, part (e):}
+        Let:
+        \[
+            \Phi(\theta, \varphi) =
+            \sqrt{\frac{8}{15}} Y_{1,1} + \sqrt{\frac{4}{15}} Y_{1,0} + \sqrt{\frac{3}{15}} Y_{2,-1}
+        \]
+
+        Only overlapping terms:
+        \[
+            \langle \Phi | \hat{L}_z | \psi \rangle =
+            \hbar \left( 1 \cdot \sqrt{\frac{8}{15}} \cdot \sqrt{\frac{3}{8}} \right) = \hbar \cdot \sqrt{\frac{24}{120}} = \frac{\hbar}{\sqrt{5}}
+        \]
+        
+        We already computed $\hat{L}_{-\psi}$
+        \[
+            \hat{L}_- \psi = \hbar \left( \sqrt{\frac{3}{4}} Y_{1,0} + \sqrt{\frac{1}{4}} Y_{1,-1} \right)
+        \]
+        
+        Only $Y_{1,0}$ overlaps with $\Phi$:
+        \[
+            \langle \Phi | \hat{L}_- | \psi \rangle = \hbar \cdot \sqrt{\frac{4}{15}} \cdot \sqrt{\frac{3}{4}} = \boxed{\frac{\hbar \sqrt{5}}{5}}
+        \]
+
+\section{Textbook Question 5.23}
+    Consider a system of total angular momentum $j = 1$. We want to carry out measurements on
+    \[
+        \hat{J}_z = \hbar \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & -1
+        \end{pmatrix}
+    \]
+
+    \begin{enumerate}
+      \item[(a)] What are the possible values we will obtain when measuring $\hat{J}_z$?
+      \item[(b)] Calculate $\langle \hat{J}_x \rangle$, $\langle \hat{J}_x^2 \rangle$, and $\Delta J_x$ if the system is in the state $j_z = -\hbar$.
+      \item[(c)] Repeat (b) for $\langle \hat{J}_y \rangle$, $\langle \hat{J}_y^2 \rangle$, and $\Delta J_y$.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        Consider a system of total angular momentum $j = 1$. The operator $\hat{J}_z$ is:
+        \[
+            \hat{J}_z = \hbar \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix}
+        \]
+
+        Find the to find the eigenvalues we will use the standard equation then simplify.
+        \begin{align*}
+            det(\hat{J} - \lambda I) = 0 
+            det\left( \hbar \begin{pmatrix} 
+                        1 & 0 & 0 \\ 
+                        0 & 0 & 0 \\ 
+                        0 & 0 & -1 
+                    \end{pmatrix} - \lambda \begin{pmatrix} 
+                                                1 & 0 & 0 \\ 
+                                                0 & 1 & 0 \\ 
+                                                0 & 0 & 1 
+                                            \end{pmatrix} \right) = 0\\
+            det\left(\begin{pmatrix} 
+                \hbar - \lambda & 0         & 0 \\ 
+                0               & -\lambda  & 0 \\ 
+                0               & 0         & -\hbar - \lambda
+            \end{pmatrix} \right) = 0\\
+            (\hbar - \lambda) (-\lambda) (-\hbar - \lambda) = 0 \\
+            (\hbar - \lambda) (\lambda (\hbar + \lambda)) = 0 \\
+            \hbar^2 \lambda + \hbar \lambda^2 - \hbar \lambda^2 - \lambda^3 = 0
+            \hbar^2 \lambda - \hbar^3 = 0 \\
+            \lambda (\hbar^2 - \lambda^2) = 0
+        \end{align*}
+
+        Therefore:
+        \[
+            \boldsymbol{\boxed{\lambda = \hbar, 0, -\hbar}}
+        \]
+
+    \subsection{Solution, part (b):}
+        Given 
+        \[
+            |j_z = -\hbar \rangle
+        \]
+
+        We know that this is the basis state corresponding to the third basis vector
+        \begin{equation} \label{eq <jh|}
+            \langle j_z = -\hbar | = \begin{pmatrix}
+                0 & 0 & 1
+            \end{pmatrix}
+        \end{equation}
+        \begin{equation} \label{eq |jh>}
+            |j_z = -\hbar\rangle = \begin{pmatrix}
+                0 \\ 0 \\ 1
+            \end{pmatrix}
+        \end{equation}
+
+        We are given that $j = 1$ and we need to determine $J_x$. We know the following equation is the definition of raising/lowering operators
+        \[
+            \hat{J}_\pm = \hat{J}_x \pm i \hat{J}_y
+        \]
+        \begin{equation}\label{eq: jx}
+            \hat{J}_x = \frac{1}{2} (\hat{J}_+ + \hat{J}_-)           
+        \end{equation}
+        \begin{equation} \label{eq: jy}
+            \hat{J}_y = \frac{1}{2i} (\hat{J}_+ - \hat{J}_-)
+        \end{equation}
+
+        Now we must construct the $\hat{J}_+$ and $\hat{J}_-$. Since $j=1$ then
+        \begin{align*}
+            |1,1\rangle = \begin{pmatrix}
+                1 \\ 0 \\ 0    
+            \end{pmatrix} \\
+            |1,0\rangle = \begin{pmatrix}
+                0 \\ 1 \\ 0
+            \end{pmatrix} \\
+            |1,-1\rangle = \begin{pmatrix}
+                0 \\ 0 \\ 1
+            \end{pmatrix}
+        \end{align*}
+
+        The action of $\hat{J}_+$ is 
+        \[
+            \hat{J}_+ | j, m \rangle = \hbar \sqrt{(j - m)(j + m + 1)} | j, m+1 \rangle
+        \]
+
+        The action of $\hat{J}_-$ is
+        \[
+            \hat{J}_- | j, m \rangle = \hbar \sqrt{(j + m)(j - m + 1)} | j, m-1 \rangle
+        \]
+
+        The following is how $\hat{J}_+$ with $j=1$
+        \begin{align*}
+            \hat{J}_+ |1,1\rangle &= 0 \quad \text{(no higher state)} \\
+            \hat{J}_+ |1,0\rangle &= \hbar \sqrt{(1-0)(1+0+1)} \, |1,1\rangle = \hbar \sqrt{2} \, |1,1\rangle \\
+            \hat{J}_+ |1,-1\rangle &= \hbar \sqrt{(1-(-1))(1+(-1)+1)} \, |1,0\rangle = \hbar \sqrt{2} \, |1,0\rangle
+        \end{align*}
+
+        Thus, in matrix form:
+        \[
+            \hat{J}_+ = \hbar \begin{pmatrix}
+                0 & \sqrt{2} & 0 \\
+                0 & 0 & \sqrt{2} \\
+                0 & 0 & 0
+            \end{pmatrix}
+        \]
+
+        The following is how $\hat{J}_-$ with $j=1$
+        \begin{align*}
+            \hat{J}_- |1,1\rangle &= \hbar \sqrt{(1+1)(1-1+1)} \, |1,0\rangle = \hbar \sqrt{2} \, |1,0\rangle \\
+            \hat{J}_- |1,0\rangle &= \hbar \sqrt{(1+0)(1-0+1)} \, |1,-1\rangle = \hbar \sqrt{2} \, |1,-1\rangle \\
+            \hat{J}_- |1,-1\rangle &= 0
+        \end{align*}
+
+        Thus, in matrix form:
+        \[
+            \hat{J}_- = \hbar \begin{pmatrix}
+                0 & 0 & 0 \\
+                \sqrt{2} & 0 & 0 \\
+                0 & \sqrt{2} & 0
+            \end{pmatrix}
+        \]
+
+        Now we plug in $\hat{J}_+$ and $\hat{J}_-$ into the $\hat{J}_x$ and $\hat{J}_y$ equations (Reference equations \ref{eq: jx} and \ref{eq: jy}). 
+        \begin{equation} \label{eq: JX}
+            \hat{J}_x = \frac{1}{2} \hbar
+            \begin{pmatrix}
+                0 & \sqrt{2} & 0 \\
+                \sqrt{2} & 0 & \sqrt{2} \\
+                0 & \sqrt{2} & 0
+            \end{pmatrix}
+            = \frac{\hbar}{\sqrt{2}}
+            \begin{pmatrix}
+                0 & 1 & 0 \\
+                1 & 0 & 1 \\
+                0 & 1 & 0
+            \end{pmatrix}
+        \end{equation}
+        \begin{equation} \label{eq: JY}
+            \hat{J}_y = \frac{1}{2i} \times \hbar
+            \begin{pmatrix}
+                0 & \sqrt{2} & 0 \\
+                -\sqrt{2} & 0 & \sqrt{2} \\
+                0 & -\sqrt{2} & 0
+            \end{pmatrix}
+            \hat{J}_y = \frac{\hbar}{\sqrt{2}}
+            \begin{pmatrix}
+                0 & -i & 0 \\
+                i & 0 & -i \\
+                0 & i & 0
+            \end{pmatrix}
+        \end{equation}
+
+        We want to find the expectation value of $\hat{J}_x$, therefore:
+        \begin{align*}
+            \langle \hat{O} \rangle = \langle \psi | \hat{O} | \psi \rangle \\
+            \langle \hat{J}_x \rangle = \langle \text{state} | \hat{J}_x | \text{state} \rangle \\
+            \langle \hat{J}_x \rangle = \langle j_z = - \hbar | \hat{J}_x | j_z = -\hbar \rangle \\
+        \end{align*}
+
+        Plug in values from equations \ref{eq <jh|}, \ref{eq |jh>}, and \ref{eq: JX}
+        \[
+            \langle \hat{J}_x \rangle = \begin{pmatrix}
+                0 & 0 & 1
+            \end{pmatrix} \left( \frac{\hbar}{\sqrt{2}} \begin{pmatrix}
+                0 & 1 & 0 \\
+                1 & 0 & 1 \\
+                0 & 1 & 0
+            \end{pmatrix} \right) \begin{pmatrix}
+                0 \\ 0 \\ 1
+            \end{pmatrix} = 0
+        \]
+
+        \[
+            \boldsymbol{\boxed{\langle \hat{J}_x \rangle = 0}}
+        \]
+
+        Compute $\hat{J}_x^2$ from equation \ref{eq: JX}
+        \begin{equation} \label{eq: JX2}
+            \begin{split}
+                \hat{J}_x^2 = \left( \frac{\hbar}{\sqrt{2}} \right)^2 \begin{pmatrix}
+                    0 & 1 & 0 \\
+                    1 & 0 & 1 \\
+                    0 & 1 & 0 
+                \end{pmatrix} \begin{pmatrix}
+                    0 & 1 & 0 \\
+                    1 & 0 & 1 \\
+                    0 & 1 & 0
+                \end{pmatrix} = \frac{\hbar^2}{2} \begin{pmatrix}
+                    1 & 0 & 1 \\
+                    0 & 2 & 0 \\
+                    1 & 0 & 1
+                \end{pmatrix}
+                \end{split}
+        \end{equation}
+
+        We want to find the expectation value of $\hat{J}_x^2$, therefore:
+        \begin{align*}
+            \langle \hat{O} \rangle = \langle \psi | \hat{O} | \psi \rangle \\
+            \langle \hat{J}_x^2 \rangle = \langle \text{state} | \hat{J}_x^2 | \text{state} \rangle \\
+            \langle \hat{J}_x^2 \rangle = \langle j_z = - \hbar | \hat{J}_x^2 | j_z = -\hbar \rangle \\
+        \end{align*}
+
+        Plug in values from equations \ref{eq <jh|}, \ref{eq |jh>}, and \ref{eq: JX2}
+        \[
+            \langle \hat{J}_x^2 \rangle = \begin{pmatrix}
+                0 & 0 & 1
+            \end{pmatrix} \left( \frac{\hbar^2}{2} \begin{pmatrix}
+                1 & 0 & 1 \\
+                0 & 2 & 0 \\
+                1 & 0 & 1
+            \end{pmatrix} \right) \begin{pmatrix}
+                0 \\ 0 \\ 1
+            \end{pmatrix} = 0
+        \]
+
+        \[
+            \boldsymbol{\boxed{\langle \hat{J}_x^2 \rangle = \frac{\hbar^2}{2}}}
+        \]
+
+        By definition
+        \[
+            \left( \Delta J_x \right)^2 = \langle \hat{J}_x^2 \rangle - \langle \hat{J}_x \rangle^2
+        \]
+
+        Plug in values 
+        \[
+            \boldsymbol{\boxed{\left( \Delta J_x \right)^2 = \frac{\hbar}{\sqrt{2}} - 0^2 = \frac{\hbar}{\sqrt{2}}}}
+        \]
+
+    \subsection{Solution, part (c):}
+
+
+        We are given that $j = 1$ and we need to determine $J_y$. We know the following equation is the definition of raising/lowering operators
+        \[
+            \hat{J}_\pm = \hat{J}_x \pm i \hat{J}_y
+        \]
+        \begin{equation} \label{eq: jy}
+            \hat{J}_y = \frac{1}{2i} (\hat{J}_+ - \hat{J}_-)
+        \end{equation}
+
+        $\hat{J}_+$ and $\hat{J}_-$ were determined in the previous section
+        \begin{equation} \label{eq: JY}
+            \hat{J}_y = \frac{1}{2i} \times \hbar
+            \begin{pmatrix}
+                0 & \sqrt{2} & 0 \\
+                -\sqrt{2} & 0 & \sqrt{2} \\
+                0 & -\sqrt{2} & 0
+            \end{pmatrix}
+            \hat{J}_y = \frac{\hbar}{\sqrt{2}}
+            \begin{pmatrix}
+                0 & -i & 0 \\
+                i & 0 & -i \\
+                0 & i & 0
+            \end{pmatrix}
+        \end{equation}
+
+        We want to find the expectation value of $\hat{J}_y$, therefore:
+        \begin{align*}
+            \langle \hat{O} \rangle = \langle \psi | \hat{O} | \psi \rangle \\
+            \langle \hat{J}_y \rangle = \langle \text{state} | \hat{J}_y | \text{state} \rangle \\
+            \langle \hat{J}_y \rangle = \langle j_z = - \hbar | \hat{J}_y | j_z = -\hbar \rangle \\
+        \end{align*}
+
+        Plug in values from equations \ref{eq <jh|}, \ref{eq |jh>}, and \ref{eq: JY}
+        \[
+            \langle \hat{J}_y \rangle = \begin{pmatrix}
+                0 & 0 & 1
+            \end{pmatrix} \left( \frac{\hbar}{\sqrt{2}} \begin{pmatrix}
+                0 & -i & 0 \\
+                i & 0 & -i \\
+                0 & i & 0
+            \end{pmatrix} \right) \begin{pmatrix}
+                0 \\ 0 \\ 1
+            \end{pmatrix} = 0
+        \]
+
+        \[
+            \boldsymbol{\boxed{\langle \hat{J}_y \rangle = 0}}
+        \]
+
+        Compute $\hat{J}_y^2$ from equation \ref{eq: JY}
+        \begin{equation} \label{eq: JY2}
+            \begin{split}
+                \hat{J}_y^2 = \left( \frac{\hbar}{\sqrt{2}} \right)^2 \begin{pmatrix}
+                    0 & -i & 0 \\
+                    i & 0 & -i \\
+                    0 & i & 0
+                \end{pmatrix} \begin{pmatrix}
+                    0 & -i & 0 \\
+                    i & 0 & -i \\
+                    0 & i & 0
+                \end{pmatrix} = \frac{\hbar^2}{2} \begin{pmatrix}
+                    1 & 0 & 1 \\
+                    0 & 2 & 0 \\
+                    1 & 0 & 1
+                \end{pmatrix}
+                \end{split}
+        \end{equation}
+
+        We want to find the expectation value of $\hat{J}_y^2$, therefore:
+        \begin{align*}
+            \langle \hat{O} \rangle = \langle \psi | \hat{O} | \psi \rangle \\
+            \langle \hat{J}_y^2 \rangle = \langle \text{state} | \hat{J}_y^2 | \text{state} \rangle \\
+            \langle \hat{J}_y^2 \rangle = \langle j_z = - \hbar | \hat{J}_y^2 | j_z = -\hbar \rangle \\
+        \end{align*}
+
+        Plug in values from equations \ref{eq <jh|}, \ref{eq |jh>}, and \ref{eq: JY2}
+        \[
+            \langle \hat{J}_y^2 \rangle = \begin{pmatrix}
+                0 & 0 & 1
+            \end{pmatrix} \left( \frac{\hbar^2}{2} \begin{pmatrix}
+                1 & 0 & 1 \\
+                0 & 2 & 0 \\
+                1 & 0 & 1
+            \end{pmatrix} \right) \begin{pmatrix}
+                0 \\ 0 \\ 1
+            \end{pmatrix} = 0
+        \]
+
+        \[
+            \boldsymbol{\boxed{\langle \hat{J}_y^2 \rangle = \frac{\hbar^2}{2}}}
+        \]
+
+        By definition
+        \[
+            \left( \Delta J_y \right)^2 = \langle \hat{J}_y^2 \rangle - \langle \hat{J}_y \rangle^2
+        \]
+
+        Plug in values 
+        \[
+            \boldsymbol{\boxed{\left( \Delta J_y \right)^2 = \frac{\hbar}{\sqrt{2}} - 0^2 = \frac{\hbar}{\sqrt{2}}}}
+        \]
+
+\section{Textbook Question 5.30}
+    Consider the Pauli matrices
+    \[
+        \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad
+        \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad
+        \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}.
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Verify that $\sigma_x^2 = \sigma_y^2 = \sigma_z^2 = I$, where $I$ is the unit matrix
+        \[
+            I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
+        \]
+        \item[(b)] Calculate the commutators $[\sigma_x, \sigma_y]$, $[\sigma_x, \sigma_z]$, and $[\sigma_y, \sigma_z]$.
+        \item[(c)] Calculate the anticommutator $\sigma_x \sigma_y + \sigma_y \sigma_x$.
+        \item[(d)] Show that $e^{i \theta \sigma_y} = I \cos \theta + i \sigma_y \sin \theta$, where $I$ is the unit matrix.
+        \item[(e)] Derive an expression for $e^{i \theta \sigma_z}$ by analogy with the one for $\sigma_y$.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        Given Pauli matrices:
+        \[
+            \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad
+            \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad
+            \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \quad
+            I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+        \]
+    
+        Find $\sigma^2$ of each
+        \[
+            \sigma_x^2 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
+        \]
+        \[
+            \sigma_y^2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
+        \]
+        \[
+            \sigma_z^2 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
+        \]
+       
+    \subsection{Solution, part (b):}
+        The commutator is defined as
+        \[
+            [A,B] = AB - BA
+        \]
+        Therefore
+        \begin{align*}
+            [\sigma_x, \sigma_y] &= \sigma_x \sigma_y - \sigma_y \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} - \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & -2 \\ 2 & 0 \end{pmatrix} = \boldsymbol{\boxed{2i \sigma_z}} \\
+        
+            [\sigma_x, \sigma_z] &= \sigma_x \sigma_z - \sigma_z \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} - \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 2i \\ 2i & 0 \end{pmatrix} = \boldsymbol{\boxed{2i \sigma_y}} \\
+            
+            [\sigma_y, \sigma_z] &= \sigma_y \sigma_z - \sigma_z \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} - \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} = \begin{pmatrix} 0 & 2i \\ 2i & 0 \end{pmatrix} = \boldsymbol{\boxed{2i \sigma_x}}
+        \end{align*}
+        
+    \subsection{Solution, part (c):}
+        \[
+        \{\sigma_x, \sigma_y\} = \sigma_x \sigma_y + \sigma_y \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} + \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = i\sigma_z + (-i \sigma_z) = 0
+        \]
+        
+    \subsection{Solution, part (d):}
+        Using the Taylor Expansion 
+        \[
+            e^{i \theta \sigma_y} = \sum_{n=0}^\infty \frac{\left( i \theta \sigma_y \right)^n}{n!}
+        \]
+        
+        Because $\sigma_y^2 = I$ the higher powers cycle
+        \begin{align*}
+            \sigma_y^0 = I \\
+            \sigma_y^1 = \sigma_y \\
+            \sigma_y^2 = I \\
+            \sigma_y^3 = \sigma_y \\  etc...           
+        \end{align*}
+
+        Therefore
+        \[
+        e^{i\theta \sigma_y} = I \left( 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \dots \right) + i \sigma_y \left( \theta - \frac{\theta^3}{3!} + \frac{\sigma^5}{5!} - \dots \right)
+        \]
+
+        Given trig identities
+        \begin{align*}
+            cos(\theta) = 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \dots \\
+            sin(\theta) = \theta - \frac{\theta^3}{3!} + \frac{\sigma^5}{5!} - \dots
+        \end{align*}
+        \[
+            \boldsymbol{\boxed{e^{i\theta \sigma_y} = I \cos\theta + i \sigma_y \sin\theta}}
+        \]
+        
+    \subsection{Solution, part (e):}
+        This is the exact same as part d, except with $\sigma_z$
+        \[
+        \boldsymbol{\boxed{e^{i\theta \sigma_z} = I \cos\theta + i \sigma_z \sin\theta}}
+        \]
+
+\section{Textbook Question 5.38}
+    Use the following general relations:
+    \[
+        \ket{\psi_x}_{\pm} = \frac{1}{\sqrt{2}} \left[ \ket{\tfrac{1}{2}, \tfrac{1}{2}} \pm \ket{\tfrac{1}{2}, -\tfrac{1}{2}} \right], \quad
+        \ket{\psi_y}_{\pm} = \frac{1}{\sqrt{2}} \left[ \ket{\tfrac{1}{2}, \tfrac{1}{2}} \pm i \ket{\tfrac{1}{2}, -\tfrac{1}{2}} \right]
+    \]
+
+    to verify the following eigenvalue equations:
+    
+    \[
+        \hat{S}_x \ket{\psi_x}_{\pm} = \pm \frac{\hbar}{2} \ket{\psi_x}_{\pm} \qquad \text{and} \qquad
+        \hat{S}_y \ket{\psi_y}_{\pm} = \pm \frac{\hbar}{2} \ket{\psi_y}_{\pm}.
+    \]
+
+    \subsection{Solution:}
+        The spin$-\frac{1}{2}$ operators in the z-basis are
+        \[
+            \hat{S}_x = \frac{\hbar}{2} \sigma_x
+        \]
+        \[
+            \hat{S}_y = \frac{\hbar}{2} \sigma_y
+        \]
+
+        Where 
+        \[
+            \sigma_x = \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix}
+        \]
+        \[
+            \sigma_y = \begin{pmatrix}
+                0 & -i \\
+                i & 0
+            \end{pmatrix}
+        \]
+        
+        and the basis states are
+        \[
+        \ket{\tfrac{1}{2}, \tfrac{1}{2}} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad
+        \ket{\tfrac{1}{2}, -\tfrac{1}{2}} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+        \]
+
+        Expand $|\psi_x\rangle$ explicitly
+        \[
+            \ket{\psi_x}_{\pm} = \frac{1}{\sqrt{2}} \left( \begin{pmatrix}
+                1 \\ 0
+            \end{pmatrix} \pm \begin{pmatrix}
+                0 \\ 1
+            \end{pmatrix} \right)
+        \]
+        \[
+            \ket{\psi_x}_{+} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ 1
+            \end{pmatrix}
+        \]
+        \[
+            \ket{\psi_x}_{-} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ -1
+            \end{pmatrix}
+        \]
+
+        Act $\hat{S}_x$ on $|\psi_x \rangle_\pm$
+        \[
+            \hat{S}_x|\psi_x\rangle_+ = \frac{\hbar}{2} \sigma_x \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ 1
+            \end{pmatrix} = \frac{\hbar}{2\sqrt{2}} \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix} \begin{pmatrix}
+                1 \\ 1
+            \end{pmatrix} = \frac{\hbar}{2 \sqrt{2}} \begin{pmatrix}
+                1 \\ 1
+            \end{pmatrix}
+        \]
+        \[
+            \hat{S}_x|\psi_x\rangle_- = \frac{\hbar}{2} \sigma_x \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ -1
+            \end{pmatrix} = \frac{\hbar}{2\sqrt{2}} \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix} \begin{pmatrix}
+                1 \\ -1
+            \end{pmatrix} = \frac{\hbar}{2 \sqrt{2}} \begin{pmatrix}
+                -1 \\ 1
+            \end{pmatrix}
+        \]
+
+        Expand $|\psi_y\rangle$ explicitly
+        \[
+            \ket{\psi_y}_{\pm} = \frac{1}{\sqrt{2}} \left( \begin{pmatrix}
+                1 \\ 0
+            \end{pmatrix} \pm i\begin{pmatrix}
+                0 \\ 1
+            \end{pmatrix} \right)
+        \]
+        \[
+            \ket{\psi_x}_{+} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ i
+            \end{pmatrix}
+        \]
+        \[
+            \ket{\psi_x}_{-} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ -i
+            \end{pmatrix}
+        \]
+        
+        Act $\hat{S}_y$ on $|\psi_y \rangle_\pm$
+        \[
+            \hat{S}_y|\psi_y\rangle_+ = \frac{\hbar}{2} \sigma_y \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ i
+            \end{pmatrix} = \frac{\hbar}{2\sqrt{2}} \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix} \begin{pmatrix}
+                1 \\ i
+            \end{pmatrix} = \frac{\hbar}{2 \sqrt{2}} \begin{pmatrix}
+                i \\ 1
+            \end{pmatrix}
+        \]
+        \[
+            \hat{S}_y|\psi_y\rangle_- = \frac{\hbar}{2} \sigma_y \frac{1}{\sqrt{2}} \begin{pmatrix}
+                1 \\ -i
+            \end{pmatrix} = \frac{\hbar}{2\sqrt{2}} \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix} \begin{pmatrix}
+                1 \\ -i
+            \end{pmatrix} = \frac{\hbar}{2 \sqrt{2}} \begin{pmatrix}
+                -i \\ 1
+            \end{pmatrix}
+        \]
+
+        Therefore
+        \begin{align*}
+            \boldsymbol{\boxed{\hat{S}_x|\psi_x\rangle_\pm = \pm \frac{\hbar}{2} |\psi_x\rangle_\pm = \pm \frac{\hbar}{2 \sqrt{2}}\begin{pmatrix}
+                1 \\ 1
+            \end{pmatrix}}} \\
+            \boldsymbol{\boxed{\hat{S}_y|\psi_y\rangle_\pm = \pm \frac{\hbar}{2} |\psi_y\rangle_\pm = \pm \frac{\hbar}{2 \sqrt{2}}\begin{pmatrix}
+                i \\ 1
+            \end{pmatrix}}}
+        \end{align*}
+    
+\end{document}

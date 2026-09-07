@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Casimir.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Casimir}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Quotes from places}
+    "quantum vacuum fluctuations of electromagnetic fields experience boundary conditions that can be tailored by the nanoscopic geometry and dielectric properties of the involved materials. These quantum fluctuations give rise to a plethora of phenomena ranging from spontaneous emission to the casimir effect, which can all be controlled and manipulated by changing the boundary conditions for the fields." \cite{Gong}
+
+    "derivation invoked perfect electrical conductors (i.e., ideal mirrors) for the two plates, the force persists when the materials are described by realistic optical properties [62], and its strength depends on the reflectivity of these interacting surfaces" \cite{Gong}
+
+    "just because a surface is transparent in the visible region, it does not mean that a significant reduction of the Casimir effect will occur because the force is extremely broadband" \cite{Gong}
+
+    "symmetric objects made of the same material, the force is always attractive, irrespective of the intermediate medium [74]; however, if the symmetry is broken, a net repulsive force can arise" \cite{Gong}
+
+     "2009, the first measurement of the long-range repulsive Casimir force...which suggests a potential way to mitigate stiction problems in microelectromechanical systems (MEMS) or nanoelectromechanical systems (NEMS), and also suggests the possibility of other intriguing phenomena, such as quantum levitation, superlubricity, and stable mechanical suspension of objects in fluids" \cite{Gong}
+
+     "sphere–plate configuration, where the Casimir force persists, albeit with a slightly different form: $F_C = \frac{- \pi^3 \hbar c R}{360 d^3} , where R is the radius of the sphere (valid for R >> d)." \cite{Gong}
+     \begin{enumerate}
+         \item $F_C$ = Casimir Force (Attractive)
+         \item $c$ = Speed of light
+         \item $d$ = Plate separation
+     \end{enumerate}
+
+     "Atomic force microscope (AFM)-based techniques have been further expanded to allow for 3D alignment and force detection" \cite{Gong}
+
+     "Attractive force between a sphere and a flat surface
+     \begin{equation}
+         F_1(z) = \frac{\hbar}{2 \pi c^2} R \int_0^\infty \int_1^\infty p \xi^2 \left( ln(1-\frac{(s-p)^2}{(s+p)^2} e^{\frac{-2 p z \xi}{c}}) + ln(1 - \frac{(s-p\epsilon)^2}{(s+p \epsilon)^2} e^{\frac{-2 p z \xi}{c}}) \right) dp d\xi
+     \end{equation}
+     Second modification due to roughness
+     \begin{equation}
+         F_2(z) = F_1(z) \left( 1 + 6 \left(\frac{A_r}{z}\right)^2 + 15 \left(\frac{A_r}{z}\right)^4 \right)
+     \end{equation}
+     \cite{Chan}
+
+     "The Casimir force is negligible compared to the electrostatic force (V = 289 mV) at distances larger than 300 nm but increases rapidly at small distances. At the smallest separations (~70 nm), the Casimir force is responsible for producing up to 10 percent of the total rotation angle. \cite{Chan}
+
+     "Finally, materials that have ϵ(ω) = 0 can be used to create cavities that suppress quantum fluctuations over a particular bandwidth [\cite{ZeroIndex}]" \cite{Gong}
+
+     "Materials with a strong magnetic response have also been proposed to yield a repulsive force when placed near another material with a strong electric response [\cite{PhysRevA.9.2078}, \cite{PhysRevLett.89.033001}]; however... One potential implementation involves superparamagnetic metamaterials [\cite{PhysRevLett.103.120401}]" \cite{Gong}. 
+     Cant get access to \cite{PhysRevLett.103.120401} or \cite{PhysRevA.9.2078}without APS login.
+
+     "a geometry has been proposed consisting of a needle-like metal object and a pinhole, which is predicted to lead to repulsion [\cite{PhysRevLett.105.090403}]" \cite{Gong}
+
+     "Notwithstanding its theoretical interest, a single moving mirror can hardly produce experimentally detectable photons due to the limitation of the practically  achievable mechanical oscillation speed (∼10−8 c) and frequency (∼3 GHz). However, it is predicted that by adding another parallel mirror to form a simple cavity, the photon generation rate can be enhanced by approximately the cavity Q-factor to be as high as 105 [\cite{PhysRevA.54.3420}]" \cite{Gong}
+
+     "In particular, a superconducting quantum interference device (SQUID) modulated by a magnetic field flux can mimic a moving mirror for generating DCE photons, which has experimentally been realized in the microwave regime [\cite{Nature479.376}, ]" \cite{Gong}
+
+\printbibliography
+\end{document}

@@ -1,0 +1,476 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 3 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 3.3}
+    Consider a neutron which is confined to an infinite potential well of width \( a = 8\, \text{fm} \). At time \( t = 0 \) the neutron is assumed to be in the state
+    \[
+        \Psi(x, 0) = \sqrt{\frac{4}{7a}} \sin\left( \frac{\pi x}{a} \right) 
+        + \sqrt{\frac{2}{7a}} \sin\left( \frac{2\pi x}{a} \right)
+        + \sqrt{\frac{8}{7a}} \sin\left( \frac{3\pi x}{a} \right).
+    \]
+
+    \begin{enumerate}
+      \item[(a)] If an energy measurement is carried out on the system, what are the values that will be found for the energy and with what probabilities? Express your answer in MeV (the mass of the neutron is \( mc^2 \simeq 939\, \text{MeV} \), \( \hbar c \simeq 197\, \text{MeV} \cdot \text{fm} \)).
+    
+      \item[(b)] If this measurement is repeated on many identical systems, what is the average value of the energy that will be found? Again, express your answer in MeV.
+    
+      \item[(c)] Using the uncertainty principle, estimate the order of magnitude of the neutron’s speed in this well as a function of the speed of light \( c \).
+    \end{enumerate}
+    
+
+
+    \subsection{Solution, part (a):}
+        We are solving the time-independent Schrodinger equation (TISE) in one dimension for a particle of mass $m$ in a potential well of width $a$, with infinite walls
+        \[
+            V(x) = 
+            \begin{cases}
+            0 & \text{if } 0 < x < a \\
+            \infty & \text{otherwise}
+            \end{cases}
+        \]
+
+        Therefore at the boundaries
+        \[
+            \psi(0) = \psi(a) = 0
+        \]
+
+        The TISE equation 
+        \[
+            -\frac{\hbar^2}{2 m} \frac{d^2 \psi(x)}{dx^2} = E \psi(x)
+        \]
+
+        Then becomes
+        \[
+            0 = \frac{d^2 \psi(x)}{dx^2} + k^2 \psi(x)
+        \]
+
+        Where 
+        \begin{equation} \label{eq: k}
+            k = \frac{\sqrt{2 m E}}{\hbar}
+        \end{equation}
+        
+        The general solution to this second order differential equation is 
+        \[
+            \psi(x) = A sin(kx) + B cos(kx)
+        \]
+
+        We apply the boundary conditions ($x=0$, $x=a$)
+        \[
+            \psi(0) = A sin(0) + B cos(0) = B = 0
+        \]
+        \[
+            \psi(a) = A sin(ka) \Rightarrow ka=n\pi
+        \]
+
+        Where 
+        \begin{equation} \label{eq: k2}
+            k=\frac{n \pi}{a}    
+        \end{equation}
+        
+        and $n=1,2,3,...$. So the allowed solutions are 
+        \[
+            \psi_n(x) = A sin(\frac{n \pi x}{a})
+        \]
+
+        Normalize the wave function to get the eigenfunction
+        \[
+            \int_0^a |\psi_n(x)|^2dx = 1 \Rightarrow A^2 \int_0^a sin^2 \left(\frac{n \pi x}{a} dx = 1 \right)
+        \]
+
+        Simplify
+        \[
+            \int_0^a sin^2 \left( \frac{n \pi x}{a} \right) dx = \frac{a}{2}
+        \]
+        \[
+            A^2 \frac{a}{2} = 1 \Rightarrow A = \sqrt{\frac{2}{a}}
+        \]
+
+        The eigenstates of the infinite square well are:
+        \[
+            \phi_n(x) = \sqrt{\frac{2}{a}} \sin\left( \frac{n\pi x}{a} \right), \quad n=1,2,3,\ldots
+        \]
+
+        The Wavefunction at $t=0$ is expressed as a linear combination because it is a superposition:
+        \[
+            \Psi(x,0) = \sum c_n\psi_n(x) = c_1 \psi_1(x) + c_2 \psi_2(x) + c_3 \psi_3(x)
+        \]
+
+        Comparing the coefficients of the superposition and the given wave function (equ \ref{eq: g}) by matching forms
+        \[
+            c_1 \psi_1(x) = c_1 \sqrt{\frac{2}{a}} \sin \left( \frac{\pi x}{a} \right) = \sqrt{\frac{4}{7a}} \sin \left( \frac{\pi x}{a} \right)
+        \]
+        \[
+            c_2 \psi_2(x) = c_2 \sqrt{\frac{2}{a}} \sin\left( \frac{2\pi x}{a} \right) = \sqrt{\frac{2}{7a}} \sin\left( \frac{2\pi x}{a} \right)
+        \]
+        \[
+            c_3 \psi_3(x) = c_3 \sqrt{\frac{2}{a}} \sin\left( \frac{3\pi x}{a} \right) = \sqrt{\frac{8}{7a}} \sin\left( \frac{3\pi x}{a} \right)
+        \]
+
+        Simplifying we get
+        \[
+            c_1 = \sqrt{\frac{4}{7a}} \div \sqrt{\frac{2}{a}} = \sqrt{\frac{2}{7}}
+        \]
+        \[
+            c_2 = \sqrt{\frac{2}{7a}} \div \sqrt{\frac{2}{a}} = \sqrt{\frac{1}{7}}
+        \]
+        \[
+            c_3 = \sqrt{\frac{8}{7a}} \div \sqrt{\frac{2}{a}} = \sqrt{\frac{4}{7}}
+        \]
+
+        Placed back into the superposition equation
+        \[
+            \boldsymbol{\boxed{\Psi(x,0) = \sqrt{\frac{2}{7}} \psi_1(x) + \sqrt{\frac{2}{7}} \psi_2(x) + \sqrt{\frac{4}{7}} \psi_3(x)}}
+        \]
+
+    \subsection{Solution, part (b):}
+        From equation \ref{eq: k}, we isolate $E$ and substitute equation \ref{eq: k2}
+        \begin{equation} \label{eq: E}
+            E = \frac{n^2 \hbar^2 k^2}{2 m a^2}
+        \end{equation}
+
+        All the values are given
+        \[
+            mc^2 \simeq 939 \text{ [MeV]}
+        \]
+        \[
+            \hbar c \simeq 197 \text{ [MeV}\cdot \text{fm]}
+        \]
+        \[
+            a = 8 \text{ [fm]}
+        \]
+        
+        Plug values into equation \ref{eq: E} and evaluate for all three values of n
+
+        The measured energies and their probabilities are:
+        \[
+            \boldsymbol{\boxed{E_1 \approx 3.19\, \text{MeV}}}
+        \]
+        \[
+            \boldsymbol{\boxed{E_2 \approx 12.74\, \text{MeV}}}
+        \]
+        \[
+            \boldsymbol{\boxed{E_3 \approx 28.66\, \text{MeV}}}
+        \]
+  
+    \subsection{Solution, part (c):}
+        Using the uncertainty principle:
+        If a system is in state ($\Psi$), and you measure an observable, the probability of obtaining the eigenvalue ($E_n$) is
+        \begin{equation} \label{eq: P}
+            P(E_n) = |c_n|^2            
+        \end{equation}
+
+        Where $c_n = \langle \phi_n | \Psi \rangle$, the projection of $\Psi$ onto the eigenfunction $\psi_n$. This is because in Hilbert space, $c_n$ tells you how much of the wavefunction "points" in the direction of $\psi_n$. Squaring the amplitude gives you the probability.
+
+        Therefore:
+        \[
+            P(E_1) = |c_1|^2 = \left( \sqrt{\frac{2}{7}} \right)^2 = \boldsymbol{\boxed{\frac{2}{7}}}
+        \]
+        \[
+            P(E_2) = |c_2|^2 = \left( \sqrt{\frac{2}{7}} \right)^2 = \boldsymbol{\boxed{\frac{1}{7}}}
+        \]
+        \[
+            P(E_3) = |c_3|^2 = \left( \sqrt{\frac{4}{7}} \right)^2 = \boldsymbol{\boxed{\frac{4}{7}}}
+        \]
+
+        These should add up to a probability of 1
+        \[
+            \frac{2}{7} + \frac{1}{7} + \frac{4}{7} = 1
+        \]
+
+\section{Textbook Question 3.6}
+
+    A particle of mass \( m \), in an infinite potential well of length \( a \), has the following initial wave function at \( t = 0 \):
+    
+    \[
+        \psi(x,0) = \sqrt{\frac{3}{5a}} \sin\left( \frac{3\pi x}{a} \right) + \frac{1}{\sqrt{5a}} \sin\left( \frac{5\pi x}{a} \right)
+    \]
+
+    and an energy spectrum \( E_n = -\frac{\hbar^2 \pi^2 n^2}{2ma^2} \).
+
+    Find \( \psi(x,t) \) at any later time \( t \), then calculate \( \frac{\partial \rho}{\partial t} \) and the probability current density vector \( \vec{J}(x,t) \) and verify that 
+    \[
+        \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{J}(x,t) = 0.
+    \]
+    
+    Recall that \( \rho = \psi^*(x,t)\psi(x,t) \) and
+    
+    \[
+        \vec{J}(x,t) = \frac{i\hbar}{2m} \left( \psi(x,t) \nabla \psi^*(x,t) - \psi^*(x,t) \nabla \psi(x,t) \right).
+    \]
+
+    \subsection{Solution:}
+        Using the given wave function and the energy spectrum, the general solution is at any given t is:
+        \[
+            \psi(x, t) = \sqrt{\frac{3}{5a}} \sin\left( \frac{3\pi x}{a} \right) e^{-i E_3 t/\hbar}
+            + \frac{1}{\sqrt{5a}} \sin\left( \frac{5\pi x}{a} \right) e^{-i E_5 t/\hbar}
+        \]
+
+        By definition, the general solution for probability is:
+        \begin{align*}
+            \rho(x,t) = |\psi(x,t)|^2 \\
+                = \frac{3}{5a} \sin^2\left( \frac{3\pi x}{a} \right)
+                + \frac{1}{5a} \sin^2\left( \frac{5\pi x}{a} \right)
+                + \frac{2\sqrt{3}}{5a} \sin\left( \frac{3\pi x}{a} \right) \sin\left( \frac{5\pi x}{a} \right) \cos\left( \frac{(E_5 - E_3)t}{\hbar} \right)
+        \end{align*}
+
+        Take the time derivative
+        \[
+            \frac{\partial \rho}{\partial t} = -\frac{2\sqrt{3}}{5a} \cdot \sin\left( \frac{3\pi x}{a} \right) \sin\left( \frac{5\pi x}{a} \right) \cdot \frac{(E_5 - E_3)}{\hbar} \cdot \sin\left( \frac{(E_5 - E_3)t}{\hbar} \right)
+        \]
+
+        Plug in $n$ value to energy
+        \[
+            E_5 - E_3 = \frac{8\pi^2 \hbar^2}{ma^2}
+        \]
+
+        Plug back into time derivative to general probability
+        \[
+            \frac{\partial \rho}{\partial t} = -\frac{2\sqrt{3}}{5a} \sin\left( \frac{3\pi x}{a} \right) \sin\left( \frac{5\pi x}{a} \right) \cdot \frac{8\pi^2 \hbar}{ma^2} \cdot \sin\left( \frac{8\pi^2 \hbar t}{ma^2} \right)
+        \]
+
+        The given equation for probability current density is:
+        \[
+            J(x,t) = \frac{i\hbar}{2m} \left( \psi \frac{\partial \psi^*}{\partial x} - \psi^* \frac{\partial \psi}{\partial x} \right)
+        \]
+
+        Simplify
+        \[
+        J(x,t) = \frac{\hbar}{m} \text{Im} \left( \psi^* \frac{\partial \psi}{\partial x} \right)
+        \]
+        
+        Computing the derivative and differentiate with respect to \( x \) gives:
+        \[
+            \frac{\partial \rho}{\partial t} + \frac{\partial J(x,t)}{\partial x} = 0
+        \]
+
+        which verifies the continuity equation.
+
+\section{Textbook Question 3.14}
+    The initial state of a system is given in terms of four orthonormal energy eigenfunctions \( \ket{\phi_1} \), \( \ket{\phi_2} \), \( \ket{\phi_3} \), and \( \ket{\phi_4} \) as follows:
+
+    \[
+        \ket{\psi_0} = \ket{\psi(t=0)} = \frac{1}{\sqrt{3}}\ket{\phi_1} + \frac{1}{2}\ket{\phi_2} + \frac{1}{\sqrt{6}}\ket{\phi_3} + \frac{1}{2}\ket{\phi_4}.
+    \]
+
+    \begin{enumerate}
+        \item[(a)] If the four kets \( \ket{\phi_1}, \ket{\phi_2}, \ket{\phi_3}, \ket{\phi_4} \) are eigenvectors to the Hamiltonian \( \hat{H} \) with energies \( E_1, E_2, E_3, E_4 \), respectively, find the state \( \ket{\psi(t)} \) at any later time \( t \).
+        
+        \item[(b)] What are the possible results of measuring the energy of this system and with what probability will they occur?
+        
+        \item[(c)] Find the expectation value of the system’s Hamiltonian at \( t = 0 \) and \( t = 10\,\text{s} \).
+    \end{enumerate}
+    
+    \subsection{Solution, part (a):}
+        The initial state of a system is given in terms of four orthonormal energy eigenfunctions \( \ket{\phi_1}, \ket{\phi_2}, \ket{\phi_3}, \ket{\phi_4} \) as follows:
+        \[
+            \ket{\psi_0} = \ket{\psi(t=0)} = \frac{1}{\sqrt{3}} \ket{\phi_1} + \frac{1}{2} \ket{\phi_2} + \frac{1}{\sqrt{6}} \ket{\phi_3} + \frac{1}{2} \ket{\phi_4}.
+        \]
+
+
+        If the four kets are eigenvectors of the Hamiltonian \( \hat{H} \) with energies \( E_1, E_2, E_3, E_4 \), respectively, then the time-evolved state is:
+        \[
+            \ket{\psi(t)} = \frac{1}{\sqrt{3}} e^{-iE_1 t/\hbar} \ket{\phi_1}
+            + \frac{1}{2} e^{-iE_2 t/\hbar} \ket{\phi_2}
+            + \frac{1}{\sqrt{6}} e^{-iE_3 t/\hbar} \ket{\phi_3}
+            + \frac{1}{2} e^{-iE_4 t/\hbar} \ket{\phi_4}.
+        \]
+    
+    \subsection{Solution, part (b):}
+        The possible outcomes of an energy measurement are \( E_1, E_2, E_3, E_4 \), with probabilities given by the squared magnitudes of the coefficients (See equation \ref{eq: P} for detailed explanation):
+        \[
+            P(E_1) = \left| \frac{1}{\sqrt{3}} \right|^2 = \boldsymbol{\boxed{\frac{1}{3}}}, \quad
+            P(E_2) = \left| \frac{1}{2} \right|^2 = \boldsymbol{\boxed{\frac{1}{4}}}, \quad
+            P(E_3) = \left| \frac{1}{\sqrt{6}} \right|^2 = \boldsymbol{\boxed{\frac{1}{6}}}, \quad
+            P(E_4) = \left| \frac{1}{2} \right|^2 = \boldsymbol{\boxed{\frac{1}{4}}}.
+        \]
+
+    \subsection{Solution, part (c):}
+        The expectation value of the Hamiltonian at any time \( t \) is:
+        \[
+            \langle H \rangle = \bra{\psi(t)} \hat{H} \ket{\psi(t)} = \sum_{n=1}^{4} |c_n|^2 E_n
+            = \frac{1}{3} E_1 + \frac{1}{4} E_2 + \frac{1}{6} E_3 + \frac{1}{4} E_4.
+        \]
+
+        This expectation value remains constant with time, so:
+        \[
+        \langle H \rangle_{t=0} = \langle H \rangle_{t=10\,\text{s}}.
+        \]
+
+\section{Textbook Question 3.20}
+    Consider a physical system which has a number of observables that are represented by the following matrices:
+
+    \[
+        A = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 1 \\
+        0 & 1 & 0
+        \end{pmatrix},
+    \]
+    \[
+        B = \begin{pmatrix}
+        0 & 0 & -1 \\
+        0 & 0 & i \\
+        -1 & -i & 4
+        \end{pmatrix},
+    \]
+    \[
+        C = \begin{pmatrix}
+        2 & 0 & 0 \\
+        0 & 1 & 3 \\
+        0 & 3 & 1
+        \end{pmatrix}.
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Find the results of the measurements of the compatible observables.
+        
+        \item[(b)] Which among these observables are compatible? Give a basis of eigenvectors common to these observables.
+        
+        \item[(c)] Which among the sets of operators \( \{\hat{A}\}, \{\hat{B}\}, \{\hat{C}\}, \{\hat{A}, \hat{B}\}, \{\hat{A}, \hat{C}\}, \{\hat{B}, \hat{C}\} \) form a complete set of commuting operators?
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        Consider a physical system which has a number of observables that are represented by the given matrices:
+        
+        Find the eigenvalues of the observables by solving characteristic equation
+        \begin{align*}
+            det(A-\lambda I) = det(B-\lambda I) = det(C-\lambda I) = 0 \\
+            det\begin{pmatrix}
+            1-\lambda & 0 & 0 \\
+            0 & -\lambda & 1 \\
+            0 & 1 & -\lambda
+            \end{pmatrix} = (1-\lambda)(\lambda^2 - 1) = 0 \\
+            det\begin{pmatrix}
+            2-\lambda & 0 & 0 \\
+            0 & 1-\lambda & 3 \\
+            0 & 3 & 1-\lambda
+            \end{pmatrix} = (2-\lambda)((1-\lambda)^2-9) = \lambda^2 - 2\lambda - 8 = 0
+        \end{align*}  
+
+        Therefore 
+        \[
+            \boldsymbol{\boxed{A = 1,1,-1}}
+        \]
+        \[
+            \boldsymbol{\boxed{C = 4, -2, 2}}
+        \]
+
+        B is not symmetric and it includes complex entries, but it is still Hermitian so it is solved numerically
+        \[
+            \boldsymbol{\boxed{B = 4.45, 0, -0.45}}
+        \]
+
+    \subsection{Solution, part (b):}
+        The first test of compatibility is commutators
+        \[
+            [A, B] \neq 0, \quad [B, C] \neq 0, \quad [A, C] = 0
+        \]
+
+        Only \( A \) and \( C \) are compatible.
+        The eigenvectors of \( A \) are:
+        \[
+            \begin{aligned}
+            v_1 &= \begin{pmatrix}1 \\ 0 \\ 0\end{pmatrix}, \quad (\text{eigenvalue } 1) \\
+            v_2 &= \begin{pmatrix}0 \\ 1 \\ 1\end{pmatrix}, \quad (\text{eigenvalue } 1) \\
+            v_3 &= \begin{pmatrix}0 \\ 1 \\ -1\end{pmatrix}, \quad (\text{eigenvalue } -1)
+            \end{aligned}
+        \]
+
+        These vectors form a complete basis and can be used to simultaneously diagonalize \( A \) and \( C \), confirming compatibility.
+
+    \subsection{Solution, part (c):}
+        Only the pair \( \{ \hat{A}, \hat{C} \} \) consists of commuting operators and admits a full set of simultaneous eigenvectors
+
+\section{Textbook Question 3.27}
+    Consider a system whose initial state at \( t = 0 \) is given in terms of a complete and orthonormal set of four vectors \( \ket{\phi_1}, \ket{\phi_2}, \ket{\phi_3}, \ket{\phi_4} \) as follows:
+    \[
+        \ket{\psi(0)} = \frac{A}{\sqrt{12}} \ket{\phi_1} + \frac{1}{\sqrt{6}} \ket{\phi_2} + \frac{2}{\sqrt{12}} \ket{\phi_3} + \frac{1}{2} \ket{\phi_4},
+    \]
+    
+    where \( A \) is a real constant.
+    
+    \begin{enumerate}
+        \item[(a)] Find \( A \) so that \( \ket{\psi(0)} \) is normalized.
+        
+        \item[(b)] If the energies corresponding to \( \ket{\phi_1}, \ket{\phi_2}, \ket{\phi_3}, \ket{\phi_4} \) are given by \( E_1, E_2, E_3, E_4 \), respectively, write down the state of the system \( \ket{\psi(t)} \) at any later time \( t \).
+        
+        \item[(c)] Determine the probability of finding the system at a time \( t \) in the state \( \ket{\phi_2} \).
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        In order to normalize we must set the following to 1:
+        \[
+            \braket{\psi(0)}{\psi(0)} = 1
+        \]
+
+        Since the \( \ket{\phi_i} \) are orthonormal:
+        \[
+            \braket{\psi(0)}{\psi(0)} = \left|\frac{A}{\sqrt{12}}\right|^2 + \left|\frac{1}{\sqrt{6}}\right|^2 + \left|\frac{2}{\sqrt{12}}\right|^2 + \left|\frac{1}{2}\right|^2
+        \]
+
+        Simplify
+        \[
+            \braket{\psi(0)}{\psi(0)} = \frac{A^2}{12} + \frac{1}{6} + \frac{4}{12} + \frac{1}{4} = \frac{A^2 + 9}{12}
+        \]
+
+        Use the normalize criteria and simplify
+        \[
+            \frac{A^2 + 9}{12} = 1 \Rightarrow A^2 = 3 \Rightarrow \boldsymbol{\boxed{A = \pm \sqrt{3}}}
+        \]
+
+    \subsection{Solution, part (b):}
+        Each eigenstate \( \ket{\phi_n} \) evolves in time as \( \ket{\phi_n(t)} = \ket{\phi_n} e^{-iE_n t/\hbar} \). Therefore,
+        \[
+            \ket{\psi(t)} = \frac{\sqrt{3}}{\sqrt{12}} e^{-iE_1 t/\hbar} \ket{\phi_1}
+            + \frac{1}{\sqrt{6}} e^{-iE_2 t/\hbar} \ket{\phi_2}
+            + \frac{2}{\sqrt{12}} e^{-iE_3 t/\hbar} \ket{\phi_3}
+            + \frac{1}{2} e^{-iE_4 t/\hbar} \ket{\phi_4}
+        \]
+
+    \subsection{Solution, part (c):}
+        The probability equation is defined as (See equation \ref{eq: P} for more detail)
+    \[
+        P_{\phi_2}(t) = \left| \braket{\phi_2}{\psi(t)} \right|^2
+    \]
+
+    Substitute and solve
+    \[
+         P_{\phi_2}(t) = \left| \frac{1}{\sqrt{6}} e^{-iE_2 t/\hbar} \right|^2 = \boldsymbol{\boxed{\frac{1}{6}}}
+    \]
+
+\end{document}

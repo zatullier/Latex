@@ -1,0 +1,584 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw2.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 2 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 2.6}
+    Consider a state which is given in terms of three orthonormal vectors $|\phi_1\rangle$, $|\phi_2\rangle$, and $|\phi_3\rangle$ as follows:
+    \begin{equation}
+        |\Psi\rangle = \frac{1}{\sqrt{15}} |\phi_1\rangle + \frac{1}{\sqrt{3}} |\phi_2\rangle + \frac{1}{\sqrt{5}} |\phi_3\rangle
+    \end{equation}
+
+    where $|\phi_n\rangle$ are eigenstates to an operator $\hat{ B}$ such that: $\hat{B} |\phi_n\rangle = (3n^2-1) |\phi_n\rangle$ with $n=1$
+    \begin{enumerate}
+        \item [(a)] Find the norm of the state $|\phi\rangle$
+        \item [(b)] Find the expectation value of $\hat{B}$ for the state $|\phi\rangle$
+        \item [(c)] Find the expectation value of $\hat{B}^2$ for the state $|\phi\rangle$
+    \end{enumerate}
+    
+    
+    
+    
+
+    Given the state:
+    \[
+    |\psi\rangle = \frac{1}{\sqrt{15}}|\phi_1\rangle + \frac{1}{\sqrt{3}}|\phi_2\rangle + \frac{1}{\sqrt{5}}|\phi_3\rangle
+    \]
+    and eigenstates defined by:
+    \[
+    \hat{B}|\phi_n\rangle = (3n^2 - 1)|\phi_n\rangle,\quad n=1,2,3
+    \]
+
+    \subsection{Solution, part (a):}
+        \begin{align*}
+        \langle\psi|\psi\rangle &= \frac{1}{15} + \frac{1}{3} + \frac{1}{5} \\
+        &= \frac{1 + 5 + 3}{15} \\
+        &= \frac{9}{15} = \frac{3}{5}
+        \end{align*}
+        Thus, the norm is:
+        \[
+        \boldsymbol{\|\psi\| = \sqrt{\frac{3}{5}}}
+        \]
+
+    \subsection{Solution, part (b):}
+        \begin{align*}
+        \langle\hat{B}\rangle &= \frac{\frac{2}{15} + \frac{11}{3} + \frac{26}{5}}{\frac{3}{5}}\\[6pt]
+        &= \frac{2 + 55 + 78}{15} \times \frac{5}{3} \\
+        &= \frac{135}{15}\times\frac{5}{3}\\[6pt]
+        &= 9\times\frac{5}{3} = 15
+        \end{align*}
+        Thus:
+        \[
+        \boldsymbol{\langle\hat{B}\rangle = 15}
+        \]
+
+    \subsection{Solution, part (c):}
+        \begin{align*}
+        \langle\hat{B}^2\rangle &= \frac{\frac{4}{15} + \frac{121}{3} + \frac{676}{5}}{\frac{3}{5}}\\[6pt]
+        &= \frac{4 + 605 + 2028}{15}\times\frac{5}{3} \\
+        &= \frac{2637}{15}\times\frac{5}{3} \\
+        &= \frac{2637}{9}
+        \end{align*}
+        Thus:
+        \[
+        \boldsymbol{\langle\hat{B}^2\rangle = \frac{2637}{9}}
+        \]
+
+
+      
+\section{Textbook Question 2.7}
+   Are the following sets of functions linearly independent or dependent?
+   \begin{enumerate}
+       \item [(a)] $4e^x$, $e^x$, $5e^x$
+       \item [(b)] $cos(x)$, $e^{ix}$, $3 sin(x)$
+       \item [(c)] $7$, $x^2$, $9x^4$, $e^-x$
+   \end{enumerate}
+    
+    
+     
+    
+
+
+
+    \subsection{Solution, part (a):} 
+        \[
+        c_1(4e^x) + c_2(e^x) + c_3(5e^x) = 0
+        \]
+        Factor out $e^x$:
+        \[
+        e^x(4c_1 + c_2 + 5c_3) = 0
+        \]
+        Since $e^x \neq 0$:
+        \[
+        4c_1 + c_2 + 5c_3 = 0
+        \]
+        This single equation has infinitely many solutions. Thus, the set is \textbf{linearly dependent}.
+
+    \subsection{Solution, part (b):} 
+        Using Euler's formula, $e^{ix} = \cos x + i\sin x$:
+        \[
+        c_1\cos x + c_2(\cos x + i\sin x) + 3 c_3\sin x = 0
+        \]
+        Separate real and imaginary parts:
+        \begin{align*}
+        \text{Real: } & (c_1 + c_2)\cos x + 3 c_3\sin x = 0 \\
+        \text{Imaginary: } & c_2\sin x = 0
+        \end{align*}
+        Imaginary part implies $c_2 = 0$.
+        
+        Thus, real part:
+        \[
+        c_1\cos x + 3 c_3\sin x = 0
+        \]
+        Since $\cos x$ and $\sin x$ are independent, we must have $c_1 = c_3 = 0$.
+        
+        Therefore, these functions are \textbf{linearly independent}.
+
+    \subsection{Solution, part (c):}  
+        \[
+        c_1(7) + c_2(x^2) + c_3(9x^4) + c_4(e^{-x}) = 0
+        \]
+        Consider limits:
+        \begin{itemize}
+        \item As $x \to \infty$, $e^{-x} \to 0$, but polynomials dominate; thus, $c_2 = c_3 = 0$.
+        \item As $x \to -\infty$, exponential dominates, forcing $c_4 = 0$.
+        \item Remaining constant implies $7 c_1 = 0 \Rightarrow c_1 = 0$.
+        \end{itemize}
+        Thus, these functions are \textbf{linearly independent}.
+         
+\section*{Textbook question 2.15}
+  Prove the following two relations:
+  \begin{enumerate}
+      \item [(a)] $e^{\hat{A}} e^{\hat{B}} = e^{\hat{A}+\hat{B}} e^{\frac{[\hat{A},\hat{B}]}{2}}$
+      \item [(b)] $e^{\hat{A}} \hat{B} e^{-\hat{A}} = \hat{B} + [\hat{A}, \hat{B}] + \frac{1}{2!} [\hat{A}, [\hat{A}, \hat{B}]] + \frac{1}{3!} [\hat{A}, [\hat{A}, [\hat{A}, \hat{B}]]] + \dots$
+  \end{enumerate}
+  
+    
+    
+    
+
+
+    \subsection*{Solution, part (a):}
+        Define operator:
+        \[
+        \hat{F}(t)= e^{\hat{A}t}e^{\hat{B}t}
+        \]
+
+        Differentiate with respect to $t$:
+        \[
+        \frac{d\hat{F}(t)}{dt}=\hat{A}e^{\hat{A}t}e^{\hat{B}t}+ e^{\hat{A}t}\hat{B}e^{\hat{B}t}
+        \]
+        
+        Factor out $\hat{F}(t)$:
+        \[
+        \frac{d\hat{F}(t)}{dt}= (\hat{A}+ e^{\hat{A}t}\hat{B}e^{-\hat{A}t})\hat{F}(t)
+        \]
+        
+        Expanding $e^{\hat{A}t}\hat{B}e^{-\hat{A}t}$, and using the Baker-Campbell-Hausdorff formula, we obtain:
+        \[
+        e^{\hat{A}} e^{\hat{B}}= e^{\hat{A}+\hat{B}} e^{[\hat{A},\hat{B}]/2}
+        \]
+
+    \subsection*{Solution, part (b):}
+        \[
+        e^{\hat{A}} \hat{B} e^{-\hat{A}}=\hat{B}+[\hat{A},\hat{B}]+\frac{1}{2!}[\hat{A},[\hat{A},\hat{B}]]+\frac{1}{3!}[\hat{A},[\hat{A},[\hat{A},\hat{B}]]]+\dots
+        \]
+        
+        Define operator:
+        \[
+        \hat{H}(t)=e^{\hat{A}t}\hat{B}e^{-\hat{A}t}
+        \]
+        
+        Differentiate with respect to $t$:
+        \[
+        \frac{d\hat{H}(t)}{dt}=e^{\hat{A}t}[\hat{A},\hat{B}]e^{-\hat{A}t}
+        \]
+        
+        Expanding around $t=0$, we have:
+        \[
+        \hat{H}(t)=\hat{B}+t[\hat{A},\hat{B}]+\frac{t^2}{2!}[\hat{A},[\hat{A},\hat{B}]]+\frac{t^3}{3!}[\hat{A},[\hat{A},[\hat{A},\hat{B}]]]+\dots
+        \]
+        
+        Setting $t=1$ yields:
+        \[
+        e^{\hat{A}}\hat{B}e^{-\hat{A}}=\hat{B}+[\hat{A},\hat{B}]+\frac{1}{2!}[\hat{A},[\hat{A},\hat{B}]]+\dots
+        \]
+           
+\section*{Textbook Problem 2.18}
+    Consider the following two matrices:
+    A = \begin{pmatrix}
+        3 & i & 1 \\
+        -1 & -i & 2 \\
+        4 & 3i & 1
+    \end{pmatrix}
+
+    B = \begin{pmatrix}
+        2i & 5 & -3 \\
+        -i & 3 & 0 \\
+        7i & 1 & i
+    \end{pmatrix}
+
+    Verify the following relations:
+    \begin{enumerate}
+        \item [(a)] $\det(AB) = \det(A) \det(B)$
+        \item [(b)] $\det(A^T) \ det(A)$
+        \item [(c)] $\det(A^\dagger) = (\det(A))^*$
+        \item [(d)] $\det(A^*) = (\det(A))^*$
+    \end{enumerate}
+
+    \subsection*{Solution:}
+        Calculate incremental calculations
+        \begin{align*}
+        &\det(A) = -11i \\[6pt]
+        &\det(B) = -11 + 66i \\[6pt]
+        &\det(AB) = 726 + 121i \\[6pt]
+        &\det(A^T) = -11i \\[6pt]
+        &\det(A^\dagger) = 11i \\[6pt]
+        &\det(A^*) = 11i
+        \end{align*}
+
+    \subsection*{Solution, part (a):}
+        \[
+        \det(A)\det(B) = (-11i)(-11 + 66i) = 726 + 121i = \det(AB)
+        \]
+    \subsection*{Solution, part (b):}
+        \[
+        \det(A^T) = -11i = \det(A)
+        \]
+    \subsection*{Solution, part (c):}
+        \[
+        (\det(A))^* = (-11i)^* = 11i = \det(A^\dagger)
+        \]
+    \subsection*{Solution, part (d):}
+        \[
+        (\det(A))^* = 11i = \det(A^*)
+        \]
+   
+\section*{Textbook Problem 2.30}
+    \begin{enumerate}
+        \item [(a)] Using $[\hat{X}, \hat{P}] = i \hbar$, show that $[\hat{X}^2, \hat{P}] = 2i\hbar\hat{X}$ and $[\hat{X}, \hat{P}^2 = 2 i \hbar \hat{P}$
+        \item [(b)] Show that $[\hat{X}^2, \hat{P}^2] = 2 i \hbar (i \hbar + 2 \hat{P} \hat{X}$
+        \item [(c)] Calculate the commutator $[\hat{X}^2, \hat{P}^3]$
+    \end{enumerate}
+
+    \subsection*{Solution, part (a):}
+        \[
+        [\hat{X}^2, \hat{P}] = 2i\hbar\hat{X}, \quad [\hat{X}, \hat{P}^2] = 2i\hbar\hat{P}
+        \]
+
+        Compute first commutator:
+        \begin{align*}
+        [\hat{X}^2, \hat{P}] &= \hat{X}[\hat{X},\hat{P}] + [\hat{X},\hat{P}]\hat{X} \\
+        &= \hat{X}(i\hbar) + (i\hbar)\hat{X} = 2i\hbar\hat{X}
+        \end{align*}
+
+        Compute second commutator:
+        \begin{align*}
+        [\hat{X}, \hat{P}^2] &= [\hat{X},\hat{P}]\hat{P} + \hat{P}[\hat{X},\hat{P}] \\
+        &= (i\hbar)\hat{P} + \hat{P}(i\hbar) = 2i\hbar\hat{P}
+        \end{align*}
+
+    \subsection*{Solution, part (b):}
+        \[
+        [\hat{X}^2, \hat{P}^2] = 2i\hbar(i\hbar + 2\hat{P}\hat{X})
+        \]
+        Compute explicitly:
+        \begin{align*}
+        [\hat{X}^2, \hat{P}^2] &= \hat{X}^2\hat{P}^2 - \hat{P}^2\hat{X}^2 \\
+        &= \hat{X}(\hat{X}\hat{P}^2) - (\hat{P}^2\hat{X})\hat{X}
+        \end{align*}
+        Expanding step-by-step:
+        \begin{align*}
+        &= \hat{X}(\hat{P}^2\hat{X} + [\hat{X},\hat{P}^2]) - (\hat{P}^2\hat{X})\hat{X} \\
+        &= \hat{X}\hat{P}^2\hat{X} + \hat{X}(2i\hbar\hat{P}) - \hat{P}^2\hat{X}^2 \\
+        &= (\hat{P}^2\hat{X} + [\hat{X},\hat{P}^2])\hat{X} + 2i\hbar\hat{X}\hat{P} - \hat{P}^2\hat{X}^2 \\
+        &= \hat{P}^2\hat{X}^2 + (2i\hbar\hat{P})\hat{X} + 2i\hbar\hat{X}\hat{P} - \hat{P}^2\hat{X}^2 \\
+        &= 2i\hbar(\hat{P}\hat{X}+\hat{X}\hat{P})
+        \end{align*}
+        Since:
+        \[
+        [\hat{X},\hat{P}]= i\hbar \implies \hat{P}\hat{X}=\hat{X}\hat{P}-i\hbar
+        \]
+        Thus:
+        \[
+        2i\hbar(\hat{P}\hat{X}+\hat{X}\hat{P}) = 2i\hbar(2\hat{P}\hat{X}-i\hbar)= 2i\hbar(i\hbar+2\hat{P}\hat{X})
+        \]
+
+    \subsection*{Solution, part (c):}
+        \[
+        [\hat{X}^2, \hat{P}^3]
+        \]
+        
+        Evaluate step by step:
+        \begin{align*}
+        [\hat{X}^2, \hat{P}^3] &= [\hat{X}^2, \hat{P}]\hat{P}^2 + \hat{P}[\hat{X}^2, \hat{P}]\hat{P} + \hat{P}^2[\hat{X}^2, \hat{P}] \\
+        &= (2i\hbar\hat{X})\hat{P}^2 + \hat{P}(2i\hbar\hat{X})\hat{P} + \hat{P}^2(2i\hbar\hat{X}) \\
+        &= 2i\hbar(\hat{X}\hat{P}^2+\hat{P}\hat{X}\hat{P}+\hat{P}^2\hat{X})
+        \end{align*}
+        Thus, explicitly expanded, we have:
+        \[
+        [\hat{X}^2, \hat{P}^3] = 2i\hbar(\hat{X}\hat{P}^2 + \hat{P}\hat{X}\hat{P} + \hat{P}^2\hat{X})
+        \]
+      
+\section*{Textbook Problem 2.44}
+    Use the relations listed in Appendix A to evaluate the following integrals involving Dirac's delta function:
+    \begin{enumerate}
+        \item [(a)] $\int_0^\pi sin(3x) cos^2(4x) \delta(x-\frac{\pi}{2})dx $
+        \item [(b)] $\int_{-2}^2 e^{7x+2} \delta(5x) dx$
+        \item [(c)] $\int_{-2\pi}^{2\pi} sin(\frac{\theta}{2})\delta''(\theta+\pi)d\theta$
+        \item [(d)] $\int_0^{2\pi} cos^2(\theta)\delta(\frac{\theta-\pi}{2})$
+    \end{enumerate}
+    
+    
+    
+    
+
+
+
+    \subsection*{Solution, part (a):}
+        \[
+        \int_0^\pi \sin(3x)\cos^2(4x)\delta(x-\pi/2)\,dx
+        \]
+        Use the property of Dirac's delta:
+        \[
+        = \sin\left(\frac{3\pi}{2}\right)\cos^2(2\pi) = (-1) \times (1)^2 = -1
+        \]
+
+    \subsection*{Solution, part (b):}
+        \[
+        \int_{-2}^{2} e^{7x+2}\delta(5x)\,dx
+        \]
+        Use \(\delta(ax) = \frac{\delta(x)}{|a|}\):
+        \[
+        = \int_{-2}^{2} e^{7x+2}\frac{\delta(x)}{5}\,dx = \frac{e^{7(0)+2}}{5} = \frac{e^2}{5}
+        \]
+
+    \subsection*{Solution, part (c):}
+        \[
+        \int_{-2\pi}^{2\pi} \sin(\theta/2)\delta''(\theta+\pi)\,d\theta
+        \]
+        Use integration by parts twice:
+        \[
+        = \frac{d^2}{d\theta^2}\sin\left(\frac{\theta}{2}\right)\bigg|_{\theta=-\pi} 
+        \]
+        Compute derivatives:
+        \[
+        \frac{d}{d\theta}\sin\left(\frac{\theta}{2}\right)=\frac{1}{2}\cos\left(\frac{\theta}{2}\right), \quad \frac{d^2}{d\theta^2}\sin\left(\frac{\theta}{2}\right)=-\frac{1}{4}\sin\left(\frac{\theta}{2}\right)
+        \]
+        Evaluate at \(\theta=-\pi\):
+        \[
+        = -\frac{1}{4}\sin\left(-\frac{\pi}{2}\right) = \frac{1}{4}
+        \]
+
+    \subsection*{Solution, part (c):}
+        \[
+        \int_0^{2\pi}\cos^2\theta\,\delta\left(\frac{\theta-\pi}{4}\right)d\theta
+        \]
+        Change variables \(u=\frac{\theta-\pi}{4}\), hence \(\theta=\pi\) corresponds to \(u=0\), and \(d\theta=4du\):
+        \[
+        =4\int \cos^2(\theta)\delta(u) du = 4\cos^2(\pi)=4(-1)^2=4
+        \]
+
+\section*{Textbook Problem 2.48}
+    Consider an operator
+    \begin{equation}
+        \begin{split}
+            \hat{A} = |\phi_1\rangle \langle\phi_1| + |\phi_2\rangle \langle\phi_2| + |\phi_3\rangle \langle\phi_3| - i|\phi_1\rangle \langle\phi_2|\\       -|\phi_1\rangle \langle\phi_3| + i |\phi_2\rangle \langle\phi_1| - |\phi_3\rangle \langle\phi_1|
+        \end{split}
+    \end{equation}
+
+    where $|\phi_1\rangle$, $|\phi_2\rangle$, and $|\phi_3\rangle$ form a complete and orthonormal basis
+    \begin{enumerate}
+        \item [(a)] Is $\hat{A}$ Hermitian? Calculate $\hat{A}$; is it a projection operator?
+        \item [(b)] Find the $3x3$ matrix representing $\hat{A}$ in the $|\phi_1\rangle$, $|\phi_2\rangle$, and $|\phi_3\rangle$ basis
+        \item [(c)] Find the eigenvalues and eigenvectors of the matrix
+    \end{enumerate}
+
+    \subsection*{Solution, part (a):}
+        To be Hermitian, \(\hat{A}=\hat{A}^\dagger\). Check terms explicitly:
+        \begin{align*}
+        \hat{A}^\dagger &=|\phi_1\rangle\langle\phi_1|+|\phi_2\rangle\langle\phi_2|+|\phi_3\rangle\langle\phi_3|
+        +i|\phi_2\rangle\langle\phi_1|-|\phi_3\rangle\langle\phi_1|+i|\phi_1\rangle\langle\phi_2|-|\phi_1\rangle\langle\phi_3|\\
+        &=\hat{A}
+        \end{align*}
+        
+        Thus, \(\hat{A}\) is Hermitian.
+        
+        Calculate \(\hat{A}^2\):
+        \[
+        \hat{A}^2\neq\hat{A}, \quad\text{thus it is not a projection operator.}
+        \]
+
+    \subsection*{Solution, part (b):}
+        In basis \(\{|\phi_1\rangle, |\phi_2\rangle, |\phi_3\rangle\}\), we have:
+        \[
+        \hat{A}=\begin{pmatrix}
+        1 & -i & -1\\[6pt]
+        i & 1 & 0\\[6pt]
+        -1 & 0 & 1
+        \end{pmatrix}
+        \]
+
+    \subsection*{Solution, part (c):}
+        Solve characteristic equation:
+        \[
+        \det(\hat{A}-\lambda I)=0
+        \]
+        Compute explicitly:
+        \[
+        \begin{vmatrix}
+        1-\lambda & -i & -1\\[6pt]
+        i & 1-\lambda & 0\\[6pt]
+        -1 & 0 & 1-\lambda
+        \end{vmatrix}=0
+        \]
+        Expanding the determinant, one finds the eigenvalues:
+        \[ \lambda_1=0,\quad\lambda_2=2,\quad\lambda_3=1 \]
+        
+        Find corresponding eigenvectors by solving:
+        \[(\hat{A}-\lambda I)|\psi\rangle=0\]
+        
+        Eigenvectors (up to normalization):
+        \begin{itemize}
+        \item For \(\lambda=0\):
+        \[|\psi_1\rangle=\frac{1}{\sqrt{3}}\begin{pmatrix}1\\-i\\-1\end{pmatrix}\]
+        
+        \item For \(\lambda=2\):
+        \[|\psi_2\rangle=\frac{1}{\sqrt{3}}\begin{pmatrix}1\\i\\-1\end{pmatrix}\]
+        
+        \item For \(\lambda=1\):
+        \[|\psi_3\rangle=\frac{1}{\sqrt{3}}\begin{pmatrix}1\\0\\1\end{pmatrix}\]
+        \end{itemize}
+        
+\section*{Textbook Problem 2.50}
+    Consider a particle which is confined to move along the positive x-axis and whose Hamiltonian is $\hat{H} = \frac{\mathcal{E} d^2}{d x^2}$, where $\mathcal{E}$  is a positive real constant having the dimensions of energy.
+    \begin{enumerate}
+        \item [(a)] Find the wave function that corresponds to an energy eigenvalue of $9 \mathcal{E}$ (make sure that the function you find is finite everywhere along the positive x-axis and is square integrable). Normalize this wave function.
+        \item [(b)] Calculate the probability of finding the particle in the region $0 \leq x \geq 15$
+        \item [(c)] Is the wave function derived in (a) an eigenfunction of the operator $\hat{A} = \frac{d}{dx} - 7$
+        \item [(d)] Calculate the commutator $[\hat{H}, \hat{A}]$
+    \end{enumerate}
+
+    \subsection*{Solution, part (a):}
+        Solve eigenvalue equation:
+        \[
+        \hat{H}\psi(x)=9\mathcal{E}\psi(x)
+        \]
+        This gives:
+        \[
+        \mathcal{E}\frac{d^2\psi(x)}{dx^2}=9\mathcal{E}\psi(x)
+        \]
+        Simplify and solve differential equation:
+        \[
+        \frac{d^2\psi(x)}{dx^2}=9\psi(x)
+        \]
+        General solution:
+        \[
+        \psi(x)=Ae^{3x}+Be^{-3x}
+        \]
+        To ensure finite behavior at infinity (positive x-axis), set \(A=0\):
+        \[
+        \psi(x)=Be^{-3x}
+        \]
+        Normalize the wave function:
+        \[
+        \int_0^\infty |B|^2 e^{-6x} dx=1\quad\Rightarrow\quad|B|^2\frac{1}{6}=1\quad\Rightarrow\quad B=\sqrt{6}
+        \]
+        Normalized wavefunction:
+        \[
+        \psi(x)=\sqrt{6}e^{-3x}, \quad x\ge0
+        \]
+        
+    \subsection*{Solution, part (b):}
+        \begin{align*}
+        P(0\le x\le15)&=\int_0^{15}6e^{-6x}dx=\left[-e^{-6x}\right]_0^{15}\\[6pt]
+        &=1-e^{-90}\approx1
+        \end{align*}
+
+    \subsection*{Solution, part (c):}
+        Compute:
+        \[
+        \hat{A}\psi(x)=\left(\frac{d}{dx}-7\right)\sqrt{6}e^{-3x}=\sqrt{6}(-3e^{-3x}-7e^{-3x})=-10\sqrt{6}e^{-3x}
+        \]
+        Since result is proportional to \(\psi(x)\), we have:
+        \[
+        \hat{A}\psi(x)=-10\psi(x)
+        \]
+        Thus, \(\psi(x)\) is an eigenfunction of \(\hat{A}\), with eigenvalue \(-10\).
+        
+    \subsection*{Solution, part (d):}
+        Compute explicitly:
+        \begin{align*}
+        [\hat{H},\hat{A}]&=\hat{H}\hat{A}-\hat{A}\hat{H}=\mathcal{E}\frac{d^2}{dx^2}\left(\frac{d}{dx}-7\right)-\left(\frac{d}{dx}-7\right)\mathcal{E}\frac{d^2}{dx^2}\\[6pt]
+        &=\mathcal{E}\left(\frac{d^3}{dx^3}-7\frac{d^2}{dx^2}-\frac{d^3}{dx^3}+7\frac{d^2}{dx^2}\right)\\[6pt]
+        &=0
+        \end{align*}
+        Thus, operators commute:
+        \[
+        [\hat{H}, \hat{A}]=0
+        \]
+
+\section*{Textbook Problem 2.53}
+    Consider an operator $\hat{A} = (\frac{\hat{X}d}{dx} + 2)$
+    \begin{enumerate}
+        \item [(a)] Find the eigenfunction of $\hat{A}$ corresponding to a zero eigenvalue. Is this function normalizable
+        \item [(b)] Is the operator $\hat{A}$ normalizable
+        \item [(c)] Calculate $[\hat{A}, \hat{X}]$, $[\hat{A}, \frac{d}{dx}]$, $[\hat{X}, [\hat{A}, \hat{X}]$, and $[\frac{d}{dx},\hat{A},\frac{d}{dx}]$
+    \end{enumerate}
+
+    \subsection*{Solution, part (a):}
+        Solve:
+        \[
+        \hat{A}\psi(x)=\left(x\frac{d}{dx}+2\right)\psi(x)=0
+        \]
+        Simplify differential equation:
+        \[
+        x\frac{d\psi}{dx}+2\psi=0 \quad\Rightarrow\quad \frac{d\psi}{\psi}=-\frac{2}{x}dx
+        \]
+        Integrate:
+        \[
+        \ln\psi=-2\ln x+C\quad\Rightarrow\quad\psi(x)=\frac{C}{x^2}
+        \]
+        Check normalization:
+        \[
+        \int |\psi(x)|^2 dx=|C|^2\int\frac{1}{x^4}dx
+        \]
+        Integral diverges at zero; thus, \(\psi(x)=\frac{C}{x^2}\) is not normalizable.
+
+    \subsection*{Solution, part (b):}
+        Operator \(\hat{A}\) is Hermitian if:
+        \[
+        \int \psi_1^*(x)\hat{A}\psi_2(x)dx=\int (\hat{A}\psi_1(x))^*\psi_2(x)dx
+        \]
+        Consider adjoint operator:
+        \[
+        \hat{A}^\dagger=-\frac{d}{dx}x+2=-1-x\frac{d}{dx}+2\neq\hat{A}
+        \]
+        Thus, \(\hat{A}\) is not Hermitian.
+
+    \subsection*{Solution, part (c):}
+        Calculate explicitly:
+        \begin{align*}
+        [\hat{A},\hat{X}]&=\hat{A}\hat{X}-\hat{X}\hat{A}=\left(x\frac{d}{dx}+2\right)x-x\left(x\frac{d}{dx}+2\right)=0\\[6pt]
+        [\hat{A},d/dx]&=\hat{A}\frac{d}{dx}-\frac{d}{dx}\hat{A}=\left(x\frac{d}{dx}+2\right)\frac{d}{dx}-\frac{d}{dx}\left(x\frac{d}{dx}+2\right)\\[4pt]
+        &=x\frac{d^2}{dx^2}+2\frac{d}{dx}-\frac{d}{dx}-x\frac{d^2}{dx^2}=\frac{d}{dx}\\[6pt]
+        [\hat{A}, d^2/dx^2]&=\hat{A}\frac{d^2}{dx^2}-\frac{d^2}{dx^2}\hat{A}=\left(x\frac{d}{dx}+2\right)\frac{d^2}{dx^2}-\frac{d^2}{dx^2}\left(x\frac{d}{dx}+2\right)\\[4pt]
+        &=x\frac{d^3}{dx^3}+2\frac{d^2}{dx^2}-2\frac{d^2}{dx^2}-2x\frac{d^3}{dx^3}-\frac{d^2}{dx^2}=-2\frac{d^2}{dx^2}-x\frac{d^3}{dx^3}\\[6pt]
+        [\hat{X},[\hat{A},\hat{X}]]&=[\hat{X},0]=0\\[6pt]
+        [d/dx,[\hat{A},d/dx]]&=[d/dx,d/dx]=0
+        \end{align*}
+    
+\end{document}

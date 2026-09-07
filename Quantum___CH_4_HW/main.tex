@@ -1,0 +1,533 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 4 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 4.11}
+
+
+\section*{Exercise 4.11}
+    Consider the dimensionless Hamiltonian
+    \[
+        \hat{H} = \frac{1}{2} \hat{P}^2 + \frac{1}{2} \hat{X}^2, \quad
+    \]
+    with 
+    \[
+        \hat{P} = -i \frac{d}{dx}
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Show that the wave functions $\psi_0(x) = \frac{e^{-x^2/2}}{\sqrt[4]{\pi}}$ and $\psi_1(x) = \sqrt{\frac{2}{\sqrt{\pi}}} \, x e^{-x^2/2}$ are eigenfunctions of $\hat{H}$ with eigenvalues \( 1/2 \) and \( 3/2 \), respectively.
+        \item[(b)] Find the values of the coefficients \( \alpha \) and \( \beta \) such that
+        \[
+            \psi_2(x) = \frac{1}{\sqrt{2 \sqrt{\pi}}} \left( \alpha x^2 - 1 \right) e^{-x^2/2}
+            \quad \text{and} \quad
+            \psi_3(x) = \frac{1}{\sqrt{6 \sqrt{\pi}}} \, x \left( 1 + \beta x^2 \right) e^{-x^2/2}
+        \]
+        are orthogonal to \( \psi_0(x) \) and \( \psi_1(x) \), respectively. Then show that \( \psi_2(x) \) and \( \psi_3(x) \) are eigenfunctions of \( \hat{H} \) with eigenvalues \( 5/2 \) and \( 7/2 \), respectively.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        Apply the general harmoic oscillator hamiltonian operator to a wave function
+        \[
+            \hat{H} \psi_n(x) = E_n \psi_n(x)
+        \]
+        
+        The solutions to this equation are well known and given by
+        \[
+            \psi_n(x) = \frac{1}{\sqrt{2^n n!}} \sqrt{\frac{1}{\sqrt{\pi}}} H_n(x) e^{\frac{-x^2}{2}} 
+        \]
+
+        Where $H_n(x)$ is the Hermite polynomial of degree n and $E_n$ are the energy levels
+        The ground state ($n=0$, $H_0(x)=1$) and the first excited state ($n=1$, $H_1(x)=2x$) are
+        \[
+            \psi_0(x) = \frac{1}{\pi^{\frac{1}{4}}} e^{\frac{-x}{2}}
+        \]
+        \[
+            \psi_1(x) = \frac{1}{\sqrt{2}} \cdot \frac{1}{\pi^{1/4}} \cdot 2x \, e^{-x^2/2} = \sqrt{2} \cdot \frac{x}{\pi^{1/4}} e^{-x^2/2} = \sqrt{\frac{2}{\sqrt{\pi}}} \, x \, e^{-x^2/2}
+        \]
+
+        Rescaling the general harmonic oscillator Hamiltonian equation (\ref{eq: hoh}) by simply defining $\hbar = m = \omega = 1$
+        \[
+            \hat{H} = \frac{1}{2} \left( - \frac{d^2}{dx^2} + x^2 \right)
+        \]
+
+        Apply this to both the ground state and the first excited state and simplify
+        \[
+            \boldsymbol{\boxed{\hat{H} \psi_0 = \frac{1}{2} \psi_0}}
+        \]
+        \[
+            \boldsymbol{\boxed{\hat{H} \psi_1 = \frac{3}{2} \psi_1}}
+        \]
+
+    \subsection{Solution, part (b):}        
+        We are given 
+        \[
+            \psi_2(x) = \frac{1}{\sqrt{2 \sqrt{\pi}}} \left( \alpha x^2 - 1 \right) e^{-x^2/2}
+        \]
+        \[
+            \psi_3(x) = \frac{1}{\sqrt{6 \sqrt{\pi}}} \, x \left( 1 + \beta x^2 \right) e^{-x^2/2}
+        \]
+        Proving that ground and excited state are orthogonal to these given states requires
+        \begin{equation} \label{eq: psi0}
+            \langle \psi_0 | \psi_2 \rangle = 0
+        \end{equation}
+        \begin{equation} \label{eq: psi1}
+            \langle \psi_1|\psi_3 \rangle = 0
+        \end{equation}
+
+        The notations $\langle|\rangle$ are the following general equations
+        \[
+            \langle \psi_n | \psi_m \rangle = \int_{-\infty}^{\infty} \psi_n(x) \psi_m(x) dx
+        \]
+
+        Apply to equation \ref{eq: psi0}
+        \begin{equation}
+            \begin{split}
+                \langle \psi_0 | \psi_2 \rangle = \int_{-\infty}^{\infty} \psi_0(x) \psi_2(x) dx \\
+                = \int_{-\infty}^{\infty} \left( \frac{1}{\pi^{1/4}} e^{-x^2/2} \right) \left( \frac{1}{\sqrt{2\sqrt{\pi}}} (\alpha x^2 - 1) e^{-x^2/2} \right) \\
+                = \frac{1}{\pi^{1/4} \sqrt{2\sqrt{\pi}}} \int_{-\infty}^{\infty}  (\alpha x^2 - 1) e^{-x^2} dx \\
+                = \frac{1}{\sqrt{2} \pi^{3/4}} \left[ \alpha \int_{-\infty}^{\infty} x^2 e^{-x^2} dx - \int_{-\infty}^{\infty} e^{-x^2} dx \right] \\
+                = \frac{1}{\sqrt{2} \pi^{3/4}} \left[ \alpha \cdot \frac{\sqrt{\pi}}{2} - \sqrt{\pi} \right] \\
+                = \frac{\sqrt{\pi}}{\sqrt{2} \pi^{3/4}} \left( \frac{\alpha}{2} - 1 \right) \\
+                = \frac{1}{\sqrt{2} \pi^{3/4}} \left[ \alpha \int_{-\infty}^{\infty} x^2 e^{-x^2} \, dx - \int_{-\infty}^{\infty} e^{-x^2} \, dx \right]
+            \end{split}
+        \end{equation}
+
+        Use well known gaussian integrals and set equal to 0
+        \[
+            \int_{-\infty}^{\infty} e^{-x^2}dx = \sqrt{\pi}
+        \]
+        \[
+            \int_{-\infty}^{\infty} x^2 e^{-x^2}dx = \frac{\sqrt{\pi}}{2}
+        \]
+        \[
+            \langle \psi_0 | \psi_2 \rangle = \frac{1}{\sqrt{2} \pi^{3/4}} \left[ \alpha \cdot \frac{\sqrt{\pi}}{2} - \sqrt{\pi} \right] = \frac{\sqrt{\pi}}{\sqrt{2} \pi^{3/4}} \left( \frac{\alpha}{2} - 1 \right) = 0 \Rightarrow \boldsymbol{\boxed{\alpha = 2}}
+        \]
+
+        Apply the notations $\langle|\rangle$ general equation to equation \ref{eq: psi1}
+        \begin{equation}
+            \begin{split}
+                \langle \psi_1 | \psi_3 \rangle = \int_{-\infty}^{\infty} \psi_1(x)\, \psi_3(x)\, dx \\
+                = \int_{-\infty}^{\infty} \left( \sqrt{\frac{2}{\sqrt{\pi}}} \, x \, e^{-x^2/2} \right) \left( \frac{1}{\sqrt{6\sqrt{\pi}}} \, x(1 + \beta x^2) \, e^{-x^2/2} \right) dx \\
+                = \frac{1}{\sqrt{3} \pi^{3/4}} \int_{-\infty}^{\infty} x^2 (1 + \beta x^2) e^{-x^2} dx \\
+                = \frac{1}{\sqrt{3} \pi^{3/4}} \left[ \int_{-\infty}^{\infty} x^2 e^{-x^2} \, dx + \beta \int_{-\infty}^{\infty} x^4 e^{-x^2} \, dx \right]
+            \end{split}
+        \end{equation}
+
+        Use the same well known gaussian integrals and set equal to 0
+        \[
+            \langle \psi_1 | \psi_3 \rangle = \frac{1}{\sqrt{3} \pi^{3/4}} \left( \frac{\sqrt{\pi}}{2} + \beta \cdot \frac{3\sqrt{\pi}}{4} \right) = \frac{\sqrt{\pi}}{\sqrt{3} \pi^{3/4}} \left( \frac{1}{2} + \frac{3}{4} \beta \right) = 0 \Rightarrow \boldsymbol{\boxed{\beta = -\frac{2}{3}}}
+        \]
+
+\section{Textbook Question 4.18}
+    A particle of mass \( m \) in an infinite potential well of length \( a \) has the following initial wave function at \( t = 0 \):
+    
+    \[
+        \psi(x,0) = \frac{2}{\sqrt{7a}} \sin\left( \frac{\pi x}{a} \right) 
+        + \sqrt{\frac{6}{7a}} \sin\left( \frac{2\pi x}{a} \right) 
+        + \frac{2}{\sqrt{7a}} \sin\left( \frac{3\pi x}{a} \right)
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] If we measure energy, what values will we find and with what probabilities? Calculate the average energy.
+    
+        \item[(b)] Find the wave function \( \psi(x,t) \) at any later time \( t \). Determine the probability of finding the particle at a time \( t \) in the state
+        \[
+            \varphi(x,t) = \frac{1}{\sqrt{a}} \sin\left( \frac{3\pi x}{a} \right) \exp\left( -i \frac{E_3 t}{\hbar} \right).
+        \]
+    
+        \item[(c)] Calculate the probability density \( \rho(x,t) \) and the current density \( \vec{J}(x,t) \). Verify that
+        \[
+            \frac{\partial \rho}{\partial t} + \nabla \cdot \vec{J}(x,t) = 0.
+        \]
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        Given
+        \begin{equation} \label{eq: g}
+            \psi(x, 0) = \frac{2}{\sqrt{7a}} \sin\left( \frac{\pi x}{a} \right) +
+            \sqrt{\frac{6}{7a}} \sin\left( \frac{2\pi x}{a} \right) +
+            \frac{2}{\sqrt{7a}} \sin\left( \frac{3\pi x}{a} \right)
+        \end{equation}
+
+        The normalized eigenfunctions of an infinite well are (See appendix section \ref{app A}):
+        \[
+            \phi_n(x) = \sqrt{\frac{2}{a}} \sin\left( \frac{n \pi x}{a} \right),
+            \quad
+            E_n = \frac{n^2 \pi^2 \hbar^2}{2ma^2}
+        \]
+        
+        The Wavefunction at $t=0$ is expressed as a linear combination because it is a superposition:
+        \[
+            \Psi(x,0) = \sum c_n\psi_n(x) = c_1 \psi_1(x) + c_2 \psi_2(x) + c_3 \psi_3(x)
+        \]
+
+        Comparing the coefficients of the superposition and the given wave function (equ \ref{eq: g}) by matching forms
+        \[
+            c_1 \psi_1(x) = c_1 \sqrt{\frac{2}{a}} \sin \left( \frac{\pi x}{a} \right) = \sqrt{\frac{2}{7a}} \sin \left( \frac{\pi x}{a} \right)
+        \]
+        \[
+            c_2 \psi_2(x) = c_2 \sqrt{\frac{2}{a}} \sin\left( \frac{2\pi x}{a} \right) = \sqrt{\frac{6}{7a}} \sin\left( \frac{2\pi x}{a} \right)
+        \]
+        \[
+            c_3 \psi_3(x) = c_3 \sqrt{\frac{2}{a}} \sin\left( \frac{3\pi x}{a} \right) = \sqrt{\frac{2}{7a}} \sin\left( \frac{3\pi x}{a} \right)
+        \]
+
+        Simplifying we get
+        \[
+            c_1 = \sqrt{\frac{2}{7a}} \div \sqrt{\frac{2}{a}} = \sqrt{\frac{4}{14}}
+        \]
+        \[
+            c_2 = \sqrt{\frac{6}{7a}} \div \sqrt{\frac{2}{a}} = \sqrt{\frac{3}{7}}
+        \]
+        \[
+            c_3 = \sqrt{\frac{2}{7a}} \div \sqrt{\frac{2}{a}} = \sqrt{\frac{4}{14}}
+        \]
+
+        Using the uncertainty principle:
+        If a system is in state ($\Psi$), and you measure an observable, the probability of obtaining the eigenvalue ($E_n$) is
+        \begin{equation} \label{eq: P}
+            P(E_n) = |c_n|^2       
+        \end{equation}
+        
+        Probabilities:
+        \[
+            P_1 = \frac{4}{14} = \frac{2}{7}, \quad
+            P_2 = \frac{3}{7}, \quad
+            P_3 = \frac{4}{14} = \frac{2}{7}
+        \]
+        
+        The average energy equation becomes
+        \[
+            \boldsymbol{\boxed{\langle E \rangle = \frac{2}{7} E_1 + \frac{3}{7} E_2 + \frac{2}{7} E_3
+            = \frac{\pi^2 \hbar^2}{2ma^2} \cdot \frac{2(1^2) + 3(2^2) + 2(3^2)}{7}
+            = \frac{32 \pi^2 \hbar^2}{7ma^2}}}
+        \]
+
+    \subsection{Solution, part (b):}
+        Each eigenstate evolves as:
+        \[
+            \psi(x,t) = \sum_{n=1}^{3} c_n \phi_n(x) e^{-i E_n t / \hbar}
+        \]
+        
+        \[
+            = \frac{2}{\sqrt{14}} \phi_1(x) e^{-i E_1 t / \hbar} +
+            \sqrt{\frac{3}{7}} \phi_2(x) e^{-i E_2 t / \hbar} +
+            \frac{2}{\sqrt{14}} \phi_3(x) e^{-i E_3 t / \hbar}
+        \]
+        
+        Using probability equation 
+        \[
+            \varphi(x,t) = \phi_3(x) e^{-i E_3 t / \hbar} \Rightarrow P = \left| \braket{\varphi}{\psi} \right|^2 = \left| \frac{1}{\sqrt{7}} \right|^2 = \frac{1}{7}
+        \]
+        
+    \subsection{Solution, part (c):}
+        The probability equation is 
+        \[
+            \rho(x,t) = |\psi(x,t)|^2 
+        \]
+        
+        \[
+            \vec{J}(x,t) = \frac{\hbar}{2 m i} \left( \psi^* \frac{\partial \psi}{\partial x} - \psi \frac{\partial \psi^*}{\partial x}\right)
+        \]
+        
+        This is the standard quantum continuity equation
+        \[
+            \frac{\partial \rho}{\partial t} + \frac{\partial J}{\partial x} = 0
+        \]
+
+        This identity always holds for any wavefunction evolving via the Schrodinger equation.
+        
+
+\section{Textbook Question 4.26}
+    A particle of mass \( m \) is subject to a delta potential
+    \[
+        V(x) = 
+        \begin{cases}
+        \infty, & x \leq 0, \\
+        V_0 \delta(x - a), & x > 0,
+        \end{cases}
+    \]
+    where \( V_0 > 0 \).
+    
+    \begin{enumerate}
+        \item[(a)] Find the wave functions corresponding to the cases \( 0 < x < a \) and \( x > a \).
+        \item[(b)] Find the transmission coefficient.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        A particle of mass \( m \) is subject to the potential:
+        \[
+            V(x) =
+            \begin{cases}
+            \infty, & x \leq 0 \\
+            V_0 \delta(x - a), & x > 0
+            \end{cases}
+            \quad \text{where } V_0 > 0
+        \]
+               
+        In the regions where \( V(x) = 0 \), the Schrödinger equation is:
+        \[
+            \frac{d^2 \psi}{dx^2} + k^2 \psi = 0, \quad \text{with } k = \frac{\sqrt{2mE}}{\hbar}
+        \]
+        
+        General solutions:
+        \[
+            \psi_1(x) = A \sin(kx), \quad 0 < x < a
+        \]
+        \[
+            \psi_2(x) = B e^{ikx}, \quad x > a
+        \]
+        
+        Apply boundary conditions ($x=a)$:
+        \[
+        \psi_1(a) = \psi_2(a) \Rightarrow A \sin(ka) = \boldsymbol{\boxed{B e^{ika}}}
+        \]    
+        
+        Derivative discontinuity from delta function:
+        \[
+            \psi_2'(a) - \psi_1'(a) = \frac{2m V_0}{\hbar^2} \psi(a)
+        \]
+        \[
+            ik B e^{ika} - A k \cos(ka) = \boldsymbol{\boxed{\frac{2m V_0}{\hbar^2} A \sin(ka)}}
+        \]
+        
+
+    \subsection{Solution, part (b):}
+        Assume an incoming wave to the left of the delta and transmitted to the right:
+        \[
+            \psi(x) =
+            \begin{cases}
+                Asin(kx) & 0 < x < a \\
+                B e^{ikx}, & x > a
+            \end{cases}
+        \]
+        
+        Apply boundary conditions at \( x = a \) and continuity:
+        \[
+            \psi_1(a) = \psi_2(a) \Rightarrow Asin(ka) = Be^{ika}
+        \]
+        
+        Derive discontinuity
+        \[
+            \frac{\partial \psi_1}{\partial x} = A k cos(kx)
+        \]
+        \[
+            \frac{\partial \psi_2}{\partial x} = i k B e^{ikx}
+        \]
+        
+        Apply jump
+        \[
+            \psi_{II}'(a) - \psi_{I}'(a) 
+            = i k B e^{ika} - A k \cos(ka) 
+            = \frac{2m V_0}{\hbar^2} \psi(a) 
+            = \frac{2m V_0}{\hbar^2} A \sin(ka)
+        \]
+
+        Solve for transmission coefficient ($T$)
+        \[
+            T = \left| \frac{B}{A} \right|^2 = \frac{|B|^2}{|A|^2} = \frac{A^2 \sin^2(ka)}{|A|^2} = sin^2(ka)
+        \]
+
+        Now we substitute back the value of $\frac{B}{A}$ into the jump condition
+        \[
+            i k B e^{ika} - A k \cos(ka) = \frac{2m V_0}{\hbar^2} A \sin(ka)
+        \]
+        
+        Substitute \( B = A \sin(ka) e^{-ika} \):
+        \[
+            i k A \sin(ka) - A k \cos(ka) = \frac{2m V_0}{\hbar^2} A \sin(ka)
+        \]
+
+        Divide both sides by \( A \sin(ka) \):
+        \[
+            i k - k \cot(ka) = \frac{2m V_0}{\hbar^2}
+        \]      
+
+        Rewriting:
+        \[
+            \cot(ka) = i - \frac{2m V_0}{\hbar^2 k}
+        \]
+
+        And from the continuity condition earlier, we had:
+        \[
+            \boldsymbol{\boxed{T = \sin^2(ka)}}
+        \]
+
+\section{Textbook Question 4.29}
+    Consider a particle of mass \( m \) that is moving under the influence of an attractive delta potential
+    \[
+        V(x) =
+        \begin{cases}
+        - V_0 \delta(x), & x > -a, \\
+        \infty, & x < -a,
+        \end{cases}
+    \]
+    
+    where \( V_0 > 0 \). Discuss the existence of bound states in terms of \( V_0 \) and \( a \).
+
+    \subsection{Solution:}
+        Consider a particle of mass \( m \) under the potential:
+        \[
+            V(x) =
+            \begin{cases}
+            - V_0 \delta(x), & x > -a \\
+            \infty, & x < -a
+            \end{cases}
+            \quad \text{with } V_0 > 0
+        \]
+        
+        We are to discuss the existence of bound states in terms of \( V_0 \) and \( a \).
+    
+        We assume a bound state \( E = -\frac{\hbar^2 \kappa^2}{2m} \), with \( \kappa > 0 \). In both regions where \( V(x) = 0 \), the Schrödinger equation becomes:
+        
+        \[
+            \frac{d^2 \psi}{dx^2} = \kappa^2 \psi
+        \]
+        
+        Region I: \( -a < x < 0 \)
+        \[
+            \psi_I(x) = A \sinh[\kappa(x + a)]
+            \quad \Rightarrow \psi(-a) = 0
+        \]
+        
+        Region II: \( x > 0 \)
+        \[
+            \psi_{II}(x) = B e^{-\kappa x}
+            \quad \text{(decays at infinity)}
+        \]
+        
+    Boundary Conditions at \( x = 0 \)
+        \begin{itemize}
+            \item Continuity:
+            \[
+                \psi_I(0) = \psi_{II}(0) \Rightarrow A \sinh(\kappa a) = B
+            \]
+        
+            \item Derivative discontinuity:
+            \[
+                \psi'(0^+) - \psi'(0^-) = -\frac{2m V_0}{\hbar^2} \psi(0)
+            \]
+            \[
+                -\kappa B - A \kappa \cosh(\kappa a) = -\frac{2m V_0}{\hbar^2} A \sinh(\kappa a)
+            \]
+        \end{itemize}
+        
+        Substitute \( B = A \sinh(\kappa a) \):
+        \[
+            - \kappa A \left[ \sinh(\kappa a) + \cosh(\kappa a) \right] = -\frac{2m V_0}{\hbar^2} A \sinh(\kappa a)
+        \]
+        
+        \[
+            \Rightarrow \kappa \left[ 1 + \coth(\kappa a) \right] = \frac{2m V_0}{\hbar^2}
+        \]
+
+
+\section{Appendix}
+    \subsection{Normalized Eigen Functions of an infinite well} \label{app A}
+        We are solving the time-independent Schrodinger equation (TISE) in one dimension for a particle of mass $m$ in a potential well of width $a$, with infinite walls
+        \[
+            V(x) = 
+            \begin{cases}
+            0 & \text{if } 0 < x < a \\
+            \infty & \text{otherwise}
+            \end{cases}
+        \]
+        Therefore at the boundaries
+        \[
+            \psi(0) = \psi(a) = 0
+        \]
+        The TISE equation 
+        \[
+            -\frac{\hbar^2}{2 m} \frac{d^2 \psi(x)}{dx^2} = E \psi(x)
+        \]
+        Then becomes
+        \[
+            0 = \frac{d^2 \psi(x)}{dx^2} + k^2 \psi(x)
+        \]
+        Where 
+        \begin{equation} \label{eq: k}
+            k = \frac{\sqrt{2 m E}}{\hbar}
+        \end{equation}
+        The general solution to this second order differential equation is 
+        \[
+            \psi(x) = A sin(kx) + B cos(kx)
+        \]
+        We apply the boundary conditions ($x=0$, $x=a$)
+        \[
+            \psi(0) = A sin(0) + B cos(0) = B = 0
+        \]
+        \[
+            \psi(a) = A sin(ka) \Rightarrow ka=n\pi
+        \]
+        Where 
+        \begin{equation} \label{eq: k2}
+            k=\frac{n \pi}{a}    
+        \end{equation}
+        and $n=1,2,3,...$. So the allowed solutions are 
+        \[
+            \psi_n(x) = A sin(\frac{n \pi x}{a})
+        \]
+        Normalize the wave function to get the eigenfunction
+        \[
+            \int_0^a |\psi_n(x)|^2dx = 1 \Rightarrow A^2 \int_0^a sin^2 \left(\frac{n \pi x}{a} dx = 1 \right)
+        \]
+        Simplify
+        \[
+            \int_0^a sin^2 \left( \frac{n \pi x}{a} \right) dx = \frac{a}{2}
+        \]
+        \[
+            A^2 \frac{a}{2} = 1 \Rightarrow A = \sqrt{\frac{2}{a}}
+        \]
+        The eigenstates of the infinite square well are:
+        \[
+            \phi_n(x) = \sqrt{\frac{2}{a}} \sin\left( \frac{n\pi x}{a} \right), \quad n=1,2,3,\ldots
+        \]
+        From equation \ref{eq: k}, we isolate $E$ and substitute equation \ref{eq: k2} getting the eigenstates energies
+        \begin{equation} \label{eq: E}
+            E = \frac{n^2 \hbar^2 k^2}{2 m a^2}
+        \end{equation}
+
+
+        
+\end{document}

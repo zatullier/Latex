@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Quiz1.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum Quiz 1}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 1.50}
+    Assuming the wave packet representing the Moon to be confined to 1 [m], how long will the packet take to reach a size triple that of the Sun? The Sun's radius is $6.96 x 10^5$ [km].
+
+
+    \subsection{Solution:}
+        Convert target size to m
+        \[
+        \Delta x = 3 \times 6.96 \times 10^5 \text{ km} = 3 \times 6.96 \times 10^8 \text{ m} = 2.088 \times 10^9 \text{ m}
+        \]
+
+        Wave packet spreading over time is given by the relation:
+        \[
+        \Delta x(t) = \Delta x_0 \sqrt{1+\frac{\hbar^2 t^2}{m^2 (\Delta x_0)^4}}
+        \]
+        Assuming \(\Delta x(t)\gg \Delta x_0\), approximate:
+        \[
+        \Delta x(t) \approx \frac{\hbar t}{m \Delta x_0}
+        \]
+        Solve for \(t\):
+        \[
+        t = \frac{m \Delta x_0 \Delta x(t)}{\hbar}
+        \]
+        Known constants:
+        Mass of Moon \(m = 7.35 \times 10^{22}\text{ kg}\),
+        \(\hbar = 1.054 \times 10^{-34}\text{ J}\cdot\text{s}\):
+        Plug in constants and values to calculated equations
+        \[
+        t = \frac{(7.35 \times 10^{22}\text{ kg})(1\text{ m})(2.088 \times 10^9\text{ m})}{1.054 \times 10^{-34}\text{ J}\cdot\text{s}}
+        \]
+        Calculate numerically:
+        \[
+        t = \frac{1.53468 \times 10^{32}\text{ kg}\cdot\text{m}^2}{1.054 \times 10^{-34}\text{ kg}\cdot\text{m}^2/\text{s}} \approx 1.46 \times 10^{66}\text{ s}
+        \]
+        Convert to years (\(1\text{ year}\approx 3.154\times 10^7\text{ s}\)):
+        \[
+        t = \frac{1.46 \times 10^{66}\text{ s}}{3.154\times 10^7\text{ s/year}}\approx 4.63 \times 10^{58}\text{ years}
+        \]
+
+\section{Textbook Question 2.20}
+    Using the bra-ket algebra, show that $Tr(\hat{A}, \hat{B}, \hat{C}) = Tr(\hat{C}, \hat{A}, \hat{B}) = Tr(\hat{B}, \hat{C}, \hat{A})$ where $\hat{A}$, $\hat{B}$, and $\hat{C}$ are operators
+    
+    \subsection{Solution}  
+        Show the identity:
+        \[
+        \text{Tr}(\hat{A}\hat{B}\hat{C}) = \text{Tr}(\hat{C}\hat{A}\hat{B}) = \text{Tr}(\hat{B}\hat{C}\hat{A})
+        \]
+
+        Let \(\{|\phi_n\rangle\}\) be a complete, orthonormal basis. The trace of an operator \(\hat{O}\) is defined by:
+        \[
+        \text{Tr}(\hat{O}) = \sum_n \braket{\phi_n|\hat{O}|\phi_n}
+        \]
+        
+        Thus, we have:
+        \begin{align*}
+        \text{Tr}(\hat{A}\hat{B}\hat{C}) &= \sum_n \braket{\phi_n|\hat{A}\hat{B}\hat{C}|\phi_n}\\[6pt]
+        &= \sum_n \sum_m \braket{\phi_n|\hat{A}\hat{B}|\phi_m}\braket{\phi_m|\hat{C}|\phi_n}
+        \end{align*}
+        
+        Since we are summing over a complete set, we can rearrange sums:
+        \begin{align*}
+        &= \sum_n \sum_m \braket{\phi_m|\hat{C}|\phi_n}\braket{\phi_n|\hat{A}\hat{B}|\phi_m}\\[6pt]
+        &= \sum_m \braket{\phi_m|\hat{C}\hat{A}\hat{B}|\phi_m} = \text{Tr}(\hat{C}\hat{A}\hat{B})
+        \end{align*}
+        
+        Similarly, rearranging again, we have:
+        \begin{align*}
+        \text{Tr}(\hat{C}\hat{A}\hat{B}) &= \sum_m \sum_n \braket{\phi_n|\hat{B}|\phi_m}\braket{\phi_m|\hat{C}\hat{A}|\phi_n}\\[6pt]
+        &= \sum_n \braket{\phi_n|\hat{B}\hat{C}\hat{A}|\phi_n}=\text{Tr}(\hat{B}\hat{C}\hat{A})
+        \end{align*}
+        
+        This demonstrates the cyclic property of the trace:
+        \[
+        \text{Tr}(\hat{A}\hat{B}\hat{C})=\text{Tr}(\hat{C}\hat{A}\hat{B})=\text{Tr}(\hat{B}\hat{C}\hat{A})
+        \]
+                  
+\section*{Textbook question 2.23}
+    In a three-dimensional vector space, consider the operator whose matrix, in an orthonormal basis ${|1\rangle, |2\rangle, |3\rangle}$, is 
+    A = \begin{pmatrix}
+        0 & 0 & 1 \\
+        0 & -1 & 0 \\
+        1 & 0 & 0
+    \end{pmatrix}
+    \begin{enumerate}
+        \item [(a)] Is $A$ Hermitian? Calculate its eigenvalues and the corresponding normalized eigenvectors. Verify that the eigenvectors corresponding to the two nondegenerate eigenvalues are orthonormal.
+        \item [(b)] Calculate the matrices representing the projection operators for the two nondegenerate eigenvectors found in part (a)
+    \end{enumerate}
+
+    \subsection*{Solution, part (a):}
+        Check \(A^\dagger=A\):
+        \[
+        A^\dagger=\begin{pmatrix}
+        0 & 0 & 1\\[6pt]
+        0 & -1 & 0\\[6pt]
+        1 & 0 & 0
+        \end{pmatrix}=A
+        \]
+        Thus, \(A\) is Hermitian.
+        
+        Solve characteristic equation:
+        \[\det(A-\lambda I)=0\]
+        Explicitly:
+        \[
+        \begin{vmatrix}
+        -\lambda & 0 & 1\\[6pt]
+        0 & -1-\lambda & 0\\[6pt]
+        1 & 0 & -\lambda
+        \end{vmatrix}=0
+        \]
+        Compute determinant:
+        \[
+        (-1-\lambda)(\lambda^2-1)=0
+        \]
+        Solve eigenvalues:
+        \[
+        \lambda_1=-1, \quad \lambda_2=1, \quad \lambda_3=-1
+        \]
+        Thus, eigenvalues are \(-1, -1, 1\). Eigenvalue \(-1\) is degenerate.
+        
+        Eigenvectors:
+        \begin{itemize}
+            \item For \(\lambda=-1\), solve \((A+I)v=0\):
+        \[
+        \begin{pmatrix}
+        1 & 0 & 1\\[4pt]
+        0 & 0 & 0\\[4pt]
+        1 & 0 & 1
+        \end{pmatrix}
+        \Rightarrow v_1=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\-1\end{pmatrix},\quad v_2=\begin{pmatrix}0\\1\\0\end{pmatrix}
+        \]
+        These eigenvectors are orthonormal.
+        
+        \item For \(\lambda=1\), solve \((A-I)v=0\):
+        \[
+        \begin{pmatrix}
+        -1 & 0 & 1\\[4pt]
+        0 & -2 & 0\\[4pt]
+        1 & 0 & -1
+        \end{pmatrix}
+        \Rightarrow v_3=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\1\end{pmatrix}
+        \]
+        \end{itemize}
+        
+    \subsection*{Solution, part (b):}
+        Projection onto eigenvector for eigenvalue \(1\):
+        \[
+        P_{1}=v_3 v_3^\dagger=\frac{1}{2}\begin{pmatrix}1 & 0 & 1\\[4pt]0 & 0 & 0\\[4pt]1 & 0 & 1\end{pmatrix}
+        \]
+        
+        Projection onto subspace with eigenvalue \(-1\) (two-dimensional):
+        \[
+        P_{-1}=v_1 v_1^\dagger+v_2 v_2^\dagger=\frac{1}{2}\begin{pmatrix}1 & 0 & -1\\[4pt]0 & 2 & 0\\[4pt]-1 & 0 & 1\end{pmatrix}
+        \]
+            
+\end{document}

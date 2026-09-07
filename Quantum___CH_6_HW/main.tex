@@ -1,0 +1,1115 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{Qhw.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Quantum CH 6 HW}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+\date{}
+\maketitle
+
+\section{Textbook Question 6.4}
+    Consider an anisotropic three-dimensional harmonic oscillator potential
+    \[
+        V(x, y, z) = \frac{1}{2} m \left( \omega_x^2 x^2 + \omega_y^2 y^2 + \omega_z^2 z^2 \right).
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Evaluate the energy levels in terms of \( \omega_x \), \( \omega_y \), and \( \omega_z \).
+        \item[(b)] Calculate \( [\hat{H}, \hat{L}_z] \). Do you expect the wave functions to be eigenfunctions of \( \hat{L}^2 \)?
+        \item[(c)] Find the three lowest levels for the case \( \omega_x = \omega_y = \frac{2\omega_z}{3} \), and determine the degeneracy of each level.
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        The quantum harmoic oscillator describes a particle in a potential
+        \begin{equation} \label{eq: V}
+            V(x) = \frac{1}{2} m \omega^2 x^2
+        \end{equation}
+
+        The given equation is this potential in cartesian coordinates
+        \newline The Schrodinger equation is generally as follows
+        \[
+            (KE + PE) \psi(x) = E \psi(x)
+        \]
+        In classic mechanics the kinetic energy is
+        \[
+            T = \frac{p^2}{2m}
+        \]
+        In quantum mechanics the $p$ is replaced with an operator
+        \[
+            \hat{p} = - i \hbar \frac{d}{dx}
+        \]
+        Therefore
+        \begin{align*}
+            KE = \hat{T} = \frac{\hat{p}^2}{2m} = \frac{(-i\hbar)^2}{2m} \frac{d^2}{dx^2} = -\frac{\hbar^2}{2m}  \frac{d^2}{dx^2}
+        \end{align*}
+        Using the potential equation (\ref{eq: V} and the potential energy shown above we get
+        \[
+            \left( - \frac{\hbar^2}{2 m} \frac{d^2}{dx^2} + \frac{1}{2} m \omega^2 x^2 \right) \psi(x) = E \psi(x)
+        \]
+        To solve for $E$ we must use the power series to solve the schrodinger equation (See Appendix \ref{sec: 3DTISE} for explicit details
+        \[
+            E_n = \hbar \omega \left( n + \frac{1}{2} \right),  n=0, 1, 2, \dots
+        \]
+
+        In cartesian coordinates
+        \begin{equation}  \label{eq: E}
+            \boldsymbol{\boxed{E_{n_x, n_y, n_z} = \hbar \omega_x \left(n_x + \frac{1}{2} \right) + \hbar \omega_y \left(n_y + \frac{1}{2} \right) + \hbar \omega_z \left(n_z + \frac{1}{2} \right)}}
+        \end{equation}
+        
+        where \( n_x, n_y, n_z = 0, 1, 2, \dots \) are independent non-negative integers.
+    
+    \subsection{Solution, part (b):}
+    
+        The angular momentum operator is:
+        \[
+            \hat{L}_z = \hat{x} \hat{p}_y - \hat{y} \hat{p}_x
+        \]
+        
+        and the Hamiltonian is:
+        \[
+            \hat{H} = \sum_{i = x, y, z} \left[ \frac{\hat{p}_i^2}{2m} + \frac{1}{2} m \omega_i^2 \hat{x}_i^2 \right]
+        \]
+
+        The hamiltonian expanded is 
+        \[
+            \hat{H} = \frac{1}{2m}\left( \hat{p}_x^2 + \hat{p}_y^2 + \hat{p}_z^2 \right) + \frac{1}{2}m\left( \omega_x^2 \hat{x}^2 + \omega_y^2 \hat{y}^2 + \omega_z^2 \hat{z}^2 \right)
+        \]
+
+        First commute the kinetic energy terms with $\hat{L}_z$
+        \begin{align*}
+            [\hat{p}_x^2, \hat{L}_z] = \hat{p}_x [\hat{p}_x, \hat{L}_z] + [\hat{p}_x, \hat{L}_z] \hat{p}_x = i \hbar (\hat{p}_x \hat{p}_y + \hat{p}_y \hat{p}_x) \\
+            [\hat{p}_y^2, \hat{L}_z] = \hat{p}_y [\hat{p}_y, \hat{L}_z] + [\hat{p}_y, \hat{L}_z] \hat{p}_y = -i \hbar (\hat{p}_y \hat{p}_x + \hat{p}_x \hat{p}_y)\\
+            [\hat{p}_z^2, \hat{L}_z] = 0
+        \end{align*}
+
+        Therefore 
+        \[
+            [\hat{p}_x^2 + \hat{p}_y^2, \hat{L}_z] = i \hbar (\hat{p}_x \hat{p}_y + \hat{p}_y \hat{p}_x) -i \hbar (\hat{p}_y \hat{p}_x + \hat{p}_x \hat{p}_y) = 0
+        \]
+
+        Therefore the kinetic terms commute with $\hat{L}_z$
+
+        Second commute the potential energy terms with $\hat{L}_z$
+        \begin{align*}
+            [\hat{x}^2, \hat{L}_z] = \hat{x} [\hat{x}, \hat{L}_z] + [\hat{x}, \hat{L}_z] \hat{x} = \hat{x} (i \hbar \hat{y}) + (i \hbar \hat{y})\hat{x} = i \hbar (\hat{x} \hat{y} + \hat{y} \hat{x})\\
+            [\hat{y}^2], \hat{L}_z] = \hat{y} [\hat{y}, \hat{L}_z] + [\hat{y}, \hat{L}_z] \hat{y} = \hat{y} (-i \hbar \hat{x}) + (-i \hbar \hat{x})\hat{y} = -i \hbar (\hat{y} \hat{x} + \hat{x} \hat{y})
+        \end{align*}
+
+        Therefore
+        \[
+            [\omega_x^2 \hat{x}^2 + \omega_y^2 \hat{y}^2, \hat{L}_z] = i \hbar (\omega_x^2 - \omega_y^2) (\hat{x} \hat{y} + \hat{y} \hat{x})
+        \]
+
+        If $\omega_x = \omega_y$ then the commutator vanishes and the wavefunctions are eigenfunctions of $\hat{L}_z$
+        If $\omega_x \neq \omega_y$ then the commutator is nonzero and the wavefunctions are $\boldsymbol{NOT}$ eigenfunctions of $\hat{L}_z$
+
+        Combine the commutators of the potential and kinetic terms to get finalized hermitian operator
+        \[
+            [\hat{H}. \hat{L}_z] = i \hbar (\omega_x^2 - \omega_y^2) m (\hat{x}\hat{y} + \hat{y}\hat{x})
+        \]
+
+    \subsection{Solution, part (b):}
+        Plug in the given case equation $\omega_x = \omega_y = \frac{2}{3} \omega_z$ into the Energy equation \ref{eq: E}, then substitute and simplify
+        \[
+            E_{n_x, n_y, n_z} = \hbar \omega \left(n_x + n_y + 1 \right) + \frac{3}{2} \hbar \omega \left(n_z + \frac{1}{2} \right)
+            = \hbar \omega \left(n_x + n_y + \frac{3}{2} n_z + \frac{7}{4} \right)
+        \]
+
+        Degeneracy is determined by how many identical states exist with difference $n$ values.
+        The lowest state will be the ground state where $n_x = n_y = n_z = 0$
+        \begin{align*}
+            \boldsymbol{\boxed{E = \frac{7}{4} \hbar \omega}} \\
+            \boldsymbol{\boxed{\text{This has a degeneracy of 1}}}
+        \end{align*}
+        
+        The next lowest state will be the first excited state where either $n_x = 1$ or $n_y=1$ while the rest equal 0
+        \begin{align*}
+            \boldsymbol{\boxed{E = \frac{11}{4} \hbar \omega}} \\
+            \boldsymbol{\boxed{\text{This has a degeneracy of 2}}}
+        \end{align*}
+            
+        The next lowest state will be the second excited state where $n_z=0$ and the rest equal 0
+        \begin{align*}
+            \boldsymbol{\boxed{E = \frac{13}{4} \hbar \omega}} \\
+            \boldsymbol{\boxed{\text{This has a degeneracy of 1}}}
+        \end{align*}
+
+\section{Textbook Question 6.7}
+    A particle of mass \( m \) moves in the potential \( V(x, y, z) = V_1(x, y) + V_2(z) \) where
+    \[
+        V_1(x, y) = \frac{1}{2} m \omega^2 \left( x^2 + y^2 \right), \quad
+        V_2(z) = 
+        \begin{cases}
+        0, & 0 \leq z \leq a, \\
+        +\infty, & \text{elsewhere}.
+        \end{cases}
+    \]
+
+    \begin{enumerate}
+        \item[(a)] Calculate the energy levels and the wave function of this particle.
+        \item[(b)] Let us now turn off \( V_2(z) \) (i.e., \( m \) is subject only to \( V_1(x, y) \)). Calculate the degeneracy \( g_n \) of the \( n \)th energy level (note that \( n = n_x + n_y \)).
+    \end{enumerate}
+
+    \subsection{Solution, part (a):}
+        The potential (and therefore the wavefunction) and the total energy are separable
+        \[
+            \Psi(x, y, z) = \psi_x(x) \psi_y(y) \psi_z(z)
+        \]
+        \[
+            \Psi(x,y,z) = \psi_{xy} (x,y) \psi_z(z)
+        \]
+        \[
+            E = E_{xy} + E_z
+        \]
+
+        Solving $\psi_xy$ for a 2D harmonic oscillator is very similar to the 3D harmonic oscillator solved in appendix \ref{sec: 3DTISE}
+        \[
+            E_{n_x,n_y}^{(xy)} = \hbar \omega (n_x + n_y + 1), \quad n_x, n_y = 0, 1, 2, \dots
+        \]
+
+        Solving $\psi_z$ would be the same as solving for a 1D infinite square well (See Appendix \ref{sec: 1DTISE} for more detail)
+        \[
+            E_{n_z}^{(z)} = \frac{\hbar^2 \pi^2 n_z^2}{2ma^2}, \quad n_z = 1, 2, 3, \dots
+        \]
+
+        Substitute back in to get total energy equation
+        \[
+            \boldsymbol{\boxed{E = \hbar \omega (n_x + n_y + 1) + \frac{\hbar^2 \pi^2 n_z^2}{2ma^2}}}
+        \]
+    
+        The wavefunction corresponding to the 2D situation can be split
+        \[
+            \psi_{xy}(x,y) = \psi_{n_z}(x) \psi_{n_y}(y)
+        \]
+
+        As detailed in appendix \ref{sec: 1DTISE} the wavefunction corresponding to the 1D situation after applying the boundary conditions is
+        \[
+            \psi(z) = A sin \left(\frac{n_z \pi}{a} z \right)
+        \]
+
+        Normalize the Wavefunction, substitute the above equation, and simplify
+        \begin{align*}
+            \int_0^a |\psi(z)|^2 dz = 1 \\
+            \int_0^a A^2 \sin^2\left( \frac{n_z \pi z}{a} \right) dz = 1
+        \end{align*}
+        \begin{equation} \label{eq: A}
+            A^2 \int_0^a \sin^2\left( \frac{n_z \pi z}{a} \right) dz = 1
+        \end{equation}
+            
+        Compute the Integral
+        \[
+            \int_0^a \sin^2\left( \frac{n_z \pi z}{a} \right) dz
+        \]
+
+        Use the trig identity:
+        \[
+            \sin^2(x) = \frac{1 - \cos(2x)}{2}
+        \]
+
+        Substitute
+        \[
+            \sin^2\left( \frac{n_z \pi z}{a} \right) = \frac{1 - \cos\left( \frac{2n_z \pi z}{a} \right)}{2}
+        \]
+        
+        Substitute
+        \[
+            \int_0^a \sin^2\left( \frac{n_z \pi z}{a} \right) dz = \frac{1}{2} \int_0^a \left( 1 - \cos\left( \frac{2n_z \pi z}{a} \right) \right) dz
+        \]
+
+        Expand:
+        \[
+            = \frac{1}{2} \left( \int_0^a dz - \int_0^a \cos\left( \frac{2n_z \pi z}{a} \right) dz \right)
+        \]
+
+        Compute the first integral
+        \[
+            \int_0^a dz = a
+        \]
+        Use u-substitution for the second integral
+        \begin{align*}
+            u = \frac{2n_z \pi}{a} z \quad \Rightarrow \quad dz = \frac{a}{2n_z \pi} du \\
+            \int \cos\left( \frac{2n_z \pi z}{a} \right) dz = \frac{a}{2n_z \pi} \sin\left( \frac{2n_z \pi z}{a} \right)\\
+            \int_0^a \cos\left( \frac{2n_z \pi z}{a} \right) dz = 0 \\
+            \int_0^a \sin^2\left( \frac{n_z \pi z}{a} \right) dz = \frac{1}{2} (a - 0) = \frac{a}{2}
+        \end{align*}
+
+        Plug back into equation \ref{eq: A} and solve for A
+        \[
+            A^2 \times \frac{a}{2} = 1 \quad \Rightarrow \quad A^2 = \frac{2}{a} \quad \Rightarrow \quad A = \sqrt{\frac{2}{a}}
+        \]
+
+        Plug the constant back in and get the wavefunction
+        \[
+        \psi_z(z) = \sqrt{\frac{2}{a}} \sin\left( \frac{n_z \pi z}{a} \right)
+        \]
+
+        Substitute back in to get the total wavefunction
+        \[
+            \Psi(x,y,z) = \psi_{n_z}(x) \psi_{n_y}(y) \cross \sqrt{\frac{2}{a}} \sin \left( \frac{n_z \pi z}{a} \right)
+        \]
+
+    \subsection{Solution, part (b):}
+        Now that $V_2(z)$ and $n=n_x +n_y$
+        \[
+            E_n = \hbar \omega (n + 1)
+        \]
+
+        Degeneracy can be determined simply by counting how many ways we can get two non-negative integers $n_x, n_y$ that add up to $n$
+        \[
+            g_n = n + 1
+        \]
+
+\section{Textbook Question 6.10}
+    An electron in a hydrogen atom is in the energy eigenstate
+    \[
+        \psi_{2,1,-1}(r, \theta, \varphi) = N r e^{-r / 2a_0} Y_{1,-1}(\theta, \varphi).
+    \]
+    
+    \begin{enumerate}
+        \item[(a)] Find the normalization constant, \( N \).
+        \item[(b)] What is the probability per unit volume of finding the electron at \( r = a_0 \), \( \theta = 45^\circ \), \( \varphi = 60^\circ \)?
+        \item[(c)] What is the probability per unit radial interval (\( dr \)) of finding the electron at \( r = 2a_0 \)?\\
+        (One must take an integral over \( \theta \) and \( \varphi \) at \( r = 2a_0 \).)
+        \item[(d)] If the measurements of \( \hat{L}^2 \) and \( \hat{L}_z \) were carried out, what will be the results?
+    \end{enumerate}
+
+
+    \subsection{Solution, part (a):}
+        The normalization condition is below (See Appendix \ref{sec: norm} for more details)
+        \[
+            \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, d\theta \int_0^\infty r^2 dr \, |\psi(r,\theta,\varphi)|^2 = 1
+        \]
+
+        Expand \( |\psi|^2 \):
+        \begin{equation} \label{eq: psi2}
+            |\psi(r,\theta,\varphi)|^2 = |N|^2 r^2 e^{-r/a_0} |Y_{1,-1}(\theta,\varphi)|^2
+        \end{equation}
+
+        Thus the integral becomes:
+        \[
+            |N|^2 \left( \int_0^\infty r^4 e^{-r/a_0} dr \right) \left( \int_0^{2\pi} d\varphi \int_0^\pi \sin\theta \, |Y_{1,-1}(\theta,\varphi)|^2 d\theta \right) = 1
+        \]
+
+        Since the spherical harmonics \( Y_{\ell m} \) are normalized:
+        \[
+            \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, |Y_{\ell m}(\theta,\varphi)|^2 \, d\theta = 1
+        \]
+
+        for any \( \ell, m \). Thus:
+        \[
+            \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, |Y_{1,-1}(\theta,\varphi)|^2 \, d\theta = 1
+        \]
+
+        We now only have:
+        \[
+            |N|^2 \int_0^\infty r^4 e^{-r/a_0} \, dr = 1
+        \]
+
+        We compute using the formula
+        \[
+            \int_0^\infty x^n e^{-\alpha x} \, dx = \frac{n!}{\alpha^{n+1}}
+        \]
+
+        with the variables
+        \begin{itemize}
+            \item \( n=4 \),
+            \item \( \alpha = \frac{1}{a_0} \).
+        \end{itemize}
+
+        Thus:
+        \[
+            \int_0^\infty r^4 e^{-r/a_0} \, dr = \frac{4!}{(1/a_0)^5} = 24 a_0^5
+        \]
+        \[
+        |N|^2 (24 a_0^5) = 1
+        \]
+        \[
+        |N|^2 = \frac{1}{24 a_0^5}
+        \]
+        \begin{equation} \label{eq: N}
+            \boldsymbol{\boxed{N = \frac{1}{\sqrt{24} a_0^{5/2}}}}
+        \end{equation}
+
+    \subsection{Solution, part (b):}
+        Using the probability equation \ref{eq: psi2}
+        \newline Known Variables/equations
+        \begin{align*}
+            r = a_0 \\
+            \theta = 45 ^{\circ} \\
+            \varphi = 60 ^{\circ} \\
+            N = \text{equation \ref{eq: N}}
+        \end{align*}
+
+        Solve equation with known variables/equations and simplify
+        \begin{align*}
+            \psi(r,\theta,\varphi)|^2 = |N|^2 r^2 e^{-r/a_0} |Y_{1,-1}(\theta,\varphi)|^2 \\
+            \psi(r,\theta,\varphi)|^2 = |N|^2 r^2 e^{-r/a_0} \frac{3}{8\pi} \frac{1}{2} \\
+            \psi(r,\theta,\varphi)|^2 = |N|^2 r^2 e^{-r/a_0} \frac{3}{16\pi} \\
+            \psi(r,\theta,\varphi)|^2 = \frac{1}{\sqrt{24} a_0^{5/2}} a_0^2 e^{-a_0/a_0} \frac{3}{16\pi} \\
+            \psi(r,\theta,\varphi)|^2 = \frac{1}{24 a_0^3} e^{-1} \frac{3}{16\pi} \\
+            \boldsymbol{\boxed{\psi(r,\theta,\varphi)|^2 = \frac{1}{128\pi a_0^3} e^{-1}}}
+        \end{align*}|
+
+    \subsection{Solution, part (c):}
+        The probability over all angles is below (See more details in section \ref{sec: norm})
+        \[
+            P(r) = r^2 |\psi(r,\theta,\varphi)|^2
+        \]
+
+        Since spherical harmonics are normalized
+        \[
+            P(r) = |N|^2 r^4 e^{-r/a_0}
+        \]
+
+        Substitute $r = 2 a_0$
+        \[
+            P(2a_0) = \left( \frac{1}{24 a_0^5} \right) (2a_0)^4 e^{-2}
+            = \frac{1}{24 a_0^5} \times 16 a_0^4 e^{-2} =
+            \boldsymbol{\boxed{ \frac{2}{3 a_0} e^{-2}}}
+        \]
+
+    \subsection{Solution, part (d):}
+
+    Given \( l = 1, m = -1 \), we have:
+    \begin{align*}
+        \hat{L}^2 \to l(l+1)\hbar^2 = \boldsymbol{\boxed{2\hbar^2}} \\
+        \hat{L}_z \to m \hbar = \boldsymbol{\boxed{-\hbar}}
+    \end{align*}
+
+\section{Textbook Question 6.13}
+    The wave function of an electron in a hydrogen atom is given by
+    \[
+        \psi_{21m_lm_s}(r, \theta, \varphi) = R_{21}(r) \left[ \frac{1}{\sqrt{3}} Y_{10}(\theta, \varphi) \ket{\tfrac{1}{2}, \tfrac{1}{2}} + \sqrt{\frac{2}{3}} Y_{11}(\theta, \varphi) \ket{\tfrac{1}{2}, -\tfrac{1}{2}} \right],
+    \]
+    where \( \ket{\tfrac{1}{2}, \pm \tfrac{1}{2}} \) are the spin state vectors.
+    
+    \begin{enumerate}
+        \item[(a)] Is this wave function an eigenfunction of \( \hat{J}_z \), the \( z \)-component of the electron’s total angular momentum? If yes, find the eigenvalue. \textit{(Hint: For this, you need to calculate \( \hat{J}_z \psi_{21m_lm_s} \).)}
+
+        \item[(b)] If you measure the \( z \)-component of the electron’s spin angular momentum, what values will you obtain? What are the corresponding probabilities?
+        
+        \item[(c)] If you measure \( \hat{J}^2 \), what values will you obtain? What are the corresponding probabilities?
+    \end{enumerate}
+    
+
+    \subsection{Solution, part (a):}
+        Define $\hat{J}_z$
+        \[
+            \hat{J}_z = \hat{L}_z + \hat{S}_z
+        \]
+
+        where:
+        \begin{itemize}
+            \item \( \hat{L}_z \) acts on the spatial part \( Y_{\ell m} \),
+            \item \( \hat{S}_z \) acts on the spin part \( \left| \frac{1}{2}, \pm \frac{1}{2} \right\rangle \).
+        \end{itemize}
+
+        Apply \( \hat{J}_z \) to the wavefunction term-by-term:
+        First term:
+        \[
+            \frac{1}{\sqrt{3}} R_{21}(r) Y_{10}(\theta, \varphi) \left| \frac{1}{2}, \frac{1}{2} \right\rangle
+        \]
+        
+        \begin{itemize}
+            \item \( \hat{L}_z Y_{10} = 0 \) (because \( m=0 \)),
+            \item \( \hat{S}_z \left| \frac{1}{2}, \frac{1}{2} \right\rangle = \left( +\frac{\hbar}{2} \right) \left| \frac{1}{2}, \frac{1}{2} \right\rangle \).
+        \end{itemize}
+        
+        Thus:
+        \[
+            \hat{J}_z \left( Y_{10} \left| \frac{1}{2}, \frac{1}{2} \right\rangle \right) = \frac{\hbar}{2} Y_{10} \left| \frac{1}{2}, \frac{1}{2} \right\rangle
+        \]
+
+        Second term:
+        \[
+            \sqrt{\frac{2}{3}} R_{21}(r) Y_{11}(\theta, \varphi) \left| \frac{1}{2}, -\frac{1}{2} \right\rangle
+        \]
+        
+        \begin{itemize}
+            \item \( \hat{L}_z Y_{11} = \hbar (1) Y_{11} \) (because \( m=1 \)),
+            \item \( \hat{S}_z \left| \frac{1}{2}, -\frac{1}{2} \right\rangle = \left( -\frac{\hbar}{2} \right) \left| \frac{1}{2}, -\frac{1}{2} \right\rangle \).
+        \end{itemize}
+        
+        Thus:
+        \[
+            \hat{J}_z \left( Y_{11} \left| \frac{1}{2}, -\frac{1}{2} \right\rangle \right)
+            = \left( \hbar - \frac{\hbar}{2} \right) Y_{11} \left| \frac{1}{2}, -\frac{1}{2} \right\rangle
+            = \frac{\hbar}{2} Y_{11} \left| \frac{1}{2}, -\frac{1}{2} \right\rangle
+        \]
+        
+        Assemble the terms
+        \[
+        \hat{J}_z \psi = \frac{\hbar}{2} \left( \psi \right)
+        \]
+
+        The wavefunction is an eigenfunction of \( \hat{J}_z \) with eigenvalue \( +\hbar/2 \).
+
+
+    \subsection{Solution, part (b):}
+
+        The wavefunction has two terms:
+        \begin{itemize}
+            \item \( \left| \frac{1}{2}, \frac{1}{2} \right\rangle \) — spin up
+            \item \( \left| \frac{1}{2}, -\frac{1}{2} \right\rangle \) — spin down
+        \end{itemize}
+
+        with coefficients:
+
+        \begin{itemize}
+            \item For spin up: \( \frac{1}{\sqrt{3}} \)
+            \item For spin down: \( \sqrt{\frac{2}{3}} \)
+        \end{itemize}
+
+        Probabilities are modulus squared of coefficients:
+        \begin{itemize}
+            \item Probability of spin \( +\hbar/2 \) = \( \left| \frac{1}{\sqrt{3}} \right|^2 = \frac{1}{3} \)
+            \item Probability of spin \( -\hbar/2 \) = \( \left| \sqrt{\frac{2}{3}} \right|^2 = \frac{2}{3} \)
+        \end{itemize}
+
+    \subsection{Solution, part (c):}
+        For total angular momentum $\hat{J}^2$ the eigenvalue is:
+        \[
+            \hbar^2 j(j+1)
+        \]
+
+        where \( j \) is the total angular momentum quantum number.
+
+        This wavefunction corresponds to \textbf{coupling} orbital angular momentum \( l=1 \) and spin \( s=\frac{1}{2} \). The possible values of \( j \) are:
+        \[
+            j = l+s, \quad l-s \quad \Rightarrow \quad j = \frac{3}{2} \quad \text{or} \quad \frac{1}{2}
+        \]
+
+        But the structure of the wavefunction shows a \textbf{specific combination} — it corresponds to \( j=\frac{1}{2} \) (this is implied because it’s a mix of \( Y_{10} \) and \( Y_{11} \) with these particular coefficients).
+        \[
+            j = \frac{1}{2}
+        \]
+        
+        Compute the eigenvalue
+        \[
+            \hat{J}^2 \psi = \hbar^2 \frac{1}{2}\left( \frac{1}{2} + 1 \right) \psi = \hbar^2 \frac{3}{4} \psi
+        \]
+
+        Thus eigenvalue is
+        \[
+            \boxed{ \frac{3}{4} \hbar^2 }
+        \]
+
+
+\section{Textbook Question 6.18}
+    Consider a proton that is trapped inside an infinite central potential well
+    \[
+        V(r) = 
+        \begin{cases}
+        -V_0, & 0 < r < a, \\
+        +\infty, & r \geq a,
+        \end{cases}
+    \]
+    where \( V_0 = 5104.34 \) MeV and \( a = 10 \) fm.
+    
+    \begin{enumerate}
+        \item[(a)] Find the energy and the (normalized) radial wave function of this particle for the s states (i.e., \( l = 0 \)).
+        
+        \item[(b)] Find the number of bound states that have energies lower than zero; you may use the values \( mc^2 = 938 \) MeV and \( \hbar c = 197 \) MeV·fm.
+        
+        \item[(c)] Calculate the energies of the levels that lie just below and just above the zero-energy level; express your answer in MeV.
+    \end{enumerate}
+
+
+    \subsection{Solution, part (a):}
+        The full radial Schrödinger equation for any l is
+        \[
+            -\frac{\hbar^2}{2m} \left( \frac{d^2 u}{dr^2} - \frac{l(l+1)}{r^2} u(r) \right) + V(r) u(r) = E u(r)
+        \]
+
+        where:
+        \begin{itemize}
+            \item \( u(r) = r R(r) \),
+            \item \( R(r) \) is the radial wavefunction,
+            \item \( V(r) \) is the potential.
+        \end{itemize}
+
+        Notice the following equation is the is the "centrifugal barrier" term.
+        \[
+            \frac{l(l+1)}{r^2} u(r)
+        \]
+
+        For this special case: \( l=0 \), considered the "s-wave" states
+        \[
+            l(l+1) = 0
+        \]
+    
+        Thus:
+        \[
+            \frac{l(l+1)}{r^2} = 0
+        \]
+
+        Thus the radial equation simplifies to:
+        \[
+        -\frac{\hbar^2}{2m} \frac{d^2 u}{dr^2} + V(r) u(r) = E u(r)
+        \]
+
+        Use boundary conditions to isolate inside the well \( (0 < r < a) \)
+        \[
+            -\frac{\hbar^2}{2m} \frac{d^2 u(r)}{dr^2} - V_0 u(r) = E u(r) 
+            \quad \Rightarrow \quad 
+            \frac{d^2 u(r)}{dr^2} = -k^2 u(r)
+        \]
+
+        where:
+        \[
+            k^2 = \frac{2m (E + V_0)}{\hbar^2}
+        \]
+
+        The general solution (See appendix \ref{sec: 1DTISE} for similar case)
+        \[
+            u(r) = A \sin(kr)
+        \]
+
+        \( u(0) = 0 \) must vanish at \( r=0 \) for regularity, therefore:
+        \[
+            R(r) = \frac{u(r)}{r} = \frac{A \sin(kr)}{r}
+        \]
+
+        Since \( V = +\infty \) at \( r \geq a \), the wavefunction must vanish:
+        \[
+            u(a) = 0 \quad \Rightarrow \quad \sin(ka) = 0 \quad \Rightarrow \quad ka = n\pi \quad \text{for} \quad n=1,2,3,\dots
+        \]
+
+        Thus:
+        \[
+            k_n = \frac{n\pi}{a}
+        \]
+
+        Recall the previously determined equation
+        \[
+            k_n^2 = \frac{2m (E_n + V_0)}{\hbar^2}
+        \]
+
+        Isolate energy:
+        \[
+            E_n = \frac{\hbar^2 k_n^2}{2m} - V_0
+        \]
+
+        Substitute \( k_n = \frac{n\pi}{a} \):
+        \[
+            E_n = \frac{\hbar^2}{2m} \left( \frac{n\pi}{a} \right)^2 - V_0
+        \]
+
+        Normalize the wavefunction
+        \[
+            \int_0^a |R(r)|^2 r^2 dr = 1
+        \]
+
+        Substitute $R(r) = \frac{A \sin(k_n r)}{r}$:
+        \[
+            |R(r)|^2 r^2 = A^2 \sin^2(k_n r)
+        \]
+
+        Substitute
+        \[
+            A^2 \int_0^a \sin^2\left( \frac{n\pi r}{a} \right) dr = 1
+        \]
+
+        Use:
+        \[
+            \int_0^a \sin^2\left( \frac{n\pi r}{a} \right) dr = \frac{a}{2} \quad \text{(standard result)}
+        \]
+
+        Thus:
+        \[
+            A^2 \frac{a}{2} = 1 \quad \Rightarrow \quad A = \sqrt{\frac{2}{a}}
+        \]
+
+        Thus the normalized radial wavefunction is:
+        \[
+            \boxed{R_n(r) = \sqrt{\frac{2}{a}} \frac{\sin\left( \frac{n\pi r}{a} \right)}{r}}
+            \quad \text{for} \quad 0 < r < a
+        \]
+
+    \subsection{Solution, part (b):}
+        A bound state must have is defined using the following equations
+        \[
+            E_n < 0 \quad \Rightarrow \quad \frac{\hbar^2}{2m} \left( \frac{n\pi}{a} \right)^2 < V_0
+        \]
+
+        Isolate \( n \)
+        \[
+        n^2 < \frac{2m a^2 V_0}{\hbar^2 \pi^2}
+        \]
+
+        Values given:
+        \begin{itemize}
+            \item \( m c^2 = 938 \, \text{MeV} \)
+            \item \( \hbar c = 197 \, \text{MeV} \cdot \text{fm} \)
+            \item \( a = 10 \, \text{fm} \)
+            \item \( V_0 = 5104.34 \, \text{MeV} \)
+        \end{itemize}
+
+        Substitute given values
+        \[
+            n^2 < \frac{2m a^2 V_0}{\hbar^2 \pi^2} = \frac{2 \times 938 \times 10^2 \times 5104.34}{(197)^2 \pi^2} \approx 2501
+        \]
+        \[
+            n \approx 50
+        \]
+
+    \subsection{Solution, part (c):}
+        For the highest
+        \[
+            n = 50
+        \]
+
+        Use the same formula as before:
+        \[
+        E_n = \frac{\hbar^2}{2m} \left( \frac{n\pi}{a} \right)^2 - V_0
+        \]
+        \[
+            k_{n} = \frac{n \pi}{a}
+        \]
+
+        Substitute value
+        \[
+            k_{50}^2 = \left( \frac{50\pi}{10} \right)^2 = (5\pi)^2 = 25\pi^2 \approx 25 \times 9.8706 \approx 246.76
+        \]
+        \[
+            \frac{\hbar^2 k_{50}^2}{2m} = 20.67 \times 246.76 \approx 5104.34 \, \text{MeV}
+        \]
+        \[
+            E_{50} = 5104.34 - 5104.34 \approx 0
+        \]
+
+\section{Textbook Question 6.22}
+    Calculate \( \Delta r \, \Delta p_r \) with respect to the state
+    \[
+        \psi_{2,1,0}(\vec{r}) = \frac{1}{\sqrt{6}} \left( \frac{1}{a_0} \right)^{3/2} \frac{r}{2a_0} e^{-r / 2a_0} Y_{1,0}(\theta, \varphi),
+    \]
+    and verify that \( \Delta r \, \Delta p_r \) satisfies the Heisenberg uncertainty principle.
+
+    \subsection{Solution:}
+        We use the definition of $\Delta$
+        \[
+            \Delta r = \sqrt{ \langle r^2 \rangle - \langle r \rangle^2 }
+        \]
+        \[
+            \Delta p_r = \sqrt{ \langle p_r^2 \rangle - \langle p_r \rangle^2 }
+        \]
+
+        Since the wavefunction is spherically symmetric in the radial part depends only on \( r \), we can focus first on radial integrals.
+
+        The general definition of an expectation value is:
+        \[
+            \langle f(\vec{r}) \rangle = \int_{\text{all space}} \psi^*(\vec{r}) f(\vec{r}) \psi(\vec{r}) \, dV
+        \]
+
+        where:
+        \begin{itemize}
+            \item \( \psi(\vec{r}) \) is the full wavefunction,
+            \item \( f(\vec{r}) \) is the operator or function you want the expectation value of,
+            \item \( dV \) is the volume element.
+        \end{itemize}
+
+        Since we're working with hydrogen-like atoms (or spherically symmetric problems), we use spherical coordinates:
+        \begin{itemize}
+            \item \( \vec{r} = (r, \theta, \varphi) \),
+            \item Volume element:
+            \[
+                dV = r^2 \sin\theta \, dr \, d\theta \, d\varphi
+            \]
+        \end{itemize}
+
+        In spherical coordinates, the wavefunction separates:
+        \[
+            \psi(\vec{r}) = R(r) Y_{\ell m}(\theta, \varphi)
+        \]
+
+        where:
+        \begin{itemize}
+            \item \( R(r) \) = radial part,
+            \item \( Y_{\ell m}(\theta, \varphi) \) = angular part (spherical harmonics).
+        \end{itemize}
+
+        Thus:
+        \[
+            |\psi(\vec{r})|^2 = |R(r)|^2 |Y_{\ell m}(\theta, \varphi)|^2
+        \]
+
+        We set \( f(\vec{r}) = r^n \) and compute \( \langle r^n \rangle \)
+        \[
+            \langle r^n \rangle = \int |\psi(\vec{r})|^2 r^n \, dV
+        \]
+
+        Substitute
+        \[
+            = \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, d\theta \int_0^\infty dr \, r^2 \left( |R(r)|^2 |Y_{\ell m}(\theta, \varphi)|^2 \right) r^n
+        \]
+
+        Group like terms:
+        \[
+            = \left( \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, d\theta \, |Y_{\ell m}(\theta, \varphi)|^2 \right)
+            \left( \int_0^\infty dr \, r^2 r^n |R(r)|^2 \right)
+        \]
+
+        because spherical harmonics are orthonormal the angular part $\int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, d\theta \, |Y_{\ell m}(\theta, \varphi)|^2$ can be removed
+        \[
+            \langle r^n \rangle = \int_0^\infty r^2 dr \, r^n |R(r)|^2
+        \]
+
+        From the given wavefunction:
+        \[
+            R(r) = \frac{1}{\sqrt{6}} \left( \frac{1}{a_0} \right)^{3/2} \frac{r}{2a_0} e^{-r/2a_0}
+        \]
+
+        Thus:
+        \[
+            |R(r)|^2 = \frac{1}{6} \left( \frac{1}{a_0} \right)^3 \left( \frac{r}{2a_0} \right)^2 e^{-r/a_0}
+            = \frac{1}{24} \left( \frac{1}{a_0} \right)^5 r^2 e^{-r/a_0}
+        \]
+
+        Thus:
+        \[
+        \langle r^n \rangle = \frac{1}{24 a_0^5} \int_0^\infty r^{n+4} e^{-r/a_0} dr
+        \]
+        
+        Use a tabulated standard integral formula
+        \[
+            \int_0^\infty x^k e^{-\alpha x} dx = \frac{k!}{\alpha^{k+1}}
+        \]
+
+        where:
+        \[
+            \alpha = \frac{1}{a_0}
+        \]
+
+        Thus:
+        \[
+        \int_0^\infty r^{n+4} e^{-r/a_0} dr = (n+4)! \, a_0^{n+5}
+        \]
+
+        Using the above formulation compute the sub components of the $\Delta$ equations
+        \begin{align*}
+            \langle r \rangle = \frac{1}{24 a_0^5} (5!) a_0^6 = \frac{120}{24} a_0 = 5 a_0 \\
+            \langle r^2 \rangle = \frac{1}{24 a_0^5} (6!) a_0^7 = \frac{720}{24} a_0^2 = 30 a_0^2 \\
+            \Delta r = \sqrt{ \langle r^2 \rangle - \langle r \rangle^2 } = \sqrt{ 30a_0^2 - (5a_0)^2 } = \sqrt{ 30a_0^2 - 25a_0^2 } = \sqrt{5a_0^2} = \sqrt{5} a_0
+        \end{align*}
+        
+        For momentum we use the known relation for hydrogen-like wavefunctions (\( l=1, n=2 \)). The expectation value of \( p_r^2 \) is:
+        \[
+            \langle p_r^2 \rangle = \left( \frac{\hbar}{a_0} \right)^2 \times \left( \text{some factor depending on } n, l \right)
+        \]
+
+        But for spherically symmetric hydrogen wavefunctions at \( n=2 \), \( l=1 \), the known result is derived from the virial theorem:
+        \[
+            \langle p_r^2 \rangle = 2m \langle T \rangle
+        \]
+
+        Substitute the known values
+        \begin{align*}
+            E = -3.4\, \text{eV} \\
+            \langle T \rangle = +3.4\, \text{eV} \\
+            m_e = 511 \times 10^3\, \text{eV}/c^2
+        \end{align*}
+        \[
+        \langle p_r^2 \rangle = 3.4768 \times 10^6\, \text{eV}^2 / c^2
+        \]
+
+        Thus:
+        \[
+            \Delta p_r = \sqrt{3.4768 \times 10^6}\, \text{eV}/c \approx 1864\, \text{eV}/c
+        \]
+
+        Compute the heisenberg relation
+        \[
+            \Delta r \Delta p_r = (\sqrt{5} a_0)(1864 \frac{\text{eV}}{\text{c}}) = (\sqrt{5})(1864 \frac{\text{eV}}{\text{c}}) (0.529 \times 10^{-10}\, \text{m} \frac{1}{197 \times 10^{-15}\, \text{m/MeV}}) \approx 11.1
+        \]
+
+        We know:
+        \[
+            \hbar \approx 1\, \text{MeV} \cdot \text{fm}
+        \]
+        
+        Thus:
+        \[
+            \Delta r \Delta p_r \gg \frac{\hbar}{2}
+        \]
+
+\section{Appendix}
+    \subsection{3D Solving Time-Independent Schrodinger equation using Power Series} \label{sec: 3DTISE}
+        We start with the time independent Shcrodinger equation
+        The time-independent Schrödinger equation is:
+        \[
+            -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}\psi(x) + \frac{1}{2}m\omega^2 x^2 \psi(x) = E \psi(x)
+        \]
+
+        Let's rearrange:
+        \[
+            \frac{d^2}{dx^2}\psi(x) = \frac{2m}{\hbar^2} \left( m\omega^2 x^2 - 2E \right) \psi(x)
+        \]
+
+        Make it dimensionless using a dimensionless variables ($\xi$) and ($\lambda$)
+        \[
+            \xi = \sqrt{\frac{m\omega}{\hbar}}x
+        \]
+        \[
+            \lambda = \frac{2E}{\hbar \omega}
+        \]
+        
+        Plug in dimensionless variable
+        \[
+            \frac{d}{dx} = \sqrt{\frac{m\omega}{\hbar}} \frac{d}{d\xi}, \quad \frac{d^2}{dx^2} = \frac{m\omega}{\hbar} \frac{d^2}{d\xi^2}
+        \]
+        \[
+            \frac{m\omega}{\hbar} \frac{d^2}{d\xi^2} \psi(\xi) = \frac{2m}{\hbar^2}\left( m\omega^2 \frac{\hbar}{m\omega} \xi^2 - 2E \right) \psi(\xi)
+        \]
+
+        Simplify:
+        \[
+            \frac{d^2}{d\xi^2} \psi(\xi) = \left( \xi^2 - \frac{2E}{\hbar \omega} \right) \psi(\xi)
+        \]
+
+        Plug in $\lambda$ to get the dimensionless form of the Schrodinger equation
+        \begin{equation} \label{eq: ds}
+            \frac{d^2 \psi}{d\xi^2} = \left( \xi^2 - \lambda \right) \psi 
+        \end{equation}
+            
+        Next we will analyze behavior for large \( \xi \). When \( \xi \) is large, \( \xi^2 \) dominates over \( \lambda \), so approximately:
+        \[
+            \frac{d^2 \psi}{d\xi^2} \approx \xi^2 \psi
+        \]
+
+        Thus, \( \psi(\xi) \) behaves like \( e^{-\xi^2/2} \). Thus, we factor:
+        \[
+            \psi(\xi) = e^{-\xi^2/2} h(\xi)
+        \]
+
+        where \( h(\xi) \) is a new unknown function.
+
+        Compute derivatives
+        \[
+            \frac{d\psi}{d\xi} = e^{-\xi^2/2} \left( \frac{dh}{d\xi} - \xi h \right)
+        \]
+        \[
+            \frac{d^2\psi}{d\xi^2} = e^{-\xi^2/2} \left( \frac{d^2 h}{d\xi^2} - 2\xi \frac{dh}{d\xi} + (\xi^2 - 1)h \right)
+        \]
+
+        Substituting into the Schrödinger equation (reference \ref{eq: ds}
+        \[
+            e^{-\xi^2/2} \left( \frac{d^2 h}{d\xi^2} - 2\xi \frac{dh}{d\xi} + (\xi^2 - 1)h \right) = (\xi^2 - \lambda) e^{-\xi^2/2} h
+        \]
+
+        Simply by canceling \( e^{-\xi^2/2} \) on both sides:
+        \[
+            \frac{d^2 h}{d\xi^2} - 2\xi \frac{dh}{d\xi} + (\lambda - 1)h = 0
+        \]
+
+        Assume standard power series equation
+        \begin{equation} \label{eq: ps}
+            h(\xi) = \sum_{k=0}^{\infty} a_k \xi^k \quad \text{(power series)}    
+        \end{equation}
+
+        Compute derivatives
+        \[
+            \frac{dh}{d\xi} = \sum_{k=1}^{\infty} k a_k \xi^{k-1}
+        \]
+        \[
+            \frac{d^2h}{d\xi^2} = \sum_{k=2}^{\infty} k(k-1) a_k \xi^{k-2}
+        \]
+
+        Substituting into the differential equation (reference \ref{eq: ps}:
+        \[
+            \sum_{k=2}^{\infty} k(k-1) a_k \xi^{k-2} - 2\xi \sum_{k=1}^{\infty} k a_k \xi^{k-1} + (\lambda-1) \sum_{k=0}^{\infty} a_k \xi^k = 0
+        \]
+
+        Expand
+        \[
+            -2\xi \sum_{k=1}^{\infty} k a_k \xi^{k-1} = -2 \sum_{k=1}^{\infty} k a_k \xi^k
+        \]
+
+        Shift sums to have the same power:
+
+        \[
+            \sum_{k=0}^{\infty} (k+2)(k+1) a_{k+2} \xi^k
+        \]
+        \[
+            -2 \sum_{k=0}^{\infty} (k+1) a_{k+1} \xi^k
+        \]
+        \[
+            (\lambda-1) \sum_{k=0}^{\infty} a_k \xi^k
+        \]
+
+        Therefore
+        \[
+            \sum_{k=0}^{\infty} \left( (k+2)(k+1)a_{k+2} - 2(k+1)a_{k+1} + (\lambda-1)a_k \right) \xi^k = 0
+        \]
+
+        Remove coefficients
+        \[
+            (k+2)(k+1)a_{k+2} - 2(k+1)a_{k+1} + (\lambda-1)a_k = 0 \quad \text{for all } k \geq 0
+        \]
+        
+        To find the recursion relation we must solve for \( a_{k+2} \):
+        \[
+            a_{k+2} = \frac{2(k+1)a_{k+1} - (\lambda-1)a_k}{(k+2)(k+1)}
+        \]
+
+        In order to avoid infinities we must terminate the series by normalizing the wavefunction
+        \[
+            \lambda = 2n + 1 \quad \text{for} \quad n = 0, 1, 2, \dots
+        \]
+        \[
+            E_n = \hbar\omega \left( n + \frac{1}{2} \right)
+        \]
+        
+        Therefore \( h(\xi) \) becomes a **Hermite polynomial** \( H_n(\xi) \)!
+        \[
+        \boldsymbol{\boxed{\psi_n(\xi) = e^{-\xi^2/2} H_n(\xi)\quad 
+        \text{with} \quad
+        E_n = \hbar\omega\left( n + \frac{1}{2} \right)}}
+        \]
+
+    \subsection{1D Solving Time-Independent Schrodinger equation (Infinite Well)} \label{sec: 1DTISE}
+        We start with the time-independent Schrödinger equation for a 1 dimensional infinite well
+        \[
+            -\frac{\hbar^2}{2m} \frac{d^2 \psi(z)}{dz^2} = E \psi(z) \quad \text{for} \quad 0 \leq z \leq a
+        \]
+
+        The infinite well provides boundary conditions:
+        \[
+            \psi(0) = 0, \quad \psi(a) = 0
+        \]
+ 
+        The wavefunction must vanish at the walls because the potential is infinite outside.)
+        \newline 
+        Rearranging the Schrödinger equation
+        \[
+            \frac{d^2 \psi(z)}{dz^2} + \frac{2mE}{\hbar^2} \psi(z) = 0
+        \]
+
+        Define dimensionless variable
+        \begin{equation} \label{eq: k}
+            k^2 = \frac{2mE}{\hbar^2}
+            \quad \text{so that} \quad
+            \frac{d^2 \psi}{dz^2} + k^2 \psi = 0
+        \end{equation}
+
+        Assume the general solution to this equation is
+        \[
+            \psi(z) = A \sin(kz) + B \cos(kz)
+        \]
+        
+        Apply boundary conditions ($z=0$)
+        \[
+            \psi(0) = A \sin(0) + B \cos(0) = B = 0
+        \]
+
+        Therefore
+        \[
+            \psi(z) = A \sin(kz)
+        \]
+
+        Apply boundary conditions ($z=a$)
+        \[
+            \psi(a) = A \sin(ka) = 0
+        \]
+
+        We don't want \( A=0 \) (or else \(\psi=0\) everywhere, a trivial solution), so we assign:
+        \[
+            \sin(ka) = 0
+        \]
+
+        Therefore
+        \[
+            ka = n_z \pi \quad \text{for} \quad n_z = 1, 2, 3, \dots
+        \]
+        \[
+            k = \frac{n_z \pi}{a}
+        \]
+
+        Rearrange equation \ref{eq: k} to isolate $E$
+        \[
+            k^2 = \frac{2mE}{\hbar^2}
+            \quad \Rightarrow \quad
+            E = \frac{\hbar^2 k^2}{2m}
+        \]
+
+        Substitute $k$ from boundary conditions
+        \[
+            k = \frac{n_z \pi}{a}
+        \]
+
+        Therefore
+        \[
+            E_z = \frac{\hbar^2}{2m} \left( \frac{n_z \pi}{a} \right)^2 = \frac{n_z^2 \pi^2 \hbar^2}{2m a^2}
+        \]
+
+    \subsection{General Normalization rule} \label{sec: norm}
+        In quantum mechanics, the total probability of finding the particle somewhere in all space must equal 1. This means:
+        \[
+            \int_{\text{all space}} |\psi(\vec{r})|^2 dV = 1
+        \]
+
+        where:
+        \begin{itemize}
+            \item \( \psi(\vec{r}) \) is the wavefunction,
+            \item \( dV \) is a volume element.
+        \end{itemize}
+
+        In spherical coordinates \((r, \theta, \varphi)\), the tiny volume element is:
+        \[
+            dV = r^2 \sin\theta \, dr \, d\theta \, d\varphi
+        \]
+
+        where:
+        \begin{itemize}
+            \item \( r \) = radial distance,
+            \item \( \theta \) = polar angle (from \( 0 \) to \( \pi \)),
+            \item \( \varphi \) = azimuthal angle (from \( 0 \) to \( 2\pi \)).
+        \end{itemize}
+
+        Thus:
+        \[
+            dV = r^2 \sin\theta \, dr \, d\theta \, d\varphi
+        \]
+
+        Substituting \( dV \) into the general normalization rule:
+        \[
+            \int |\psi(r,\theta,\varphi)|^2 r^2 \sin\theta \, dr \, d\theta \, d\varphi = 1
+        \]
+
+        or, explicitly:
+        \[
+            \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta \, d\theta \int_0^\infty r^2 dr \, |\psi(r,\theta,\varphi)|^2 = 1
+        \]
+
+
+
+    
+\end{document}
