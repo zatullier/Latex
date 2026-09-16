@@ -1,0 +1,539 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{ElectroHW2.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Electrodynamics HW 2}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+
+\maketitle
+
+
+\section{Textbook Question 2.2} \label{section1}
+    \underline{Question : }
+    \newline Using the method of images, discuss the problem of a point charge q inside a hollow grounded, conducting sphere of inner radius a. Find
+    \begin{enumerate}
+        \item [a)] The potential inside the sphere
+        \item [b)] The induced surface-charge density
+        \item [c)] The magnitude and direction of the force acting on q
+        \item [d)] Is there any change in the solution if the sphere is kept at a fixed potential V? If the sphere has a total charge Q on its inner and outer surfaces
+    \end{enumerate}
+
+    %\newpage
+    \underline{Question 2.2, Section a) Answer: }
+    \newline 
+    \newline First we will determine the electric potential of a point charge ($q$) in the presence of a grounded sphere, like what was done in the lecture notes
+    \newline We consider a grounded sphere of radius $a$ having zero potential at the surface ($\Phi(x=a)=0$)
+    \newline In this case we can sketch the field lines of the sphere and point, seeing that they look like the fields created by two charges and no surfaces. This is rationale that the method of imaging will work. 
+    \newline We place the image charge $q'$ inside the sphere
+    \newline The electric potential due to the two charges using Coulomb's law is:
+    \begin{equation} \label{eq: 1.1.1}
+        \Phi(x) = \frac{1}{4 \pi \epsilon_0} \frac{q}{\abs{\vec{x}-\vec{y}}} + \frac{1}{4 \pi \epsilon_0} \frac{q'}{\abs{\vec{x} - \vec{y'}}}
+    \end{equation}
+    Due to the chosen symmetry of the image charge, $\vec{y}$ and $\vec{y'}$ point in the same direction; therefore, $\vec{y'} = y' \hat{y}$. 
+    \newline Substitute using vector property $\vec{y} = y \hat{y}$ and $\vec{x} = x \hat{x}$ where $\hat{x}$ and $\hat{y}$ represent the directional components of the vector and $x$ and $y$ represent the magnitudes
+    \begin{equation} \label{eq: 1.1.2}
+        \Phi(x) = \frac{1}{4 \pi \epsilon_0} \frac{q}{\abs{x \hat{x}-y \hat{y}}} + \frac{1}{4 \pi \epsilon_0} \frac{q'}{\abs{x \hat{x} - y' \hat{y}}}
+    \end{equation}
+    Apply Boundary Condition $x=a$
+    \begin{equation} \label{eq: 1.1.3}
+        \Phi(a) = 0 = \frac{1}{4 \pi \epsilon_0} \frac{q}{\abs{a \hat{x}-y \hat{y}}} + \frac{1}{4 \pi \epsilon_0} \frac{q'}{\abs{a \hat{x} - y' \hat{y}}}
+    \end{equation}
+    Simplify
+    \begin{equation} \label{eq: 1.1.4}
+        -\frac{q}{\abs{a \hat{x}-y \hat{y}}} = \frac{q'}{\abs{a \hat{x} - y' \hat{y}}}
+    \end{equation}
+    The previous equation is true for all $\hat{x}$ so we can chose $\hat{x}$ that simplifies the problem 
+    \newline First, lets chose the $\hat{x}$ and $\hat{y}$ to be in the same direction, i.e. $\hat{x} = \hat{y}$
+    \begin{equation} \label{eq: 1.1.5}
+        -\frac{q}{\abs{a \hat{y}-y \hat{y}}} = \frac{q'}{\abs{a \hat{y} - y' \hat{y}}}
+    \end{equation}
+    Simplify
+    % \newline \textcolor{red}{Why does $\abs{a \hat{y} - y \hat{y}} = y - a$ but $\abs{a \hat{y} - y \hat{y'}} = a - y$? Make that make sense}
+    \begin{equation} \label{eq: 1.1.6}
+        -\frac{q}{y - a} = \frac{q'}{a - y'}
+    \end{equation}   
+    Now we chose $\hat{x}$ to be perpendicular to $\hat{y}$ using property
+    \begin{gather*}
+        \abs{\vec{r_1} - \vec{r_2}} = \sqrt{r_1^2 + r_2^2 - 2 \vec{r_1} \cdot \vec{r_2}}
+    \end{gather*}
+    And property
+    \begin{gather*}
+        \vec{r_1} \cdot \vec{r_2} = r_1 r_2 \hat{r_1} \cdot \hat{r_2}
+    \end{gather*}
+    \begin{equation} \label{eq: 1.1.7}
+        -\frac{q}{\sqrt{a^2 + y^2 - 2 a y \hat{x} \cdot \hat{y}}} = \frac{q'}{\sqrt{a^2 + {y'}^2 - 2 a y' \hat{x} \cdot \hat{y}}}
+    \end{equation}
+    Simplify
+%    \newline \textcolor{red}{Do inbetween work}
+    \begin{equation} \label{eq: 1.1.8}
+        -\frac{q}{\sqrt{a^2 + y^2}} = \frac{q'}{\sqrt{a^2 + {y'}^2}}
+    \end{equation}
+    Isolate $q'$ in equation \ref{eq: 1.1.6}
+    \begin{equation} \label{eq: 1.1.9}
+        q' = \frac{q (y' - a)}{y - a}
+    \end{equation}
+    Substitute equation \ref{eq: 1.1.9} into equation \ref{eq: 1.1.8}
+    \begin{equation} \label{eq: 1.1.10}
+        -\frac{q}{\sqrt{a^2 + y^2}} = \frac{\frac{q (y' - a)}{y - a}}{\sqrt{a^2 + {y'}^2}}
+    \end{equation}
+    Get into quadratic form
+%    \newline \textcolor{red}{Do inbetween work}
+    \begin{equation} \label{eq: 1.1.11}
+        {y'}^2 + \frac{a^2 + y^2}{-y} y' + a^2 = 0
+    \end{equation}
+    Solve quadratic equation for $y'$
+    \begin{equation} \label{eq: 1.1.12}
+        y' = \frac{a^2}{y}
+    \end{equation}
+    Substitute equation \ref{eq: 1.1.12} into equation \ref{eq: 1.1.9}
+    \begin{equation} \label{eq: 1.1.13}
+        q' = \frac{q ((\frac{a^2}{y}) - a)}{y-a}
+    \end{equation}
+    Simplify
+%    \newline \textcolor{red}{Do inbetween work}
+    \begin{equation} \label{eq: 1.1.14}
+        q' = -\frac{a}{y} q
+    \end{equation}
+    Substitute equation \ref{eq: 1.1.14} and \ref{eq: 1.1.12} into \ref{eq: 1.1.1}
+    \begin{equation} \label{1.1.15}
+        \Phi(x) = \frac{1}{4 \pi \epsilon_0} \frac{q}{\abs{\vec{x}-\vec{y}}} + \frac{1}{4 \pi \epsilon_0} \frac{-\frac{a}{y} q}{\abs{\vec{x} - \vec{\frac{a^2}{y}}}}
+    \end{equation}
+    Simplify
+%    \newline \textcolor{red}{Do inbetween work}
+    \begin{equation} \label{eq: 1.1.16}
+        \Phi(x) = \frac{q}{4 \pi \epsilon_0} \left(\frac{1}{\abs{\vec{x}-\vec{y}}} - \frac{1}{\abs{\frac{y}{a} \vec{x} - \frac{a}{y} \vec{y}}} \right)
+    \end{equation}
+
+    The potential equation does not distinguish which charge is real and which is an image because they are symmetrical; therefore, this equation works for both cases.
+
+    %\newpage
+    \underline{Question 2.2, Section b) Answer: }
+    \newline To find the induced surface charge density we will begin by determining an equation for this specific geometry.
+    \newline Take Gauss's Law in integral form
+    \begin{equation} \label{eq: 1.2.1}
+        \oint_S \vec{E} \cdot n da = \frac{\int_V \rho_q(x) d^3 x}{\epsilon_0}
+    \end{equation}
+    Take this integral in the form of a charged sheet
+    \begin{equation} \label{eq: 1.2.2}
+        \oint_S \vec{E} \cdot n da = \frac{\int_V \rho_sigma(x) d^3 x}{\epsilon_0}
+    \end{equation}
+    With out definition of $\rho_sigma$ in terms of Dirac Delta function
+    \begin{equation} \label{eq: 1.2.3}
+        \oint_S \vec{E} \cdot n da = \frac{\int_V \sigma \delta (n'-n'_0) d^3 x}{\epsilon_0}
+    \end{equation}
+    where $n'$ is the position vector normal to the surface and $n'_0$ is the location on that vector that meets the surface. 
+    \newline The top, bottom and "thickness" are considered. The "thickness" cancels itself out because it is a loop parallel to the electric fields. The volume chosen is small enough that the surfaces are considered flat; therefore, $n=n^{'}$ on the top tide and $n=n'$ on the bottom. 
+    \begin{equation} \label{eq: 1.2.4}
+        \oint_S \vec{E_2} \cdot n' d^2 x - \oint_S \vec{E_1} \cdot n' d^2x= \frac{\int_V \sigma \delta (n'-n'_0) d^3 x}{\epsilon_0}
+    \end{equation}
+%    \textcolor{red}{How did $da$ become $d^2 x$}
+    \newline If the area is chosen small enough then the sheet would not experience different electric fields in different locations
+    \begin{equation} \label{eq: 1.2.5}
+        \vec{E_2} \cdot n' \oint_S d^2x - \vec{E_1} \cdot n' \oint_S d^2x = \frac{\int_V \sigma \delta (n'-n'_0) d^3 x}{\epsilon_0}
+    \end{equation}
+    The surface charge density ($\sigma$) is "distributed" so it can be taken out of integral
+    \begin{equation} \label{eq: 1.2.6}
+        \vec{E_2} \cdot n' \oint_S d^2x - \vec{E_1} \cdot n' \oint_S d^2x = \frac{\sigma}{\epsilon_0} \int_V \delta (n'-n'_0) d^3x
+    \end{equation}
+%    \textcolor{red}{IDK why this next part is, but it is the "common variable" method in math where you can just get rid of stuff. Maybe its by turning the volumetric integral into a point integral. Also, how do $\oint_S$ and $\int_V$ compare in this situation}
+    \begin{equation} \label{eq: 1.2.7}
+        \vec{E_2} \cdot n' \oint_S d^2x - \vec{E_1} \cdot n' \oint_S d^2x = \frac{\sigma}{\epsilon_0} \int_S d^2x \int_V \delta (n'-n'_0) d^x
+    \end{equation}
+    Get ride of all $\int_S d^2x$
+    \begin{equation} \label{eq: 1.2.8}
+        \vec{E_2} \cdot n' - \vec{E_1} \cdot n' = \frac{\sigma}{\epsilon_0} \int_V \delta (n'-n'_0) d^x
+    \end{equation}
+    Take integral, but $n' = n'_0$
+    \begin{equation} \label{eq: 1.2.9}        
+        (\vec{E_2} - \vec{E_1}) \cdot n^{'} = \frac{\sigma}{\epsilon_0}
+    \end{equation}
+    Using the solution for the potential from equation \ref{eq: 1.1.1}, but including the new conducting sphere factor
+%    \newline \textcolor{red}{Do inbetween from last section for new factor}
+    \begin{equation} \label{10-10-1}
+        \Phi(x) = \frac{1}{4 \pi \epsilon_0} \left(\frac{q}{\abs{\vec{x}-\vec{y}}} - \frac{q}{\abs{\frac{y}{a} \vec{x} - \frac{a}{y} \vec{y}}} + \frac{Q + q\frac{a}{y}}{\abs{\vec{x}}} \right)
+    \end{equation}
+    Convert to Spherical Coordinates and take out common factors ($q$)
+    \begin{equation} \label{10-10-2}
+        \Phi(r) = \frac{q}{4 \pi \epsilon_0} \left(\frac{1}{\sqrt{r^2 + y^2 - 2 r y cos(\theta)}} - \frac{1}{\sqrt{\frac{y^2}{a^2} r^2 - 2 r y cos(\theta)}} + \frac{\frac{Q}{a} + \frac{a}{y}}{r} \right)
+    \end{equation}
+    Use defining distribution equation and solve
+%    \textcolor{red}{Do inbetween}
+%    \textcolor{red}{In the notes there is a derivation that explains the formulation of the "Sigma definition" equation. Here, we simply used that equation}
+    \begin{equation} \label{eq: 10-10-3}
+        \sigma = -\frac{q}{4 \pi a^2} \left(\frac{a}{y} \right) \frac{1-\frac{a^2}{y^2}}{(1+\frac{a^2}{y^2}-2\frac{a}{y}cos(\theta))^{\frac{3}{2}}} + \frac{1}{4 \pi a^2} \left(Q + \frac{a}{y}q \right)
+    \end{equation}
+
+    The surface density evaluated above is the same value as the surface density when the real point charge is within the surface, except the normal is pointing in the opposite direction; therefore we must add a negative sign.
+    \begin{equation} \label{eq: 10-10-3}
+        \sigma = -\frac{q}{4 \pi a^2} \left(\frac{a}{y} \right) \frac{1-\frac{a^2}{y^2}}{(1+\frac{a^2}{y^2}-2\frac{a}{y}cos(\theta))^{\frac{3}{2}}} + \frac{1}{4 \pi a^2} \left(Q + \frac{a}{y}q \right)
+    \end{equation}
+    
+    %\newpage
+    \underline{Question 2.2, Section c) Answer: }
+    \newline Using defining force equation
+%    \textcolor{red}{In the notes there is a derivation that explains the formulation of the "force definition" equation. Here, we simply used that equation}
+    \begin{gather*}
+        \vec{F} = \frac{q}{4 \pi \epsilon_0} \sum_i q_i \frac{(x-x_i)}{\abs{x-x_i}^3}
+    \end{gather*}
+    Include additional term for charged sphere
+%    \textcolor{red}{How to derive this extra term}
+    \begin{equation} \label{eq: 10-10-5}
+        \vec{F} = \frac{q}{4 \pi \epsilon_0} \left(q'\frac{(y-y')}{\abs{y-y'}^3} + (Q-q') \frac{y}{\abs{y}^3} \right)
+    \end{equation}
+    Consolidate
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 10-10-5}
+        \vec{F} = \frac{1}{4 \pi \epsilon_0} \frac{q}{y^2} \left(Q - \frac{q a^3 (2 y^2 - a^2)}{y (y^2 - A^2)^2} \right) \hat{y}
+    \end{equation}
+
+     
+    \underline{Question 2.2, Section d) Answer: }
+    Nothing changes. If the charge Q is added to the sphere, the induced charge on the inside surface of the sphere must still be -q, leaving a charge Q-q on the outside surface of the sphere.   
+
+\newpage
+\section{Textbook Question 2.4} \label{section2}
+    \underline{Question: }
+    \newline A point charge is placed a distance $d > R$ from the center of an equally charged, isolated, conducting sphere of radius R.
+    \begin{enumerate}
+        \item [a)] Inside of what distance from the surface of the sphere is the point charge attracted rather than repelled by the charged sphere?
+        \item [b)] What is the limiting value of the force of attraction when the point charge is located a distance $a=d-R$ from the surface of the sphere, if $a \ll R$?
+        \item [c)] What are the results for parts a) and b) if the charge on the sphere is twice or half as large as the point charge, but still the same sign?
+    \end{enumerate}    
+
+    %\newpage
+    \underline{Question 2.4, Section a) Answer: }
+    \newline $d=\abs{\vec{x_0}}$ which designates the position of the point charge. 
+    \newline The electric potential due to the two charges using Coulomb's law is:
+    \begin{equation} \label{eq: 2.1.1}
+        \Phi(x) = \frac{1}{4 \pi \epsilon_0} \frac{q}{\abs{\vec{x}-\vec{y}}} + \frac{1}{4 \pi \epsilon_0} \frac{q'}{\abs{\vec{x} - \vec{y'}}}
+    \end{equation}
+    Since we are looking to get the force ont the particle we will constrain our points of interest to the axis of the charge-sphere system ($\hat{x} = \hat{x}_0$), and drop the first term because the particle does not exert a total force on itself
+    \begin{equation} \label{eq: 2.1.2}
+        \Phi = \frac{1}{4 \pi \epsilon_0} \left(\frac{-R q}{r d - R^2} + \frac{Q}{r} + \frac{R q}{r d}\right)
+    \end{equation}
+    The force the point charge experiences is 
+    \begin{equation} \label{eq: 2.1.3}
+        \vec{F} = q \vec{E}(r=d)
+    \end{equation}
+    \begin{equation} \label{eq: 2.1.4}
+        \vec{F} = (-q \nabla \Phi)_{r=d}
+    \end{equation}
+    \begin{equation} \label{eq: 2.1.5}
+        \vec{F} = \hat{r} \left(-q \frac{\partial \Phi}{\partial r} \right)_{r=d}
+    \end{equation}
+    \begin{equation} \label{eq: 2.1.6}
+        \vec{F} = \hat{r} \frac{-q}{4 \pi \epsilon_0} \left(\frac{R q d}{\left(r d - R^2 \right)^2} - \frac{Q}{r^2} - \frac{R q}{r^2 d} \right)_{r=d}
+    \end{equation}
+    \begin{equation} \label{eq: 2.1.7}
+        \vec{F} = \hat{r} \frac{-q^2}{4 \pi \epsilon_0 d^2} \left(\frac{-\left(\frac{d}{R} \right)^3}{\left(-\left(\frac{d}{R} \right)^2 - 1 \right)^2} - \frac{Q}{q} - \frac{R}{d} \right)
+    \end{equation}
+    The turning point from being repelled to attracted, or vice-versa, occurs when the force equals zero
+    \begin{equation} \label{eq: 2.1.8}
+        \vec{F} = 0 = \hat{r} \frac{-q^2}{4 \pi \epsilon_0 d^2} \left(\frac{-\left(\frac{d}{R} \right)^3}{\left(-\left(\frac{d}{R} \right)^2 - 1 \right)^2} - \frac{Q}{q} - \frac{R}{d} \right)
+    \end{equation}
+    Do algebra to get rid of multiplicative
+    \begin{equation} \label{eq: 2.1.9}
+        \vec{F} = 0 = \left(\frac{-\left(\frac{d}{R} \right)^3}{\left(-\left(\frac{d}{R} \right)^2 - 1 \right)^2} - \frac{Q}{q} - \frac{R}{d} \right)
+    \end{equation}
+    Convert equation into quadratic
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 2.1.10}
+        \left(\frac{d}{R} \right)^3 = \left(\frac{Q}{q} + \frac{R}{d}\right) \left(\left(\frac{d}{R} \right)^2 - 1 \right)^2
+    \end{equation}
+    \begin{equation} \label{eq: 2.1.11}
+        \frac{Q}{q} \left(\frac{d}{R} \right)^5 - 2 \frac{Q}{q} \left(\frac{d}{R} \right)^3 - 2 \left(\frac{d}{R} \right)^2 + \frac{Q}{q} \frac{d}{R} + 1 = 0
+    \end{equation}
+    For $Q=q$
+    \begin{equation} \label{eq: 2.1.11}
+        \left(\frac{d}{R} \right)^5 - 2 \left(\frac{d}{R} \right)^3 - 2 \left(\frac{d}{R} \right)^2 + \frac{d}{R} + 1 = 0
+    \end{equation}
+    Solved numerically
+%    \newline \textcolor{red}{IDK how to solve this quadratic}
+    \begin{equation} \label{eq: 2.1.12}
+        \frac{d}{R} = 1.61803
+    \end{equation}
+
+    %\newpage
+    \underline{Question 2.4, Section b) Answer: }
+    \newline 
+    Using previously derived equation \ref{eq: 2.1.7}, but substituting $d=R+a$
+    \begin{equation} \label{eq: 2.2.1}
+        \vec{F} = \hat{r} \frac{-q^2}{4 \pi \epsilon_0 {R+a}^2} \left(\frac{-\left(\frac{R+a}{R} \right)^3}{\left(-\left(\frac{R+a}{R} \right)^2 - 1 \right)^2} - \frac{Q}{q} - \frac{R}{R+a} \right)
+    \end{equation}    
+    Apply $a \ll R$
+    \begin{equation} \label{eq: 2.2.2}
+        \vec{F} = \hat{r} \frac{-q^2}{4 \pi \epsilon_0 {R}^2} \left(\frac{-\left(\frac{R}{R} \right)^3}{\left(-\left(\frac{R}{R} \right)^2 - 1 \right)^2} - \frac{Q}{q} - \frac{R}{R} \right)
+    \end{equation}        
+    Simplify
+    \begin{equation} \label{eq: 2.2.3}
+        \vec{F} = \hat{r} \frac{-q^2}{4 \pi \epsilon_0} \left(\frac{-R^5}{4 a^2 R^5} \right)
+    \end{equation}
+    Simplify more
+    \begin{equation}
+        \vec{F} = - \hat{r} \frac{q^2}{16 \pi \epsilon_0 a^2}
+    \end{equation}
+    The limiting factor in this case would be the point charges because the charge on the sphere is negligible because the plane between the charges become an infinte plane when $a \ll R$
+    
+    %\newpage
+    \underline{Question 2.4, Section c) Answer: }
+    \newline Reference equation \ref{eq: 2.1.11}
+    \begin{gather*}
+        \frac{Q}{q} \left(\frac{d}{R} \right)^5 - 2 \frac{Q}{q} \left(\frac{d}{R} \right)^3 - 2 \left(\frac{d}{R} \right)^2 + \frac{Q}{q} \frac{d}{R} + 1 = 0
+    \end{gather*}
+    For $Q = 2q$
+    \begin{equation} \label{eq: 2.3.1}
+        2 \left(\frac{d}{R} \right)^5 - 4 \left(\frac{d}{R} \right)^3 - 2 \left(\frac{d}{R} \right)^2 + 2 \frac{d}{R} + 1 = 0
+    \end{equation}
+    Numerically solve
+    \begin{equation} \label{eq: 2.3.2}
+        \frac{d}{R} = 1.42756
+    \end{equation}
+    Reference equation \ref{eq: 2.1.11} for $Q = \frac{q}{2}$
+    \begin{equation} \label{eq: 2.3.3}
+        \frac{1}{2} \left(\frac{d}{R} \right)^5 - \left(\frac{d}{R} \right)^3 - 2 \left(\frac{d}{R} \right)^2 + \frac{1}{2} \frac{d}{R} + 1 = 0
+    \end{equation}
+    \begin{equation} \label{eq: 2.3.4}
+        \frac{d}{R} = 1.88227
+    \end{equation}
+
+    For part b, the results will be the same since the charge on the sphere has no impact on the result. 
+    
+\newpage
+\section{Textbook Question 2.5} \label{section3}
+    \underline{Question: }
+    \begin{itemize}
+        \item [a)] Show that the work done to remove the charge q from a distance $r>a$ to infinity against the force, Eq. (2.6), of a grounded conducting sphere is \begin{gather*} W=\frac{q^2 a}{8 \pi \epsilon_0 (r^2 - a^2)} \end{gather*} Relate this result to the electrostatic potential, Eq. (2.3), and the energy discussion of section 1.11. 
+        \item [b)] Repeat the calculation of the work done to remove the charge q against the force, Eq. (2.9), of an isolated charged conducting sphere. Show that the work done is \begin{gather*} W = \frac{1}{4 \pi \epsilon_0} \left(\frac{q^2 a}{2 (r^2 - a^2} - \frac{q^2 a}{2 r^2} - \frac{q Q}{r} \right) \end{gather*}  Relate the work to the electrostatic potential, Eq. (2.8), and the energy discussion of Section 1.11.
+    \end{itemize}
+
+    %\newpage
+    \underline{Question 2.5, Section a) Answer: }
+    \newline Using defining force equation
+%    \textcolor{red}{In the notes there is a derivation that explains the formulation of the "force definition" equation. Here, we simply used that equation}
+    \begin{equation} \label{eq: 3.1.1}
+        \vec{F} = \frac{q}{4 \pi \epsilon_0} \sum_i q_i \frac{(x-x_i)}{\abs{x-x_i}^3}
+    \end{equation}
+    Expand sum to include a charge and a image charge. Grounded sphere will not have any charge on it. 
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 3.1.2}
+        \vec{F} = \frac{1}{4 \pi \epsilon_0} \frac{q^2}{a^2} \left(\frac{a}{y} \right)^3 \left(1 - \frac{a^2}{y^2} \right)^{-2}
+    \end{equation}
+    The definition of the work equation
+    \begin{equation} \label{eq: 3.1.3}
+        W = - \int_A^B \vec{F} \cdot d\vec{l}
+    \end{equation}
+    Substitute
+    \begin{equation} \label{eq: 3.1.4}
+        W = \int_r^\infty \frac{1}{4 \pi \epsilon_0} \frac{q^2}{a^2} \left(\frac{a}{y} \right)^3 \left(1 - \frac{a^2}{y^2} \right)^{-2} dy
+    \end{equation}
+    Remove non integral components from integral
+    \begin{equation} \label{eq: 3.1.5}
+        W =  \frac{q^2 a}{4 \pi \epsilon_0} \int_r^\infty \frac{y}{(y^2 - a^2)^2} dy
+    \end{equation}
+    Use the calculus method "U Substitution" with $u=y^2 - a^2$ and $du=2ydy$
+    \begin{equation} \label{eq: 3.1.6}
+        W =  \frac{q^2 a}{4 \pi \epsilon_0} \int_r^\infty \frac{du}{u^2}
+    \end{equation}
+    Integrate
+%    \newline \textcolor{red}{Do inbetween}
+    \newline Substitute u definition back in
+    \begin{equation} \label{eq: 3.1.7}
+        W = \frac{q^2 a}{8 \pi \epsilon_0 (r^2 - a^2)}
+    \end{equation}
+    The definition of the work equation (in relation to the potential)
+    \begin{equation} \label{eq: 3.1.8}
+        W = q \Phi(x) = \frac{q^2}{4 \pi \epsilon_0} \left(\frac{1}{\abs{\vec{x}-\vec{y}}} - \frac{1}{\abs{\frac{y}{a} \vec{x} - \frac{a}{y} \vec{y}}} \right)
+    \end{equation}
+    The charge that creates the potential is the same one we are doing work on so $\vec{x} = \vec{y} = \vec{r}$. $\frac{1}{0}$ is non-physical so the first term is dropped.
+    \begin{equation} \label{eq: 3.1.9}
+        W = q \Phi(x) = -\frac{q^2 a}{4 \pi \epsilon_0 (r^2 - a^2)} 
+    \end{equation}
+    The only difference between equation \ref{eq: 3.1.9} and equation \ref{eq: 3.1.7} is the negative sign and the $\frac{1}{2}$ factor. The negative sign is due to the perspective of removing the charge from the field and the half factor is a double accounting of charge.
+
+    %\newpage
+    \underline{Question 2.5, Section b) Answer: }
+    \newline 
+    For an isolated, charge, conducting sphere, we will start with the same force equation \ref{eq: 3.1.1}
+    \begin{gather*}
+        \vec{F} = \frac{q}{4 \pi \epsilon_0} \sum_i q_i \frac{(x-x_i)}{\abs{x-x_i}^3}
+    \end{gather*}
+    In this case the sphere has a charge; therefore it will be included in the sum
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 3.2.1}
+        \vec{F} = \frac{1}{r \pi \epsilon_0} \frac{q}{y^2} \left(Q - \frac{q a^3 (2 y^2 - a^2)}{y (y^2 - a^2)^2} \right)
+    \end{equation}
+    Using the definition of the work equation (Reference equation \ref{eq: 3.1.3}
+    \newline Substitute 
+    \begin{equation} \label{eq: 3.2.2}
+        W = -\int_r^\infty \frac{1}{r \pi \epsilon_0} \frac{q}{y^2} \left(Q - \frac{q a^3 (2 y^2 - a^2)}{y (y^2 - a^2)^2} \right) dy
+    \end{equation}
+    Remove non integral components from integral
+    \begin{equation} \label{eq: 3.2.3}
+        W =  \frac{-q}{r \pi \epsilon_0} \left(\frac{Q}{r} - q a^3 \int_r^\infty \frac{(2 y^2 - a^2)}{y^3 (y^2 - a^2)^2} dy\right)
+    \end{equation}    
+    Use the calculus method "U Substitution" with $u=y^2 - a^2$ and $du=2ydy$. 
+%    \newline \textcolor{red}{Do inbetween}
+    \newline Separate into partial functions
+    \begin{equation} \label{eq: 3.2.4}
+        W = \frac{-q}{4 \pi \epsilon_0} \left(\frac{Q}{r} - \frac{qa}{2} \left(- \int_{r^2 - a^2}^\infty \frac{1}{(u+a^2)^2}du + \int_{r^2 - a^2}^\infty \frac{1}{u^2} du \right) \right)
+    \end{equation}
+    Integrate
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 3.2.5}
+        W = \frac{-1}{4 \pi \epsilon_0} \left(\frac{q^2 a}{2(r^2-a^2)} - \frac{q^2 a}{2r^2} - \frac{q Q}{r} \right)
+    \end{equation}
+    The definition of the work equation (in relation to the potential)
+    The charge that creates the potential is the same one we are doing work on so $\vec{x} = \vec{y} = \vec{r}$. $\frac{1}{0}$ is non-physical so the first term is dropped.
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 3.2.6}
+        W = q \Phi(x) = -\frac{1}{4 \pi \epsilon_0} \left(\frac{q^2 a}{r^2-a^2} - \frac{q^2 a}{r^2} - \frac{q Q}{r} \right) 
+    \end{equation}
+    Again The only difference between equation \ref{eq: 3.2.6} and equation \ref{eq: 3.2.5} is the negative sign and the $\frac{1}{2}$ factor. The negative sign is due to the perspective of removing the charge from the field and the half factor is a double accounting of charge, but note that the $\frac{1}{2}$ factor only pertains to the component of the charged particle because that was the only component that was double accounted. The sphere was accounted for properly. 
+
+
+
+
+\newpage
+\section{Textbook Question 2.9} \label{section4}
+    \underline{Question: }
+    \newline An insulated, spherical, conducting shell of radius a is in a uniform electric field $E_0$. If the sphere is cut into two hemispheres by a plane perpendicular to the field, find the force required to prevent the hemispheres from separating. 
+    \begin{enumerate}
+        \item [a)] If the shell is uncharged
+        \item [b)] If the total charge on the shell is Q
+    \end{enumerate}
+
+    %\newpage
+    \underline{Question 2.9, Section a) Answer: }
+    \newline 
+%    \newline \textcolor{red}{I am not sure how we build the potential equation based on our circumstance. What is the base equation?}
+    Begin with formulating the scalar potential equation based on the circumstance. In this case we will represent the charged hemispheres with charges ($\pm Q$) located at $z=\pm R$ and use the method of images by placing image charges ($\pm \frac{Qa}{R}$) located at $z=\pm \frac{a^2}{R}$.
+    \begin{equation} \label{eq: 4.1.1}
+        \begin{split}
+            \Phi(x) = \frac{1}{4 \pi \epsilon_0} \left(\frac{Q}{\sqrt{r^2 + R^2 + 2 r R cos(\theta)}} - \frac{Q}{\sqrt{r^2 + R^2 - 2 r R cos(\theta)}} +
+            \\ \frac{\frac{Q a}{R}}{\sqrt{r^2 \frac{a^4}{R^2} - 2 a^2 \frac{r}{R} cos(\theta)}} - \frac{\frac{Q a}{R}}{\sqrt{r^2 \frac{a^4}{R^2} + 2 a^2 \frac{r}{R} cos(\theta)}} \right)
+        \end{split}
+%    \newline \textcolor{red}{Problomatic that \left(\right) doesn't move with "Split"}
+    \end{equation}
+    Apply limit ($R \gg r$)
+%    \newline \textcolor{red}{Why is this limit applied}
+%    \newline \textcolor{red}{Do inbetween}
+    Substitute definition of Uniform Electric field ($E_0 = \frac{2 Q}{4 \pi \epsilon_0 R^2}$)
+    \begin{equation} \label{eq: 4.1.2}
+        \Phi = -E_0 r cos(\theta) + E_0 \frac{a^3}{r^2} cos(\theta)
+    \end{equation}
+    The first term is due to the applied field, the second termp is the potential of a perfect dipole of charges/images
+    \newline The electric field ($\vec{E}$) by definition is
+    \begin{equation} \label{eq: 4.1.3}
+        \vec{E} = - \nabla \Phi()
+    \end{equation}
+    Substitute and expand $\nabla$
+    \begin{equation} \label{eq: 4.1.4}
+        \vec{E} = E_0 \left(cos(\theta) \hat{r} - sin(\theta) \hat{\theta} + \frac{a^3}{r^3} (2 cos(\theta) \hat{r} + sin(\theta) \hat{\theta}) \right)
+    \end{equation}
+%    \newline \textcolor{red}{Where did the $\hat{r}$ come from}
+%    \newline \textcolor{red}{Do inbetween}    
+    At the surface of the sphere ($r=a$), the electric field is 
+    \begin{equation} \label{eq: 4.1.5}
+        \vec{E} = E_0 3 cos(\theta) \hat{r}
+    \end{equation}
+    Using the definition of the charge density
+%    \newline \textcolor{red}{This is not the definition, this came from something}
+    \begin{equation} \label{eq: 4.1.6}
+        \sigma = \epsilon_0 \hat{r} \cdot \vec{E}
+    \end{equation}
+    Substitute
+    \newline Evaluate Dot product
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 4.1.7}
+        \sigma = 3 \epsilon_0 E_0 cos(\theta)
+    \end{equation}
+    Using the definition of the force equation
+%    \newline \textcolor{red}{This is not the definition, this came from something}
+    \begin{equation} \label{eq: 4.1.8}
+        \vec{F} = \int \sigma \vec{E} da
+    \end{equation}
+    to not double account for the hemispheres we will substitute $\vec{E}=\frac{\sigma \hat{r}}{2 \epsilon_0}$
+%    \newline \textcolor{red}{Don't know why}
+    \begin{equation} \label{eq: 4.1.9}
+        \vec{F} = \frac{1}{2 \epsilon_0} \int \sigma^2 \hat{r} da
+    \end{equation}
+%    \newline \textcolor{red}{Not sure why we are evaluating the integral wrt these bounds or where $\phi$ comes from or where $\hat{k}$ comes from}
+    \begin{equation} \label{eq: 4.1.10}
+        \vec{F} = \hat{k} \frac{a^2}{2 \epsilon_0} \int_0^{2\pi} \int_{\frac{\pi}{2}}^\pi (3 \epsilon_0 E_0 cos(\theta))^2 cos(\theta) sin(\theta) d\theta d\phi
+    \end{equation}
+    Evaluate $\phi$ integral
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 4.1.11}
+        \vec{F} = \hat{k} 9 \epsilon_0 \pi E_0^2 a^2 \int_{\frac{\pi}{2}}^\pi  cos^3(\theta) sin(\theta) d\theta
+    \end{equation}
+    Evaluate $\theta$ integral
+    \begin{equation} \label{eq: 4.1.12}
+        \vec{F} = -\frac{9}{4} \pi \epsilon_0 E_0^2 a^2 \hat{k}
+    \end{equation}
+
+    %\newpage
+    \underline{Question 2.9, Section b) Answer: }
+    \newline 
+    If there sphere has a charge ($Q$) then it is added as an extra term when formulating the potential equation. With the same derivation as above, we obtain
+%    \newline \textcolor{red}{This would start over from equation \ref{eq: 4.1.1} and be re-evaluated}
+    \begin{equation} \label{eq: 4.2.1}
+        \sigma = 3 \epsilon_0 E_0 cos(\theta) + \frac{Q}{4 \pi a^2}
+    \end{equation}
+    The same force equation is applied
+    \begin{equation} \label{eq: 4.2.2}
+        \vec{F} = \hat{k} \frac{a^2}{2 \epsilon_0} \int_0^{2\pi} \int_{\frac{\pi}{2}}^\pi \left(3 \epsilon_0 E_0 cos(\theta) + \frac{Q}{4 \pi a^2} \right)^2 cos(\theta) sin(\theta) d\theta d\phi  
+    \end{equation}
+    Simplify equation and evaluate integrals
+%    \newline \textcolor{red}{After Simplification, the "second term" is dropped because it is the effect of the applied field on both halves, which only shifts the sphere and doesn't seperate it. Perform simplification. Perform integration}
+    \begin{equation} \label{eq: 4.2.3}
+        \vec{F} = \hat{k} \left(\frac{9}{4} \pi a^2 \epsilon_0 E_0^2 + \frac{Q^2}{32 \pi \epsilon_0 a^2} \right)
+    \end{equation}
+
+%\newline \textcolor{red}{I need to do this problem too}
+%\newpage
+%\section{Textbook Question 2.12} \label{section5}
+%    \underline{Question: }
+%    \newline Starting with the series solution (2.71) for the two-dimensional potential problem with the potential specified on the surface of a cylinder of radius b, evaluate the coefficients formally, substitute them into the series, and sum it to obtain the potential inside the cylinder in the form of Poisson's integral:
+    
+%    \begin{gather*}
+%        \Phi(\rho,\phi) = \frac{1}{2 \pi} \int_0^{2 \pi} \Phi(b,\phi') \frac{b^2 - \rho^2}{b^2 + \rho^2 - 2 b \rho cos(\phi' - \phi)} d\phi'
+%    \end{gather*}
+
+%    What modification is necessary if the potential is desired in the region of space bounded by the cylinder and infinity?
+
+
+%    \underline{Question 2.12 Answer: }
+    
+    
+\newpage
+\printbibliography
+\end{document}

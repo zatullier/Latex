@@ -1,0 +1,860 @@
+\documentclass[12pt]{article}
+%^ Start of document
+\usepackage{times}  %Makes text TimesNewRoman
+\usepackage{setspace} %Allows you to set single or double space 
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue]{hyperref}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[paperheight=11in,
+   paperwidth=8.5in,
+   top=20mm,
+   bottom=20mm,
+   left=40mm,
+   right=40mm]{geometry}
+\usepackage{moresize}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{comment}
+\usepackage{xcolor}
+\addbibresource{ElectroHW3.bib}
+\begin{document}
+\singlespacing  %Sets single spacing for whole document
+\title{Classical Electrodynamics (PHYS 5331) Final Exam}
+
+\author[1]{Zachary Tullier}
+\affil[1]{Student\\Physics Department\\ University of Houston - Clear Lake \\Houston, Texas\\U.S}
+
+\maketitle
+
+
+\section{Question 1} \label{section1}
+    \underline{Question : }
+    Solve Laplace equation in cylindrical coordinates
+    
+    %\newpage
+    \underline{Question 1 Answer: }
+    The definition of the Laplace Equation
+    \begin{equation} \label{eq: 1-0.1}
+        \nabla^2 \Phi = 0
+    \end{equation}
+    The definition of $\nabla$ in cylindrical coordinates
+    \begin{equation} \label{eq: 1-0.2}
+        \nabla = \hat{e}_1 \frac{\partial}{\partial \rho} + \hat{e}_2 \frac{1}{\rho} \frac{\partial}{\partial \phi} + \hat{e}_3 \frac{\partial}{\partial z}
+    \end{equation}
+    Combining the two
+    \begin{equation} \label{eq: 1-1}
+        \nabla^2 \Phi = \frac{1}{r} \frac{\partial}{\partial r} \left(r \frac{\partial \Phi}{\partial r} \right) + \frac{1}{r^2} \frac{\partial^2 \Phi}{\partial \theta^2} + \frac{\partial^2 \Phi}{\partial z^2} = 0
+    \end{equation}
+    Expand the $r$ term
+    \begin{equation} \label{eq: 1-2}
+        \frac{1}{r} \frac{\partial \Phi}{\partial r} + \frac{\partial^2 \Phi}{\partial r^2} + \frac{1}{r^2} \frac{\partial^2 \Phi}{\partial \theta^2} + \frac{\partial^2 \Phi}{\partial z^2} = 0
+    \end{equation}
+    Using separation of variables, we assume that the solution is of the form
+    \begin{equation} \label{eq: 1-3}
+        \Phi(r,\theta,z) = R(r) P(\theta) Z(z)
+    \end{equation}
+    Substitute equation \ref{eq: 1-3} into equation \ref{eq: 1-2}
+    \begin{equation} \label{eq: 1-4}
+        \frac{1}{r} \frac{\partial (RPZ)}{\partial r} + \frac{\partial^2 (RPZ)}{\partial r^2} + \frac{1}{r^2} \frac{\partial^2 (RPZ)}{\partial \theta^2} + \frac{\partial^2 (RPZ)}{\partial z^2} = 0
+    \end{equation}
+    Bring variables that are not derivable out of derivative, and change $\partial \rightarrow{} d$
+    \begin{equation} \label{eq: 1-5}
+        \frac{PZ}{r} \frac{dR}{dr} + PZ\frac{d^2 R}{d r^2} + \frac{RZ}{r^2} \frac{d^2 P}{d \theta^2} + RP \frac{d^2 Z}{d z^2} = 0
+    \end{equation}
+    To isolate the variables, divide both sides by $\Phi = RPZ$
+    \begin{equation} \label{eq: 1-6}
+        \frac{1}{Rr} \frac{dR}{dr} + \frac{1}{R}\frac{d^2 R}{d r^2} + \frac{1}{P r^2} \frac{d^2 P}{d \theta^2} + \frac{1}{Z} \frac{d^2 Z}{d z^2} = 0
+    \end{equation}
+    Isolate $Z$ and equate it to a constant $\lambda^2$
+    \begin{equation} \label{eq: 1-7}
+        \frac{1}{Rr} \frac{dR}{dr} + \frac{1}{R}\frac{d^2 R}{d r^2} + \frac{1}{P r^2} \frac{d^2 P}{d \theta^2} = -\frac{1}{Z} \frac{d^2 Z}{d z^2} = \lambda
+    \end{equation}
+    To further isolate variables, multiply both sides by $r^2$
+    \begin{equation} \label{eq: 1-8}
+        \frac{r}{R} \frac{dR}{dr} + \frac{r^2}{R}\frac{d^2 R}{d r^2} + \frac{1}{P} \frac{d^2 P}{d \theta^2} = \lambda r^2
+    \end{equation}
+    Isolate $P$ and equate it to a constant $\kappa^2$
+    \begin{equation} \label{eq: 1-9}
+        \frac{r}{R} \frac{dR}{dr} + \frac{r^2}{R}\frac{d^2 R}{d r^2} - \lambda r^2 = - \frac{1}{P} \frac{d^2 P}{d \theta^2} = \kappa
+    \end{equation}
+    Place $\lambda$ in a differential forms
+    \begin{equation} \label{eq: 1-10}
+        -\frac{1}{Z} \frac{d^2 Z}{d z^2} = \lambda^2
+    \end{equation}
+    Put all variable to one side
+%    \newline \textcolor{red}{Are the signs correct}
+    \begin{equation} \label{eq: 1-11}
+        \frac{d^2 Z}{d z^2} = Z\lambda^2
+    \end{equation}
+    Place $\kappa$ in a differential forms
+    \begin{equation} \label{eq: 1-12}
+        - \frac{1}{P} \frac{d^2 P}{d \theta^2} = \kappa
+    \end{equation}
+    Put all variable to one side
+    \begin{equation} \label{eq: 1-13}
+        \frac{d^2 P}{d \theta^2}  = - \kappa P
+    \end{equation}
+    To find the general case we will consider four cases, $\kappa=0$ and $\lambda=0$, $\kappa=0$ and $\lambda \neq 0$,  $\kappa \neq 0$ and $\lambda=0$, and  $\kappa \neq 0$ and $\lambda \neq 0$. Once these solutions are determined we will combine them to find the general solution. 
+    \newline Case 1 ($\kappa=0$ and $\lambda=0$):
+    \begin{equation} \label{eq: 1-14}
+        \begin{split}
+            R(r) = A_{0,0} + B_{0,0} ln(r)
+            \\ P(\phi) = C_{0,0} + D_{0,0}\phi
+            \\ Z(z) = F_{0,0} + G_{0,0}z
+        \end{split}
+    \end{equation}
+    \begin{equation} \label{eq: 1-15}
+        \Phi_1 = (A_{0,0} + B_{0,0} ln(r)) (C_{0,0} + D_{0,0}\phi) (F_{0,0} + G_{0,0}z)
+    \end{equation}
+    Case 2 ($\kappa \neq 0$ and $\lambda = 0$): 
+    \begin{equation} \label{eq: 1-16}
+        \begin{split}
+            R(r) = A_{\kappa,0} r^\kappa + B_{\kappa,0} r^{-\kappa}
+            \\ P(\phi) = C_{\kappa,0} e^{i \kappa \phi} + D_{\kappa,0} e^{-i \kappa \phi}
+            \\ Z(z) = F_{\kappa,0} + G_{\kappa,0} z
+        \end{split}
+    \end{equation}
+    \begin{equation} \label{eq: 1-17}
+        \Phi_2 = (A_{\kappa,0} r^\kappa + B_{\kappa,0} r^{-\kappa}) (C_{\kappa,0} e^{i \kappa \phi} + D_{\kappa,0} e^{-i \kappa \phi}) (F_{\kappa,0} + G_{\kappa,0} z)
+    \end{equation}
+    For the following cases where $\lambda \neq 0$, the solution of $R$ must be solved using a series solution
+    Case 3 ($\kappa = 0$ and $\lambda \neq 0$): 
+    \begin{equation} \label{eq: 1-18}
+        \begin{split}
+            P(\phi) = C_{0,\lambda} + D_{0,\lambda} \phi
+            \\ Z(z) = F_{0,\lambda} e^{\lambda z} + G_{0,\lambda} e^{-\lambda z}
+        \end{split}        
+    \end{equation}
+    Case 4 ($\kappa \neq 0$ and $\lambda \neq 0$): 
+    \begin{equation} \label{eq: 1-19}
+        \begin{split}
+            P(\phi) = C_{\kappa,\lambda} e^{\kappa \phi} + D_{\kappa,\lambda} e^{- \kappa \phi}
+            \\ Z(z) = F_{\kappa,\lambda} e^{\lambda z} + G_{\kappa,\lambda} e^{-\lambda z}
+        \end{split}        
+    \end{equation}
+    Put equation \ref{eq: 1-9} in more intuitive form
+    \begin{equation} \label{eq: 1-20}
+        \frac{1}{r} \frac{d}{dr} (r \frac{dR}{dr}) + \left(\lambda^2 - \frac{\kappa^2}{r^2} \right) R = 0
+    \end{equation}
+    Substitute $x=\lambda r$
+    \begin{equation} \label{eq: 1-21}
+        \frac{1}{x} \frac{d}{dx} (x \frac{dR}{dx}) + \left(1 - \frac{\kappa^2}{x^2} \right) R = 0
+    \end{equation}
+    Guess, or "Try", the solution
+    \begin{equation} \label{eq: 1-22}
+        R = \sum_{j=0}^\infty a_j x^{j+\alpha}
+    \end{equation}
+    Substitute and derive
+    \begin{equation} \label{eq: 1-23}
+        \sum_{j=0}^\infty a_j x^{j+\alpha-2} ((j+\alpha)-\kappa^2) + \sum_{j=0}^\infty a_j x^{j+\alpha} = 0
+    \end{equation}
+    Simplify
+    \begin{equation} \label{eq: 1-24}
+        a_0 x^{\alpha - 2} (\alpha^2 - \kappa^2) + a_1 x^{\alpha - 1}((1+\alpha)^2 - \kappa^2) + \sum_{j=0}^\infty x^{j+\alpha} (a_{j+2}((j+2+\alpha)^2 - \kappa^2) a_j) = 0
+    \end{equation}
+    Every power of $x$ is independent, thus the coefficient of every power vanishes. 
+    \begin{equation} \label{eq: 1-25}
+        \begin{split}
+            a_0(\alpha^2 - \kappa^2) = 0
+            \\ a_1((1+\alpha)^2 - \kappa^2) = 0
+            \\ a_{j+2} = -\frac{a_j}{((j+2+\alpha)^2-\kappa^2)}
+        \end{split}
+    \end{equation}
+    This matches the first Bessel function ($J$)
+    \begin{equation} \label{eq: 1-26}
+        R = J_\kappa = \sum_{j=1}^\infty a_{2(j-1)} x^{2(j-1)+\kappa}
+    \end{equation}
+    Where
+    \begin{equation} \label{eq: 1-27}
+        a_{2j} = - \frac{a_{2(j-1)}}{4j(j+\kappa)}
+    \end{equation}
+    The other solution is the second Bessel function ($N$)
+    \begin{equation} \label{eq: 1-28}
+        N_\kappa = \frac{J_\kappa cos(\kappa \pi) - J_{-\kappa}}{sin(\kappa x}
+    \end{equation}
+    Combine these to get the general equation
+    \begin{equation} \label{eq: 1-29}
+        R = A_{\kappa, \lambda} J_\kappa + BA_{\kappa, \lambda} N_\kappa
+    \end{equation}
+    Combine all four cases
+    \begin{equation} \label{eq: 1-30}
+        \begin{split}
+            \Phi(r,\phi,z) = (A_{0,0} + B_{0,0} ln(r)) (C_{0,0} + D_{0,0}\phi) (F_{0,0} + G_{0,0}z)
+            \\ + \sum_{\kappa \neq 0}(A_{\kappa,0} r^\kappa + B_{\kappa,0} r^{-\kappa}) (C_{\kappa,0} e^{i \kappa \phi} + D_{\kappa,0} e^{-i \kappa \phi}) (F_{\kappa,0} + G_{\kappa,0} z)
+            \\  + \sum_{\lambda \neq 0} (A_{0,\lambda} J_0 + B_{0,\lambda} N_0) (C_{0,\lambda} + D_{0,\lambda} \phi)(F_{0,\lambda} e^{\lambda z} + G_{0,\lambda} e^{-\lambda z})
+            \\  + \sum_{\kappa \neq 0} \sum_{\lambda \neq 0} (A_{\kappa, \lambda} J_\kappa + B_{\kappa, \lambda} N_\kappa) (C_{\kappa,\lambda} e^{\kappa \phi} + D_{\kappa,\lambda} e^{- \kappa \phi})(F_{\kappa,\lambda} e^{\lambda z} + G_{\kappa,\lambda} e^{-\lambda z})
+        \end{split}
+    \end{equation}
+
+    
+
+\newpage
+\section{Question 2} \label{section2}
+    \underline{Question : }
+    Solve problem 3.6 from the textbook for $a=2nm$ for a charge equal to charge of an electron
+    \newline Problem 3.6 Question
+    \newline Two point charges $q$ and $-q$ are located on the $z$ axis at $z = +a$ and $z = -a$, respectively.
+    \begin{enumerate}
+        \item [a)] Find the electrostatic potential as an expansion in spherical harmonics and powers of $r$ for both $r>a$ and $r<a$
+        \item [b)] Keeping the product $qa\equiv \frac{\rho}{2}$ constant, take the limit of $a \xrightarrow{} 0$ and find the potential for $r \neq 0$. This is by definition a dipole along the $z$ axis and its potential.
+        \item [c)] Suppose now that the dipole of part b is surrounded by a grounded spherical shell of radius $b$ concentric with the origin. By linear superposition find the potential everywhere inside the shell
+    \end{enumerate}
+    
+    %\newpage
+    \underline{Question 2, Section a) Answer: }
+    Integrate equation \ref{eq: a1-12} from Appendix 1 (section \ref{Appendix1}). The charges are located on the z axis so two of the axis have no component.
+    \begin{equation} \label{eq: 2-1}
+        \Phi = \frac{1}{4 \pi \epsilon_0} \left(\frac{q}{\abs{\vec{r} - a \hat{k}}} - \abs{\vec{r} + a \hat{k}}\right)
+    \end{equation}
+    Use the addition theorem where $r_<$ is smaller of ($r,a$), and $r_>$ is larger of ($r,a$)
+    \begin{equation} \label{eq: 2-2}
+        \frac{1}{\abs{\vec{r}-\vec{r}'}} = 4 \pi \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{r_<^l}{r_>^{l+1}} Y_{lm}(\theta', \phi') Y_{lm}(\theta, \phi) 
+    \end{equation}
+    Apply addition theorem, using $\phi'=0$ for both cases, 
+    \newline and $\theta'=
+        \begin{cases} 
+            \text{$0$ for $r-a\hat{k}$} 
+            \\ \text{$\pi$ for $r+a\hat{k}$} 
+        \end{cases}$ 
+    \newline because the charges are on the same axis.
+    \begin{equation} \label{eq: 2-3}
+        \Phi = \frac{q}{4 \pi \epsilon_0} \left(4 \pi \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{r_<^l}{r_>^{l+1}} Y_{lm}^*(0, 0) Y_{lm}(\theta, \phi) -4 \pi \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{r_<^l}{r_>^{l+1}} Y_{lm}^*(\pi, 0) Y_{lm}(\theta, \phi)  \right)
+    \end{equation}
+    Simplify
+    \begin{equation} \label{eq: 2-4}
+        \Phi = \frac{q}{\epsilon_0} \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{r_<^l}{r_>^{l+1}} Y_{lm}(\theta, \phi) \left( Y_{lm}^*(0, 0) - Y_{lm}^*(\pi, 0) \right)
+    \end{equation}
+    \begin{equation} \label{eq: 2-5}
+        \Phi = 
+        \begin{cases}
+            \frac{q}{\epsilon_0} \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{r_l}{a^{l+1}} Y_{lm}(\theta, \phi) \left( Y_{lm}^*(0, 0) - Y_{lm}^*(\pi, 0) \right) \text{when $r<a$}
+            \\
+            \frac{q}{\epsilon_0} \sum_{l=0}^\infty \sum_{m=-l}^l \frac{1}{2l+1} \frac{a^l}{r^{l+1}} Y_{lm}(\theta, \phi) \left( Y_{lm}^*(0, 0) - Y_{lm}^*(\pi, 0) \right) \text{when $r>a$}
+        \end{cases}
+    \end{equation}
+
+    \underline{Question 2, Section Answer b): }
+    Simplify equation \ref{eq: 2-4} by applying azimuthally symmetric condition, all terms other than $m=0$ vanish.
+    \begin{equation} \label{eq: 2-6}
+        \Phi = \frac{q}{\epsilon_0} \sum_{l=0}^\infty  \frac{1}{2l+1} \frac{r_<^l}{r_>^{l+1}} Y_{lm}(\theta, \phi) \left( Y_{lm}^*(0, 0) - Y_{lm}^*(\pi, 0) \right)
+    \end{equation}
+    \newline Convert Spherical harmonics into Legendre polynomial
+    \begin{equation} \label{eq: 2-7}
+        \Phi = \frac{q}{4 \pi \epsilon_0} \sum_{l=0}^\infty   \frac{r_<^l}{r_>^{l+1}} P_{l}(cos(\theta)) \left(P_{l}(1) - P_{l}(-1) \right)
+    \end{equation}
+    \newline Evaluate Legendre polynomial
+    \begin{equation} \label{eq: 2-8}
+        \Phi = \frac{q}{4 \pi \epsilon_0} \sum_{l=0}^\infty   \frac{r_<^l}{r_>^{l+1}} P_{l}(cos(\theta)) \left(1-{(-1)}^{-1} \right)
+    \end{equation}
+    \newline Simplify and alter iteration
+    \begin{equation} \label{eq: 2-9}
+        \Phi = \frac{2q}{4 \pi \epsilon_0} \sum_{l=0, odd}^\infty   \frac{r_<^l}{r_>^{l+1}} P_{l}(cos(\theta))
+    \end{equation}
+    Take the limit of $\alpha \rightarrow{} 0$ and apply $r \neq 0$ and $r>a$
+    \begin{equation} \label{eq: 2-10}
+        \Phi = \frac{2q}{4 \pi \epsilon_0} \sum_{l=0, odd}^\infty   \frac{a^l}{r^{l+1}} P_{l}(cos(\theta)) 
+    \end{equation}
+    \begin{equation} \label{eq: 2-11}
+        \Phi = \frac{p}{4 \pi \epsilon_0} \sum_{l=0, odd}^\infty   \frac{a^{l-1}}{r^{l+1}} P_{l}(cos(\theta)) 
+    \end{equation}
+    \begin{equation} \label{eq: 2-12}
+        \Phi = \frac{p}{4 \pi \epsilon_0} \left(\frac{1}{r^2} P_1(cos(\theta)) + \frac{a^2}{r^4} P_3(cos(\theta)) + \frac{a^4}{r^6} P_5(cos(\theta)) +... \right) 
+    \end{equation}
+    Take limit $\alpha \rightarrow{} 0$
+    \begin{equation} \label{eq: 2-13}
+        \Phi = \frac{p}{4 \pi \epsilon_0} \frac{1}{r^2} cos(\theta)
+    \end{equation}
+    Apply condition that $a= 2 \text{ [nm]} = 2 x 10^{-9} \text{ [m]}$ to given constant and $q=a$
+    \begin{equation} \label{eq: 2-13.1}
+        p = 2 q a = 2 -e (2nm) = 6.41 x 10^{-28} \text{ [C*m]}
+    \end{equation}
+    \begin{equation} \label{eq: 2-13.2}
+        \Phi = \frac{6.41 x 10^{-28} \text{ [C*m]}}{4 \pi \epsilon_0} \frac{1}{r^2} cos(\theta)
+    \end{equation}
+    
+    
+    \underline{Question 2, Section Answer c): }
+    Then if dipole is surrounded by a grounded sphere shell sharing an origin, there will be additional potential from the sphere
+    \newline Using equation \ref{eq: 2-13}, add potential from sphere. The potential from the surface of a sphere can be derived from the Laplace equation in spherical coordinates (From appendix 2, section \ref{Appendix2}, specifically equation \ref{eq: a2-43}
+    \begin{gather*}
+        \Phi(r,\theta, \phi) = \sum_{l=0}^\infty (A_l r^l + B_l r^{-l-1}) P_l(cos(\theta))
+    \end{gather*}
+    Where $B_l=0$ because the region of valid solution includes the origin.
+    \begin{equation} \label{eq: eq: 2-13.1}
+        \Phi(r,\theta, \phi) = \sum_{l=0}^\infty A_l r^l P_l(cos(\theta))
+    \end{equation}
+    Add potential from sphere into equation \ref{eq: 2-13}
+    \begin{equation} \label{eq: 2-14}
+        \Phi = \frac{p}{4 \pi \epsilon_0} \frac{1}{r^2} cos(\theta) + \sum_{l=0}^\infty A_l r^l P_l(cos(\theta))
+    \end{equation}
+    Apply boundary condition; potential is zero at surface of sphere. Therefore, $\Phi=0$ if $r=b$ where $b$ is the radius of the sphere. 
+    \begin{equation} \label{eq: 2-15}
+        0 = \frac{p}{4 \pi \epsilon_0} \frac{1}{b^2} cos(\theta) + \sum_{l=0}^\infty A_l b^l P_l(cos(\theta))
+    \end{equation}
+    Only $l=1$ will be nonzero because of orthogonality
+    \begin{equation} \label{eq: 2-16}
+        0 = \frac{p}{4 \pi \epsilon_0} \frac{1}{b^2} cos(\theta) + A_l b cos(\theta)
+    \end{equation}
+    Isolate $A_l$
+    \begin{equation} \label{eq: 2-17}
+        A_l = -\frac{p}{4 \pi \epsilon_0} \frac{1}{b^3}
+    \end{equation}
+    Plug $A_l$ into equation \ref{eq: 2-14}
+    \begin{equation} \label{eq: 2-18}
+        \Phi = \frac{p}{4 \pi \epsilon_0} \frac{1}{r^2} cos(\theta) + \sum_{l=0}^\infty -\frac{p}{4 \pi \epsilon_0} \frac{1}{b^3} r^l P_l(cos(\theta))
+    \end{equation}        
+    Again, Only $l=1$ will be nonzero because of orthogonality
+    \begin{equation} \label{eq: 2-19}
+        \Phi = \frac{p cos(\theta)}{4 \pi \epsilon_0 b^2} \left(\left(\frac{b}{r} \right)^2 - \frac{r}{b} \right)
+    \end{equation}
+    Similarly apply the condition from the given value
+    \begin{equation}
+        \Phi = \frac{6.41 x 10^{-28} \text{ [C*m]} cos(\theta)}{4 \pi \epsilon_0 b^2} \left(\left(\frac{b}{r} \right)^2 - \frac{r}{b} \right)
+    \end{equation}
+
+    
+\newpage
+\section{Question 3} \label{section3}
+    \underline{Question : }
+    Solve Problem 4.13 from the textbook
+    \newline Problem 4.13 question
+    \newline Two long, coaxial, cylindrical conducting surfaces of radii $a$ and $b$ are lowered vertically into a liquid dielectric. If the liquid rises an average height $h$ between the electrodes when a potential difference $V$ is established between them, show that the susceptibility of the liquid is 
+    \begin{gather*}
+        \chi_e = \frac{(b^2-a^2) \rho g h ln(\frac{b}{a})}{\epsilon_0 V^2}
+    \end{gather*}
+    where $\rho$ is the density of the liquid, $g$ is the acceleration due to gravity, and the susceptibility of air is neglected
+    
+    %\newpage
+    \underline{Question 3 Answer: }
+    The general solution to the laplace equations in cylindrical coordinates (See section \ref{section1} for formulation)
+    \begin{gather*}
+            \Phi(r,\phi,z) = (A_{0,0} + B_{0,0} ln(r)) (C_{0,0} + D_{0,0}\phi) (F_{0,0} + G_{0,0}z)
+            \\ + \sum_{\kappa \neq 0}(A_{\kappa,0} r^\kappa + B_{\kappa,0} r^{-\kappa}) (C_{\kappa,0} e^{i \kappa \phi} + D_{\kappa,0} e^{-i \kappa \phi}) (F_{\kappa,0} + G_{\kappa,0} z)
+            \\  + \sum_{\lambda \neq 0} (A_{0,\lambda} J_0 + B_{0,\lambda} N_0) (C_{0,\lambda} + D_{0,\lambda} \phi)(F_{0,\lambda} e^{\lambda z} + G_{0,\lambda} e^{-\lambda z})
+            \\  + \sum_{\kappa \neq 0} \sum_{\lambda \neq 0} (A_{\kappa, \lambda} J_\kappa + B_{\kappa, \lambda} N_\kappa) (C_{\kappa,\lambda} e^{\kappa \phi} + D_{\kappa,\lambda} e^{- \kappa \phi})(F_{\kappa,\lambda} e^{\lambda z} + G_{\kappa,\lambda} e^{-\lambda z})
+    \end{gather*}
+    Azimuthal symmetry gets rid of most terms, and we will consider $r=\rho$, $A_{0,0}=a_0$, and $B_{0,0}=b_0$.
+    \begin{equation} \label{eq: 3-2}
+        \Phi(\rho, \phi) = a_0 + b_0 ln(\rho)
+    \end{equation}
+    Apply boundary condition at inner cylinder $\Phi(\rho=a)=0$
+    \begin{equation} \label{eq: 3-3}
+        0 = a_0 + b_0 ln(\rho)
+    \end{equation}
+    Isolate $a_0$
+    \begin{equation} \label{eq: 3-4}
+        a_0 = -b_0 ln(a)
+    \end{equation}
+    Substitute back into equation
+    \begin{equation} \label{eq: 3-5}
+        \Phi(\rho, \phi) = b_0 ln\left(\frac{\rho}{a} \right)
+    \end{equation}
+    Apply boundary condition at outer cylinder $\Phi(\rho=b)=V$
+    \begin{equation} \label{eq: 3-6}
+        V = a_0 + b_0 ln(a)
+    \end{equation}
+    Isolate $b_0$
+    \begin{equation} \label{eq: 3-7}
+        b_0 = \frac{V}{ln(\frac{b}{a})}
+    \end{equation}
+    Substitute back into equation
+    \begin{equation} \label{eq: 3-8}
+        \Phi(\rho, \phi) = V \frac{ln(\frac{\rho}{a})}{ln(\frac{b}{a})}
+    \end{equation}
+    Using definition of electric field, substitute
+%     \newline \textcolor{red}{Where did this come from $\vec{E} = -\nabla \Phi$}
+    \begin{equation} \label{eq: 3-9}
+        \vec{E}         = - \hat{\rho} V \frac{1}{\rho ln(\frac{b}{a})}
+    \end{equation}
+    Using the conservation of energy
+    \begin{equation} \label{eq: 3-10}
+        \Delta W = W_f - W_i
+    \end{equation}
+    Use definition of potential energy
+%    \newline \textcolor{red}{Where did this come from}
+    \begin{equation} \label{eq: 3-11}
+        \Delta W = \frac{1}{2} \int E_f \cdot D_f d^3x - \frac{1}{2} \int E_i \cdot D_i d^3x
+    \end{equation}
+    Evaluate dot product, remove non-integrateable variables from within the integral, and substitute situational electric fields
+%    \newline \textcolor{red}{Lots of inbetween}
+    \begin{equation} \label{eq: 3-12}
+        \Delta W = \left(\frac{1}{2} (L-h) \epsilon_0 \int E_{air}^2 d^2x + \frac{1}{2}\epsilon_0 (1+\chi_e)h \int E_{liqu}^2 d^2x \right) - \left(\frac{1}{2} L \epsilon_0 \int E_{air}^2 d^2x \right) 
+    \end{equation}
+    Simplify
+    \begin{equation} \label{eq: 3-13}
+        \Delta W = - \frac{1}{2} h \epsilon_0 \int E_{air}^2 d^2x + \frac{1}{2} \epsilon_0 (1+\chi_e) h \int E_{liqu}^2 d^2x
+    \end{equation}
+    Assume $E_{air}=E_{liqu}$
+    \begin{equation} \label{eq: 3-14}
+        \Delta W = \frac{h \epsilon_0 \chi_e}{2} \int E^2 d^2x
+    \end{equation}
+%    \textcolor{red}{What is really going on here}
+    \begin{equation} \label{eq: 3-15}
+        \Delta W = h \epsilon_0 \chi_e \pi \int_a^b E^2 \rho d\rho 
+    \end{equation}
+    Substitute equation
+    \begin{equation} \label{eq: 3-16}
+        \Delta W = h \epsilon_0 \chi_e \pi \int_a^b \left(-\hat{\rho}^2 V^2 \frac{1}{\rho^2 ln^2(\frac{b}{a})} \right) \rho d\rho 
+    \end{equation}
+    Evaluate integral 
+%    \newline \textcolor{red}{Do inbetween}
+    \begin{equation} \label{eq: 3-17}
+        \Delta W = \frac{\pi h \epsilon_0 \chi_e V^2}{ln(\frac{b}{a})}
+    \end{equation}
+    We can view the potential energy gain as being held in the particles 
+    \begin{equation} \label{eq: 3-18}
+        \Delta W = m g h
+    \end{equation}
+    Substitute definition of mass $m = \rho h A$
+%    \newline \textcolor{red}{Where did this come from}
+    \begin{equation} \label{eq: 3-19}
+        \Delta W = \rho h A g h
+    \end{equation}
+    Substitute geometric surface area of the two cylinders
+    \begin{equation} \label{eq: 3-20}
+        \Delta W = \rho \pi(b^2 - a^2) g h^2
+    \end{equation}
+    Equate equation
+    \begin{equation} \label{eq: 3-21}
+        \frac{\pi h \epsilon_0 \chi_e V^2}{ln(\frac{b}{a})} = \rho \pi(b^2 - a^2) g h^2
+    \end{equation}
+    Isolate $\chi_e$
+    \begin{equation} \label{eq: 3-22}
+        \chi_e = \frac{(b^2-a^2) \rho g h ln(\frac{b}{a})}{\epsilon_0 V^2}
+    \end{equation}
+
+    
+\newpage
+\section{Question 4} \label{section4}
+    \underline{Question : }
+    Solve problem 5.22 from the textbook and find the magnetization due to an applied force of 2.5 [N] in the right units
+    \newline Problem 5.22 question
+    \newline Show that in general a long, straight bar of uniform cross-sectional area $A$ with uniform lengthwise magnetization $M$, when placed with its flat end against an infinitely permeable flat surface, adheres with a force given approximately by 
+    \begin{gather*}
+        F \simeq \frac{\mu_0}{2} A M^2
+    \end{gather*}
+    Relate your discussion to the electrostatic considerations in Section 1.11.
+    %\newpage
+    \underline{Question 4 Answer: }
+    This bar has an arbitrary cross sectional shape extending into the $\hat{z}$ direction with the infinitely permeable flat surface, or perfect mirror, in the $\hat{x}-\hat{y}$ plane. 
+    \begin{equation} \label{eq: 4-1}
+        \sigma_M = \vec{n} \cdot \vec{M}
+    \end{equation}
+    Assume the bar is extending into the $\hat{z}$ direction
+    \begin{equation} \label{eq: 4-2}
+        \sigma_M = -\hat{z} \cdot (M \hat{z})
+    \end{equation}
+    At the bottom face of the bar $z=0$
+    \begin{equation} \label{eq: 4-3}
+        \sigma_M(z=0) = -M
+    \end{equation}
+    The infinitely permeable flat surface, or perfect mirror, is in the $\hat{x}-\hat{y}$ plane so we can place an image bar on the opposite side, with an opposite magnetization
+    \begin{equation} \label{eq: 4-4}
+        \sigma_M'(z=0) = M
+    \end{equation}
+    Because both bars are "long" we can assume that the fields just past the ends are equivalent to the bars surface
+    \begin{equation} \label{eq: 4-5}
+        \vec{B} = \mu_0 \vec{H} + \mu_0 \vec{M}
+    \end{equation}
+    Inside an infintely long bar $H=0$
+    \begin{equation} \label{eq: 4-6}
+        B = \mu_0 \vec{M}
+    \end{equation}
+    By definition, the total force over a surface charge is
+    \begin{equation} \label{eq: 4-7}
+        \vec{F} = \int_S \sigma_M \vec{B} da
+    \end{equation}
+    Substitute 
+    \begin{equation} \label{eq: 4-8}
+        \vec{F} = \int_S (-M) (\mu_0 M \hat{z}) da
+    \end{equation}
+    Integrate
+    \begin{equation} \label{eq: 4-9}
+        \vec{F} = -\vec{z} \mu_0 A M^2
+    \end{equation}
+    Remove influence from image bar
+    \begin{equation} \label{eq: 4-10}
+        \vec{F} = -\frac{\vec{z} \mu_0 A M^2}{2} 
+    \end{equation}
+
+    
+\newpage
+\section{Question 5} \label{section5}
+    \underline{Question : }
+    Derive the Poynting vector and describe its physical significance
+    
+    %\newpage
+    \underline{Question 5 Answer: }
+    A single particle ($q$) travels with the velocity ($\vec{v}$) through an electric ($\vec{E}$) and magnetic ($\vec{B}$) external field. 
+    \begin{equation} \label{eq: 5-1}
+        \vec{F} = q (\vec{E} + \vec{v} \cross \vec{B})
+    \end{equation}
+    By definition, Ampere-Maxwell's law states
+    \begin{equation} \label{eq: 5-2}
+        J =\frac{c}{4 \pi} \nabla \cross H - \frac{1}{4\pi} \frac{\partial D}{dt}
+    \end{equation}
+    By definiton the work done by charges in a volume
+    \begin{equation} \label{eq: 5-3}
+        W = \frac{1}{4\pi} \int_V \left(c \vec{E} \cdot (\nabla \vec{H}) - \vec{E} \cdot \frac{\partial D}{\partial t} \right) dV = \int_V \vec{J} \cdot \vec{E} dV
+    \end{equation}
+    Using the Vector Identity
+    \begin{gather*}
+        \nabla \cdot (\vec{A} \cross \vec{B}) = \vec{B} \cdot (\nabla \cross \vec{A}) - \vec{A} \cdot (\nabla \cross \vec{B})
+    \end{gather*}
+    Rewrite vector identity to match equation
+    \begin{equation} \label{eq: 5-4}
+        \vec{A} \cdot (\nabla \cross \vec{B} = -(\nabla \cdot (\vec{A} \cross \vec{B})) + \vec{B} \cdot (\nabla \cross \vec{A})
+    \end{equation}
+    Substitute
+    \begin{equation} \label{eq: 5-5}
+        \int_V \vec{J} \cdot \vec{E} dV = \frac{1}{4\pi} \int_V \left(-c \nabla \cdot (\vec{E} \cross \vec{H})) + c \vec{H} \cdot (\nabla \cross \vec{E}) - \vec{E} \cdot \frac{\partial D}{\partial t} \right) dV 
+    \end{equation}
+    Useing Faradays law
+    \begin{gather*}
+        \nabla \cross \vec{E} = - \frac{1}{c} \frac{\partial \vec{B}}{\partial t}
+    \end{gather*}
+    Substitute
+    \begin{equation} \label{eq: 5-6}
+        \int_V \vec{J} \cdot \vec{E} dV = \frac{1}{4\pi} \int_V \left(-c \nabla \cdot (\vec{E} \cross \vec{H})) + c \vec{H} \cdot (- \frac{1}{c} \frac{\partial \vec{B}}{\partial t}) - \vec{E} \cdot \frac{\partial D}{\partial t} \right) dV 
+    \end{equation}
+    A portion of this equation relates to the total Energy density ($\vec{U}$) where the dielectric ($\vec{D} = \epsilon \vec{E}$) and the permeability ($\vec{H} = \frac{1}{\mu} \vec{B}$)
+    \begin{equation} \label{eq: 5-7}
+        \vec{U} = \frac{1}{8 \pi} (\vec{E} \cdot \vec{D} + \vec{B} \cdot \vec{H})
+    \end{equation}
+    Derivative with respect to time
+    \begin{equation} \label{eq: 5-8}
+        \frac{\partial \vec{U}}{\partial t} = \frac{1}{4 \pi} \left(\epsilon \vec{E} \cdot \frac{\partial \vec{E}}{\partial t} + \frac{1}{\mu} \vec{B} \cdot \frac{\partial \vec{B}}{\partial t} \right)
+    \end{equation}
+    Using the relation of Dielectric and permeability
+    \begin{equation} \label{eq: 5-9}
+        \frac{\partial \vec{U}}{\partial t} = \frac{1}{4 \pi} \left(\vec{E} \cdot \frac{\partial \vec{D}}{\partial t} + \vec{B} \cdot \frac{\partial \vec{H}}{\partial t} \right)
+    \end{equation}
+    Substitute equation \ref{eq: 5-9} into equation \ref{eq: 5-6}
+    \begin{equation} \label{eq: 5-10}
+        \int_V \vec{J} \cdot \vec{E} dV = \int_V \left(\frac{c}{4\pi} \nabla \cdot (\vec{E} \cross \vec{H}) + \frac{\partial \vec{U}}{\partial t}\right)  dV 
+    \end{equation}
+    For convenience, we will define the pointing vector ($\vec{P}$)
+    \begin{equation} \label{eq: 5-11}
+        P = \frac{c}{4 \pi} (\vec{E} \cross \vec{H})
+    \end{equation}
+    Substitute
+    \begin{equation} \label{eq: 5-12}
+        \int_V \vec{J} \cdot \vec{E} dV = \int_V \left(\nabla \cdot \vec{P} + \frac{\partial \vec{U}}{\partial t}\right)  dV 
+    \end{equation}
+    Since the volume element is arbitrary
+    \begin{equation} \label{eq: 5-13}
+        - \vec{E} \cdot \vec{J} = \frac{\partial \vec{U}}{\partial t} + \nabla \cdot \vec{P}
+    \end{equation}
+    
+    
+    
+    
+    
+    
+    
+    The work done by external electric field
+    \begin{equation} \label{eq: 5-2}
+        W_E = q (\vec{v} \cdot \vec{E})
+    \end{equation}
+    The work done by the external magnetic field
+    \begin{equation} \label{eq: 5-3}
+        W_M = q (\vec{v} \cross \vec{B}) = 0 
+    \end{equation}
+
+
+    
+\section{Appendix} 
+    \subsection{Formulation of Electric Potential} \label{Appendix1}
+        Two Electric point charges exert a force on each other.
+        \begin{equation} \label{eq: a1-1}
+            \vec{F} = q \vec{E} = k q_1 q_2 \frac{x_1-x_2}{\abs{x_1-x_2}^3}
+        \end{equation}
+        \newline Electric field at point x due to a point charge
+        \begin{equation} \label{eq: a1-2}
+            \vec{E} = k q_1 \frac{x-x_1}{\abs{x-x_1}^3}
+        \end{equation}
+        \newline In electrostatic units (esu) k = 1, In SI:
+        \begin{equation} \label{eq: a1-3}
+            k = \frac{1}{4 \pi \epsilon_0} = 10^{-7} c^2
+        \end{equation}
+        \newline Since Electrodynamics is a macroscopic theory, we will consider the "point" to be many charged sources. Experiment shows that the fields add linearly.
+        \begin{equation} \label{eq: a1-4}
+            \vec{E}(x)= k \sum_i q_i \frac{x-x_i}{\abs{x - x_i}^3}
+        \end{equation}
+        \newline Consider the many charged sources to be "small" (Replace $q$ with $\rho$) and "numerous" (Replace Sum with Integral)at point $x'$. Coulomb's law in terms of the field for a charge density. Replace singular x dimension with 3D x,y,z dimension 
+%        \newline \textcolor{red}{(Reference \ref{eq: 1-3-1} on pg \pageref{eq: 1-3-1})}
+        \begin{equation} \label{eq: a1-5}
+            \vec{E}(x)= k \int \rho_q(x') \frac{x-x'}{\abs{x - x'}^3}d^3x'
+        \end{equation}
+        A vector field can be specified completely if its divergence and curl are given everywhere in space, except up to the gradient of scalar function that satisfies the Laplace equation. 
+%        \newline \textcolor{red}{when you get to section 1.9, this Laplace stuff might come into play}
+        \newline Therefore we need to specify the curl of $\vec{E}$
+        \newline Starting at Coulomb's generalized integral form 
+%        \newline \textcolor{red}{(Reference equation \ref{eq: 3-2-5} on page \pageref{eq: 3.6-6}}
+        \begin{gather*}
+            \vec{E(x)}= k \int \rho_q(x^{'}) \frac{x-x^{'}}{\abs{x - x'}^3}d^3x'
+        \end{gather*}
+%        \newline \textcolor{red}{I guess I don't know how $\nabla$ works. Figure out in between}
+        \newline Using Property of Nabla ($\nabla$)
+        \begin{equation} \label{eq: a1-6}
+            -\nabla \left(\frac{1}{\abs{x-x'}} \right) = \frac{x-x'}{\abs{x - x'}^3}
+        \end{equation}
+        Substitute equation \ref{eq: a1-3}
+%        \newline \textcolor{red}{ into \ref{eq: 3-2-5}}
+        \begin{equation} \label{eq: a1-7}
+            \vec{E(x)}= k \int \rho_q(x') -\nabla \left(\frac{1}{\abs{x-x'}} \right) d^3x'
+        \end{equation}
+        Nabla ($\nabla$) is constant; therefore,
+        \begin{equation} \label{eq: a1-8}
+            \vec{E(x)}= -k \nabla \int \rho_q(x') \left(\frac{1}{\abs{x-x'}} \right) d^3x'
+        \end{equation}
+        Cross nabla ($\nabla$) on both sides of equation and substitute equation
+%        \newline \textcolor{red}{ \ref{eq:1-1-4}}
+        \begin{equation} \label{eq: a1-9}
+            \nabla \cross \vec{E(x)}= \nabla \cross k -k\nabla \int \rho_q(x') \left(\frac{1}{\abs{x-x'}} \right) d^3x'
+        \end{equation}
+        Therefore,
+        \begin{equation} \label{eq: a1-10}
+            \nabla \cross \vec{E} = 0
+        \end{equation}
+        By manipulating the equation 
+%        \newline \textcolor{red}{\ref{eq: 3-4-3}}
+        \begin{equation} \label{eq: a1-10}
+            \vec{E(x)}= \nabla \int \left(\frac{k \rho_q (x')}{\abs{x-x'}} \right) d^3x'
+        \end{equation}
+        We can now define a portion of the equation as the scalar potential ($\Phi$)
+        \begin{equation} \label{eq: a1-11}
+            \vec{E(x)}= \nabla \Phi
+        \end{equation}
+        Therefore the scalar potential is defined as 
+        \begin{equation} \label{eq: a1-12}
+            \Phi = \int \left(\frac{k \rho_q (x')}{\abs{x-x'}} \right) d^3x'
+        \end{equation}
+
+    \subsection{Laplace Equation in Spherical Coordinates} \label{Appendix2}
+        The definition of the Laplace equation
+        \begin{equation} \label{eq: a2-1}
+            \nabla^2 \Phi = 0
+        \end{equation}
+        The definition of $\nabla$ in spherical coordinates
+        \begin{equation} \label{eq: a2-2}
+            \nabla = \hat{e}_1 \frac{\partial}{\partial r} + \hat{e}_2 \frac{1}{\theta} \frac{\partial}{\partial \theta} + \hat{e}_3 \frac{1}{r sin(\theta)}\frac{\partial}{\partial \phi}
+        \end{equation}
+        Where $r$ is the radial distance from the origin, $\theta$ is the polar angle with the z-axis, $\phi$ is the azimuthal angle in the x-y plan relative to the x-axis
+        \newline Combine the two
+        \begin{equation} \label{eq: a2-3}
+            \frac{1}{r} \frac{\partial^2}{\partial r^2} (r \Phi) + \frac{1}{r^2 sin(\theta)} \frac{\partial}{\partial \theta} \left(sin(\theta) \frac{\partial \Phi}{\partial \theta} \right) + \frac{1}{r^2 sin^2(\theta)} \frac{\partial^2 \Phi}{\partial \phi^2} = 0
+        \end{equation}
+        
+        Use method of separation of variables by trying a solution of the form
+        \begin{equation} \label{eq: a2-4}
+            \Phi(r,\theta,\phi) = \frac{R(r)}{r} P(\theta) Q(\phi)
+        \end{equation}
+        Substitute equation \ref{eq: a2-4} into equation \ref{eq: a2-3}
+        \begin{equation} \label{eq: a2-5}
+            \frac{1}{r} \frac{\partial^2}{\partial r^2} (r \frac{R}{r} PQ + \frac{1}{r^2 sin(\theta)} \frac{\partial}{\partial \theta} (sin(\theta) \frac{\partial \frac{R}{r} PQ}{\partial \theta}) + \frac{1}{r^2 sin^2(\theta)} \frac{\partial^2 \frac{R}{r} PQ}{\partial \phi^2} = 0
+        \end{equation}
+        Multiply by $\frac{r^3 sin^2(\theta)}{RPQ}$
+        \begin{equation} \label{eq: a2-6}
+            \frac{r^2 sin^2(\theta)}{R} \frac{d^2 R}{dr^2} + \frac{sin(\theta)}{P} \frac{d}{d\theta}(sin(\theta) \frac{dP}{d\theta}) + \frac{1}{Q} \frac{d^2Q}{d\phi^2} = 0
+        \end{equation}
+        Isolate the last term
+        \begin{equation} \label{eq: a2-7}
+            \frac{r^2 sin^2(\theta)}{R} \frac{d^2 R}{dr^2} + \frac{sin(\theta)}{P} \frac{d}{d\theta}(sin(\theta) \frac{dP}{d\theta}) = - \frac{1}{Q} \frac{d^2Q}{d\phi^2}
+        \end{equation}
+        Equate it to a constant ($m$)
+        \begin{equation} \label{eq: a2-7}
+            \frac{1}{Q(\phi)} \frac{d^2Q(\phi)}{d\phi^2} = -m^2
+        \end{equation}
+        Rearrange to get common differential equation solution
+%        \newline \textcolor{red}{How do I get common solution}
+        \begin{equation} \label{eq: a2-8}
+            \frac{d^2Q(\phi)}{d\phi^2} = -m^2 Q(\phi)
+        \end{equation}
+        Common solutions if $m\neq0$
+        \begin{equation} \label{eq: a2-9}
+            Q(\phi) = A_m e^{im\phi} + B_m e^{-im\phi}
+        \end{equation}
+        Common solutions if $m=0$
+        \begin{equation} \label{eq: a2-10}
+            Q(\phi) = A_m + B_m \phi
+        \end{equation}
+        Back to Original equation \ref{eq: a2-7}, multiply $sin^2(\theta)$ 
+        \begin{equation} \label{eq: a2-11}
+            \frac{r^2}{R(r)} \frac{d^2 R(r)}{dr^2} + \frac{1}{sin(\theta) P(\theta)} \frac{d}{d\theta}(sin(\theta) \frac{dP(\theta)}{d\theta}) - \frac{m^2}{sin^2\theta)} = 0
+        \end{equation}
+        First and Last terms are independent so they can be set to constants
+        \begin{equation} \label{eq: a2-12}
+            \frac{r^2}{R(r)} \frac{d^2 R(r)}{dr^2} - l (l+1) = 0
+        \end{equation}
+        Where 
+        \begin{equation} \label{eq: a2-13}
+            -l(l+1) = \frac{1}{sin(\theta) P(\theta)} \frac{d}{d\theta}(sin(\theta) \frac{dP(\theta)}{d\theta}) - \frac{m^2}{sin^2\theta)}
+        \end{equation}
+        Put equation \ref{eq: a2-12} into more intuitive forms
+        \begin{equation} \label{eq: a2-14}
+            \frac{d^2 R(r)}{dr^2} = l(l+1) \frac{R(r)}{r^2} 
+        \end{equation}
+        Put equation \ref{eq: a2-13} into more intuitive forms
+        \begin{equation} \label{eq: a2-15}
+            \frac{d}{d\theta} (sin(\theta) \frac{d P(\theta)}{d\theta}) + (l(l+1)-\frac{m^2}{sin^2\theta)}) sin(\theta) P(\theta) = 0
+        \end{equation}
+        Reduce equation \ref{eq: a2-15} to simpler form by substituting $x=cos(\theta)$ and $\frac{d}{d\theta} = -\sqrt{1-x} \frac{d}{dx}$
+        \begin{equation} \label{eq: a2-16}
+            \frac{d}{dx} ((1-x^2) \frac{d P(X)}{dx}) + (l(l+1)-\frac{m^2}{1-x^2}) P(x) = 0
+        \end{equation}
+        Equation \ref{eq: a2-13} by substituting $R(r) = r^{\alpha}$
+        \begin{equation} \label{eq: a2-17}
+            \alpha (\alpha - 1) r^{\alpha - 2} = (l+1) r^{\alpha - 2}
+        \end{equation}    
+%        \textcolor{red}{Do in between}
+        \begin{equation} \label{eq: a2-18}
+            \alpha^2 \alpha - 1) - l(l+1) = 0
+        \end{equation}        
+%        \textcolor{red}{Do in between}
+        \begin{gather*}
+            \alpha = l + 1
+            \\ \alpha = -l
+        \end{gather*}
+        General solution is 
+%        \newline \textcolor{red}{Do in between}
+        \begin{equation} \label{eq: a2-19}
+            R(r) = A_l r^{l+1} + B_l r^{-1}
+        \end{equation} 
+        General Solution if the whole azimuthal sweep is included
+        \begin{equation} \label{eq: a2-20}
+            \Phi(r,\theta, \phi) = \sum_m \sum_l (A_l r^l + B_l r^{-l-1}) (A_m d^{im \phi} + B_m e^{-im \phi} P_l^m(cos(\theta))
+        \end{equation}     
+        Solving for $P(\theta)$ part we consider a specific case ($m=0$) into equation \ref{eq: a2-16}
+        \begin{equation} \label{eq: a2-21}
+            \frac{d}{dx} ((1-x^2) \frac{d P(X)}{dx}) + l(l+1) P(x) = 0
+        \end{equation}
+        Guess, or "Try", power series solution 
+        \begin{equation} \label{eq: a2-22}
+            P(x) = \sum_{j=0}^{\infty} a_j x^{j+\alpha}
+        \end{equation}    
+%        \textcolor{red}{Do Inbetween}
+        \begin{equation} \label{eq: a2-23}
+            \sum_{j=0}^{\infty} (j+\alpha) (j + \alpha - 1) a_j x^{j+\alpha-2} - (j+\alpha) (j + \alpha + 1) a_j x^{j+\alpha} + l(l+1) a_j x^{j+\alpha} = 0
+        \end{equation}        
+        Consolidate
+        \begin{equation} \label{eq: a2-24}
+            \sum_{j=0}^{\infty} (j+\alpha) (j + \alpha - 1) a_j x^{j+\alpha-2} - \sum_{j=0}^{\infty} ((j+\alpha) (j + \alpha + 1) + l(l+1)) a_j x^{j+\alpha} = 0
+        \end{equation}            
+        Remove first two powers of x then combine
+%        \newline \textcolor{red}{Do Inbetween}
+        \begin{equation} \label{eq: a2-25}
+            (\alpha) (\alpha - 1) a_0 x^{\alpha -2) + (1 + \alpha) (\alpha) a_1 x^{\alpha - 2} \sum_{j=0}^{\infty} ((j + 2 + \alpha) (j + \alpha + 1) a_{j + 2} - ((j + \alpha) (j + \alpha + 1) - ((j + \alpha) (j + \alpha + 1) a_j) x^{j+ \alpha}
+        \end{equation}            
+        This must hold for all values of x so
+        \begin{equation} \label{eq: a2-26}
+            (\alpha) (\alpha - 1) a_0 = 0
+        \end{equation}            
+        \begin{equation} \label{eq: a2-27}
+            (1 + \alpha) (\alpha) a_1 = 0
+        \end{equation}            
+        Substitute equation
+%        \newline \textcolor{red}{\ref{} into \ref{}}
+%        \newline \textcolor{red}{Do Inbetween}
+        \begin{equation} \label{eq: a2-28}
+            (j + \alpha + 2) (j + \alpha + 1) a_{j + 2} - ((j + \alpha) (j + \alpha + 1 - l(l+1))) = 0
+        \end{equation}  
+        The third equation is solved to yield the recurrence relation which gives all the remaining terms from the last one. Rerrange equation
+%        \newline \textcolor{red}{\ref{}}
+        \begin{equation} \label{eq: a2-29}
+            a_{j+2} = \frac{(j+\alpha)(j+\alpha+1) - l(l+1)}{(j + \alpha + 2) (j + \alpha + 1} a_j
+        \end{equation}      
+        $a_1 = 0$; therefore, $a_{odd} = 0$
+        \begin{equation} \label{eq: a2-30}
+            P_l(x) = \sum_{j=0,even}^{\infty} a_j x^{j+\alpha}
+        \end{equation}  
+        Convergest at $x=1$
+        \begin{equation} \label{eq: a2-31}
+            \frac{(j_{max}+\alpha)(j_{max}+\alpha+1) - l(l+1)}{(j_{max} + \alpha + 2) (j_{max} + \alpha + 1} =0
+        \end{equation}      
+        If $a=0$
+        \begin{equation} \label{eq: a2-32}
+            j_{max} (j_{max} + 1) - l(l+1) =0
+        \end{equation}      
+        Therefore 
+        \begin{equation} \label{eq: a2-33}
+            j_{max}=l
+        \end{equation}          
+        Substitute equation
+%        \newline \textcolor{red}{\ref{} with \ref{}}
+        \begin{equation} \label{eq: a2-34}
+            P_l(x) = \sum_{j=0,even}^{l} a_j x^{j}
+        \end{equation}      
+        Therefore 
+        \begin{equation} \label{eq: a2-35}
+            P_l(x) = \sum_{j=0}^{\frac{l}{2}} a_{2j }x^{2j}
+        \end{equation}    
+        Rewrite sums over all integers by doubling indices. If l is even
+        \begin{equation} \label{eq: a2-36}
+            a_{j+2} = j \frac{(j+1) - l(l+1)}{(j + 2) (j + 1)} a_j
+        \end{equation} 
+        If $\alpha = 1$
+        \begin{equation} \label{eq: a2-37}
+            (j_{max} + 2)(j_{max} + 1) - l(l+1) =0
+        \end{equation} 
+        Therefore
+        \begin{equation} \label{eq: a2-38}
+            j_{max}=l-1
+        \end{equation} 
+        Substitute equation
+%        \newline \textcolor{red}{\ref{} with \ref{}}
+        \begin{equation} \label{eq: a2-39}
+            P_l(x) = \sum_{j=0,even}^{l-1} a_j x^{j+1}
+        \end{equation} 
+        Rewrite sums over all integers by doubling indices. If l is odd
+        \begin{equation} \label{eq: a2-40}
+            a_{j+2} = \frac{(j+1) (j+2) - l(l+1)}{(j + 3) (j + 2)} a_j
+        \end{equation}     
+        Explicitly state low values of $l$
+        \begin{gather*}
+            P_0(x) = a_0
+            \\ P_1(x) = a_0x
+            \\ P_2(x) = a_0 + a_2 x^2 = a_0(1-3x^2) \text{ where $a_2 = -3a_0$}
+            \\ P_3(x) = a_0x + a_2x^3 = a_0(x-\frac{5}{3}x^3) \text{ where $a_2 = -\frac{5}{3} a_0$}
+        \end{gather*}
+        $a_0$ is a scale factor and it is conventional to set $P_l(1)=1$. This conditions allows us to set the scale factor. Additionally, $x$ is a placeholder for the more functional $cos(\theta)$
+        \begin{gather*}
+            P_0(cos(\theta)) = 1
+            \\ P_1(cos(\theta)) = cos(\theta)
+            \\ P_2(cos(\theta)) = \frac{1}{2}(-1+3cos^2(\theta))
+            \\ P_3(cos(\theta)) = \frac{1}{2}(-3x + \frac{5}{3}cos^3(\theta))
+        \end{gather*}
+        \newline Legendre polynomials have the following mathematical properties
+        \begin{gather*}
+            \text{Odd or even symmetry about origin} P_l(-x) = (-1)^l P_l(x) 
+            \\ \text{Rodrigues' Formula 1} P_l(x) = \frac{1}{2^l l!} \frac{d^l}{dx^l} (x^2 - 1)^l
+            \\ \text{Recurrence relation 1} P_{l+1}(x) = \frac{2 l + 1}{l+1} P_l(x) - \frac{l}{(l+1)} P_{l-1}(x)
+            \\ \text{Rodrigues' Formula 1} P_l(x) = \frac{1}{2 l + 1} \frac{d}{dx} (P_{l+1}(x) - P_{l-1}(x))
+            \\ \text{Orthogonality condition} \int_{-l}^l P_{l'}(x) P_l(x)dx = \frac{2}{2l + 1} \delta_{l'l}
+            \\ \text{Orthogonality condition (Polar angle)} \int_0^\pi P_{l'}(cos(\theta)) P_l(cos(\theta)) sin(\theta) d\theta = \frac{2}{2l+1}\delta_{l'l}
+        \end{gather*}
+        The Legendre Polynomials form a complete set of orthogonal functions on the interval $(-1,1)$, so any function $f(x)$ and be expanded in terms of Legendre Polynomials
+        \begin{equation} \label{eq: a2-41}
+            f(x) = \sum_{l=0}^\infty A_l P_l(x)
+        \end{equation}
+        Where 
+        \begin{equation} \label{eq: a2-42}
+            A_l = \frac{2l+1}{2} \int_{-1}^1 f(x) P_l(x) dx
+        \end{equation}
+        The general solution to the Laplace Equation in spherical coordinates for the case $m=0$ (where the origin and non-origin are considered)
+        \begin{equation} \label{eq: a2-43}
+            \Phi(r,\theta, \phi) = \sum_{l=0}^\infty (A_l r^l + B_l r^{-l-1}) P_l(cos(\theta))
+        \end{equation}
+\newpage
+\printbibliography
+\end{document}
